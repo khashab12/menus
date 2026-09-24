@@ -98,6 +98,7 @@ const T = {"ar": {"dir": "rtl", "lang": "English", "search": "وش تبغى تط
 let lang="ar", active="all", query="";
 const KEY="velvett-lang";
 try{const s=localStorage.getItem(KEY);if(s==="ar"||s==="en")lang=s;}catch(e){}
+try{const u=new URLSearchParams(location.search).get("lang");if(u==="ar"||u==="en")lang=u;}catch(e){}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
