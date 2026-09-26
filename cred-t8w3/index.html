@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو كريد</title>
+<meta name="description" content="Credibility in Every Cup">
+<meta property="og:title" content="منيو كريد">
+<meta property="og:description" content="Credibility in Every Cup">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/cred-t8w3/">
+<meta property="og:image" content="https://khashab12.github.io/menus/cred-t8w3/logo.png">
+<meta name="theme-color" content="#4a1426">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Tajawal:wght@400;500;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.empty{text-align:center;padding:3rem 1rem;opacity:.75}
+button{font:inherit}
+
+:root{--wine:#4a1426;--wine2:#5c1a31;--wine3:#6a2139;--cream:#f1d9a8;--soft:#cfae86;--ink:#f6e6c6;--paper:#3c0f1e}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--paper:#4a1426}}
+:root[data-theme="light"]{--paper:#4a1426}
+body{background:var(--paper);color:var(--ink);font-family:"Tajawal","Marcellus",system-ui,sans-serif}
+html[lang=en] body{font-family:"Marcellus","Tajawal",serif}
+.demo-note{background:var(--cream);color:var(--wine)}
+header{position:relative;text-align:center;padding:calc(env(safe-area-inset-top,0px) + 3rem) 1.2rem 1.4rem;background:var(--wine)}
+.lang{position:absolute;top:calc(env(safe-area-inset-top,0px) + .8rem);inset-inline-end:1rem;background:transparent;color:var(--cream);border:1px solid var(--cream);border-radius:2px;padding:.25rem .9rem;cursor:pointer;min-height:36px;font-size:.8rem;z-index:2}
+/* stacked CR / ED mark, like their logo */
+#logo{display:inline-flex;align-items:center;gap:1rem;padding:.6rem 1rem;background:var(--wine);direction:ltr}
+.mk{font:700 2.1rem/.82 "Tajawal";color:var(--cream);letter-spacing:.02em;text-align:left}
+.mk span{display:block}
+.mk i{font-style:normal;display:inline-block;transform:skewX(-20deg)}
+.nm2{text-align:left}
+.nm2 b{display:block;font:400 1.9rem/1 "Marcellus";color:var(--cream)}
+.nm2 small{display:block;font:500 1.05rem "Tajawal";color:var(--soft);margin-top:.2rem}
+.tg{font:400 .95rem "Marcellus";color:var(--soft);margin:.7rem 0 0;letter-spacing:.06em;direction:ltr}
+.info{font-size:.8rem;color:var(--soft);margin:.3rem 0 0}
+.bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--wine3)}
+.bar-in{max-width:560px;margin:0 auto;padding:.6rem 1.2rem .4rem}
+.search input{width:100%;border:1px solid var(--soft);background:var(--wine2);color:var(--ink);border-radius:2px;padding:.55rem 1rem;font:inherit}
+.search input::placeholder{color:var(--soft)}
+.chips{display:flex;gap:.45rem;overflow-x:auto;padding:.55rem 0 .1rem;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--soft);background:none;color:var(--ink);border-radius:2px;padding:.3rem .95rem;cursor:pointer;min-height:36px;font-size:.84rem}
+.chip[aria-pressed="true"]{background:var(--cream);border-color:var(--cream);color:var(--wine)}
+.chip:focus-visible,.lang:focus-visible,.search input:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+main{max-width:560px;margin:0 auto;padding:.5rem 1rem 1.5rem}
+section{margin-top:1.9rem;scroll-margin-top:120px}
+h2{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin:0 .2rem .4rem;color:var(--cream);font:700 1.15rem "Tajawal"}
+h2 small{font:400 1.05rem "Marcellus";letter-spacing:.06em;direction:ltr}
+.sz{display:flex;justify-content:flex-end;gap:1.2rem;padding:0 1rem .35rem;color:var(--soft);font-size:.72rem}
+/* every item is a ticket stub with perforated top & bottom edges, like their printed menu */
+.tk{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:.8rem;padding:.7rem 1rem;margin:5px 0;background:var(--wine3);
+ -webkit-mask:radial-gradient(circle at 50% 0,transparent 3px,#000 3.5px) 0 0/10px 51% repeat-x,radial-gradient(circle at 50% 100%,transparent 3px,#000 3.5px) 0 100%/10px 51% repeat-x;
+ mask:radial-gradient(circle at 50% 0,transparent 3px,#000 3.5px) 0 0/10px 51% repeat-x,radial-gradient(circle at 50% 100%,transparent 3px,#000 3.5px) 0 100%/10px 51% repeat-x}
+.tk:nth-child(odd){background:var(--wine2)}
+.n{line-height:1.3}
+.n .a{display:block;font-weight:500}
+.n .e{display:block;font:400 .78rem "Marcellus";color:var(--soft);letter-spacing:.05em;text-transform:uppercase;direction:ltr;text-align:start}
+html[dir=rtl] .n .e{text-align:right}
+.pr{font:400 1.05rem "Marcellus";direction:ltr;white-space:nowrap;color:var(--cream)}
+.pr small{font:500 .66rem "Tajawal";color:var(--soft);margin-inline-start:.2rem}
+.sl{margin:0 .3rem;color:var(--soft)}
+.tax{margin:1.6rem auto 0;max-width:320px;background:var(--cream);color:var(--wine);text-align:center;font-size:.78rem;padding:.7rem 1rem;line-height:1.6;
+ -webkit-mask:radial-gradient(circle at 0 50%,transparent 4px,#000 4.5px) 0 0/100% 10px repeat-y;mask:radial-gradient(circle,transparent 3px,#000 3.5px) -5px -5px/10px 10px}
+.foot{text-align:center;color:var(--soft);font-size:.8rem;padding:.5rem 1rem 2.2rem}.foot strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+
+<header>
+  <button class="lang" id="langBtn">English</button>
+  <div id="logo"><div class="mk" aria-hidden="true"><span>C<i>R</i></span><span><i>E</i>D</span></div><div class="nm2"><b>Cred</b><small>كريد</small></div></div>
+  <p class="tg">Credibility in Every Cup</p>
+  <p class="info" id="info"></p>
+</header>
+
+<div class="bar"><div class="bar-in">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div></div>
+<main id="menu"></main>
+<footer class="foot"><p id="note"></p><p id="credit"></p></footer>
+<script>
+const CONFIG = {"name": "Cred Cafe", "nameAr": "كريد", "tagline": {"ar": "Credibility in Every Cup", "en": "Credibility in Every Cup"}, "info": {"ar": "حي المغرزات، الرياض", "en": "Al Mughrizat, Riyadh"}, "logo": "data:image/png;base64,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", "colors": {"primary": "#4a1426", "onPrimary": "#f1d9a8", "secondary": "#f1d9a8", "background": "#4a1426", "accent": "#f1d9a8"}, "fonts": {"display": "Marcellus", "body": "Tajawal"}, "pattern": "ticket stubs", "currency": {"ar": "ر.س", "en": "SAR"}, "demoBanner": false, "credit": "محمد", "categories": [{"id": "hot", "ar": "المشروبات الساخنة", "en": "Hot Drinks", "sz": "s", "items": [{"ar": "إسبريسو", "en": "Espresso", "p": 12}, {"ar": "قهوة اليوم", "en": "Coffee of the Day", "p": 13, "p2": 16}, {"ar": "كورتادو", "en": "Cortado", "p": 14}, {"ar": "أمريكانو", "en": "Americano", "p": 14}, {"ar": "ماكياتو", "en": "Macchiato", "p": 14}, {"ar": "فلات وايت", "en": "Flat White", "p": 16}, {"ar": "كابتشينو", "en": "Cappuccino", "p": 18}, {"ar": "لاتيه", "en": "Latte", "p": 18}, {"ar": "سبانش لاتيه", "en": "Spanish Latte", "p": 20}, {"ar": "V60", "en": "V60", "p": 20}]}, {"id": "cold", "ar": "المشروبات الباردة", "en": "Cold Drinks", "sz": "s", "items": [{"ar": "قهوة اليوم بارد", "en": "Iced Coffee of the Day", "p": 13, "p2": 17}, {"ar": "إسبريسو الفريدو", "en": "Espresso Freddo", "p": 16, "p2": 20}, {"ar": "آيس أمريكانو", "en": "Iced Americano", "p": 14}, {"ar": "آيس لاتيه", "en": "Iced Latte", "p": 18}, {"ar": "آيس تي خوخ", "en": "Peach Iced Tea", "p": 19}, {"ar": "كركديه", "en": "Hibiscus", "p": 19}, {"ar": "سبانش لاتيه بارد", "en": "Iced Spanish Latte", "p": 22}, {"ar": "V60 بارد", "en": "Iced V60", "p": 22}, {"ar": "ماء", "en": "Water", "p": 4}, {"ar": "ماء غازي", "en": "Sparkling Water", "p": 7}]}, {"id": "sweet", "ar": "الحلويات", "en": "Sweets", "sz": "b", "items": [{"ar": "قطع جوز الهند بالشوكلاته", "en": "Choco Coconut Bites", "p": 12, "p2": 17}, {"ar": "قطع زبدة الفول السوداني", "en": "Peanut Butter Cruffin Bites", "p": 13, "p2": 18}, {"ar": "قطع تشيز الشوكولاتة", "en": "Choco Cheese Cruffin Bites", "p": 13, "p2": 18}, {"ar": "مكعبات الحليب المحموس", "en": "Roasted Milk Cubes Bites", "p": 14, "p2": 19}]}, {"id": "cakes", "ar": "الكيك", "en": "Cakes", "items": [{"ar": "الكيكة الألمانية", "en": "German Cake", "p": 28}, {"ar": "تشيز كيك البروليه", "en": "Cheese Brûlée", "p": 30}, {"ar": "طبقات كيك الشوكولاته", "en": "Brownie Cheesecake", "p": 32}]}]};
+const C = CONFIG || {name:"Menu",categories:[]};
+const T = {"ar": {"dir": "rtl", "lang": "English", "search": "وش تبي تطلب؟", "empty": "ما لقينا شي بهالاسم.", "all": "الكل", "demo": "", "note": "", "s": "صغير / كبير", "b": "قطعتين / ٣ قطع", "tax": "يحتاج البالغون إلى 2000 سعرة حرارية في المتوسط يومياً، وقد تختلف الاحتياجات الفردية من شخص لآخر. الأسعار شاملة الضريبة"}, "en": {"dir": "ltr", "lang": "العربية", "search": "What would you like?", "empty": "Nothing matches that.", "all": "All", "demo": "", "note": "", "s": "Small / Large", "b": "2 pcs / 3 pcs", "tax": "Adults need about 2,000 calories a day on average; needs vary from person to person. Prices include VAT."}};
+let lang="ar", active="all", query="";
+const KEY="cred-lang";
+try{const s=localStorage.getItem(KEY);if(s==="ar"||s==="en")lang=s;}catch(e){}
+try{const u=new URLSearchParams(location.search).get("lang");if(u==="ar"||u==="en")lang=u;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"",en:""})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+const P=i=> i.p2!=null ? `${fmt(i.p)}<span class="sl">/</span>${fmt(i.p2)}` : fmt(i.p);
+
+function hero(){ $("info").textContent=L(C.info||{},"ar","en"); }
+function section(c,ci,body){ const s=c.sz?`<div class="sz">${T[lang][c.sz]}</div>`:""; return `<section id="cat-${esc(c.id)}"><h2><span>${esc(c.ar)}</span><small>${esc(c.en)}</small></h2>${s}${body}</section>`; }
+function item(i){ return `<div class="tk"><span class="n"><span class="a">${esc(lang==="ar"?i.ar:i.en)}</span>${lang==="ar"?`<span class="e">${esc(i.en)}</span>`:""}</span><span class="pr">${P(i)}<small>${cur()}</small></span></div>`; }
+function afterRender(){ if(query.trim()) return; $("menu").insertAdjacentHTML("beforeend",`<p class="tax">${T[lang].tax}</p>`); }
+
+function renderChips(){
+  const cats=[{id:"all",ar:T.ar.all,en:T.en.all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0,k=0;
+  C.categories.forEach((c,ci)=>{
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) return; n+=items.length;
+    html+=section(c,ci,items.map(i=>item(i,++k,c)).join(""));
+  });
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+  if(typeof afterRender==="function") afterRender();
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.demo;
+  $("note").textContent=t.note||"";
+  $("credit").innerHTML=(lang==="ar"?"منيو ديجيتال من تصميم ":"Digital menu designed by ")+`<strong>${lang==="en"?"Mohamed":"محمد"}</strong>`;
+  if(typeof hero==="function") hero();
+  renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem(KEY,lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+apply();
+</script>
+</body>
+</html>
