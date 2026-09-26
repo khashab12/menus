@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو سكن</title>
+<meta name="description" content="سكنك الثاني">
+<meta property="og:title" content="منيو سكن">
+<meta property="og:description" content="سكنك الثاني">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/sakan-b4t8/">
+<meta property="og:image" content="https://khashab12.github.io/menus/sakan-b4t8/logo.png">
+<meta name="theme-color" content="#56656a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Poppins:wght@300;400;500&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.empty{text-align:center;padding:3rem 1rem;opacity:.75}
+button{font:inherit}
+
+:root{--slate:#56656a;--slate2:#46545a;--cream:#ece3cf;--sky:#b9d4e6;--teal:#3f6f80;--paper:#eef0ee;--card:#fbfaf6;--ink:#2c3538;--soft:#6d7a7e;--line:#d9dedc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#161c1e;--card:#20282b;--ink:#eef0ea;--soft:#a9b5b8;--line:#334044}}
+:root[data-theme="dark"]{--paper:#161c1e;--card:#20282b;--ink:#eef0ea;--soft:#a9b5b8;--line:#334044}
+body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans Arabic","Poppins",system-ui,sans-serif}
+html[lang=en] body{font-family:"Poppins","IBM Plex Sans Arabic",sans-serif}
+.demo-note{background:var(--teal);color:#fff}
+header{position:relative;background:var(--slate);color:var(--cream);text-align:center;padding:calc(env(safe-area-inset-top,0px) + 3.2rem) 1.2rem 2.2rem;overflow:hidden}
+/* soft light-blue bands like their key card */
+header::after{content:"";position:absolute;inset:auto -10% -30px -10%;height:90px;background:linear-gradient(-8deg,transparent 40%,rgba(185,212,230,.35) 40% 52%,transparent 52% 60%,rgba(185,212,230,.22) 60% 68%,transparent 68%);pointer-events:none}
+.lang{position:absolute;top:calc(env(safe-area-inset-top,0px) + .8rem);inset-inline-end:1rem;background:transparent;color:var(--cream);border:1px solid rgba(236,227,207,.6);border-radius:999px;padding:.25rem .95rem;cursor:pointer;min-height:36px;font-size:.8rem;z-index:2}
+#logo{display:inline-block;padding:.8rem 1.2rem;background:var(--slate)}
+#logo svg{display:block;width:170px;height:auto;margin:0 auto}
+.sk{font:500 .8rem "Poppins";letter-spacing:.55em;margin:.35rem -.55em 0 0;direction:ltr}
+.tg{font:500 1.05rem "IBM Plex Sans Arabic";margin:.5rem 0 0}
+.tg small{display:block;font:italic 600 1.1rem "Cormorant Garamond";letter-spacing:.04em;opacity:.85;direction:ltr}
+.info{font-size:.78rem;opacity:.8;margin:.7rem 0 0}
+.bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar-in{max-width:560px;margin:0 auto;padding:.6rem 1.2rem .4rem}
+.search input{width:100%;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:.55rem 1rem;font:inherit}
+.chips{display:flex;gap:.4rem;overflow-x:auto;padding:.5rem 0 .1rem;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:.3rem .9rem;cursor:pointer;min-height:36px;font-size:.84rem}
+.chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.chip:focus-visible,.lang:focus-visible,.search input:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+main{max-width:560px;margin:0 auto;padding:.5rem 1.2rem 1.5rem}
+/* every category is a room key card */
+section{position:relative;margin-top:1.4rem;background:var(--card);border-radius:18px;padding:1.1rem 1.1rem .6rem;box-shadow:0 14px 30px -22px rgba(44,53,56,.55);overflow:hidden;scroll-margin-top:120px}
+section::before{content:"";position:absolute;top:0;inset-inline-end:0;width:140px;height:100%;background:linear-gradient(105deg,transparent 30%,rgba(185,212,230,.55) 30% 44%,transparent 44% 52%,rgba(185,212,230,.35) 52% 60%,transparent 60%);pointer-events:none;opacity:.6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) section::before{opacity:.25}}
+.kh{position:relative;display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:.55rem;margin-bottom:.3rem}
+h2{margin:0;font:600 1.15rem "IBM Plex Sans Arabic"}
+html[lang=en] h2{font:600 1.35rem "Cormorant Garamond";letter-spacing:.03em}
+.room{display:inline-flex;align-items:baseline;gap:.35rem;font:300 .7rem "Poppins";letter-spacing:.25em;color:var(--soft);direction:ltr}
+.room b{font:500 1.1rem "Poppins";letter-spacing:.05em;color:var(--teal)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .room b{color:var(--sky)}}
+.it{position:relative;display:flex;justify-content:space-between;gap:.8rem;padding:.55rem 0;border-bottom:1px dashed var(--line)}
+.it:last-child{border-bottom:0}
+.nm{font-weight:500}
+.ds{display:block;font-size:.74rem;color:var(--soft);font-weight:300}
+.pr{white-space:nowrap;font:500 1rem "Poppins";direction:ltr;color:var(--ink)}
+.pr small{font-size:.66rem;color:var(--soft);margin-inline-start:.2rem}
+.sl{margin:0 .15rem;color:var(--soft)}
+.foot{text-align:center;color:var(--soft);font-size:.8rem;padding:.5rem 1rem 2.2rem}.foot strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+
+<header>
+  <button class="lang" id="langBtn">English</button>
+  <div id="logo">
+    <svg viewBox="0 0 170 46" fill="none" stroke="#ece3cf" stroke-width="3" stroke-linecap="square" aria-hidden="true">
+      <path d="M8 34H62"/><path d="M60 16c0 20 26 20 26 4"/><path d="M86 20L160 11"/><path d="M104 34H162"/><path d="M47 22v4"/>
+    </svg>
+    <div class="sk">SAKAN</div>
+  </div>
+  <p class="tg" id="tg"></p>
+  <p class="info" id="info"></p>
+</header>
+
+<div class="bar"><div class="bar-in">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div></div>
+<main id="menu"></main>
+<footer class="foot"><p id="note"></p><p id="credit"></p></footer>
+<script>
+const CONFIG = {"name": "Sakan", "nameAr": "سكن", "tagline": {"ar": "سكنك الثاني", "en": "Your second home"}, "info": {"ar": "شارع التخصصي، حي الرحمانية، الرياض | ٤ العصر – ١٢ الليل", "en": "Al Takhassusi St., Ar Rahmaniyyah, Riyadh · 4 PM – 12 AM"}, "logo": "data:image/png;base64,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", "colors": {"primary": "#56656a", "onPrimary": "#ece3cf", "secondary": "#b9d4e6", "background": "#eef0ee", "accent": "#3f6f80"}, "fonts": {"display": "Cormorant Garamond", "body": "IBM Plex Sans Arabic"}, "pattern": "key card bands", "currency": {"ar": "ر.س", "en": "SAR"}, "demoBanner": true, "credit": "محمد", "categories": [{"id": "hot", "ar": "قهوة حارة", "en": "Hot Coffee", "items": [{"ar": "قهوة اليوم", "en": "Coffee of the Day", "p": 12}, {"ar": "V60", "en": "V60", "dAr": "محصول الأسبوع", "dEn": "crop of the week", "p": 19}, {"ar": "إسبريسو", "en": "Espresso", "p": 11}, {"ar": "كورتادو", "en": "Cortado", "p": 14}, {"ar": "فلات وايت", "en": "Flat White", "p": 16}, {"ar": "لاتيه", "en": "Latte", "p": 17}]}, {"id": "cold", "ar": "قهوة باردة", "en": "Iced Coffee", "items": [{"ar": "قهوة اليوم باردة", "en": "Iced Coffee of the Day", "p": 13}, {"ar": "آيس دريب", "en": "Iced Drip", "p": 20}, {"ar": "آيس لاتيه", "en": "Iced Latte", "p": 18}, {"ar": "آيس سبانش لاتيه", "en": "Iced Spanish Latte", "p": 19}]}, {"id": "matcha", "ar": "ماتشا", "en": "Matcha", "items": [{"ar": "ماتشا لاتيه", "en": "Matcha Latte", "p": 21}, {"ar": "آيس ماتشا لاتيه", "en": "Iced Matcha Latte", "p": 22}]}, {"id": "sweet", "ar": "الحلى", "en": "Sweets", "items": [{"ar": "تيراميسو", "en": "Tiramisu", "p": 26}, {"ar": "كيكة شوكولاتة", "en": "Chocolate Cake", "p": 25}, {"ar": "شيفون كيك", "en": "Chiffon Cake", "p": 24}]}, {"id": "more", "ar": "أخرى", "en": "More", "items": [{"ar": "ماء", "en": "Water", "p": 2}]}]};
+const C = CONFIG || {name:"Menu",categories:[]};
+const T = {"ar": {"dir": "rtl", "lang": "English", "search": "وش تبي تطلب؟", "empty": "ما لقينا شي بهالاسم.", "all": "الكل", "demo": "تصور تجريبي — الأصناف والأسعار أمثلة وليست منيو المحل", "note": "", "tg": "سكنك الثاني", "room": "غرفة"}, "en": {"dir": "ltr", "lang": "العربية", "search": "What would you like?", "empty": "Nothing matches that.", "all": "All", "demo": "Demo — items and prices are examples, not the café's menu", "note": "", "tg": "Your second home", "room": "ROOM"}};
+let lang="ar", active="all", query="";
+const KEY="sakan-lang";
+try{const s=localStorage.getItem(KEY);if(s==="ar"||s==="en")lang=s;}catch(e){}
+try{const u=new URLSearchParams(location.search).get("lang");if(u==="ar"||u==="en")lang=u;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"",en:""})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+const P=i=> i.p2!=null ? `${fmt(i.p)}<span class="sl">/</span>${fmt(i.p2)}` : fmt(i.p);
+
+function hero(){ $("info").textContent=L(C.info||{},"ar","en"); $("tg").innerHTML=`${esc(T[lang].tg)}<small>Pause. Here</small>`; }
+function section(c,ci,body){ const n=String(ci+1).padStart(2,"0"); return `<section id="cat-${esc(c.id)}"><div class="kh"><h2>${esc(L(c,"ar","en"))}</h2><span class="room">${T[lang].room}<b>${n}</b></span></div>${body}</section>`; }
+function item(i){ const d=L(i,"dAr","dEn"); return `<div class="it"><span><span class="nm">${esc(L(i,"ar","en"))}</span>${d?`<span class="ds">${esc(d)}</span>`:""}</span><span class="pr">${P(i)}<small>${cur()}</small></span></div>`; }
+
+function renderChips(){
+  const cats=[{id:"all",ar:T.ar.all,en:T.en.all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0,k=0;
+  C.categories.forEach((c,ci)=>{
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) return; n+=items.length;
+    html+=section(c,ci,items.map(i=>item(i,++k,c)).join(""));
+  });
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+  if(typeof afterRender==="function") afterRender();
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.demo;
+  $("note").textContent=t.note||"";
+  $("credit").innerHTML=(lang==="ar"?"منيو ديجيتال من تصميم ":"Digital menu designed by ")+`<strong>${lang==="en"?"Mohamed":"محمد"}</strong>`;
+  if(typeof hero==="function") hero();
+  renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem(KEY,lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+apply();
+</script>
+</body>
+</html>

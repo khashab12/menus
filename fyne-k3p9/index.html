@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو فاين كافيه</title>
+<meta name="description" content="Coffee, thoughtfully crafted.">
+<meta property="og:title" content="منيو فاين كافيه">
+<meta property="og:description" content="Coffee, thoughtfully crafted.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/fyne-k3p9/">
+<meta property="og:image" content="https://khashab12.github.io/menus/fyne-k3p9/logo.png">
+<meta name="theme-color" content="#1d1d1b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;500;800&family=Almarai:wght@300;400;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.empty{text-align:center;padding:3rem 1rem;opacity:.75}
+button{font:inherit}
+
+:root{--char:#1d1d1b;--stone:#e7e1d6;--stone2:#d9d1c3;--wood:#8a6a4f;--sage:#8f9a84;--paper:#f2eee7;--ink:#1d1d1b;--soft:#6f6a61;--line:#d6cfc2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--stone:#262521;--stone2:#302e29;--paper:#141412;--ink:#f2eee7;--soft:#b3ab9e;--line:#3a3833;--wood:#b8926f}}
+:root[data-theme="dark"]{--stone:#262521;--stone2:#302e29;--paper:#141412;--ink:#f2eee7;--soft:#b3ab9e;--line:#3a3833;--wood:#b8926f}
+body{background:var(--paper);color:var(--ink);font-family:"Almarai","League Spartan",system-ui,sans-serif}
+html[lang=en] body{font-family:"League Spartan","Almarai",sans-serif;font-size:17px}
+.demo-note{background:var(--wood);color:#fff}
+header{position:relative;text-align:center}
+/* the dark façade with their bold sign */
+.facade{background:var(--char);color:#f2eee7;padding:calc(env(safe-area-inset-top,0px) + 3.4rem) 1.2rem 1.6rem;position:relative}
+.facade::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(90deg,#3a3833 0 18px,#2a2926 18px 20px)}
+.lang{position:absolute;top:calc(env(safe-area-inset-top,0px) + .8rem);inset-inline-end:1rem;background:#f2eee7;color:#1d1d1b;border:0;border-radius:2px;padding:.25rem .95rem;cursor:pointer;min-height:36px;font-size:.8rem;z-index:2}
+#logo{display:inline-block;padding:.5rem 1.2rem;background:var(--char)}
+.wm{font:800 3.4rem/1 "League Spartan";letter-spacing:.16em;margin-inline-end:-.16em;transform:scaleX(1.18);direction:ltr;color:#f2eee7}
+/* travertine band */
+.trav{background:linear-gradient(0deg,rgba(0,0,0,.025) 0 1px,transparent 1px 7px),linear-gradient(180deg,#e9e3d8,#ddd5c6);color:#1d1d1b;padding:1.1rem 1.2rem 1.2rem}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .trav{background:linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 7px),linear-gradient(180deg,#2c2a26,#24221f);color:#f2eee7}}
+.tg{margin:0;font:300 1.05rem "League Spartan";letter-spacing:.04em;direction:ltr}
+.tg2{margin:.2rem 0 0;font-size:.8rem;opacity:.75;direction:ltr}
+.info{font-size:.8rem;margin:.6rem 0 0;opacity:.8}
+.bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar-in{max-width:560px;margin:0 auto;padding:.6rem 1.2rem .4rem}
+.search input{width:100%;border:1px solid var(--line);background:var(--stone);color:var(--ink);border-radius:2px;padding:.55rem 1rem;font:inherit}
+.chips{display:flex;gap:.4rem;overflow-x:auto;padding:.5rem 0 .1rem;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--ink);background:none;color:var(--ink);border-radius:2px;padding:.3rem .95rem;cursor:pointer;min-height:36px;font-size:.84rem;text-transform:uppercase;letter-spacing:.06em}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.chip:focus-visible,.lang:focus-visible,.search input:focus-visible{outline:2px solid var(--wood);outline-offset:2px}
+main{max-width:560px;margin:0 auto;padding:.5rem 1.2rem 1.5rem}
+/* each category is a stone slab with an engraved title and a wooden ledge */
+section{margin-top:1.6rem;background:var(--stone);border-radius:3px;padding:1rem 1.1rem .5rem;border-bottom:7px solid var(--wood);scroll-margin-top:120px;background-image:linear-gradient(0deg,rgba(0,0,0,.02) 0 1px,transparent 1px 6px)}
+h2{margin:0 0 .4rem;font:700 1.1rem "Almarai";color:var(--ink);text-shadow:0 1px 0 rgba(255,255,255,.5)}
+html[lang=en] h2{font:800 1.15rem "League Spartan";letter-spacing:.18em;text-transform:uppercase}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h2{text-shadow:none}}
+.row{display:flex;align-items:baseline;gap:.6rem;padding:.55rem 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--sage);flex:0 0 7px;transform:translateY(-2px)}
+.nm{flex:1;font-weight:400}
+.ds{display:block;font-size:.74rem;color:var(--soft)}
+.pr{font:500 1.05rem "League Spartan";direction:ltr;white-space:nowrap}
+.pr small{font-size:.66rem;color:var(--soft);margin-inline-start:.2rem}
+.sl{margin:0 .15rem;color:var(--soft)}
+.foot{text-align:center;color:var(--soft);font-size:.8rem;padding:.5rem 1rem 2.2rem}.foot strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+
+<header>
+  <div class="facade">
+    <button class="lang" id="langBtn">English</button>
+    <div id="logo"><div class="wm">FYNE</div></div>
+  </div>
+  <div class="trav">
+    <p class="tg">Coffee, thoughtfully crafted.</p>
+    <p class="tg2">A place to pause, connect &amp; unwind.</p>
+    <p class="info" id="info"></p>
+  </div>
+</header>
+
+<div class="bar"><div class="bar-in">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div></div>
+<main id="menu"></main>
+<footer class="foot"><p id="note"></p><p id="credit"></p></footer>
+<script>
+const CONFIG = {"name": "FYNE Coffee", "nameAr": "فاين كافيه", "tagline": {"ar": "Coffee, thoughtfully crafted.", "en": "Coffee, thoughtfully crafted."}, "info": {"ar": "حي الملقا، الرياض", "en": "Al Malqa, Riyadh"}, "logo": "data:image/png;base64,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", "colors": {"primary": "#1d1d1b", "onPrimary": "#f2eee7", "secondary": "#e7e1d6", "background": "#f2eee7", "accent": "#8a6a4f"}, "fonts": {"display": "League Spartan", "body": "Almarai"}, "pattern": "travertine slabs", "currency": {"ar": "ر.س", "en": "SAR"}, "demoBanner": true, "credit": "محمد", "categories": [{"id": "brew", "ar": "القهوة المقطرة", "en": "Brew", "items": [{"ar": "قهوة اليوم", "en": "Coffee of the Day", "dAr": "حارة أو باردة", "dEn": "hot or iced", "p": 12}, {"ar": "V60", "en": "V60", "p": 20}, {"ar": "آيس دريب", "en": "Iced Drip", "p": 21}]}, {"id": "espresso", "ar": "الإسبريسو", "en": "Espresso Bar", "items": [{"ar": "إسبريسو", "en": "Espresso", "p": 12}, {"ar": "كورتادو", "en": "Cortado", "p": 15}, {"ar": "فلات وايت", "en": "Flat White", "p": 16}, {"ar": "لاتيه", "en": "Latte", "p": 18}, {"ar": "آيس لاتيه", "en": "Iced Latte", "p": 19}, {"ar": "آيس سبانش لاتيه", "en": "Iced Spanish Latte", "p": 20}]}, {"id": "sweets", "ar": "الحلى", "en": "Sweets", "items": [{"ar": "بنانا بودينق", "en": "Banana Pudding", "dAr": "تُقدّم باردة", "dEn": "served cold", "p": 24}, {"ar": "تشوكلت بار", "en": "Chocolate Bar", "p": 26}, {"ar": "كيكة شوكولاتة", "en": "Chocolate Cake", "p": 27}]}, {"id": "more", "ar": "أخرى", "en": "More", "items": [{"ar": "ماء", "en": "Water", "p": 2}]}]};
+const C = CONFIG || {name:"Menu",categories:[]};
+const T = {"ar": {"dir": "rtl", "lang": "English", "search": "وش تبي تطلب؟", "empty": "ما لقينا شي بهالاسم.", "all": "الكل", "demo": "تصور تجريبي — الأصناف والأسعار أمثلة وليست منيو المحل", "note": ""}, "en": {"dir": "ltr", "lang": "العربية", "search": "What would you like?", "empty": "Nothing matches that.", "all": "All", "demo": "Demo — items and prices are examples, not the café's menu", "note": ""}};
+let lang="ar", active="all", query="";
+const KEY="fyne-lang";
+try{const s=localStorage.getItem(KEY);if(s==="ar"||s==="en")lang=s;}catch(e){}
+try{const u=new URLSearchParams(location.search).get("lang");if(u==="ar"||u==="en")lang=u;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"",en:""})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+const P=i=> i.p2!=null ? `${fmt(i.p)}<span class="sl">/</span>${fmt(i.p2)}` : fmt(i.p);
+
+function hero(){ $("info").textContent=L(C.info||{},"ar","en"); }
+function section(c,ci,body){ return `<section id="cat-${esc(c.id)}"><h2>${esc(L(c,"ar","en"))}</h2>${body}</section>`; }
+function item(i){ const d=L(i,"dAr","dEn"); return `<div class="row"><span class="dot"></span><span class="nm">${esc(L(i,"ar","en"))}${d?`<span class="ds">${esc(d)}</span>`:""}</span><span class="pr">${P(i)}<small>${cur()}</small></span></div>`; }
+
+function renderChips(){
+  const cats=[{id:"all",ar:T.ar.all,en:T.en.all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0,k=0;
+  C.categories.forEach((c,ci)=>{
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) return; n+=items.length;
+    html+=section(c,ci,items.map(i=>item(i,++k,c)).join(""));
+  });
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+  if(typeof afterRender==="function") afterRender();
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.demo;
+  $("note").textContent=t.note||"";
+  $("credit").innerHTML=(lang==="ar"?"منيو ديجيتال من تصميم ":"Digital menu designed by ")+`<strong>${lang==="en"?"Mohamed":"محمد"}</strong>`;
+  if(typeof hero==="function") hero();
+  renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem(KEY,lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+apply();
+</script>
+</body>
+</html>
