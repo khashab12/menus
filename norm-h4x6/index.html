@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو قهوة نورم</title>
+<meta name="description" content="roaster">
+<meta property="og:title" content="منيو قهوة نورم">
+<meta property="og:description" content="roaster">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/norm-h4x6/">
+<meta property="og:image" content="https://khashab12.github.io/menus/norm-h4x6/logo.png">
+<meta name="theme-color" content="#3d3935">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.empty{text-align:center;padding:3rem 1rem;opacity:.75}
+button{font:inherit}
+.visit{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;max-width:560px;margin:1rem auto 0;padding:0 1.2rem}
+.visit[hidden]{display:none}
+.visit a{flex:1 1 auto;text-align:center;text-decoration:none;font-size:.85rem;padding:.55rem .9rem;min-height:40px;border-radius:999px;border:1px solid currentColor;color:inherit}
+.visit a.wa{background:#1f8f4e;border-color:#1f8f4e;color:#fff}
+
+:root{--bg:#3d3935;--bg2:#46423d;--ink:#ece6dc;--soft:#a79f93;--line:rgba(236,230,220,.14);--tag:#d9cfbf}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#efebe4;--bg2:#e6e0d6;--ink:#2d2a27;--soft:#7c756b;--line:rgba(45,42,39,.14);--tag:#3d3935}}
+:root[data-theme="light"]{--bg:#efebe4;--bg2:#e6e0d6;--ink:#2d2a27;--soft:#7c756b;--line:rgba(45,42,39,.14);--tag:#3d3935}
+body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic","Space Mono",system-ui,sans-serif;font-weight:300}
+html[lang=en] body{font-family:"Space Mono","IBM Plex Sans Arabic",monospace;font-size:15px}
+.demo-note{background:var(--ink);color:var(--bg)}
+header{position:relative;padding:calc(env(safe-area-inset-top,0px) + 3.2rem) 1.4rem 1.4rem;background:#3d3935;color:#ece6dc;text-align:start}
+.lang{position:absolute;top:calc(env(safe-area-inset-top,0px) + .8rem);inset-inline-end:1.2rem;background:none;color:#ece6dc;border:1px solid #ece6dc;border-radius:0;padding:.2rem .8rem;cursor:pointer;min-height:36px;font:400 .76rem "Space Mono";z-index:2}
+/* wide-tracked lowercase mono wordmark, the way they set everything */
+#logo{display:inline-block;padding:.3rem .2rem;background:#3d3935;direction:ltr}
+.wm{font:700 2.8rem/1 "Space Mono",monospace;letter-spacing:.02em}
+.wm i{font-style:normal;color:#a79f93}
+.sub{font:400 .72rem "Space Mono";letter-spacing:.5em;color:#a79f93;margin-top:.3rem}
+.hrs{font:400 .78rem "Space Mono";letter-spacing:.18em;margin:1rem 0 0;color:#d9cfbf;direction:ltr;text-align:left}
+.info{font-size:.8rem;color:#a79f93;margin:.35rem 0 0}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px dashed var(--line)}
+.bar-in{max-width:560px;margin:0 auto;padding:.6rem 1.4rem .4rem}
+.search input{width:100%;border:1px dashed var(--soft);background:transparent;color:var(--ink);border-radius:0;padding:.5rem .8rem;font:inherit}
+.search input::placeholder{color:var(--soft)}
+.chips{display:flex;gap:.5rem;overflow-x:auto;padding:.55rem 0 .15rem;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid transparent;background:none;color:var(--soft);padding:.25rem .6rem;cursor:pointer;min-height:36px;font:400 .8rem "Space Mono","IBM Plex Sans Arabic";text-transform:lowercase}
+.chip[aria-pressed="true"]{color:var(--bg);background:var(--ink)}
+.chip:focus-visible,.lang:focus-visible,.search input:focus-visible{outline:1px dashed var(--ink);outline-offset:3px}
+main{max-width:560px;margin:0 auto;padding:.5rem 1.4rem 1.5rem}
+section{margin-top:2.2rem;scroll-margin-top:110px}
+h2{margin:0 0 .7rem;font:700 .8rem "Space Mono";letter-spacing:.14em;text-transform:uppercase;color:var(--tag);direction:ltr;text-align:start}
+h2 small{display:block;font:500 1.05rem "IBM Plex Sans Arabic";letter-spacing:0;text-transform:none;color:var(--ink);margin-top:.2rem;direction:rtl;text-align:start}
+html[dir=rtl] h2{text-align:right}
+html[dir=rtl] h2 small{text-align:right}
+/* one line per item, spaced-out letters like their board */
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.3rem 0}
+.row .e{font:400 .88rem "Space Mono";letter-spacing:.22em;text-transform:lowercase;direction:ltr}
+.row .a{font:400 .95rem "IBM Plex Sans Arabic";color:var(--soft)}
+.pn{margin:2rem 0 0;font:400 .72rem "Space Mono";color:var(--soft);letter-spacing:.06em;border-top:1px dashed var(--line);padding-top:1rem}
+html[lang=ar] .pn{font-family:"IBM Plex Sans Arabic";letter-spacing:0;font-size:.8rem}
+.visit a{border-radius:0;border-style:dashed}
+.foot{text-align:center;color:var(--soft);font-size:.8rem;padding:.5rem 1rem 2.2rem}.foot strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+
+<header>
+  <button class="lang" id="langBtn">english</button>
+  <div id="logo"><div class="wm">norm<i>-</i></div><div class="sub">/ ROASTER /</div></div>
+  <p class="hrs">WORKING HOURS 6:00AM - 12:00AM</p>
+  <p class="info" id="info"></p>
+</header>
+
+<div class="bar"><div class="bar-in">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div></div>
+<main id="menu"></main>
+<nav class="visit" id="visit" hidden></nav>
+<footer class="foot"><p id="note"></p><p id="credit"></p></footer>
+<script>
+const CONFIG = {"name": "norm-", "nameAr": "قهوة نورم", "tagline": {"ar": "roaster", "en": "roaster"}, "info": {"ar": "شارع أبحر، الملقا، الرياض", "en": "Abhur St, Al Malqa, Riyadh"}, "logo": "data:image/png;base64,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", "colors": {"primary": "#3d3935", "onPrimary": "#ece6dc", "secondary": "#a79f93", "background": "#3d3935", "accent": "#d9cfbf"}, "fonts": {"display": "Space Mono", "body": "IBM Plex Sans Arabic"}, "pattern": "mono text board", "currency": {"ar": "ر.س", "en": "SAR"}, "demoBanner": false, "credit": "محمد", "mapsUrl": "https://www.google.com/maps/search/?api=1&query=norm+%D9%82%D9%87%D9%88%D8%A9+%D9%86%D9%88%D8%B1%D9%85+%D8%A7%D9%84%D9%85%D9%84%D9%82%D8%A7", "instagram": "https://instagram.com/normroaster", "categories": [{"id": "normal", "ar": "الأساسيات", "en": "the normal stuff", "items": [{"ar": "في ٦٠ كوستاريكا", "en": "costa rica v60", "p": null}, {"ar": "فلات وايت", "en": "flatwhite", "p": null}, {"ar": "إسبريسو", "en": "espresso", "p": null}, {"ar": "أمريكانو", "en": "americano", "p": null}, {"ar": "كابتشينو", "en": "cappuccino", "p": null}, {"ar": "لاتيه", "en": "latte", "p": null}, {"ar": "كورتادو", "en": "cortado", "p": null}, {"ar": "سبانش لاتيه", "en": "spanish latte", "p": null}, {"ar": "قهوة اليوم", "en": "coffee of day", "p": null}]}, {"id": "iced", "ar": "الباردة", "en": "ice", "items": [{"ar": "آيس دريب كوستاريكا", "en": "ice drip costa rica", "p": null}, {"ar": "آيس لاتيه", "en": "ice latte", "p": null}, {"ar": "آيس سبانش لاتيه", "en": "ice spanish latte", "p": null}, {"ar": "آيس ماتشا", "en": "ice matcha", "p": null}, {"ar": "آيس كركديه", "en": "ice karkadia", "p": null}, {"ar": "آيس دريب", "en": "ice drip", "p": null}, {"ar": "آيس أمريكانو", "en": "ice americano", "p": null}, {"ar": "آيس قهوة اليوم", "en": "ice coffee of day", "p": null}]}, {"id": "along", "ar": "مع مشروبك", "en": "to go along with your drink", "items": [{"ar": "شوكو بايتس", "en": "choco bites", "p": null}, {"ar": "كوكونت بايتس", "en": "coconut bites", "p": null}, {"ar": "شوكليت طحينية", "en": "chocolate tahinah", "p": null}, {"ar": "بيكان نتس", "en": "pecan nuts", "p": null}, {"ar": "بودينق", "en": "budding", "p": null}, {"ar": "ماربل كيك", "en": "marble cake", "p": null}, {"ar": "عيش", "en": "esh", "p": null}]}, {"id": "sandwiches", "ar": "الساندويتشات", "en": "& maybe another normal one", "items": [{"ar": "ساندويتش تونا", "en": "tuna sandwich", "p": null}, {"ar": "لبنة مو عادية", "en": "not normal labna", "p": null}, {"ar": "تركي بوراتا", "en": "turkey burrata", "p": null}, {"ar": "ساندويتش روست بيف", "en": "roast beef sandwich", "p": null}]}, {"id": "beans", "ar": "المحاصيل", "en": "to go along", "items": [{"ar": "إثيوبي", "en": "ethiopian", "p": null}, {"ar": "كولومبي", "en": "colombian", "p": null}, {"ar": "إثيوبي سيدامو", "en": "ethiopian sidama", "p": null}, {"ar": "برازيل أكايا", "en": "brazil acaia", "p": null}]}]};
+const C = CONFIG || {name:"Menu",categories:[]};
+const T = {"ar": {"dir": "rtl", "lang": "english", "search": "وش تبي تطلب؟", "empty": "ما لقينا شي بهالاسم.", "all": "الكل", "demo": "", "note": "", "pn": "الأصناف من منيو نورم · الأسعار تنضاف في النسخة النهائية"}, "en": {"dir": "ltr", "lang": "العربية", "search": "what would you like?", "empty": "nothing matches that.", "all": "all", "demo": "", "note": "", "pn": "items from norm's menu · prices get added in the final version"}};
+let lang="ar", active="all", query="";
+const KEY="norm-lang";
+try{const s=localStorage.getItem(KEY);if(s==="ar"||s==="en")lang=s;}catch(e){}
+try{const u=new URLSearchParams(location.search).get("lang");if(u==="ar"||u==="en")lang=u;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"",en:""})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+const P=i=> i.p2!=null ? `${fmt(i.p)}<span class="sl">/</span>${fmt(i.p2)}` : fmt(i.p);
+
+function hero(){ $("info").textContent=L(C.info||{},"ar","en"); }
+function section(c,ci,body){ return `<section id="cat-${esc(c.id)}"><h2>${esc(c.en)}${lang==="ar"?`<small>${esc(c.ar)}</small>`:""}</h2>${body}</section>`; }
+function item(i){ return `<div class="row"><span class="e">${esc(i.en)}</span>${lang==="ar"?`<span class="a">${esc(i.ar)}</span>`:""}</div>`; }
+function afterRender(){ if(query.trim()) return; $("menu").insertAdjacentHTML("beforeend",`<p class="pn">${T[lang].pn}</p>`); }
+
+function renderChips(){
+  const cats=[{id:"all",ar:T.ar.all,en:T.en.all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0,k=0;
+  C.categories.forEach((c,ci)=>{
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) return; n+=items.length;
+    html+=section(c,ci,items.map(i=>item(i,++k,c)).join(""));
+  });
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+  if(typeof afterRender==="function") afterRender();
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.demo;
+  $("note").textContent=t.note||"";
+  $("credit").innerHTML=(lang==="ar"?"منيو ديجيتال من تصميم ":"Digital menu designed by ")+`<strong>${lang==="en"?"Mohamed":"محمد"}</strong>`;
+  const V={ar:{wa:"اطلب على واتساب",map:"اللوكيشن",rev:"قيّمنا على جوجل",ig:"انستقرام"},en:{wa:"Order on WhatsApp",map:"Location",rev:"Rate us on Google",ig:"Instagram"}}[lang];
+  const links=[C.whatsapp&&`<a class="wa" href="https://wa.me/${esc(String(C.whatsapp).replace(/\D/g,""))}" target="_blank" rel="noopener">${V.wa}</a>`,
+    C.mapsUrl&&`<a href="${esc(C.mapsUrl)}" target="_blank" rel="noopener">${V.map}</a>`,
+    C.reviewUrl&&`<a href="${esc(C.reviewUrl)}" target="_blank" rel="noopener">${V.rev}</a>`,
+    C.instagram&&`<a href="${esc(C.instagram)}" target="_blank" rel="noopener">${V.ig}</a>`].filter(Boolean);
+  const vs=$("visit"); vs.hidden=!links.length; vs.innerHTML=links.join("");
+  if(typeof hero==="function") hero();
+  renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem(KEY,lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+apply();
+</script>
+</body>
+</html>
