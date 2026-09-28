@@ -34,6 +34,7 @@ CONFIG SHAPE:
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light only">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>منيو ألِز</title>
 <!--__META__-->
@@ -41,9 +42,9 @@ CONFIG SHAPE:
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link id="fontlink" rel="stylesheet" href="">
 <style>
-:root{--primary:#683838;--on-primary:#faf6ea;--secondary:#8a4c4c;--bg:#faf6ea;--accent:#d9b99b;--ink:#2d1818;--muted:#8a7069;--card:#ffffff;--line:#eee3d3;
+:root{color-scheme:light}
+:root{--primary:#683838;--on-primary:#faf6ea;--secondary:#8a4c4c;--bg:#faf6ea;--accent:#d9b99b;--ink:#2d1818;--muted:#6c534c;--card:#ffffff;--line:#eee3d3;
 --display:system-ui;--body:system-ui}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171010;--ink:#f6ecde;--muted:#bba49b;--card:#221818;--line:#352626}}
 :root[data-theme="dark"]{--bg:#171010;--ink:#f6ecde;--muted:#bba49b;--card:#221818;--line:#352626}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 130px)}
@@ -69,7 +70,6 @@ header.hero{position:relative;padding:1.2rem 1rem 1rem}
 .hero-inner{display:flex;align-items:center;gap:.9rem;max-width:720px;margin:0 auto}
 .logo{width:74px;height:74px;border-radius:50%;object-fit:cover;flex:0 0 auto;border:3px solid var(--primary)}
 .brand{font-family:var(--display);font-weight:700;font-size:1.6rem;margin:0;color:var(--primary)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){}}
 :root[data-theme="dark"]{}
 .brand.small{font-size:1.5rem}
 .tag{margin:0;color:var(--muted);font-size:.9rem}
@@ -96,7 +96,7 @@ section.cat{margin-top:1.4rem}
 .cal{grid-column:2/4}
 .pick{display:inline-block;margin-inline-start:.35rem;font-size:.66rem;font-weight:800;color:var(--on-primary);background:var(--primary);border-radius:6px;padding:.05rem .4rem;vertical-align:middle}
 .visit a{border-radius:14px;background:var(--card);color:var(--ink);box-shadow:0 1px 0 var(--line)}
-.visit a.wa{background:#1f8a4c;color:#fff}
+.visit a.wa{background:#17703d;color:#fff}
 </style>
 </head>
 <body>

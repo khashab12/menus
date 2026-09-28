@@ -38,6 +38,7 @@ clinic/store/beauty items get a button that opens WhatsApp with "<booking text> 
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light only">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Honi Beauty | الخدمات والحجز</title>
 <!--__META__-->
@@ -45,13 +46,13 @@ clinic/store/beauty items get a button that opens WhatsApp with "<booking text> 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link id="fontlink" rel="stylesheet" href="">
 <style>
+:root{color-scheme:light}
 :root{
   --primary:#183828; --on-primary:#f6f1e4; --secondary:#2c5a3f; --bg:#f6f1e4; --accent:#d9a441;
   --ink:#1c2a22; --muted:#5f6b62; --card:#fffdf7; --line:#e6dcc6;
   --display:system-ui,sans-serif; --body:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1f16;--ink:#f1ead8;--muted:#b3b9a9;--card:#17291e;--line:#2a4232}}
 :root[data-theme="dark"]{--bg:#0f1f16;--ink:#f1ead8;--muted:#b3b9a9;--card:#17291e;--line:#2a4232}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}

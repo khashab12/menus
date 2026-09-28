@@ -34,6 +34,7 @@ CONFIG SHAPE:
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light only">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>منيو فكرة كافيه</title>
 <!--__META__-->
@@ -41,9 +42,9 @@ CONFIG SHAPE:
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link id="fontlink" rel="stylesheet" href="">
 <style>
+:root{color-scheme:light}
 :root{--primary:#583828;--on-primary:#f3ead9;--secondary:#7a5236;--bg:#e9dcc7;--accent:#b8a888;--ink:#2e1d13;--muted:#6f5a48;--card:#f4ecdf;--line:#cdb99c;
 --display:system-ui;--body:system-ui}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b140f;--ink:#f1e6d6;--muted:#bba791;--card:#261c15;--line:#3d2e22}}
 :root[data-theme="dark"]{--bg:#1b140f;--ink:#f1e6d6;--muted:#bba791;--card:#261c15;--line:#3d2e22}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 130px)}
@@ -69,7 +70,6 @@ header.hero{position:relative;padding:2rem 1.25rem 1.2rem;text-align:center}
 .card-hero{max-width:420px;margin:0 auto;background:var(--card);border:1.5px dashed var(--secondary);border-radius:6px;padding:1.4rem 1rem 1.2rem;transform:rotate(-1deg);box-shadow:0 8px 0 -3px var(--accent)}
 .logo{width:112px;height:112px;border-radius:50%;object-fit:cover;display:block;margin:0 auto .6rem}
 .brand{font-family:var(--display);font-weight:700;font-size:2.2rem;margin:0;color:var(--primary)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){}}
 :root[data-theme="dark"]{}
 .brand.small{font-size:1.9rem}
 .tag{margin:.3rem 0 0;color:var(--secondary);font-weight:600}

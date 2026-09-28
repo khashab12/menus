@@ -38,6 +38,7 @@ clinic/store/beauty items get a button that opens WhatsApp with "<booking text> 
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light only">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>نوبل لطب الأسنان | احجز موعدك</title>
 <!--__META__-->
@@ -45,13 +46,13 @@ clinic/store/beauty items get a button that opens WhatsApp with "<booking text> 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link id="fontlink" rel="stylesheet" href="">
 <style>
+:root{color-scheme:light}
 :root{
-  --primary:#99be68; --on-primary:#26321a; --secondary:#726d6b; --bg:#efe9e1; --accent:#99be68;
-  --ink:#3f3b39; --muted:#8a8480; --card:#f8f5f0; --line:#ddd5cb;
+  --primary:#99be68; --on-primary:#26321a; --secondary:#5a5552; --bg:#efe9e1; --accent:#99be68;
+  --ink:#3f3b39; --muted:#5f5955; --card:#f8f5f0; --line:#ddd5cb;
   --display:system-ui,sans-serif; --body:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1b19;--ink:#ece6de;--muted:#a59e97;--card:#252321;--line:#3a3633}}
 :root[data-theme="dark"]{--bg:#1c1b19;--ink:#ece6de;--muted:#a59e97;--card:#252321;--line:#3a3633}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}
@@ -60,14 +61,13 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line
 header.hero{position:relative;padding:2.2rem 1.25rem 1.6rem;text-align:center;background:var(--bg)}
 .hero-inner{max-width:560px;margin:0 auto}
 .logo{width:150px;height:150px;border-radius:50%;object-fit:cover;display:block;margin:0 auto .4rem;mix-blend-mode:multiply}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo{mix-blend-mode:normal;background:#efe9e1}}
 .brand{font-family:var(--display);font-weight:300;letter-spacing:.06em;font-size:clamp(1.7rem,7vw,2.3rem);margin:.2rem 0 0;color:var(--secondary)}
 .tag{margin:.3rem 0 0;color:var(--muted);font-size:1rem}
 .info{margin:.6rem auto 0;font-size:.88rem;color:var(--muted);max-width:36ch}
 .smile{display:block;width:170px;height:26px;margin:1.1rem auto 0}
 .hero-cta{display:inline-block;margin-top:1.1rem;background:var(--accent);color:var(--on-primary);text-decoration:none;font-weight:600;padding:.8rem 1.6rem;border-radius:999px}
 .hero-cta:focus-visible{outline:3px solid var(--secondary);outline-offset:3px}
-.lang{position:absolute;top:1rem;inset-inline-end:1rem;background:transparent;color:var(--secondary);border:1px solid var(--line);border-radius:999px;padding:.35rem .9rem;font:500 .85rem var(--body);cursor:pointer}
+.lang{position:absolute;top:1rem;inset-inline-end:1rem;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:.35rem .9rem;font:500 .85rem var(--body);cursor:pointer}
 .lang:focus-visible,.chip:focus-visible,.search input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.7rem 0 .55rem}
 .search{max-width:720px;margin:0 auto;padding:0 1rem}
@@ -90,7 +90,6 @@ section.cat{margin-top:2.4rem;counter-increment:cat;counter-reset:item}
 .price{font-family:var(--display);font-size:1rem;color:var(--secondary);white-space:nowrap}
 .price:empty{display:none}
 .item .act{grid-column:3;grid-row:1/span 2;justify-self:end;font:600 .82rem var(--body);color:var(--on-primary);background:transparent;border:1.5px solid var(--accent);border-radius:999px;padding:.35rem 1rem;text-decoration:none}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .item .act{color:var(--accent)}}
 .item .act:hover{background:var(--accent)}
 .cal{display:none}
 .pick{display:inline-block;margin-inline-start:.5rem;font-size:.7rem;font-weight:600;color:#26321a;background:#dfeacc;border-radius:4px;padding:.05rem .45rem;vertical-align:middle}

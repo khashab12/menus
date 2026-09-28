@@ -34,6 +34,7 @@ CONFIG SHAPE:
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light only">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>منيو ميراي</title>
 <!--__META__-->
@@ -41,9 +42,9 @@ CONFIG SHAPE:
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link id="fontlink" rel="stylesheet" href="">
 <style>
-:root{--primary:#7f9fc4;--on-primary:#ffffff;--secondary:#56759b;--bg:#f7f9fc;--accent:#c9d8ea;--ink:#223247;--muted:#6f8199;--card:#ffffff;--line:#dde6f1;
+:root{color-scheme:light}
+:root{--primary:#7f9fc4;--on-primary:#ffffff;--secondary:#56759b;--bg:#f7f9fc;--accent:#c9d8ea;--ink:#223247;--muted:#52647c;--card:#ffffff;--line:#dde6f1;
 --display:system-ui;--body:system-ui}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161f;--ink:#e6edf6;--muted:#9fb0c6;--card:#18212d;--line:#283548}}
 :root[data-theme="dark"]{--bg:#10161f;--ink:#e6edf6;--muted:#9fb0c6;--card:#18212d;--line:#283548}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 130px)}
@@ -65,7 +66,6 @@ footer strong{color:var(--ink)}
 
 .demo-note{background:var(--accent);color:#223247;text-align:center;font-size:.8rem;padding:.45rem 1rem}
 header.hero{position:relative;padding:2.2rem 1.25rem 1.6rem;text-align:center;background:linear-gradient(135deg,#eef3fa 0%,#ffffff 45%,#dfe9f5 55%,#ffffff 100%)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){}}
 :root[data-theme="dark"]{}
 .frame{max-width:320px;margin:0 auto;background:var(--card);padding:1.2rem 1rem 1rem;border:10px solid #fff;outline:1px solid var(--line);box-shadow:0 14px 34px rgba(60,90,130,.18)}
 .hero-inner{}
