@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--
+FUNCTIONAL CORE ONLY - restyle it per brand (see references/design-variety.md). Keep the
+__TITLE__, <meta name="description" content="رحلتك لابتسامة أجمل">
+<meta property="og:title" content="نوبل لطب الأسنان | احجز موعدك">
+<meta property="og:description" content="رحلتك لابتسامة أجمل">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/noble-q7k3/">
+<meta property="og:image" content="https://khashab12.github.io/menus/noble-q7k3/logo.jpg">
+<meta name="theme-color" content="#99be68"> and __CONFIG__ markers; build_demo.py fills them.
+CONFIG SHAPE (all niches). "kind": "menu" | "clinic" | "store" | "beauty" picks labels.
+Items: "p" (price) is optional; "img" (data URI, their own photo) optional; with "whatsapp" set,
+clinic/store/beauty items get a button that opens WhatsApp with "<booking text> <item>".
+"team": [{"ar":"د. ...","en":"Dr. ...","roleAr":"...","roleEn":"..."}] optional (clinics: only real, public names).
+
+{
+  "name": "Encanto",                  // exactly as the brand writes it
+  "nameAr": "إينكانتو",                // optional
+  "tagline": {"ar": "كافيه ومطعم", "en": "Café & Restaurant"},
+  "info":    {"ar": "ريجنسي مول، الشيخ زايد · ١٠ص – ٢ص", "en": "Regency Mall, Sheikh Zayed · 10 AM – 2 AM"},
+  "logo": "data:image/png;base64,..." | null,   // null → name drawn in display font
+  "colors": {"primary":"#0e4a45","onPrimary":"#ffffff","secondary":"#1f6f68","background":"#f1f5f2","accent":"#e3a13b"},
+  "fonts": {"display":"Reem Kufi","body":"IBM Plex Sans Arabic"},   // Google Fonts names
+  "pattern": "tiles" | "dots" | "lines" | "none",
+  "currency": {"ar":"ر.س","en":"SAR"},     // Egypt: {"ar":"ج.م","en":"EGP"}
+  "demoBanner": true,                  // true when items/prices are samples
+  "credit": "محمد",
+  "whatsapp": "201001234567",        // optional, digits only → "اطلب على واتساب" button
+  "mapsUrl": "https://maps.app.goo.gl/...",   // optional → "اللوكيشن"
+  "reviewUrl": "https://g.page/r/.../review", // optional → "قيّمنا على جوجل"
+  "instagram": "https://instagram.com/...",   // optional
+  "categories": [
+    {"id":"hot","ar":"مشروبات سخنة","en":"Hot Drinks","subAr":"","subEn":"",
+     "items":[{"ar":"سبانيش لاتيه","en":"Spanish Latte","dAr":"","dEn":"","p":18,"cal":190,"pick":true}]}   // cal optional (kcal)
+  ]
+}
+-->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>نوبل لطب الأسنان | احجز موعدك</title>
+<!--__META__-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="fontlink" rel="stylesheet" href="">
+<style>
+:root{
+  --primary:#99be68; --on-primary:#26321a; --secondary:#726d6b; --bg:#efe9e1; --accent:#99be68;
+  --ink:#3f3b39; --muted:#8a8480; --card:#f8f5f0; --line:#ddd5cb;
+  --display:system-ui,sans-serif; --body:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1b19;--ink:#ece6de;--muted:#a59e97;--card:#252321;--line:#3a3633}}
+:root[data-theme="dark"]{--bg:#1c1b19;--ink:#ece6de;--muted:#a59e97;--card:#252321;--line:#3a3633}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;counter-reset:cat}
+.demo-note{background:#e4dccf;color:#4a4540;text-align:center;font-size:.8rem;padding:.5rem 1rem}
+header.hero{position:relative;padding:2.2rem 1.25rem 1.6rem;text-align:center;background:var(--bg)}
+.hero-inner{max-width:560px;margin:0 auto}
+.logo{width:150px;height:150px;border-radius:50%;object-fit:cover;display:block;margin:0 auto .4rem;mix-blend-mode:multiply}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo{mix-blend-mode:normal;background:#efe9e1}}
+.brand{font-family:var(--display);font-weight:300;letter-spacing:.06em;font-size:clamp(1.7rem,7vw,2.3rem);margin:.2rem 0 0;color:var(--secondary)}
+.tag{margin:.3rem 0 0;color:var(--muted);font-size:1rem}
+.info{margin:.6rem auto 0;font-size:.88rem;color:var(--muted);max-width:36ch}
+.smile{display:block;width:170px;height:26px;margin:1.1rem auto 0}
+.hero-cta{display:inline-block;margin-top:1.1rem;background:var(--accent);color:var(--on-primary);text-decoration:none;font-weight:600;padding:.8rem 1.6rem;border-radius:999px}
+.hero-cta:focus-visible{outline:3px solid var(--secondary);outline-offset:3px}
+.lang{position:absolute;top:1rem;inset-inline-end:1rem;background:transparent;color:var(--secondary);border:1px solid var(--line);border-radius:999px;padding:.35rem .9rem;font:500 .85rem var(--body);cursor:pointer}
+.lang:focus-visible,.chip:focus-visible,.search input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.7rem 0 .55rem}
+.search{max-width:720px;margin:0 auto;padding:0 1rem}
+.search input{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:.55rem .2rem;font:1rem var(--body)}
+.chips{display:flex;gap:1.2rem;overflow-x:auto;padding:.6rem 1rem 0;max-width:720px;margin:0 auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:0;background:none;color:var(--muted);padding:.2rem 0;font:500 .92rem var(--body);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent}
+.chip[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+main{max-width:720px;margin:0 auto;padding:.5rem 1.1rem 2rem}
+section.cat{margin-top:2.4rem;counter-increment:cat;counter-reset:item}
+.cat h2{font-family:var(--display);font-weight:300;font-size:1.9rem;margin:0 0 .6rem;display:flex;align-items:baseline;gap:.8rem;color:var(--secondary)}
+.cat h2::before{content:counter(cat,decimal-leading-zero);font-size:.85rem;font-weight:500;color:var(--accent);letter-spacing:.1em}
+.cat h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.cat .sub{color:var(--muted);font-size:.88rem;margin:0 0 .6rem}
+.item{display:grid;grid-template-columns:2.2rem 1fr auto;gap:.1rem .8rem;padding:1rem 0;border-bottom:1px solid var(--line);counter-increment:item;align-items:center}
+.item::before{content:counter(item,decimal-leading-zero);grid-row:span 2;color:var(--muted);font-size:.8rem;letter-spacing:.08em;align-self:start;padding-top:.2rem}
+.item:last-child{border-bottom:0}
+.name{font-weight:500;font-size:1.05rem}
+.desc{grid-column:2/3;color:var(--muted);font-size:.88rem;margin:0}
+.price{font-family:var(--display);font-size:1rem;color:var(--secondary);white-space:nowrap}
+.price:empty{display:none}
+.item .act{grid-column:3;grid-row:1/span 2;justify-self:end;font:600 .82rem var(--body);color:var(--on-primary);background:transparent;border:1.5px solid var(--accent);border-radius:999px;padding:.35rem 1rem;text-decoration:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .item .act{color:var(--accent)}}
+.item .act:hover{background:var(--accent)}
+.cal{display:none}
+.pick{display:inline-block;margin-inline-start:.5rem;font-size:.7rem;font-weight:600;color:#26321a;background:#dfeacc;border-radius:4px;padding:.05rem .45rem;vertical-align:middle}
+.empty{text-align:center;color:var(--muted);padding:3rem 1rem}
+.team{display:none}
+.visit{max-width:720px;margin:0 auto;padding:0 1.1rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.visit a{display:block;text-align:center;padding:.85rem 1rem;border-radius:999px;font-weight:500;text-decoration:none;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.visit a.wa{grid-column:1/-1;background:var(--accent);color:var(--on-primary);border-color:var(--accent);font-weight:600}
+.visit a:focus-visible{outline:3px solid var(--secondary);outline-offset:2px}
+footer{text-align:center;color:var(--muted);font-size:.82rem;padding:1.4rem 1rem 2.4rem}
+footer strong{color:var(--ink);font-weight:500}
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+<header class="hero">
+  <div class="pat" id="pat" aria-hidden="true" hidden></div>
+  <button class="lang" id="langBtn">English</button>
+  <div class="hero-inner" id="heroInner"></div>
+  <svg class="smile" viewBox="0 0 170 26" aria-hidden="true"><path d="M6 6 Q85 34 164 6" fill="none" stroke="#99be68" stroke-width="3" stroke-linecap="round"/></svg>
+  <a class="hero-cta" id="heroCta" href="#" target="_blank" rel="noopener">احجز موعدك على واتساب</a>
+</header>
+<div class="bar">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div>
+<main id="menu"></main>
+<section class="team" id="team" hidden></section>
+<section class="visit" id="visit" hidden></section>
+<footer><p id="updated"></p><p id="credit"></p></footer>
+<script>
+const CONFIG = {"kind": "clinic", "name": "Noble Clinic", "nameAr": "نوبل لطب الأسنان", "tagline": {"ar": "رحلتك لابتسامة أجمل", "en": "Your journey to a better smile"}, "info": {"ar": "طريق عثمان بن عفان، حي النرجس، الرياض", "en": "Othman Bin Affan Rd, Al Narjis, Riyadh"}, "logo": "data:image/jpeg;base64,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", "colors": {"primary": "#99be68", "onPrimary": "#26321a", "secondary": "#726d6b", "background": "#efe9e1", "accent": "#99be68"}, "fonts": {"display": "Alexandria", "body": "IBM Plex Sans Arabic"}, "pattern": "none", "currency": {"ar": "ر.س", "en": "SAR"}, "demoBanner": true, "credit": "محمد", "whatsapp": "966532328101", "mapsUrl": "https://goo.gl/maps/WvbX89qv4pr", "instagram": "https://www.instagram.com/nobleclinic.sa/", "categories": [{"id": "general", "ar": "العناية اليومية", "en": "Everyday care", "items": [{"ar": "كشف واستشارة", "en": "Check-up & consultation"}, {"ar": "تنظيف وتلميع", "en": "Cleaning & polishing", "pick": true}, {"ar": "حشوات تجميلية", "en": "Tooth-coloured fillings"}, {"ar": "علاج العصب", "en": "Root canal treatment"}]}, {"id": "cosmetic", "ar": "تجميل الابتسامة", "en": "Smile design", "items": [{"ar": "تبييض الأسنان", "en": "Teeth whitening", "pick": true}, {"ar": "عدسات وقشور تجميلية", "en": "Veneers", "dAr": "بعد الكشف", "dEn": "After consultation"}]}, {"id": "ortho", "ar": "التقويم والتركيبات", "en": "Orthodontics & prosthetics", "items": [{"ar": "تقويم الأسنان", "en": "Orthodontics"}, {"ar": "تركيبات وزراعة", "en": "Crowns & implants", "dAr": "بعد الكشف", "dEn": "After consultation"}]}, {"id": "kids", "ar": "أسنان الأطفال", "en": "Kids", "items": [{"ar": "كشف وتنظيف للأطفال", "en": "Kids check-up & cleaning"}]}]};
+
+const C = CONFIG || {name:"Menu",categories:[]};
+const root = document.documentElement.style;
+const col = C.colors || {};
+[["--primary",col.primary],["--on-primary",col.onPrimary],["--secondary",col.secondary],["--bg",col.background],["--accent",col.accent]]
+  .forEach(([k,v]) => { if (v) root.setProperty(k, v); });
+const F = C.fonts || {};
+const fams = [F.display, F.body].filter(Boolean);
+if (fams.length){
+  document.getElementById("fontlink").href = "https://fonts.googleapis.com/css2?" +
+    [...new Set(fams)].map(f => "family=" + f.trim().replace(/ /g,"+") + ":wght@400;500;600;700").join("&") + "&display=swap";
+  if (F.display) root.setProperty("--display", `"${F.display}", "${F.body||F.display}", system-ui, sans-serif`);
+  if (F.body) root.setProperty("--body", `"${F.body}", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif`);
+}
+
+const PATTERNS = {
+  tiles:`<svg width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L36 20 L52 28 L36 36 L28 52 L20 36 L4 28 L20 20 Z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="28" cy="28" r="5" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  dots:`<svg width="100%" height="100%"><defs><pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="14" cy="14" r="3.5" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  lines:`<svg width="100%" height="100%"><defs><pattern id="p" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="22" stroke="currentColor" stroke-width="1.2"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  none:""
+};
+const pat = document.getElementById("pat");
+pat.innerHTML = PATTERNS[C.pattern || "none"] || "";
+pat.style.color = (C.colors && C.colors.accent) || "#fff";
+
+const KIND = C.kind || "menu";
+const K = {
+  menu:{ar:{search:"ابحث عن صنف…",pick:"ترشيحنا",what:"الأصناف والأسعار",upd:"آخر تحديث للأسعار: اليوم",made:"منيو ديجيتال من تصميم",wa:"اطلب على واتساب",act:"",team:""},
+        en:{search:"Search the menu…",pick:"Our pick",what:"items and prices",upd:"Prices last updated: today",made:"Digital menu designed by",wa:"Order on WhatsApp",act:"",team:""}},
+  clinic:{ar:{search:"ابحث عن خدمة…",pick:"الأكثر طلباً",what:"الخدمات",upd:"آخر تحديث: اليوم",made:"موقع من تصميم",wa:"احجز على واتساب",act:"احجز",team:"الأطباء",bookText:"السلام عليكم، أبغى أحجز موعد:"},
+          en:{search:"Search services…",pick:"Popular",what:"services",upd:"Last updated: today",made:"Website designed by",wa:"Book on WhatsApp",act:"Book",team:"Our doctors",bookText:"Hello, I'd like to book:"}},
+  store:{ar:{search:"ابحث عن منتج…",pick:"الأكثر مبيعاً",what:"المنتجات والأسعار",upd:"آخر تحديث: اليوم",made:"متجر من تصميم",wa:"اطلب على واتساب",act:"اطلب",team:"",bookText:"أهلاً، عايز أطلب:"},
+         en:{search:"Search products…",pick:"Best seller",what:"products and prices",upd:"Last updated: today",made:"Store designed by",wa:"Order on WhatsApp",act:"Order",team:"",bookText:"Hi, I'd like to order:"}},
+  beauty:{ar:{search:"ابحث عن خدمة…",pick:"الأكثر طلباً",what:"الخدمات والأسعار",upd:"آخر تحديث: اليوم",made:"موقع من تصميم",wa:"احجز على واتساب",act:"احجز",team:"الفريق",bookText:"السلام عليكم، أبغى أحجز:"},
+          en:{search:"Search services…",pick:"Popular",what:"services and prices",upd:"Last updated: today",made:"Website designed by",wa:"Book on WhatsApp",act:"Book",team:"Our team",bookText:"Hello, I'd like to book:"}}
+}[KIND] || null;
+const T = {
+  ar:{dir:"rtl",lang:"English",search:K.ar.search,pick:K.ar.pick,empty:"ما فيه نتيجة بهالاسم. جرّب كلمة ثانية.",all:"الكل",
+      note:`نسخة تجريبية للعرض — ${K.ar.what} أمثلة وتتغير لبيانات ${C.nameAr||C.name} الحقيقية`,updated:K.ar.upd,credit:n=>`${K.ar.made} <strong>${n}</strong>`},
+  en:{dir:"ltr",lang:"العربية",search:K.en.search,pick:K.en.pick,empty:"Nothing matches that. Try another word.",all:"All",
+      note:`Demo version — ${K.en.what} are samples, to be replaced with ${C.name}'s real ones`,updated:K.en.upd,credit:n=>`${K.en.made} <strong>${n}</strong>`}
+};
+let lang="ar", active="all", query="";
+try{const s=localStorage.getItem("site-lang");if(s==="ar"||s==="en")lang=s;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"ر.س",en:"SAR"})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+
+function renderHero(){
+  const t=C.tagline||{}, info=C.info||{};
+  const logo = C.logo ? `<img class="logo" src="${C.logo}" alt="${esc(C.name)} logo">` : "";
+  $("heroInner").innerHTML = `${logo}<h1 class="brand${C.logo?" small":""}">${esc(lang==="ar"&&C.nameAr?C.nameAr:C.name)}</h1>
+    ${t[lang]?`<p class="tag">${esc(t[lang])}</p>`:""}${info[lang]?`<p class="info">${esc(info[lang])}</p>`:""}`;
+}
+function renderChips(){
+  const cats=[{id:"all",ar:T[lang].all,en:T[lang].all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0;
+  for(const c of C.categories){
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) continue; n+=items.length;
+    const sub=L(c,"subAr","subEn");
+    html+=`<section class="cat" id="cat-${esc(c.id)}"><h2>${esc(L(c,"ar","en"))}</h2>${sub?`<p class="sub">${esc(sub)}</p>`:""}`;
+    for(const i of items){const d=L(i,"dAr","dEn");
+      const nm=L(i,"ar","en"), wa=String(C.whatsapp||"").replace(/\D/g,"");
+      const act=(K[lang].act&&wa)?`<a class="act" href="https://wa.me/${wa}?text=${encodeURIComponent(K[lang].bookText+" "+nm)}" target="_blank" rel="noopener">${K[lang].act}</a>`:"";
+      html+=`<div class="item${i.img?" has-img":""}">${i.img?`<img class="thumb" src="${i.img}" alt="" loading="lazy">`:""}<div class="name">${esc(nm)}${i.pick?`<span class="pick">${T[lang].pick}</span>`:""}</div><div class="price">${i.p!=null?`${i.priceFrom?(lang==="ar"?"من ":"from "):""}${fmt(i.p)} ${cur()}`:""}</div>${d?`<p class="desc">${esc(d)}</p>`:""}${i.cal!=null?`<p class="cal">${fmt(i.cal)} ${lang==="ar"?"سعرة حرارية":"kcal"}</p>`:""}${act}</div>`;}
+    html+="</section>";
+  }
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.note;
+  $("updated").textContent=t.updated; $("credit").innerHTML=t.credit(esc(C.credit||"محمد"));
+  const V={ar:{wa:K.ar.wa,map:"اللوكيشن",rev:"قيّمنا على جوجل",ig:"انستجرام"},en:{wa:K.en.wa,map:"Location",rev:"Rate us on Google",ig:"Instagram"}}[lang];
+  const links=[C.whatsapp&&`<a class="wa" href="https://wa.me/${esc(String(C.whatsapp).replace(/\D/g,""))}" target="_blank" rel="noopener">${V.wa}</a>`,
+    C.mapsUrl&&`<a href="${esc(C.mapsUrl)}" target="_blank" rel="noopener">${V.map}</a>`,
+    C.reviewUrl&&`<a href="${esc(C.reviewUrl)}" target="_blank" rel="noopener">${V.rev}</a>`,
+    C.instagram&&`<a href="${esc(C.instagram)}" target="_blank" rel="noopener">${V.ig}</a>`].filter(Boolean);
+  const vs=$("visit"); vs.hidden=!links.length; vs.innerHTML=links.join("");
+  const tm=$("team"), team=C.team||[];
+  tm.hidden=!(team.length&&K[lang].team);
+  tm.innerHTML=team.length?`<h2>${K[lang].team}</h2><ul>${team.map(m=>`<li>${esc(L(m,"ar","en"))}${L(m,"roleAr","roleEn")?`<span>${esc(L(m,"roleAr","roleEn"))}</span>`:""}</li>`).join("")}</ul>`:"";
+  renderHero(); renderChips(); renderMenu();
+  const cta=$("heroCta"); const w=String(C.whatsapp||"").replace(/\D/g,""); cta.hidden=!w; cta.href="https://wa.me/"+w+"?text="+encodeURIComponent(K[lang].bookText); cta.textContent=lang==="ar"?"احجز موعدك على واتساب":"Book on WhatsApp";
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem("site-lang",lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+apply();
+</script>
+</body>
+</html>
