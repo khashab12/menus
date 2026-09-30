@@ -9,7 +9,7 @@
 <meta property="og:description" content="Specialty Coffee">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://khashab12.github.io/menus/kaldis-g3v6/">
-<meta name="theme-color" content="#C9A45C">
+<meta name="theme-color" content="#161412">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link id="fontlink" rel="stylesheet" href="">
@@ -25,46 +25,51 @@ body{margin:0;-webkit-font-smoothing:antialiased;line-height:1.6}
 .empty{text-align:center;padding:3rem 1rem;opacity:.7}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-:root{--bk:#0E0D0B;--bk2:#17150f;--gold:#C9A45C;--gold2:#E7D3A3;--cream:#F1E7D0;--muted:#a39574;--line:rgba(201,164,92,.28);
+:root{--wall:#FAF7F1;--white:#fff;--ink:#161412;--arch:#F1DE93;--arch2:#F7EBBE;--cane:#B98B5A;--cane2:#D9B98E;--leaf:#5E7A4A;--muted:#7b7166;--line:#e7dfd2;
  --display:"Cinzel",serif;--body:"Tajawal",system-ui,sans-serif;--ar:"Amiri",serif}
-body{background:var(--bk);color:var(--cream);font-family:var(--body)}
-.demo-note{background:var(--gold);color:#1a1408;font-weight:600}
-header.hero{position:relative;text-align:center;padding:2.4rem 1.2rem 1.4rem;overflow:hidden}
-.lang{position:absolute;top:1rem;inset-inline-end:1rem;background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:2px;padding:.2rem .75rem;font:700 .78rem var(--body);cursor:pointer;z-index:2}
-.scene{width:min(320px,86vw);height:auto;display:block;margin:0 auto}
-.medal{display:inline-grid;place-items:center;width:128px;height:128px;border-radius:50%;border:2px solid var(--gold);box-shadow:inset 0 0 0 6px var(--bk),inset 0 0 0 7px var(--gold);margin-top:-1.4rem;background:var(--bk)}
-.medal span{direction:ltr;font:700 1.35rem var(--display);color:var(--gold);letter-spacing:.06em}
-.medal small{display:block;direction:ltr;font:600 .5rem var(--display);letter-spacing:.3em;color:var(--gold2);margin-top:-.2rem}
-.legend{max-width:440px;margin:1rem auto 0;font:400 1.05rem/1.8 var(--ar);color:var(--gold2)}
-.legend em{font-style:normal;color:var(--gold)}
-.info{color:var(--muted);font-size:.85rem;margin:.7rem 0 0}
-.bar{position:sticky;top:0;z-index:5;background:rgba(14,13,11,.95);backdrop-filter:blur(6px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.65rem 0 .5rem}
+body{background:var(--wall);color:var(--ink);font-family:var(--body)}
+.demo-note{background:var(--ink);color:#fff;font-weight:500}
+header.hero{position:relative;text-align:center;padding:1.6rem 1.2rem 1.2rem;overflow:hidden}
+.lang{position:absolute;top:1rem;inset-inline-end:1rem;background:#fff;color:var(--ink);border:1px solid var(--ink);border-radius:999px;padding:.2rem .8rem;font:700 .78rem var(--body);cursor:pointer;z-index:2}
+.archwrap{position:relative;width:min(250px,64vw);margin:.6rem auto 0}
+.arch{position:relative;aspect-ratio:3/4.1;border-radius:999px 999px 0 0;background:radial-gradient(120% 80% at 50% 18%,#FFF6CF 0,var(--arch) 55%,#E7CC72 100%);box-shadow:0 0 60px -10px rgba(241,222,147,.9);display:grid;place-items:center}
+.arch svg{width:62%;height:auto}
+.plant{position:absolute;bottom:0;width:70px;height:120px}
+.plant.l{left:-56px}.plant.r{right:-56px;transform:scaleX(-1)}
+.word{direction:ltr;font:700 clamp(2.4rem,11vw,3.1rem)/1 var(--display);letter-spacing:.08em;margin:1rem 0 0}
+.sub{direction:ltr;font:600 .62rem var(--display);letter-spacing:.42em;margin:.35rem 0 0;padding-inline-start:.42em;color:var(--muted)}
+.legend{max-width:440px;margin:1rem auto 0;font:400 1.05rem/1.85 var(--ar)}
+.legend em{font-style:normal;border-bottom:2px solid var(--arch)}
+.info{color:var(--muted);font-size:.85rem;margin:.6rem 0 0}
+.cane{height:18px;background:
+ radial-gradient(circle at 9px 9px,transparent 4px,var(--cane2) 4.5px,var(--cane2) 5.5px,transparent 6px) 0 0/18px 18px,
+ linear-gradient(45deg,transparent 46%,var(--cane) 47% 53%,transparent 54%) 0 0/18px 18px,
+ linear-gradient(-45deg,transparent 46%,var(--cane) 47% 53%,transparent 54%) 0 0/18px 18px,#EBD6B5;opacity:.85}
+.bar{position:sticky;top:0;z-index:5;background:rgba(250,247,241,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:.65rem 0 .5rem}
 .search{max-width:640px;margin:0 auto;padding:0 1rem}
-.search input{width:100%;border:0;border-bottom:1px solid var(--gold);background:transparent;color:var(--cream);padding:.45rem .2rem;font:1rem var(--body)}
-.search input::placeholder{color:#7d7258}
-.search input:focus-visible{outline:none;border-bottom-width:2px}
-.chips{display:flex;gap:.3rem;overflow-x:auto;padding:.55rem 1rem .1rem;max-width:640px;margin:0 auto;scrollbar-width:none}
+.search input{width:100%;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:.6rem 1.1rem;font:1rem var(--body)}
+.search input:focus-visible{outline:2px solid var(--cane)}
+.chips{display:flex;gap:.4rem;overflow-x:auto;padding:.55rem 1rem .1rem;max-width:640px;margin:0 auto;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;border:1px solid transparent;background:transparent;color:var(--gold2);padding:.25rem .7rem;font:500 .88rem var(--body);cursor:pointer}
-.chip[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
-.chip:focus-visible{outline:1px solid var(--gold2)}
-main{max-width:640px;margin:0 auto;padding:.4rem 1.1rem 2rem}
-section.cat{margin-top:2.2rem}
-.chap{text-align:center;margin-bottom:1rem}
-.chap .num{direction:ltr;display:block;font:700 .72rem var(--display);letter-spacing:.4em;color:var(--gold)}
-.chap h2{margin:.2rem 0 0;font:700 1.7rem var(--ar);color:var(--cream)}
-.chap .ln{font:italic 400 .95rem var(--ar);color:var(--muted);margin:.1rem 0 0}
-.chap .orn{display:block;width:120px;height:14px;margin:.5rem auto 0}
-.it{display:flex;align-items:baseline;gap:.6rem;padding:.55rem 0}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:.28rem .9rem;font:600 .86rem var(--body);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--arch);border-color:#E3C866}
+.chip:focus-visible{outline:2px solid var(--cane);outline-offset:2px}
+main{max-width:640px;margin:0 auto;padding:.4rem 1rem 2rem}
+section.cat{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.1rem 1rem .6rem}
+.chap{text-align:center;margin-bottom:.6rem}
+.chap .num{direction:ltr;display:block;font:700 .66rem var(--display);letter-spacing:.38em;color:var(--cane)}
+.chap h2{margin:.15rem 0 0;font:700 1.6rem var(--ar)}
+.chap .ln{font:italic 400 .95rem var(--ar);color:var(--muted);margin:0}
+.it{display:flex;align-items:center;gap:.6rem;padding:.6rem 0;border-top:1px solid var(--line)}
 .it .nm{font-weight:700;font-size:1.02rem}
-.it .en{direction:ltr;display:block;font:600 .64rem var(--display);letter-spacing:.14em;color:var(--muted)}
-.it .dots{flex:1;border-bottom:1px dotted rgba(201,164,92,.45);transform:translateY(-4px);min-width:20px}
-.it .pr{font:700 1rem var(--body);color:var(--gold);white-space:nowrap}
-.pick{display:inline-block;margin-inline-start:.4rem;width:10px;height:10px;border-radius:50%;background:#b8322a;box-shadow:0 0 0 2px rgba(184,50,42,.25);vertical-align:middle}
-.visit a{background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:2px}
-.visit a.wa{background:var(--gold);color:#1a1408}
+.it .en{direction:ltr;display:block;font:600 .62rem var(--display);letter-spacing:.14em;color:var(--muted)}
+.it .grow{flex:1}
+.it .pr{font:700 .95rem var(--body);white-space:nowrap;background:var(--wall);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem}
+.pick{display:inline-block;margin-inline-start:.4rem;font-size:.62rem;font-weight:700;background:var(--arch);border-radius:999px;padding:.05rem .5rem;vertical-align:middle}
+.visit a{background:#fff;color:var(--ink);border:1px solid var(--ink);border-radius:999px}
+.visit a.wa{background:var(--ink);color:#fff}
 footer{text-align:center;color:var(--muted);font-size:.85rem;padding:1.2rem 1rem 2.5rem;border-top:1px solid var(--line)}
-footer strong{color:var(--gold2)}
+footer strong{color:var(--ink)}
 
 </style>
 </head>
@@ -80,13 +85,14 @@ footer strong{color:var(--gold2)}
   <div class="search"><input id="q" type="search" aria-label="Search"></div>
   <nav class="chips" id="chips" aria-label="Categories"></nav>
 </div>
+<div class="cane" aria-hidden="true"></div>
 <main id="menu"></main>
 <section class="visit" id="visit" hidden></section>
 <footer><p id="updated"></p><p id="credit"></p></footer>
 
 <script>
 
-const CONFIG = {"name": "KALDI’S Specialty Coffee", "nameAr": "KALDI’S", "tagline": {"ar": "Specialty Coffee", "en": "Specialty Coffee"}, "info": {"ar": "د. حسب الشريف، المنطقة الثامنة، مدينة نصر", "en": "Dr Hassab Elsherif, 8th District, Nasr City"}, "logo": null, "colors": {"primary": "#C9A45C", "onPrimary": "#0E0D0B", "secondary": "#E7D3A3", "background": "#0E0D0B", "accent": "#C9A45C"}, "fonts": {"display": "Cinzel", "body": "Tajawal"}, "pattern": "none", "currency": {"ar": "ج.م", "en": "EGP"}, "demoBanner": true, "credit": "محمد", "whatsapp": "201508400860", "mapsUrl": "https://maps.google.com/?cid=9692286774469144761", "reviewUrl": "https://maps.google.com/?cid=9692286774469144761", "categories": [{"id": "hot", "ar": "قهوة سخنة", "en": "Hot Coffee", "ch": "I", "lineAr": "الحكاية بدأت بحبة قهوة", "lineEn": "It began with one cherry", "items": [{"ar": "كابتشينو", "en": "Cappuccino", "p": 110}, {"ar": "كراميل ماكياتو", "en": "Caramel Macchiato", "p": 110}, {"ar": "دارك موكا", "en": "Dark Mocha", "p": 110}, {"ar": "فلات وايت", "en": "Flat White", "p": 115, "pick": true}, {"ar": "وايت موكا", "en": "White Mocha", "p": 120}]}, {"id": "iced", "ar": "قهوة ساقعة", "en": "Iced Coffee", "ch": "II", "lineAr": "وبعدين جات التلج", "lineEn": "Then came the ice", "items": [{"ar": "أمريكانو ساقع", "en": "Iced Americano", "p": 110}, {"ar": "كراميل ماكياتو ساقع", "en": "Iced Caramel Macchiato", "p": 110}, {"ar": "لاتيه ساقع", "en": "Iced Latte", "p": 120}, {"ar": "دارك موكا ساقع", "en": "Iced Dark Mocha", "p": 130}, {"ar": "وايت موكا ساقع", "en": "Iced White Mocha", "p": 130}, {"ar": "سبانش لاتيه ساقع", "en": "Iced Spanish Latte", "p": 145, "pick": true}]}, {"id": "frappe", "ar": "فرابيه", "en": "Frappé", "ch": "III", "lineAr": "مضروب مع التلج والحليب", "lineEn": "Blended with ice and milk", "items": [{"ar": "كلاسيك فرابيه", "en": "Classic Frappé", "p": 110}, {"ar": "فانيليا فرابيه", "en": "Vanilla Frappé", "p": 125}, {"ar": "موكا فرابيه", "en": "Mocha Frappé", "p": 125}, {"ar": "كراميل فرابيه", "en": "Caramel Frappé", "p": 130}, {"ar": "وايت موكا فرابيه", "en": "White Mocha Frappé", "p": 130}]}, {"id": "matcha", "ar": "ماتشا", "en": "Matcha", "ch": "IV", "lineAr": "ورقة خضرا من بعيد", "lineEn": "A green leaf from afar", "items": [{"ar": "ماتشا لاتيه سخن", "en": "Hot Matcha Latte", "p": 120}, {"ar": "ماتشا لاتيه ساقع", "en": "Iced Matcha Latte", "p": 120}, {"ar": "ماتشا بلوبيري", "en": "Blueberry Matcha Latte", "p": 135}, {"ar": "ماتشا فراولة", "en": "Strawberry Matcha Latte", "p": 135}, {"ar": "ماتشا فانيليا فرابيه", "en": "Matcha Vanilla Frappé", "p": 135}, {"ar": "ماتشا بستاشيو", "en": "Pistachio Matcha Latte", "p": 160, "pick": true}]}, {"id": "shakes", "ar": "ميلك شيك", "en": "Milkshakes", "ch": "V", "lineAr": "للي مش بيشرب قهوة", "lineEn": "For the non-coffee crowd", "items": [{"ar": "فراولة", "en": "Strawberry", "p": 95}, {"ar": "مانجا", "en": "Mango", "p": 95}, {"ar": "أوريو", "en": "Oreo", "p": 100}, {"ar": "كراميل", "en": "Caramel", "p": 105}, {"ar": "لوتس", "en": "Biscoff", "p": 105}, {"ar": "بستاشيو", "en": "Pistachio", "p": 155}]}, {"id": "combo", "ar": "كومبو", "en": "Make It a Meal", "ch": "VI", "lineAr": "اتنين مع بعض", "lineEn": "Better in pairs", "items": [{"ar": "أوريو شيك + هوت شوكليت", "en": "Oreo Shake + Hot Chocolate", "p": 165}, {"ar": "اتنين كراميل ميلك شيك", "en": "Two Caramel Milkshakes", "p": 210}, {"ar": "بستاشيو شيك + V60 ساقع", "en": "Pistachio Shake + Iced V60", "p": 250}]}]};
+const CONFIG = {"name": "KALDI’S Specialty Coffee", "nameAr": "KALDI’S", "tagline": {"ar": "Specialty Coffee", "en": "Specialty Coffee"}, "info": {"ar": "د. حسب الشريف، المنطقة الثامنة، مدينة نصر", "en": "Dr Hassab Elsherif, 8th District, Nasr City"}, "logo": null, "colors": {"primary": "#161412", "onPrimary": "#FFFFFF", "secondary": "#B98B5A", "background": "#FAF7F1", "accent": "#F1DE93"}, "fonts": {"display": "Cinzel", "body": "Tajawal"}, "pattern": "none", "currency": {"ar": "ج.م", "en": "EGP"}, "demoBanner": true, "credit": "محمد", "whatsapp": "201508400860", "mapsUrl": "https://maps.google.com/?cid=9692286774469144761", "reviewUrl": "https://maps.google.com/?cid=9692286774469144761", "categories": [{"id": "hot", "ar": "قهوة سخنة", "en": "Hot Coffee", "ch": "I", "lineAr": "الحكاية بدأت بحبة قهوة", "lineEn": "It began with one cherry", "items": [{"ar": "كابتشينو", "en": "Cappuccino", "p": 110}, {"ar": "كراميل ماكياتو", "en": "Caramel Macchiato", "p": 110}, {"ar": "دارك موكا", "en": "Dark Mocha", "p": 110}, {"ar": "فلات وايت", "en": "Flat White", "p": 115, "pick": true}, {"ar": "وايت موكا", "en": "White Mocha", "p": 120}]}, {"id": "iced", "ar": "قهوة ساقعة", "en": "Iced Coffee", "ch": "II", "lineAr": "وبعدين جات التلج", "lineEn": "Then came the ice", "items": [{"ar": "أمريكانو ساقع", "en": "Iced Americano", "p": 110}, {"ar": "كراميل ماكياتو ساقع", "en": "Iced Caramel Macchiato", "p": 110}, {"ar": "لاتيه ساقع", "en": "Iced Latte", "p": 120}, {"ar": "دارك موكا ساقع", "en": "Iced Dark Mocha", "p": 130}, {"ar": "وايت موكا ساقع", "en": "Iced White Mocha", "p": 130}, {"ar": "سبانش لاتيه ساقع", "en": "Iced Spanish Latte", "p": 145, "pick": true}]}, {"id": "frappe", "ar": "فرابيه", "en": "Frappé", "ch": "III", "lineAr": "مضروب مع التلج والحليب", "lineEn": "Blended with ice and milk", "items": [{"ar": "كلاسيك فرابيه", "en": "Classic Frappé", "p": 110}, {"ar": "فانيليا فرابيه", "en": "Vanilla Frappé", "p": 125}, {"ar": "موكا فرابيه", "en": "Mocha Frappé", "p": 125}, {"ar": "كراميل فرابيه", "en": "Caramel Frappé", "p": 130}, {"ar": "وايت موكا فرابيه", "en": "White Mocha Frappé", "p": 130}]}, {"id": "matcha", "ar": "ماتشا", "en": "Matcha", "ch": "IV", "lineAr": "ورقة خضرا من بعيد", "lineEn": "A green leaf from afar", "items": [{"ar": "ماتشا لاتيه سخن", "en": "Hot Matcha Latte", "p": 120}, {"ar": "ماتشا لاتيه ساقع", "en": "Iced Matcha Latte", "p": 120}, {"ar": "ماتشا بلوبيري", "en": "Blueberry Matcha Latte", "p": 135}, {"ar": "ماتشا فراولة", "en": "Strawberry Matcha Latte", "p": 135}, {"ar": "ماتشا فانيليا فرابيه", "en": "Matcha Vanilla Frappé", "p": 135}, {"ar": "ماتشا بستاشيو", "en": "Pistachio Matcha Latte", "p": 160, "pick": true}]}, {"id": "shakes", "ar": "ميلك شيك", "en": "Milkshakes", "ch": "V", "lineAr": "للي مش بيشرب قهوة", "lineEn": "For the non-coffee crowd", "items": [{"ar": "فراولة", "en": "Strawberry", "p": 95}, {"ar": "مانجا", "en": "Mango", "p": 95}, {"ar": "أوريو", "en": "Oreo", "p": 100}, {"ar": "كراميل", "en": "Caramel", "p": 105}, {"ar": "لوتس", "en": "Biscoff", "p": 105}, {"ar": "بستاشيو", "en": "Pistachio", "p": 155}]}, {"id": "combo", "ar": "كومبو", "en": "Make It a Meal", "ch": "VI", "lineAr": "اتنين مع بعض", "lineEn": "Better in pairs", "items": [{"ar": "أوريو شيك + هوت شوكليت", "en": "Oreo Shake + Hot Chocolate", "p": 165}, {"ar": "اتنين كراميل ميلك شيك", "en": "Two Caramel Milkshakes", "p": 210}, {"ar": "بستاشيو شيك + V60 ساقع", "en": "Pistachio Shake + Iced V60", "p": 250}]}]};
 
 const C = CONFIG || {name:"Menu",categories:[]};
 const root = document.documentElement.style;
@@ -171,22 +177,17 @@ $("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem("m
 $("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
 
 
-const SCENE=`<svg class="scene" viewBox="0 0 320 170" aria-hidden="true" fill="none" stroke="#C9A45C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-<path d="M0 150c60-14 110-10 160-2s110 10 160-4" opacity=".6"/>
-<path d="M232 150V96M232 110c-14-6-22-18-22-30M232 104c12-8 20-20 18-34M232 96c-2-14 4-26 12-32"/>
-<path d="M210 80c-10-2-16 4-14 12 8 2 14-2 14-12zM250 70c10-4 18 2 16 10-8 2-14-2-16-10zM244 64c0-10 8-14 14-10-2 8-8 12-14 10z"/>
-<g fill="#b8322a" stroke="none"><circle cx="214" cy="92" r="3.4"/><circle cx="220" cy="96" r="3.4"/><circle cx="252" cy="84" r="3.4"/><circle cx="246" cy="78" r="3.4"/><circle cx="238" cy="118" r="3.2"/></g>
-<path d="M96 140l-4-30c-2-10 4-20 14-22l40-4c10-1 18 6 20 16l2 12M112 140l2-18M150 140l2-20M166 140l-2-22"/>
-<path d="M168 102c6-6 14-8 22-8l10-12c2-4 0-8-4-8M190 94c4 0 8 2 8 6-2 4-8 4-12 2"/>
-<path d="M200 80l6-10M194 80l2-12M186 76c-6-4-8-12-4-18"/>
-<path d="M108 88c-6-4-14-2-18 4" /><path d="M60 142c0-10 8-18 18-18s18 8 18 18" opacity=".5"/>
-<path d="M40 60c8-18 30-26 48-18" opacity=".35"/><circle cx="62" cy="40" r="10" opacity=".45"/>
-</svg>`;
-const ORN=`<svg class="orn" viewBox="0 0 120 14" aria-hidden="true"><path d="M2 7h44M74 7h44" stroke="#C9A45C" stroke-width="1"/><ellipse cx="60" cy="7" rx="7" ry="5" fill="none" stroke="#C9A45C" stroke-width="1.2"/><path d="M56 4c3 2 5 4 8 6" stroke="#C9A45C" stroke-width="1.2" fill="none"/></svg>`;
+const IBEX=`<svg viewBox="0 0 120 120" fill="none" stroke="#161412" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M56 46c-8-14-6-32 10-38 14-5 26 6 24 20-1 8-7 12-12 10"/><path d="M62 44c-4-10-2-22 8-26 9-3 16 4 14 12"/>
+<path d="M58 46c-10 2-18 10-20 20l-6 10c-2 4 2 7 6 5l10-4"/><circle cx="52" cy="60" r="1.8" fill="#161412"/>
+<path d="M48 77c2 6 0 12-4 16"/><path d="M64 48c8 6 12 16 12 28 0 10 6 18 16 22"/><path d="M76 76c-10 4-18 10-20 20"/>
+<path d="M56 96v14M70 94v16M86 98l2 12M96 96l4 14"/><path d="M92 98c6-2 10-8 10-14"/></svg>`;
+const PLANT=`<svg class="plant PL" viewBox="0 0 70 120" aria-hidden="true"><path d="M35 120V50" stroke="#5E7A4A" stroke-width="2"/><g fill="#6E8B57"><ellipse cx="22" cy="60" rx="16" ry="7" transform="rotate(-35 22 60)"/><ellipse cx="48" cy="48" rx="16" ry="7" transform="rotate(30 48 48)"/><ellipse cx="24" cy="36" rx="14" ry="6" transform="rotate(-50 24 36)"/><ellipse cx="44" cy="26" rx="13" ry="6" transform="rotate(55 44 26)"/><ellipse cx="34" cy="16" rx="6" ry="12"/></g><path d="M20 100h30l-4 20H24z" fill="#D9B98E"/></svg>`;
 function renderHero(){
   const ar=lang==="ar";
-  $("heroInner").innerHTML=`${SCENE}<div class="medal"><div><span>KALDI’S</span><small>SPECIALTY COFFEE</small></div></div>
-   <p class="legend">${ar?"بيقولوا إن راعي اسمه <em>كالدي</em> لاحظ معيزه بترقص بعد ما أكلت حبّات حمرا من شجرة… ومن هنا بدأت حكاية القهوة. الحكاية كاملة هنا، بالعربي والإنجليزي.":"Legend says a goat herder named <em>Kaldi</em> saw his goats dancing after eating red cherries from a bush… and coffee was born. The whole story is here, in Arabic and English."}</p>
+  $("heroInner").innerHTML=`<div class="archwrap">${PLANT.replace("PL","l")}<div class="arch">${IBEX}</div>${PLANT.replace("PL","r")}</div>
+   <h1 class="word">KALDI’S</h1><p class="sub">SPECIALTY COFFEE</p>
+   <p class="legend">${ar?"بيقولوا إن راعي اسمه <em>كالدي</em> لاحظ معيزه بتتنطط بعد ما أكلت حبّات حمرا من شجرة… ومن هنا بدأت حكاية القهوة. المنيو كله هنا، عربي وإنجليزي.":"Legend says a goat herder named <em>Kaldi</em> saw his goats leaping after eating red cherries from a bush… and coffee was born. The whole menu is here, in Arabic and English."}</p>
    <p class="info">${esc((C.info||{})[lang]||"")}</p>`;
 }
 function renderMenu(){
@@ -194,9 +195,9 @@ function renderMenu(){
   for(const c of C.categories){
     const items=c.items.filter(i=>!q||[i.ar,i.en].join(" ").toLowerCase().includes(q));
     if(!items.length) continue; n+=items.length;
-    html+=`<section class="cat" id="cat-${esc(c.id)}"><div class="chap"><span class="num">CHAPTER ${c.ch}</span><h2>${esc(L(c,"ar","en"))}</h2><p class="ln">${esc(L(c,"lineAr","lineEn"))}</p>${ORN}</div>`;
+    html+=(c===C.categories[0]?"":"")+`<section class="cat" id="cat-${esc(c.id)}"><div class="chap"><span class="num">CHAPTER ${c.ch}</span><h2>${esc(L(c,"ar","en"))}</h2><p class="ln">${esc(L(c,"lineAr","lineEn"))}</p></div>`;
     for(const i of items){
-      html+=`<div class="it"><div><span class="nm">${esc(L(i,"ar","en"))}</span>${i.pick?`<span class="pick" title="${T[lang].pick}"></span>`:""}${lang==="ar"?`<span class="en">${esc(i.en.toUpperCase())}</span>`:""}</div><span class="dots"></span><span class="pr">${fmt(i.p)} ${cur()}</span></div>`;}
+      html+=`<div class="it"><div><span class="nm">${esc(L(i,"ar","en"))}</span>${i.pick?`<span class="pick">${T[lang].pick}</span>`:""}${lang==="ar"?`<span class="en">${esc(i.en.toUpperCase())}</span>`:""}</div><span class="grow"></span><span class="pr">${fmt(i.p)} ${cur()}</span></div>`;}
     html+="</section>";
   }
   $("menu").innerHTML=n?html:`<p class="empty">${lang==="ar"?"مفيش صنف بالاسم ده، جرب كلمة تانية.":T[lang].empty}</p>`;
@@ -204,7 +205,7 @@ function renderMenu(){
 T.ar.note="نسخة للعرض: الأصناف والأسعار من منيوكم على جوجل (منيو الأونلاين)، ونظبطها على أسعار الكافيه";
 T.en.note="Preview: items and prices from your online menu on Google, to be matched to in-café prices";
 T.ar.search="بتدور على ايه؟";
-T.ar.pick="حبة كالدي: ترشيحنا";T.en.pick="Kaldi's cherry: our pick";
+T.ar.pick="ترشيحنا";T.en.pick="Our pick";
 T.ar.updated="آخر تحديث للأسعار: النهارده";
 
 apply();
