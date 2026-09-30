@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو SPADE</title>
+<meta name="description" content="Cafe &amp; Restaurant · Where Life is Sweet">
+<meta property="og:title" content="منيو SPADE">
+<meta property="og:description" content="Cafe &amp; Restaurant · Where Life is Sweet">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/spade-k4n7/">
+<meta name="theme-color" content="#111111">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="fontlink" rel="stylesheet" href="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:140px}
+body{margin:0;-webkit-font-smoothing:antialiased;line-height:1.6}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem;font-weight:500}
+.pat{display:none}
+.visit{max-width:720px;margin:0 auto;padding:0 1rem 2rem;display:grid;gap:.6rem}
+.visit a{display:block;text-align:center;padding:.9rem 1rem;border-radius:12px;font-weight:600;text-decoration:none}
+.empty{text-align:center;padding:3rem 1rem;opacity:.7}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+:root{--felt:#111;--card:#fff;--ink:#111;--pink:#E4007C;--orange:#F26A21;--blue:#2F6FD6;--muted:#6b6b6b;
+ --display:"Josefin Sans","Readex Pro",sans-serif;--body:"Readex Pro",system-ui,sans-serif}
+body{background:radial-gradient(120% 60% at 50% 0,#262626,#111 60%);color:#fff;font-family:var(--body);min-height:100vh}
+.demo-note{background:var(--pink);color:#fff}
+header.hero{position:relative;text-align:center;padding:2.2rem 1rem 1.2rem}
+.lang{position:absolute;top:1rem;inset-inline-end:1rem;background:transparent;color:#fff;border:1px solid #555;border-radius:8px;padding:.3rem .8rem;font:600 .82rem var(--body);cursor:pointer}
+.mark{width:78px;height:78px;display:block;margin:0 auto .4rem}
+.word{direction:ltr;font:600 clamp(2.8rem,14vw,4rem)/1 var(--display);letter-spacing:.22em;margin:0;padding-inline-start:.22em}
+.cr{direction:ltr;font:600 .78rem var(--display);letter-spacing:.35em;color:#bbb;margin:.3rem 0 0}
+.sweet{direction:ltr;font:400 1.7rem "Kaushan Script",cursive;color:#fff;margin:.3rem 0 0}
+.info{color:#9a9a9a;font-size:.84rem;margin:.5rem 0 0}
+.tonight{display:flex;justify-content:center;gap:.45rem;flex-wrap:wrap;margin-top:1rem}
+.tonight span{font-size:.78rem;font-weight:600;border-radius:999px;padding:.25rem .7rem;background:#222;border:1px solid #333}
+.tonight span:nth-child(1){color:var(--orange)}.tonight span:nth-child(2){color:#7fb0ff}.tonight span:nth-child(3){color:#ff6fb8}
+.bar{position:sticky;top:0;z-index:5;background:rgba(17,17,17,.95);backdrop-filter:blur(6px);padding:.65rem 0 .55rem;border-bottom:1px solid #2a2a2a}
+.search{max-width:680px;margin:0 auto;padding:0 1rem}
+.search input{width:100%;border:1px solid #333;background:#1c1c1c;color:#fff;border-radius:10px;padding:.6rem 1rem;font:1rem var(--body)}
+.search input::placeholder{color:#777}
+.search input:focus-visible{outline:2px solid var(--pink)}
+.chips{display:flex;gap:.4rem;overflow-x:auto;padding:.55rem 1rem 0;max-width:680px;margin:0 auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:0;background:#fff;color:#111;border-radius:6px;padding:.35rem .75rem;font:700 .84rem var(--body);cursor:pointer;display:flex;gap:.35rem;align-items:center}
+.chip .r{font:700 .85rem var(--display);color:var(--pink)}
+.chip[aria-pressed="true"]{background:var(--pink);color:#fff}.chip[aria-pressed="true"] .r{color:#fff}
+.chip:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.hint{text-align:center;color:#777;font-size:.78rem;margin:.9rem 0 0}
+main{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:1.2rem 12vw 2.2rem;scrollbar-width:none}
+main::-webkit-scrollbar{display:none}
+section.cat{flex:0 0 min(78vw,340px);scroll-snap-align:center;position:relative;background:var(--card);color:var(--ink);border-radius:18px;padding:3.2rem 1.1rem 3.2rem;min-height:440px;
+ box-shadow:0 18px 40px rgba(0,0,0,.45);border:7px solid #fff;outline:2px dashed var(--pink);outline-offset:-14px}
+section.cat:nth-child(odd){transform:rotate(-1.6deg)}section.cat:nth-child(even){transform:rotate(1.4deg)}
+.idx{position:absolute;display:flex;flex-direction:column;align-items:center;line-height:1;font:700 1.5rem var(--display)}
+.idx svg{width:20px;height:20px;margin-top:.15rem}
+.idx.tl{top:.9rem;inset-inline-start:.9rem}.idx.br{bottom:.9rem;inset-inline-end:.9rem;transform:rotate(180deg)}
+.cat h2{text-align:center;margin:0;font:700 1.45rem var(--body)}
+.cat .en{direction:ltr;text-align:center;font:600 .72rem var(--display);letter-spacing:.3em;color:var(--pink);margin:.15rem 0 .8rem;text-transform:uppercase}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;padding:.55rem 0;border-bottom:1px dotted #cfcfcf}
+.row:last-child{border-bottom:0}
+.row .nm{font-weight:700;font-size:.95rem}
+.row .ds{display:block;font-size:.72rem;color:var(--muted);font-weight:400}
+.row .pr{direction:ltr;font:700 1rem var(--display);color:var(--pink);white-space:nowrap}
+.visit a{background:#1c1c1c;color:#fff;border:1px solid #333}
+footer{text-align:center;color:#8a8a8a;font-size:.85rem;padding:1.2rem 1rem 2.5rem;border-top:1px solid #222}
+footer strong{color:#fff}
+.empty{color:#aaa;flex:1}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+<div class="pat" id="pat" aria-hidden="true"></div>
+
+<header class="hero">
+  <button class="lang" id="langBtn">English</button>
+  <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4C38 22 8 38 8 62c0 14 11 24 24 24 7 0 12-3 15-7-1 9-5 14-11 18h28c-6-4-10-9-11-18 3 4 8 7 15 7 13 0 24-10 24-24C92 38 62 22 50 4Z" fill="#fff"/><path d="M42 30v22M38 30v8a4 4 0 0 0 8 0v-8M58 30c-5 0-6 8-6 12s2 6 4 6v12h3V30z" stroke="#111" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+  <div id="heroInner"></div>
+</header>
+<div class="bar">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div>
+<p class="hint" id="hint"></p>
+<main id="menu"></main>
+<section class="visit" id="visit" hidden></section>
+<footer><p id="updated"></p><p id="credit"></p></footer>
+
+<script>
+
+const CONFIG = {"name": "SPADE", "nameAr": "SPADE", "tagline": {"ar": "Cafe & Restaurant · Where Life is Sweet", "en": "Cafe & Restaurant · Where Life is Sweet"}, "info": {"ar": "وصلة دهشور، سيتي ووك، الشيخ زايد", "en": "Waslet Dahshur, City Walk, Sheikh Zayed"}, "logo": null, "colors": {"primary": "#111111", "onPrimary": "#ffffff", "secondary": "#E4007C", "background": "#1a1a1a", "accent": "#F26A21"}, "fonts": {"display": "Josefin Sans", "body": "Readex Pro"}, "pattern": "none", "currency": {"ar": "ج.م", "en": "EGP"}, "demoBanner": true, "credit": "محمد", "instagram": "https://instagram.com/spadecafe1", "mapsUrl": "https://maps.google.com/?cid=15127576971828919491", "categories": [{"id": "sides", "ar": "سايدز وسناكس", "en": "Sides & Snacks", "rank": "A", "items": [{"ar": "تشيكن ستربس", "en": "Chicken Strips", "p": 75}, {"ar": "هالابينو تشيز فرايز", "en": "Jalapeños Cheese Fries", "p": 99}, {"ar": "كريسبي تشيزي فرايز", "en": "Crispy Cheesy Fries", "p": 63}, {"ar": "موتزاريلا ستيكس", "en": "Mozzarella Sticks", "p": 89}, {"ar": "بطاطس فرايز", "en": "French Fries", "p": 35}]}, {"id": "salads", "ar": "سلطات", "en": "Salads", "rank": "K", "items": [{"ar": "سيزر بالفراخ", "en": "Chicken Caesar Salad", "p": 136}, {"ar": "سلطة يوناني", "en": "Greek Salad", "p": 105}, {"ar": "كول سلو", "en": "Coleslaw Salad", "p": 45}, {"ar": "سلطة بلدي", "en": "Baladi Salad", "p": 45}]}, {"id": "mocktails", "ar": "موكتيلز", "en": "Mocktails", "rank": "Q", "items": [{"ar": "بلو ليمونيد", "en": "Blue Lemonade", "dAr": "مثال لحد ما نحط أسعاركم", "dEn": "Sample", "p": 85}, {"ar": "ليمون نعناع", "en": "Lemon Mint", "dAr": "مثال لحد ما نحط أسعاركم", "dEn": "Sample", "p": 65}, {"ar": "موهيتو", "en": "Mojito", "dAr": "مثال لحد ما نحط أسعاركم", "dEn": "Sample", "p": 80}]}, {"id": "hot", "ar": "سخن", "en": "Hot Drinks", "rank": "J", "items": [{"ar": "قهوة تركي", "en": "Turkish Coffee", "dAr": "مثال لحد ما نحط أسعاركم", "dEn": "Sample", "p": 45}, {"ar": "شاي", "en": "Tea", "dAr": "مثال لحد ما نحط أسعاركم", "dEn": "Sample", "p": 25}, {"ar": "لاتيه", "en": "Latte", "dAr": "مثال لحد ما نحط أسعاركم", "dEn": "Sample", "p": 75}]}]};
+
+const C = CONFIG || {name:"Menu",categories:[]};
+const root = document.documentElement.style;
+const col = C.colors || {};
+[["--primary",col.primary],["--on-primary",col.onPrimary],["--secondary",col.secondary],["--bg",col.background],["--accent",col.accent]]
+  .forEach(([k,v]) => { if (v) root.setProperty(k, v); });
+const F = C.fonts || {};
+const fams = [F.display, F.body].filter(Boolean);
+if (fams.length){
+  document.getElementById("fontlink").href = "https://fonts.googleapis.com/css2?" +
+    [...new Set(fams)].map(f => "family=" + f.trim().replace(/ /g,"+") + ":wght@400;500;600;700").join("&") + "&display=swap";
+  if (F.display) root.setProperty("--display", `"${F.display}", "${F.body||F.display}", system-ui, sans-serif`);
+  if (F.body) root.setProperty("--body", `"${F.body}", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif`);
+}
+
+const PATTERNS = {
+  tiles:`<svg width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L36 20 L52 28 L36 36 L28 52 L20 36 L4 28 L20 20 Z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="28" cy="28" r="5" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  dots:`<svg width="100%" height="100%"><defs><pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="14" cy="14" r="3.5" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  lines:`<svg width="100%" height="100%"><defs><pattern id="p" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="22" stroke="currentColor" stroke-width="1.2"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  none:""
+};
+const pat = document.getElementById("pat");
+pat.innerHTML = PATTERNS[C.pattern || "none"] || "";
+pat.style.color = (C.colors && C.colors.accent) || "#fff";
+
+const T = {
+  ar:{dir:"rtl",lang:"English",search:"ابحث عن صنف…",pick:"ترشيحنا",empty:"ما فيه صنف بهالاسم. جرّب كلمة ثانية.",all:"الكل",
+      note:`نسخة تجريبية للعرض — الأصناف والأسعار أمثلة وتتغير لأصناف ${C.name} الحقيقية`,updated:"آخر تحديث للأسعار: اليوم",credit:n=>`منيو ديجيتال من تصميم <strong>${n}</strong>`},
+  en:{dir:"ltr",lang:"العربية",search:"Search the menu…",pick:"Our pick",empty:"No dish matches that. Try another word.",all:"All",
+      note:`Demo version — items and prices are samples, to be replaced with ${C.name}'s real menu`,updated:"Prices last updated: today",credit:n=>`Digital menu designed by <strong>${n}</strong>`}
+};
+let lang="ar", active="all", query="";
+try{const s=localStorage.getItem("menu-lang");if(s==="ar"||s==="en")lang=s;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"ر.س",en:"SAR"})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+
+function renderHero(){
+  const t=C.tagline||{}, info=C.info||{};
+  const logo = C.logo ? `<img class="logo" src="${C.logo}" alt="${esc(C.name)} logo">` : "";
+  $("heroInner").innerHTML = `${logo}<h1 class="brand${C.logo?" small":""}">${esc(lang==="ar"&&C.nameAr?C.nameAr:C.name)}</h1>
+    ${t[lang]?`<p class="tag">${esc(t[lang])}</p>`:""}${info[lang]?`<p class="info">${esc(info[lang])}</p>`:""}`;
+}
+function renderChips(){
+  const cats=[{id:"all",ar:T[lang].all,en:T[lang].all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0;
+  for(const c of C.categories){
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) continue; n+=items.length;
+    const sub=L(c,"subAr","subEn");
+    html+=`<section class="cat" id="cat-${esc(c.id)}"><h2>${esc(L(c,"ar","en"))}</h2>${sub?`<p class="sub">${esc(sub)}</p>`:""}`;
+    for(const i of items){const d=L(i,"dAr","dEn");
+      html+=`<div class="item"><div class="name">${esc(L(i,"ar","en"))}${i.pick?`<span class="pick">${T[lang].pick}</span>`:""}</div><div class="price">${fmt(i.p)} ${cur()}</div>${d?`<p class="desc">${esc(d)}</p>`:""}${i.cal!=null?`<p class="cal">${fmt(i.cal)} ${lang==="ar"?"سعرة حرارية":"kcal"}</p>`:""}</div>`;}
+    html+="</section>";
+  }
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.note;
+  $("updated").textContent=t.updated; $("credit").innerHTML=t.credit(esc(C.credit||"محمد"));
+  const V={ar:{wa:"اطلب على واتساب",map:"اللوكيشن",rev:"قيّمنا على جوجل",ig:"انستجرام"},en:{wa:"Order on WhatsApp",map:"Location",rev:"Rate us on Google",ig:"Instagram"}}[lang];
+  const links=[C.whatsapp&&`<a class="wa" href="https://wa.me/${esc(String(C.whatsapp).replace(/\D/g,""))}" target="_blank" rel="noopener">${V.wa}</a>`,
+    C.mapsUrl&&`<a href="${esc(C.mapsUrl)}" target="_blank" rel="noopener">${V.map}</a>`,
+    C.reviewUrl&&`<a href="${esc(C.reviewUrl)}" target="_blank" rel="noopener">${V.rev}</a>`,
+    C.instagram&&`<a href="${esc(C.instagram)}" target="_blank" rel="noopener">${V.ig}</a>`].filter(Boolean);
+  const vs=$("visit"); vs.hidden=!links.length; vs.innerHTML=links.join("");
+  renderHero(); renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem("menu-lang",lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+
+
+const SPADE=`<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4C38 22 8 38 8 62c0 14 11 24 24 24 7 0 12-3 15-7-1 9-5 14-11 18h28c-6-4-10-9-11-18 3 4 8 7 15 7 13 0 24-10 24-24C92 38 62 22 50 4Z" fill="currentColor"/></svg>`;
+function renderHero(){
+  const info=C.info||{};
+  $("heroInner").innerHTML=`<h1 class="word">SPADE</h1><p class="cr">CAFE &amp; RESTAURANT</p><p class="sweet">Where Life is Sweet</p>
+   <p class="info">${esc(info[lang]||"")}</p>
+   <div class="tonight"><span>${lang==="ar"?"ماتشات على الشاشة":"Matches on screen"}</span><span>${lang==="ar"?"كوتشينة ودومينو":"Cards & domino"}</span><span>${lang==="ar"?"شيشة":"Shisha"}</span></div>`;
+  $("hint").textContent=lang==="ar"?"اسحب الكروت يمين وشمال":"Swipe the cards";
+}
+function renderChips(){
+  const cats=C.categories;
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}"><span class="r">${esc(c.rank)}♠</span>${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{active=b.dataset.id;renderChips(); const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:"smooth",inline:"center",block:"nearest"});});
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0;
+  for(const c of C.categories){
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) continue; n+=items.length;
+    const idx=`${esc(c.rank)}${SPADE}`;
+    html+=`<section class="cat" id="cat-${esc(c.id)}"><div class="idx tl">${idx}</div><div class="idx br">${idx}</div><h2>${esc(L(c,"ar","en"))}</h2><p class="en">${esc(c.en)}</p>`;
+    for(const i of items){const d=L(i,"dAr","dEn");
+      html+=`<div class="row"><span class="nm">${esc(L(i,"ar","en"))}${d?`<span class="ds">${esc(d)}</span>`:""}</span><span class="pr">${fmt(i.p)} ${cur()}</span></div>`;}
+    html+="</section>";
+  }
+  $("menu").innerHTML=n?html:`<p class="empty">${lang==="ar"?"مفيش صنف بالاسم ده، جرب كلمة تانية.":T[lang].empty}</p>`;
+}
+active=C.categories[0].id;
+T.ar.note="نسخة تجريبية: السلطات والسايدز بأسعار المنيو اللي في الهايلايت عندكم، والباقي أمثلة";
+T.en.note="Preview: salads & sides use the prices from your menu highlight, the rest are samples";
+T.ar.search="بتدور على ايه؟";
+T.ar.updated="آخر تحديث للأسعار: النهارده";
+
+apply();
+</script>
+<script>if(location.hash!=="#preview"){window.goatcounter={path:"spade-k4n7"};var s=document.createElement("script");s.async=1;s.dataset.goatcounter="https://khashab.goatcounter.com/count";s.src="https://gc.zgo.at/count.js";document.head.appendChild(s);}</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو Toast &amp; Roast</title>
+<meta name="description" content="Cafe &amp; Restaurant">
+<meta property="og:title" content="منيو Toast &amp; Roast">
+<meta property="og:description" content="Cafe &amp; Restaurant">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/toastroast-m6q1/">
+<meta name="theme-color" content="#2A211B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="fontlink" rel="stylesheet" href="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:140px}
+body{margin:0;-webkit-font-smoothing:antialiased;line-height:1.6}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem;font-weight:500}
+.pat{display:none}
+.visit{max-width:720px;margin:0 auto;padding:0 1rem 2rem;display:grid;gap:.6rem}
+.visit a{display:block;text-align:center;padding:.9rem 1rem;border-radius:12px;font-weight:600;text-decoration:none}
+.empty{text-align:center;padding:3rem 1rem;opacity:.7}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+:root{--paper:#F4EEE4;--ink:#2A211B;--gold:#8A5A2B;--wood:#C89B6D;--rule:#2A211B;--muted:#6f6254;
+ --display:"Amiri",serif;--body:"Noto Naskh Arabic","Amiri",serif}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);background-image:radial-gradient(rgba(42,33,27,.05) 1px,transparent 1px);background-size:4px 4px}
+.demo-note{background:var(--ink);color:var(--paper);font-family:system-ui,sans-serif}
+.sheet{max-width:680px;margin:0 auto;padding:0 1rem}
+header.hero{position:relative;text-align:center;padding:1.4rem 0 .6rem;border-bottom:4px double var(--rule)}
+.lang{position:absolute;top:.9rem;inset-inline-end:0;background:transparent;color:var(--ink);border:1px solid var(--ink);padding:.15rem .6rem;font:700 .8rem var(--body);cursor:pointer}
+.dateline{display:flex;justify-content:space-between;font-size:.72rem;letter-spacing:.06em;border-bottom:1px solid var(--rule);padding:.25rem 0;margin-top:1.8rem}
+.mast{direction:ltr;font:400 clamp(3rem,15vw,4.6rem)/1.05 "Parisienne",cursive;color:var(--gold);margin:.4rem 0 0}
+.sub{direction:ltr;font:700 .78rem/1 var(--display);letter-spacing:.5em;margin:.2rem 0 .5rem;padding-inline-start:.5em}
+.headline{border-top:1px solid var(--rule);padding:.6rem 0 0;font:700 1.35rem/1.35 var(--display)}
+.deck{font-size:.9rem;color:var(--muted);margin:.2rem 0 0}
+.bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);padding:.55rem 0 .45rem}
+.search{max-width:680px;margin:0 auto;padding:0 1rem}
+.search input{width:100%;border:0;border-bottom:2px solid var(--ink);background:transparent;color:var(--ink);padding:.4rem .2rem;font:1rem var(--body)}
+.search input:focus-visible{outline:none;border-bottom-color:var(--gold)}
+.chips{display:flex;gap:0;overflow-x:auto;padding:.45rem 1rem 0;max-width:680px;margin:0 auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:0;border-inline-start:1px solid var(--rule);background:transparent;color:var(--ink);padding:.1rem .8rem;font:700 .92rem var(--display);cursor:pointer}
+.chip:first-child{border-inline-start:0}
+.chip[aria-pressed="true"]{color:var(--gold);text-decoration:underline;text-underline-offset:5px}
+main{max-width:680px;margin:0 auto;padding:.4rem 1rem 2rem}
+section.cat{margin-top:1.4rem;border-top:3px solid var(--rule);padding-top:.5rem}
+.kicker{font:700 .7rem system-ui,sans-serif;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;direction:ltr;text-align:start}
+.cat h2{margin:.1rem 0 .5rem;font:700 1.9rem/1.2 var(--display)}
+.cols{column-count:2;column-gap:1.4rem;column-rule:1px solid rgba(42,33,27,.35)}
+@media (max-width:420px){.cols{column-count:1}}
+.story{break-inside:avoid;padding:.45rem 0 .55rem;border-bottom:1px dotted rgba(42,33,27,.4)}
+.story .nm{font:700 1.08rem/1.3 var(--display)}
+.story .en{display:block;direction:ltr;text-align:start;font:italic .78rem var(--display);color:var(--muted)}
+.story .ds{font-size:.76rem;color:var(--muted);margin:.1rem 0 0}
+.story .pr{display:inline-block;margin-top:.2rem;font:700 .95rem var(--display);background:var(--ink);color:var(--paper);padding:0 .45rem}
+.visit a{background:transparent;color:var(--ink);border:1px solid var(--ink);border-radius:0;font-family:var(--display)}
+.visit a.wa{background:var(--ink);color:var(--paper)}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:1.2rem 1rem 2.5rem;border-top:4px double var(--rule);max-width:680px;margin:0 auto}
+footer strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+<div class="pat" id="pat" aria-hidden="true"></div>
+
+<div class="sheet">
+<header class="hero">
+  <button class="lang" id="langBtn">English</button>
+  <div id="heroInner"></div>
+</header>
+</div>
+<div class="bar">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div>
+<main id="menu"></main>
+<section class="visit" id="visit" hidden></section>
+<footer><p id="updated"></p><p id="credit"></p></footer>
+
+<script>
+
+const CONFIG = {"name": "Toast & Roast", "nameAr": "Toast & Roast", "tagline": {"ar": "Cafe & Restaurant", "en": "Cafe & Restaurant"}, "info": {"ar": "تاني الشيخ زايد", "en": "Second Al Sheikh Zayed"}, "logo": null, "colors": {"primary": "#2A211B", "onPrimary": "#F4EEE4", "secondary": "#8A5A2B", "background": "#F4EEE4", "accent": "#C89B6D"}, "fonts": {"display": "Amiri", "body": "Noto Naskh Arabic"}, "pattern": "none", "currency": {"ar": "ج.م", "en": "EGP"}, "demoBanner": true, "credit": "محمد", "whatsapp": "201204871000", "mapsUrl": "https://maps.google.com/?cid=16451230216446003131", "categories": [{"id": "breakfast", "ar": "الفطار", "en": "Breakfast", "items": [{"ar": "فطير", "en": "Feteer", "p": 140, "dAr": "مثال لحد ما نحط سعركم", "dEn": "Sample price"}, {"ar": "وافل", "en": "Waffle", "p": 120, "dAr": "مثال لحد ما نحط سعركم", "dEn": "Sample price"}, {"ar": "بيض بالطريقة اللي تحبها", "en": "Eggs, your way", "p": 90, "dAr": "مثال لحد ما نحط أصنافكم", "dEn": "Sample item"}]}, {"id": "mains", "ar": "الأطباق", "en": "Mains", "items": [{"ar": "كريسبي تشيكن بالصوص الأبيض", "en": "Crispy Chicken, White Sauce", "p": 230, "dAr": "مثال لحد ما نحط سعركم", "dEn": "Sample price"}, {"ar": "تشيكن راب", "en": "Chicken Wrap", "p": 165, "dAr": "مثال لحد ما نحط سعركم", "dEn": "Sample price"}]}, {"id": "roast", "ar": "القهوة", "en": "The Roast", "items": [{"ar": "إسبريسو", "en": "Espresso", "p": 55, "dAr": "مثال لحد ما نحط سعركم", "dEn": "Sample price"}, {"ar": "كابتشينو", "en": "Cappuccino", "p": 80, "dAr": "مثال لحد ما نحط سعركم", "dEn": "Sample price"}, {"ar": "سبانيش لاتيه", "en": "Spanish Latte", "p": 95, "dAr": "مثال لحد ما نحط سعركم", "dEn": "Sample price"}, {"ar": "آيس لاتيه", "en": "Iced Latte", "p": 90, "dAr": "مثال لحد ما نحط سعركم", "dEn": "Sample price"}]}]};
+
+const C = CONFIG || {name:"Menu",categories:[]};
+const root = document.documentElement.style;
+const col = C.colors || {};
+[["--primary",col.primary],["--on-primary",col.onPrimary],["--secondary",col.secondary],["--bg",col.background],["--accent",col.accent]]
+  .forEach(([k,v]) => { if (v) root.setProperty(k, v); });
+const F = C.fonts || {};
+const fams = [F.display, F.body].filter(Boolean);
+if (fams.length){
+  document.getElementById("fontlink").href = "https://fonts.googleapis.com/css2?" +
+    [...new Set(fams)].map(f => "family=" + f.trim().replace(/ /g,"+") + ":wght@400;500;600;700").join("&") + "&display=swap";
+  if (F.display) root.setProperty("--display", `"${F.display}", "${F.body||F.display}", system-ui, sans-serif`);
+  if (F.body) root.setProperty("--body", `"${F.body}", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif`);
+}
+
+const PATTERNS = {
+  tiles:`<svg width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L36 20 L52 28 L36 36 L28 52 L20 36 L4 28 L20 20 Z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="28" cy="28" r="5" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  dots:`<svg width="100%" height="100%"><defs><pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="14" cy="14" r="3.5" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  lines:`<svg width="100%" height="100%"><defs><pattern id="p" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="22" stroke="currentColor" stroke-width="1.2"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  none:""
+};
+const pat = document.getElementById("pat");
+pat.innerHTML = PATTERNS[C.pattern || "none"] || "";
+pat.style.color = (C.colors && C.colors.accent) || "#fff";
+
+const T = {
+  ar:{dir:"rtl",lang:"English",search:"ابحث عن صنف…",pick:"ترشيحنا",empty:"ما فيه صنف بهالاسم. جرّب كلمة ثانية.",all:"الكل",
+      note:`نسخة تجريبية للعرض — الأصناف والأسعار أمثلة وتتغير لأصناف ${C.name} الحقيقية`,updated:"آخر تحديث للأسعار: اليوم",credit:n=>`منيو ديجيتال من تصميم <strong>${n}</strong>`},
+  en:{dir:"ltr",lang:"العربية",search:"Search the menu…",pick:"Our pick",empty:"No dish matches that. Try another word.",all:"All",
+      note:`Demo version — items and prices are samples, to be replaced with ${C.name}'s real menu`,updated:"Prices last updated: today",credit:n=>`Digital menu designed by <strong>${n}</strong>`}
+};
+let lang="ar", active="all", query="";
+try{const s=localStorage.getItem("menu-lang");if(s==="ar"||s==="en")lang=s;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"ر.س",en:"SAR"})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+
+function renderHero(){
+  const t=C.tagline||{}, info=C.info||{};
+  const logo = C.logo ? `<img class="logo" src="${C.logo}" alt="${esc(C.name)} logo">` : "";
+  $("heroInner").innerHTML = `${logo}<h1 class="brand${C.logo?" small":""}">${esc(lang==="ar"&&C.nameAr?C.nameAr:C.name)}</h1>
+    ${t[lang]?`<p class="tag">${esc(t[lang])}</p>`:""}${info[lang]?`<p class="info">${esc(info[lang])}</p>`:""}`;
+}
+function renderChips(){
+  const cats=[{id:"all",ar:T[lang].all,en:T[lang].all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0;
+  for(const c of C.categories){
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) continue; n+=items.length;
+    const sub=L(c,"subAr","subEn");
+    html+=`<section class="cat" id="cat-${esc(c.id)}"><h2>${esc(L(c,"ar","en"))}</h2>${sub?`<p class="sub">${esc(sub)}</p>`:""}`;
+    for(const i of items){const d=L(i,"dAr","dEn");
+      html+=`<div class="item"><div class="name">${esc(L(i,"ar","en"))}${i.pick?`<span class="pick">${T[lang].pick}</span>`:""}</div><div class="price">${fmt(i.p)} ${cur()}</div>${d?`<p class="desc">${esc(d)}</p>`:""}${i.cal!=null?`<p class="cal">${fmt(i.cal)} ${lang==="ar"?"سعرة حرارية":"kcal"}</p>`:""}</div>`;}
+    html+="</section>";
+  }
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.note;
+  $("updated").textContent=t.updated; $("credit").innerHTML=t.credit(esc(C.credit||"محمد"));
+  const V={ar:{wa:"اطلب على واتساب",map:"اللوكيشن",rev:"قيّمنا على جوجل",ig:"انستجرام"},en:{wa:"Order on WhatsApp",map:"Location",rev:"Rate us on Google",ig:"Instagram"}}[lang];
+  const links=[C.whatsapp&&`<a class="wa" href="https://wa.me/${esc(String(C.whatsapp).replace(/\D/g,""))}" target="_blank" rel="noopener">${V.wa}</a>`,
+    C.mapsUrl&&`<a href="${esc(C.mapsUrl)}" target="_blank" rel="noopener">${V.map}</a>`,
+    C.reviewUrl&&`<a href="${esc(C.reviewUrl)}" target="_blank" rel="noopener">${V.rev}</a>`,
+    C.instagram&&`<a href="${esc(C.instagram)}" target="_blank" rel="noopener">${V.ig}</a>`].filter(Boolean);
+  const vs=$("visit"); vs.hidden=!links.length; vs.innerHTML=links.join("");
+  renderHero(); renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem("menu-lang",lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+
+
+function renderHero(){
+  const d=new Date(); const ds=d.toLocaleDateString(lang==="ar"?"ar-EG":"en-GB",{weekday:"long",day:"numeric",month:"long"});
+  $("heroInner").innerHTML=`<div class="dateline"><span>${esc(ds)}</span><span>${lang==="ar"?"الشيخ زايد":"Sheikh Zayed"}</span></div>
+   <h1 class="mast">Toast &amp; Roast</h1><p class="sub">CAFE &amp; RESTAURANT</p>
+   <p class="headline">${lang==="ar"?"مواعيدنا، منيونا، ولوكيشنا: كله في لينك واحد":"Our hours, menu and location: all in one link"}</p>
+   <p class="deck">${lang==="ar"?"فطار، أطباق، وقهوة. اختار من الأعمدة تحت.":"Breakfast, mains and coffee. Pick from the columns below."}</p>`;
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0;
+  for(const c of C.categories){
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) continue; n+=items.length;
+    html+=`<section class="cat" id="cat-${esc(c.id)}"><div class="kicker">${esc(c.en)}</div><h2>${esc(L(c,"ar","en"))}</h2><div class="cols">`;
+    for(const i of items){const d=L(i,"dAr","dEn");
+      html+=`<article class="story"><div class="nm">${esc(L(i,"ar","en"))}</div>${lang==="ar"?`<span class="en">${esc(i.en)}</span>`:""}${d?`<p class="ds">${esc(d)}</p>`:""}<span class="pr">${fmt(i.p)} ${cur()}</span></article>`;}
+    html+="</div></section>";
+  }
+  $("menu").innerHTML=n?html:`<p class="empty">${lang==="ar"?"مفيش صنف بالاسم ده، جرب كلمة تانية.":T[lang].empty}</p>`;
+}
+T.ar.note="نسخة للعرض: الأصناف من صور أطباقكم على جوجل، والأسعار أمثلة لحد ما نحط أسعاركم";
+T.en.note="Preview: dishes from your photos on Google, prices are samples until we add yours";
+T.ar.search="بتدور على ايه؟";
+T.ar.updated="آخر تحديث للأسعار: النهارده";
+
+apply();
+</script>
+<script>if(location.hash!=="#preview"){window.goatcounter={path:"toastroast-m6q1"};var s=document.createElement("script");s.async=1;s.dataset.goatcounter="https://khashab.goatcounter.com/count";s.src="https://gc.zgo.at/count.js";document.head.appendChild(s);}</script>
+</body>
+</html>
