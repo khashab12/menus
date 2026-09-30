@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو بين ذير</title>
+<meta name="description" content="قهوة مختصة">
+<meta property="og:title" content="منيو بين ذير">
+<meta property="og:description" content="قهوة مختصة">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/beanthere-p7k2/">
+<meta name="theme-color" content="#4E3B2E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="fontlink" rel="stylesheet" href="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:140px}
+body{margin:0;-webkit-font-smoothing:antialiased;line-height:1.6}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem;font-weight:500}
+.pat{display:none}
+.visit{max-width:720px;margin:0 auto;padding:0 1rem 2rem;display:grid;gap:.6rem}
+.visit a{display:block;text-align:center;padding:.9rem 1rem;border-radius:12px;font-weight:600;text-decoration:none}
+.empty{text-align:center;padding:3rem 1rem;opacity:.7}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+:root{--page:#D3DDE7;--page2:#C7D3DF;--ink:#4E3B2E;--ink2:#6B5646;--muted:#7a6a5d;--line:rgba(78,59,46,.28);--stamp:#8A6A52;
+ --display:"Noto Naskh Arabic",serif;--body:"IBM Plex Sans Arabic",system-ui,sans-serif;--serif:"Playfair Display",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+body{background:var(--page);color:var(--ink);font-family:var(--body);
+ background-image:repeating-linear-gradient(0deg,transparent 0 27px,rgba(78,59,46,.045) 27px 28px)}
+.demo-note{background:var(--ink);color:#E6ECF2}
+header.hero{position:relative;max-width:640px;margin:0 auto;padding:2.9rem 1rem 0}
+.lang{position:absolute;top:.7rem;inset-inline-end:1rem;z-index:2;background:transparent;color:var(--ink);border:1px solid var(--ink);border-radius:999px;padding:.2rem .75rem;font:600 .78rem var(--body);cursor:pointer}
+.pp{position:relative;background:linear-gradient(160deg,#E4EAF0,#D6DFE8);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.1rem 0;overflow:hidden;box-shadow:0 10px 30px -18px rgba(78,59,46,.6)}
+.pp::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 80% 20%,transparent 0 9px,rgba(78,59,46,.05) 9px 10px);pointer-events:none}
+.pp-top{direction:ltr;display:flex;justify-content:space-between;font:600 .62rem var(--mono);letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.pp-body{position:relative;display:grid;grid-template-columns:96px 1fr;gap:1rem;align-items:center;margin-top:.9rem}
+.photo{width:96px;height:118px;border-radius:8px;background:var(--ink);display:grid;place-items:center}
+.photo svg{width:62px;height:62px}
+.ar-name{font:700 2.2rem/1 var(--display);margin:0}
+.en-name{direction:ltr;text-align:start;font:700 1.6rem/1 var(--serif);letter-spacing:-.01em;margin:.25rem 0 .55rem}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:.35rem .8rem;font-size:.78rem}
+.fields b{display:block;font:600 .56rem var(--mono);letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.mrz{direction:ltr;margin:1rem -1.1rem 0;padding:.55rem 1.1rem .7rem;background:rgba(78,59,46,.07);font:500 .72rem/1.5 var(--mono);letter-spacing:.12em;color:var(--ink2);white-space:nowrap;overflow:hidden}
+.bar{position:sticky;top:0;z-index:5;background:rgba(211,221,231,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:.7rem 0 .5rem;margin-top:1rem}
+.search{max-width:640px;margin:0 auto;padding:0 1rem}
+.search input{width:100%;border:1px dashed var(--ink2);background:#E6ECF2;color:var(--ink);border-radius:10px;padding:.6rem .9rem;font:1rem var(--body)}
+.search input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.chips{display:flex;gap:.45rem;overflow-x:auto;padding:.55rem 1rem .1rem;max-width:640px;margin:0 auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:6px;padding:.25rem .75rem;font:600 .86rem var(--body);cursor:pointer;transform:rotate(-1.5deg)}
+.chip:nth-child(even){transform:rotate(1.5deg)}
+.chip[aria-pressed="true"]{background:var(--ink);color:#E6ECF2}
+.chip:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+main{max-width:640px;margin:0 auto;padding:.3rem 1rem 1.5rem}
+section.cat{position:relative;margin-top:1.4rem;padding:1rem 1rem .4rem;background:#E3E9EF;border:1px solid var(--line);border-radius:12px}
+.ch{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-bottom:.3rem}
+.ch h2{margin:0;font:700 1.4rem var(--display)}
+.ch .enh{direction:ltr;display:block;font:italic 600 .9rem var(--serif);color:var(--muted)}
+.stamp{flex:0 0 auto;width:74px;height:74px;color:var(--stamp);transform:rotate(-12deg);opacity:.9}
+.row{display:grid;grid-template-columns:1fr auto;gap:.15rem 1rem;padding:.65rem 0;border-top:1px dashed var(--line)}
+.row .nm{font-weight:700}
+.row .en{direction:ltr;display:block;font:italic .8rem var(--serif);color:var(--muted)}
+.row .pr{text-align:end;font:700 1.05rem var(--body);white-space:nowrap}
+.row .kc{grid-column:1/-1;display:flex;align-items:center;gap:.5rem;font:500 .7rem var(--mono);color:var(--muted);direction:ltr}
+.kc i{display:block;height:4px;border-radius:2px;background:var(--stamp);opacity:.55}
+.pick{display:inline-block;margin-inline-start:.4rem;font:700 .62rem var(--mono);letter-spacing:.08em;color:var(--stamp);border:1.5px solid var(--stamp);border-radius:4px;padding:0 .3rem;transform:rotate(-4deg);vertical-align:middle}
+.visit a{background:#E3E9EF;color:var(--ink);border:1px solid var(--ink)}
+.visit a.wa{background:var(--ink);color:#E6ECF2}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:1.2rem 1rem 2.5rem}
+footer strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+<div class="pat" id="pat" aria-hidden="true"></div>
+
+<header class="hero">
+  <button class="lang" id="langBtn">English</button>
+  <div id="heroInner"></div>
+</header>
+<div class="bar">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div>
+<main id="menu"></main>
+<section class="visit" id="visit" hidden></section>
+<footer><p id="updated"></p><p id="credit"></p></footer>
+
+<script>
+
+const CONFIG = {"name": "Bean There", "nameAr": "بين ذير", "tagline": {"ar": "قهوة مختصة", "en": "Specialty Coffee"}, "info": {"ar": "المحمدية، الرياض", "en": "Al Mohammadiyah, Riyadh"}, "logo": null, "colors": {"primary": "#4E3B2E", "onPrimary": "#E6ECF2", "secondary": "#6B5646", "background": "#D3DDE7", "accent": "#8A6A52"}, "fonts": {"display": "Noto Naskh Arabic", "body": "IBM Plex Sans Arabic"}, "pattern": "none", "currency": {"ar": "ر.س", "en": "SAR"}, "demoBanner": true, "credit": "محمد", "whatsapp": "966555278248", "mapsUrl": "https://maps.google.com/?cid=15590929585367355435", "reviewUrl": "https://maps.google.com/?cid=15590929585367355435", "categories": [{"id": "hot", "ar": "المشروبات الحارة", "en": "Hot", "stamp": "HOT", "items": [{"ar": "اسبريسو", "en": "Espresso", "p": 14, "cal": 2}, {"ar": "كورتادو", "en": "Cortado", "p": 16, "cal": 70}, {"ar": "فلات وايت", "en": "Flat White", "p": 18, "cal": 110}, {"ar": "لاتيه", "en": "Latte", "p": 19, "cal": 120}, {"ar": "قهوة اليوم", "en": "Coffee of the Day", "p": 13, "cal": 2}, {"ar": "قهوة مقطرة", "en": "Drip Coffee", "p": 20, "cal": 2}]}, {"id": "cold", "ar": "المشروبات الباردة", "en": "Cold", "stamp": "COLD", "items": [{"ar": "اسبريسو فريدو", "en": "Espresso Freddo", "p": 18, "cal": 2}, {"ar": "لاتيه بارد", "en": "Iced Latte", "p": 22, "cal": 130}, {"ar": "قهوة مقطرة باردة", "en": "Iced Drip Coffee", "p": 23, "cal": 2}, {"ar": "قهوة اليوم باردة", "en": "Iced Coffee of the Day", "p": 15, "cal": 2}, {"ar": "ماتشا لاتيه باردة", "en": "Iced Matcha Latte", "p": 26, "cal": 180}, {"ar": "سبارك فراولة", "en": "Strawberry Spark", "p": 25, "cal": 95}, {"ar": "ليمون قاردن", "en": "Lemon Garden", "p": 24, "cal": 80, "pick": true}, {"ar": "كركديه", "en": "Hibiscus", "p": 22, "cal": 80}]}, {"id": "sandwich", "ar": "السندويتشات", "en": "Sandwiches", "stamp": "BITE", "items": [{"ar": "سبايسي تونة", "en": "Spicy Tuna Sandwich", "p": 25}, {"ar": "قولدن حلومي", "en": "Golden Halloumi", "p": 26, "pick": true}, {"ar": "كلوب ساندويتش", "en": "Club Sandwich", "p": 29}]}, {"id": "sweet", "ar": "الحلويات", "en": "Desserts", "stamp": "SWEET", "items": [{"ar": "بروليه الجزر", "en": "Carrot Brûlée", "p": 24, "pick": true}, {"ar": "تيراميسو كلاسيك", "en": "Classic Tiramisu", "p": 24}, {"ar": "كيك الليمون", "en": "Lemon Cake", "p": 16}, {"ar": "تارت التفاح", "en": "Apple Tart", "p": 16}, {"ar": "بين ذير كوكيز", "en": "BeanThere Cookies", "p": 14}, {"ar": "بابكا الشوكولاته", "en": "Choco Babka", "p": 14}, {"ar": "كراميل كرنش", "en": "Caramel Crunch", "p": 12}, {"ar": "قرانولا بالحليب", "en": "Milk Granola", "p": 26}]}, {"id": "water", "ar": "المياه", "en": "Water", "stamp": "H2O", "items": [{"ar": "مياه معدنية", "en": "Still Water", "p": 5, "cal": 0}, {"ar": "مياه فوارة", "en": "Sparkling Water", "p": 8, "cal": 0}]}]};
+
+const C = CONFIG || {name:"Menu",categories:[]};
+const root = document.documentElement.style;
+const col = C.colors || {};
+[["--primary",col.primary],["--on-primary",col.onPrimary],["--secondary",col.secondary],["--bg",col.background],["--accent",col.accent]]
+  .forEach(([k,v]) => { if (v) root.setProperty(k, v); });
+const F = C.fonts || {};
+const fams = [F.display, F.body].filter(Boolean);
+if (fams.length){
+  document.getElementById("fontlink").href = "https://fonts.googleapis.com/css2?" +
+    [...new Set(fams)].map(f => "family=" + f.trim().replace(/ /g,"+") + ":wght@400;500;600;700").join("&") + "&display=swap";
+  if (F.display) root.setProperty("--display", `"${F.display}", "${F.body||F.display}", system-ui, sans-serif`);
+  if (F.body) root.setProperty("--body", `"${F.body}", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif`);
+}
+
+const PATTERNS = {
+  tiles:`<svg width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L36 20 L52 28 L36 36 L28 52 L20 36 L4 28 L20 20 Z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="28" cy="28" r="5" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  dots:`<svg width="100%" height="100%"><defs><pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="14" cy="14" r="3.5" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  lines:`<svg width="100%" height="100%"><defs><pattern id="p" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="22" stroke="currentColor" stroke-width="1.2"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>`,
+  none:""
+};
+const pat = document.getElementById("pat");
+pat.innerHTML = PATTERNS[C.pattern || "none"] || "";
+pat.style.color = (C.colors && C.colors.accent) || "#fff";
+
+const T = {
+  ar:{dir:"rtl",lang:"English",search:"ابحث عن صنف…",pick:"ترشيحنا",empty:"ما فيه صنف بهالاسم. جرّب كلمة ثانية.",all:"الكل",
+      note:`نسخة تجريبية للعرض — الأصناف والأسعار أمثلة وتتغير لأصناف ${C.name} الحقيقية`,updated:"آخر تحديث للأسعار: اليوم",credit:n=>`منيو ديجيتال من تصميم <strong>${n}</strong>`},
+  en:{dir:"ltr",lang:"العربية",search:"Search the menu…",pick:"Our pick",empty:"No dish matches that. Try another word.",all:"All",
+      note:`Demo version — items and prices are samples, to be replaced with ${C.name}'s real menu`,updated:"Prices last updated: today",credit:n=>`Digital menu designed by <strong>${n}</strong>`}
+};
+let lang="ar", active="all", query="";
+try{const s=localStorage.getItem("menu-lang");if(s==="ar"||s==="en")lang=s;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"ر.س",en:"SAR"})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+
+function renderHero(){
+  const t=C.tagline||{}, info=C.info||{};
+  const logo = C.logo ? `<img class="logo" src="${C.logo}" alt="${esc(C.name)} logo">` : "";
+  $("heroInner").innerHTML = `${logo}<h1 class="brand${C.logo?" small":""}">${esc(lang==="ar"&&C.nameAr?C.nameAr:C.name)}</h1>
+    ${t[lang]?`<p class="tag">${esc(t[lang])}</p>`:""}${info[lang]?`<p class="info">${esc(info[lang])}</p>`:""}`;
+}
+function renderChips(){
+  const cats=[{id:"all",ar:T[lang].all,en:T[lang].all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0;
+  for(const c of C.categories){
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) continue; n+=items.length;
+    const sub=L(c,"subAr","subEn");
+    html+=`<section class="cat" id="cat-${esc(c.id)}"><h2>${esc(L(c,"ar","en"))}</h2>${sub?`<p class="sub">${esc(sub)}</p>`:""}`;
+    for(const i of items){const d=L(i,"dAr","dEn");
+      html+=`<div class="item"><div class="name">${esc(L(i,"ar","en"))}${i.pick?`<span class="pick">${T[lang].pick}</span>`:""}</div><div class="price">${fmt(i.p)} ${cur()}</div>${d?`<p class="desc">${esc(d)}</p>`:""}${i.cal!=null?`<p class="cal">${fmt(i.cal)} ${lang==="ar"?"سعرة حرارية":"kcal"}</p>`:""}</div>`;}
+    html+="</section>";
+  }
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.note;
+  $("updated").textContent=t.updated; $("credit").innerHTML=t.credit(esc(C.credit||"محمد"));
+  const V={ar:{wa:"اطلب على واتساب",map:"اللوكيشن",rev:"قيّمنا على جوجل",ig:"انستجرام"},en:{wa:"Order on WhatsApp",map:"Location",rev:"Rate us on Google",ig:"Instagram"}}[lang];
+  const links=[C.whatsapp&&`<a class="wa" href="https://wa.me/${esc(String(C.whatsapp).replace(/\D/g,""))}" target="_blank" rel="noopener">${V.wa}</a>`,
+    C.mapsUrl&&`<a href="${esc(C.mapsUrl)}" target="_blank" rel="noopener">${V.map}</a>`,
+    C.reviewUrl&&`<a href="${esc(C.reviewUrl)}" target="_blank" rel="noopener">${V.rev}</a>`,
+    C.instagram&&`<a href="${esc(C.instagram)}" target="_blank" rel="noopener">${V.ig}</a>`].filter(Boolean);
+  const vs=$("visit"); vs.hidden=!links.length; vs.innerHTML=links.join("");
+  renderHero(); renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem("menu-lang",lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+
+
+const BEAN=`<svg viewBox="0 0 64 64" fill="none"><ellipse cx="32" cy="32" rx="18" ry="25" transform="rotate(28 32 32)" fill="#D3DDE7"/><path d="M22 12c10 8 8 30 20 40" stroke="#4E3B2E" stroke-width="3.2" stroke-linecap="round"/></svg>`;
+function stamp(txt){return `<svg class="stamp" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3"/><path id="arc${txt}" d="M18 50a32 32 0 0 1 64 0" fill="none"/><text font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" letter-spacing="2.2" fill="currentColor"><textPath href="#arc${txt}" startOffset="50%" text-anchor="middle">BEAN THERE · RIYADH</textPath></text><text x="50" y="60" text-anchor="middle" font-family="Playfair Display,serif" font-weight="700" font-size="19" fill="currentColor">${txt}</text><text x="50" y="76" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7" fill="currentColor">✓ VISITED</text></svg>`}
+function renderHero(){
+  const ar=lang==="ar";
+  $("heroInner").innerHTML=`<div class="pp"><div class="pp-top"><span>Coffee Passport</span><span>No. MHD-0001</span></div>
+   <div class="pp-body"><div class="photo">${BEAN}</div><div>
+    <p class="ar-name">بين ذير</p><p class="en-name">BeanThere</p>
+    <div class="fields"><div><b>${ar?"الحي":"District"}</b>${ar?"المحمدية، الرياض":"Al Mohammadiyah, Riyadh"}</div><div><b>${ar?"الدوام":"Opens"}</b>${ar?"من ١٠ الصبح":"From 10 AM"}</div>
+    <div><b>${ar?"النوع":"Type"}</b>${ar?"قهوة مختصة":"Specialty coffee"}</div><div><b>${ar?"الأسعار":"Prices"}</b>${ar?"واضحة قبل ما توصل":"Clear before you arrive"}</div></div>
+   </div></div>
+   <div class="mrz">P&lt;SAU&lt;BEAN&lt;THERE&lt;&lt;MOHAMMADIYAH&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>COFFEE&lt;OF&lt;THE&lt;DAY&lt;13SAR&lt;&lt;FLATWHITE&lt;18SAR&lt;&lt;</div></div>`;
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0;
+  for(const c of C.categories){
+    const items=c.items.filter(i=>!q||[i.ar,i.en].join(" ").toLowerCase().includes(q));
+    if(!items.length) continue; n+=items.length;
+    html+=`<section class="cat" id="cat-${esc(c.id)}"><div class="ch"><div><h2>${esc(L(c,"ar","en"))}</h2>${lang==="ar"?`<span class="enh">${esc(c.en)}</span>`:""}</div>${stamp(c.stamp)}</div>`;
+    for(const i of items){
+      const kc=i.cal!=null?`<div class="kc"><i style="width:${Math.max(6,Math.round(i.cal/2))}px"></i>${i.cal} kcal</div>`:"";
+      html+=`<div class="row"><div><span class="nm">${esc(L(i,"ar","en"))}</span>${i.pick?`<span class="pick">${T[lang].pick}</span>`:""}${lang==="ar"?`<span class="en">${esc(i.en)}</span>`:""}</div><span class="pr">${fmt(i.p)} ${cur()}</span>${kc}</div>`;}
+    html+="</section>";
+  }
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+}
+T.ar.note="نسخة للعرض: الأصناف والأسعار والسعرات من منيوكم المنشور على جوجل";
+T.en.note="Preview: items, prices and calories from your menu on Google";
+T.ar.search="وش تبي تشرب اليوم؟";
+T.ar.pick="ختم الزوّار";T.en.pick="Guests' stamp";
+
+apply();
+</script>
+<script>if(location.hash!=="#preview"){window.goatcounter={path:"beanthere-p7k2"};var s=document.createElement("script");s.async=1;s.dataset.goatcounter="https://khashab.goatcounter.com/count";s.src="https://gc.zgo.at/count.js";document.head.appendChild(s);}</script>
+</body>
+</html>
