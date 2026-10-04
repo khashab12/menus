@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو BRB</title>
+<meta name="description" content="Be Right Back">
+<meta property="og:title" content="منيو BRB">
+<meta property="og:description" content="Be Right Back">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/brb-k6v2/">
+<meta property="og:image" content="https://khashab12.github.io/menus/brb-k6v2/logo.png">
+<meta name="theme-color" content="#2d3e33">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;800&family=Caveat:wght@600;700&family=Tajawal:wght@400;500;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.empty{text-align:center;padding:3rem 1rem;opacity:.75}
+button{font:inherit}
+.visit{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;max-width:560px;margin:1rem auto 0;padding:0 1.2rem}
+.visit[hidden]{display:none}
+.visit a{flex:1 1 auto;text-align:center;text-decoration:none;font-size:.85rem;padding:.55rem .9rem;min-height:40px;border-radius:999px;border:1px solid currentColor;color:inherit}
+.visit a.wa{background:#1f8f4e;border-color:#1f8f4e;color:#fff}
+
+:root{--green:#2d3e33;--green2:#3e5546;--cream:#ecebe3;--paper:#f3f2ec;--card:#fbfaf6;--ink:#2d3e33;--soft:#6f7a72;--line:#d9d8ce}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#121814;--card:#19211c;--ink:#ecebe3;--soft:#a9b2ab;--line:#28322c;--green:#b9cdbd}}
+:root[data-theme="dark"]{--paper:#121814;--card:#19211c;--ink:#ecebe3;--soft:#a9b2ab;--line:#28322c;--green:#b9cdbd}
+body{background:var(--paper);color:var(--ink);font-family:"Tajawal","Lexend",system-ui,sans-serif}
+html[lang=en] body{font-family:"Lexend","Tajawal",sans-serif}
+.demo-note{background:#2d3e33;color:#ecebe3}
+header{position:relative;text-align:center;background:#ecebe3;color:#2d3e33;padding:calc(env(safe-area-inset-top,0px) + 3.2rem) 1.2rem 1.6rem;overflow:hidden}
+.lang{position:absolute;top:calc(env(safe-area-inset-top,0px) + .8rem);inset-inline-end:1rem;background:#2d3e33;color:#ecebe3;border:0;border-radius:6px;padding:.25rem .95rem;cursor:pointer;min-height:36px;font:500 .78rem "Lexend";z-index:2}
+/* coffee branch drawing in the corner, like their menu */
+.branch{position:absolute;top:0;left:0;width:96px;height:110px}
+html[dir=rtl] .branch{left:auto;right:0;transform:scaleX(-1)}
+html[dir=rtl] .lover{right:auto;left:1.1rem}
+.lover{position:absolute;top:calc(env(safe-area-inset-top,0px) + 4.2rem);right:1.1rem;font:700 1.15rem/0.95 "Caveat";color:#2d3e33;transform:rotate(-8deg);direction:ltr;text-align:center}
+#logo{display:inline-block;padding:.4rem 1.4rem;background:#ecebe3;direction:ltr}
+.wm{font:800 4rem/1 "Lexend";letter-spacing:.04em;color:#2d3e33}
+.ws{font:500 .78rem "Lexend";letter-spacing:.42em;margin-inline-start:.42em;color:#2d3e33;margin-top:.3rem}
+.rule{width:44px;height:3px;background:#2d3e33;margin:.9rem auto 0;border-radius:2px}
+.tg{margin:.7rem 0 0;font:500 .95rem "Tajawal";color:#2d3e33}
+.info{font-size:.76rem;color:#6f7a72;margin:.2rem 0 0}
+.bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar-in{max-width:560px;margin:0 auto;padding:.6rem 1.2rem .4rem}
+.search input{width:100%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;padding:.55rem 1rem;font:inherit}
+.chips{display:flex;gap:.45rem;overflow-x:auto;padding:.55rem 0 .15rem;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1.5px solid var(--green);background:none;color:var(--green);border-radius:6px;padding:.28rem 1rem;cursor:pointer;min-height:36px;font:500 .84rem "Tajawal","Lexend"}
+.chip[aria-pressed="true"]{background:#2d3e33;border-color:#2d3e33;color:#ecebe3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip[aria-pressed="true"]{background:#b9cdbd;border-color:#b9cdbd;color:#121814}}
+.chip:focus-visible,.lang:focus-visible,.search input:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+main{max-width:560px;margin:0 auto;padding:.5rem 1.2rem 1.5rem}
+section{margin-top:2rem;scroll-margin-top:120px}
+/* underlined two-language column headers */
+h2{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 .4rem;padding-bottom:.35rem;border-bottom:2.5px solid var(--green);font:700 1.25rem "Tajawal";color:var(--green)}
+h2 .en{font:500 1.15rem "Lexend";letter-spacing:.04em;direction:ltr}
+.row{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--line)}
+.pr{font:700 1.05rem "Lexend";color:var(--green);min-width:2.2rem;direction:ltr}
+.nm{display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap}
+.nm .a{font-weight:700}
+.nm .e{font:500 .84rem "Lexend";color:var(--ink);direction:ltr}
+.nm .d{flex-basis:100%;font-size:.7rem;color:var(--soft)}
+/* coffee box card, outlined like theirs */
+.box{margin:2rem 0 0;border:2px solid var(--green);border-radius:14px;padding:.9rem 1rem}
+.box h3{display:flex;justify-content:space-between;margin:0 0 .5rem;font:700 1.15rem "Tajawal";color:var(--green)}
+.box h3 span{font:500 1.15rem "Lexend";direction:ltr}
+.box .bx{display:grid;grid-template-columns:62px 1fr;gap:.9rem;align-items:center}
+.box svg{width:62px;height:62px}
+.box .r{display:flex;justify-content:space-between;padding:.35rem 0;border-bottom:1px solid var(--line);font-weight:700}
+.box .r:last-child{border-bottom:0}
+.box .r b{font:700 1rem "Lexend";color:var(--green);direction:ltr}
+.box .r small{display:block;font:400 .68rem "Tajawal";color:var(--soft)}
+.bf{margin:2rem 0 0;display:flex;justify-content:space-between;align-items:flex-end}
+.bf .s{font:700 1.3rem/0.95 "Caveat";color:var(--green);direction:ltr;text-align:left}
+.bf .m{font:800 1rem "Lexend";letter-spacing:.2em;color:var(--green);display:flex;align-items:center;gap:.5rem;direction:ltr}
+.bf .m::before,.bf .m::after{content:"";width:40px;height:2px;background:var(--green)}
+.nt{margin:1.2rem 0 0;text-align:center;font-size:.76rem;color:var(--soft)}
+.visit a{border-radius:6px}
+.foot{text-align:center;color:var(--soft);font-size:.8rem;padding:.5rem 1rem 2.2rem}.foot strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+
+<header>
+  <svg class="branch" viewBox="0 0 96 110" aria-hidden="true" fill="none" stroke="#2d3e33" stroke-width="1.6" stroke-linecap="round"><path d="M0 6c20 10 34 30 40 60"/><path d="M14 14c8-10 22-10 26-2-8 6-20 6-26 2z"/><path d="M26 34c10-6 22-2 24 6-10 4-20 2-24-6z"/><path d="M8 30c-2 10 2 20 10 22 2-10-2-18-10-22z"/><path d="M30 56c-4 8-2 18 6 20 2-8 0-16-6-20z"/><circle cx="20" cy="44" r="3.5"/><circle cx="26" cy="47" r="3.5"/><circle cx="22" cy="51" r="3.5"/><circle cx="40" cy="78" r="3.5"/><circle cx="45" cy="74" r="3.5"/></svg>
+  <div class="lover">Coffee<br>lover ♡</div>
+  <button class="lang" id="langBtn">English</button>
+  <div id="logo"><div class="wm">BRB</div><div class="ws">SPECIALTY COFFEE</div></div>
+  <div class="rule"></div>
+  <p class="tg" id="tg"></p>
+  <p class="info" id="info"></p>
+</header>
+
+<div class="bar"><div class="bar-in">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div></div>
+<main id="menu"></main>
+<nav class="visit" id="visit" hidden></nav>
+<footer class="foot"><p id="note"></p><p id="credit"></p></footer>
+<script>
+const CONFIG = {"name": "BRB Be Right Back", "nameAr": "BRB", "tagline": {"ar": "Be Right Back", "en": "Be Right Back"}, "info": {"ar": "حي الخليج، شارع الحكم المستنصر بالله، الرياض", "en": "Al Khaleej, Al Hakam Al Mustansir Billah St, Riyadh"}, "logo": "data:image/png;base64,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", "colors": {"primary": "#2d3e33", "onPrimary": "#ecebe3", "secondary": "#ecebe3", "background": "#f3f2ec", "accent": "#3e5546"}, "fonts": {"display": "Lexend + Caveat", "body": "Tajawal"}, "pattern": "coffee branch drawing + underlined columns + coffee-box card", "currency": {"ar": "ر.س", "en": "SAR"}, "demoBanner": false, "credit": "محمد", "whatsapp": "966507918193", "mapsUrl": "https://maps.app.goo.gl/WJAzGTJDQ48m7nWn8", "instagram": "https://instagram.com/brbcoffee.sa", "categories": [{"id": "drinks", "ar": "المشروبات", "en": "Drinks", "items": [{"ar": "إسبريسو", "en": "Espresso", "p": 11}, {"ar": "إسبريسو الفريدو", "en": "Espresso Freddo", "p": 14}, {"ar": "قهوة اليوم", "en": "Coffee Day", "p": 7, "dAr": "حار أو بارد", "dEn": "Hot or ice"}, {"ar": "V60", "en": "V60", "p": 13, "dAr": "كولومبي أو إثيوبي", "dEn": "Colombian or Ethiopian"}, {"ar": "V60 فاخر", "en": "V60 Premium", "p": 17}, {"ar": "كركديه BRB", "en": "BRB Hibiscus", "p": 12}, {"ar": "سقنتشر ريدبول", "en": "Signature Redbull", "p": 17}, {"ar": "ماتشا", "en": "Matcha", "p": 18, "dAr": "كلاسيك / توت / فانيلا", "dEn": "Classic / Strawberry / Vanilla"}]}, {"id": "desserts", "ar": "الحلويات", "en": "Desserts", "items": [{"ar": "كوكيز شوكلت", "en": "Chocolate Cookie", "p": 7}, {"ar": "بودينغ", "en": "Pudding", "p": 13}, {"ar": "آيس كوكيز", "en": "IceCookie", "p": 13}, {"ar": "أصابع الوافل", "en": "Waffle Sticks", "p": 13}, {"ar": "ترافل مانجو", "en": "Mango Trifle", "p": 13}, {"ar": "فرينش توست", "en": "French Toast", "p": 14}, {"ar": "بسبوسة BRB", "en": "BRB Basbousa", "p": 14}, {"ar": "تراميسو", "en": "Tiramisu", "p": 14}]}]};
+const C = CONFIG || {name:"Menu",categories:[]};
+const T = {"ar": {"dir": "rtl", "lang": "English", "search": "وش تبي تطلب؟", "empty": "ما لقينا شي بهالاسم.", "all": "الكل", "demo": "", "note": "", "tg": "Be Right Back · مفتوح ٢٤ ساعة", "bx": "بوكسات القهوة", "bh": "بوكس قهوة اليوم حار", "bi": "بوكس قهوة اليوم بارد", "bl": "لتر ونص", "nt": "الأصناف والأسعار من منيو BRB المنشور"}, "en": {"dir": "ltr", "lang": "العربية", "search": "What would you like?", "empty": "Nothing matches that.", "all": "All", "demo": "", "note": "", "tg": "Be Right Back · Open 24 hours", "bx": "Coffee Box", "bh": "Coffee Day Box (Hot)", "bi": "Coffee Day Box (Ice)", "bl": "1.5 Liter", "nt": "Items and prices from BRB's published menu"}};
+let lang="ar", active="all", query="";
+const KEY="brb-lang";
+try{const s=localStorage.getItem(KEY);if(s==="ar"||s==="en")lang=s;}catch(e){}
+try{const u=new URLSearchParams(location.search).get("lang");if(u==="ar"||u==="en")lang=u;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"",en:""})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+const P=i=> i.p2!=null ? `${fmt(i.p)}<span class="sl">/</span>${fmt(i.p2)}` : fmt(i.p);
+
+function hero(){ $("info").textContent=L(C.info||{},"ar","en"); $("tg").textContent=T[lang].tg; }
+function section(c,ci,body){ return `<section id="cat-${esc(c.id)}"><h2><span class="en">${esc(c.en.toUpperCase())}</span><span>${esc(c.ar)}</span></h2>${body}</section>`; }
+function item(i){ return `<div class="row"><span class="pr">${P(i)}</span><span class="nm"><span class="a">${esc(lang==="ar"?i.ar:i.en)}</span>${lang==="ar"?`<span class="e">${esc(i.en)}</span>`:""}${(i.dAr||i.dEn)?`<span class="d">${esc(lang==="ar"?i.dAr:i.dEn)}</span>`:""}</span></div>`; }
+function afterRender(){ if(query.trim()) return; const c=cur(); $("menu").insertAdjacentHTML("beforeend",`<div class="box"><h3><span>COFFEE BOX</span>${T[lang].bx}</h3><div class="bx">${'<svg viewBox="0 0 62 62" aria-hidden="true"><path d="M10 22h42v32H10z" fill="#2d3e33"/><path d="M10 22l6-10h30l6 10" fill="#3e5546"/><path d="M24 12c0-6 14-6 14 0" fill="none" stroke="#2d3e33" stroke-width="3"/><text x="31" y="44" text-anchor="middle" font-family="Lexend" font-weight="700" font-size="9" fill="#ecebe3">BRB</text></svg>'}<div><div class="r"><span>${T[lang].bh}<small>${T[lang].bl}</small></span><b>${fmt(37)} <small>${c}</small></b></div><div class="r"><span>${T[lang].bi}<small>${T[lang].bl}</small></span><b>${fmt(39)} <small>${c}</small></b></div></div></div></div><div class="bf"><span class="s">but<br>first,<br>coffee</span><span class="m">BRB</span></div><p class="nt">${T[lang].nt}</p>`); }
+
+function renderChips(){
+  const cats=[{id:"all",ar:T.ar.all,en:T.en.all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0,k=0;
+  C.categories.forEach((c,ci)=>{
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) return; n+=items.length;
+    html+=section(c,ci,items.map(i=>item(i,++k,c)).join(""));
+  });
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+  if(typeof afterRender==="function") afterRender();
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.demo;
+  $("note").textContent=t.note||"";
+  $("credit").innerHTML=(lang==="ar"?"منيو ديجيتال من تصميم ":"Digital menu designed by ")+`<strong>${lang==="en"?"Mohamed":"محمد"}</strong>`;
+  const V={ar:{wa:"اطلب على واتساب",map:"اللوكيشن",rev:"قيّمنا على جوجل",ig:"انستقرام"},en:{wa:"Order on WhatsApp",map:"Location",rev:"Rate us on Google",ig:"Instagram"}}[lang];
+  const links=[C.whatsapp&&`<a class="wa" href="https://wa.me/${esc(String(C.whatsapp).replace(/\D/g,""))}" target="_blank" rel="noopener">${V.wa}</a>`,
+    C.mapsUrl&&`<a href="${esc(C.mapsUrl)}" target="_blank" rel="noopener">${V.map}</a>`,
+    C.reviewUrl&&`<a href="${esc(C.reviewUrl)}" target="_blank" rel="noopener">${V.rev}</a>`,
+    C.instagram&&`<a href="${esc(C.instagram)}" target="_blank" rel="noopener">${V.ig}</a>`].filter(Boolean);
+  const vs=$("visit"); vs.hidden=!links.length; vs.innerHTML=links.join("");
+  if(typeof hero==="function") hero();
+  renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem(KEY,lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+apply();
+</script>
+</body>
+</html>
