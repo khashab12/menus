@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو ليرز</title>
+<meta name="description" content="Coffee &amp; Bakery">
+<meta property="og:title" content="منيو ليرز">
+<meta property="og:description" content="Coffee &amp; Bakery">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/lyrs-b7k4/">
+<meta property="og:image" content="https://khashab12.github.io/menus/lyrs-b7k4/logo.png">
+<meta name="theme-color" content="#1d2a44">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.empty{text-align:center;padding:3rem 1rem;opacity:.75}
+button{font:inherit}
+.visit{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;max-width:560px;margin:1rem auto 0;padding:0 1.2rem}
+.visit[hidden]{display:none}
+.visit a{flex:1 1 auto;text-align:center;text-decoration:none;font-size:.85rem;padding:.55rem .9rem;min-height:40px;border-radius:999px;border:1px solid currentColor;color:inherit}
+.visit a.wa{background:#1f8f4e;border-color:#1f8f4e;color:#fff}
+
+:root{--navy:#1d2a44;--copper:#b0683a;--copper2:#8f4f28;--cream:#f4ecdf;--paper:#f8f3ea;--card:#fffcf6;--ink:#1d2a44;--soft:#6e7383;--line:#e6dccb}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1522;--card:#182030;--ink:#f4ecdf;--soft:#a9adba;--line:#283247;--navy:#e9dcc6}}
+:root[data-theme="dark"]{--paper:#0f1522;--card:#182030;--ink:#f4ecdf;--soft:#a9adba;--line:#283247;--navy:#e9dcc6}
+body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif}
+.demo-note{background:#1d2a44;color:#f4ecdf}
+header{position:relative;text-align:center;background:#f4ecdf;color:#1d2a44;padding:calc(env(safe-area-inset-top,0px) + 3.2rem) 1.2rem 0}
+.lang{position:absolute;top:calc(env(safe-area-inset-top,0px) + .8rem);inset-inline-end:1rem;background:#1d2a44;color:#f4ecdf;border:0;border-radius:4px;padding:.25rem .95rem;cursor:pointer;min-height:36px;font:500 .8rem "IBM Plex Sans Arabic";z-index:2}
+#logo{display:inline-block;padding:.4rem 1.4rem;background:#f4ecdf;direction:ltr}
+.wm{font:400 3.6rem/1 "DM Serif Display";letter-spacing:.12em;margin-inline-start:.12em;color:#1d2a44}
+.wa{font:500 1rem "IBM Plex Sans Arabic";color:#1d2a44;margin-top:.2rem}
+.tg{margin:.8rem 0 0;font:400 1.05rem "DM Serif Display";font-style:italic;color:#1d2a44}
+.info{font-size:.76rem;color:#6e7383;margin:.2rem 0 0}
+/* the stitched copper leather band from their shopfront */
+.band{position:relative;margin:1.4rem -1.2rem 0;padding:.75rem 1rem;background:linear-gradient(180deg,#bd7646,#a35d31 55%,#8f4f28);color:#f6e6d2;font:400 1.05rem "DM Serif Display";letter-spacing:.32em;direction:ltr;box-shadow:inset 0 2px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.15)}
+.band::before,.band::after{content:"";position:absolute;left:10px;right:10px;border-top:1.5px dashed rgba(246,230,210,.6)}
+.band::before{top:5px}.band::after{bottom:5px}
+.bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar-in{max-width:560px;margin:0 auto;padding:.6rem 1.2rem .4rem}
+.search input{width:100%;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:4px;padding:.55rem 1rem;font:inherit}
+.chips{display:flex;gap:.45rem;overflow-x:auto;padding:.55rem 0 .15rem;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--navy);background:none;color:var(--navy);border-radius:4px;padding:.3rem 1rem;cursor:pointer;min-height:36px;font:500 .84rem "IBM Plex Sans Arabic"}
+.chip[aria-pressed="true"]{background:#b0683a;border-color:#b0683a;color:#fff}
+.chip:focus-visible,.lang:focus-visible,.search input:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
+main{max-width:560px;margin:0 auto;padding:.5rem 1.2rem 1.5rem}
+section{margin-top:2.2rem;scroll-margin-top:120px}
+h2{margin:0 0 .9rem;text-align:center;font:400 1.75rem/1.2 "DM Serif Display";color:var(--navy);direction:ltr}
+h2 small{display:block;font:500 .9rem "IBM Plex Sans Arabic";color:var(--copper);margin-top:.2rem}
+h2::after{content:"";display:block;width:56px;height:3px;margin:.55rem auto 0;background:var(--copper);border-radius:2px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.it{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:.75rem .8rem;border-top:3px solid var(--copper)}
+.it .en{display:block;font:400 1.02rem/1.25 "DM Serif Display";color:var(--navy);direction:ltr;text-align:left}
+.it .ar{display:block;font:400 .82rem "IBM Plex Sans Arabic";color:var(--soft);margin-top:.3rem;text-align:right;direction:rtl}
+.nt{margin:1.8rem 0 0;text-align:center;font-size:.76rem;color:var(--soft)}
+.hrs{margin:1.2rem auto 0;max-width:280px;text-align:center;border:1px solid var(--copper);border-radius:6px;padding:.6rem;font:500 .9rem "IBM Plex Sans Arabic"}
+.hrs b{display:block;font:400 1.3rem "DM Serif Display";color:var(--copper);direction:ltr}
+.visit a{border-radius:4px}
+.foot{text-align:center;color:var(--soft);font-size:.8rem;padding:.5rem 1rem 2.2rem}.foot strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+
+<header>
+  <button class="lang" id="langBtn">English</button>
+  <div id="logo"><div class="wm">LYRS</div><div class="wa">ليرز</div></div>
+  <p class="tg" id="tg"></p>
+  <p class="info" id="info"></p>
+  <div class="band">LYRS · COFFEE &amp; BAKERY</div>
+</header>
+
+<div class="bar"><div class="bar-in">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div></div>
+<main id="menu"></main>
+<nav class="visit" id="visit" hidden></nav>
+<footer class="foot"><p id="note"></p><p id="credit"></p></footer>
+<script>
+const CONFIG = {"name": "LYRS Coffee & Bakery", "nameAr": "ليرز", "tagline": {"ar": "Coffee & Bakery", "en": "Coffee & Bakery"}, "info": {"ar": "عقارية بلازا، العليا، الرياض", "en": "Akariya Plaza, Al Olaya, Riyadh"}, "logo": "data:image/png;base64,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", "colors": {"primary": "#1d2a44", "onPrimary": "#f4ecdf", "secondary": "#b0683a", "background": "#f8f3ea", "accent": "#b0683a"}, "fonts": {"display": "DM Serif Display", "body": "IBM Plex Sans Arabic"}, "pattern": "stitched copper leather band + bilingual card grid", "currency": {"ar": "ر.س", "en": "SAR"}, "demoBanner": false, "credit": "محمد", "whatsapp": "966559878355", "mapsUrl": "https://www.google.com/maps/search/?api=1&query=LYRS+Coffee+%26+Bakery+Akariya+Plaza+Riyadh", "instagram": "https://instagram.com/lyrsbakery", "categories": [{"id": "breakfast", "ar": "سندويشات الفطور", "en": "Breakfast Sandwiches", "items": [{"ar": "تيركي مدخن وبيستو", "en": "Smoked Turkey & Pesto", "p": null}, {"ar": "شكشوكة سعودية", "en": "Saudi Shakshoka", "p": null}, {"ar": "مشروم بالترافل", "en": "Truffle Mushroom", "p": null}, {"ar": "تونة سبايسي بالشطة", "en": "Spicy Tuna", "p": null}, {"ar": "بيكون شيدر", "en": "Bacon Cheddar", "p": null}, {"ar": "حلومي مشروم بالليمون الحساوي", "en": "Halloumi Mushroom Hasawi Loumi", "p": null}, {"ar": "حلومي بيستو", "en": "Pesto Halloumi", "p": null}, {"ar": "حلومي بالعسل", "en": "Honey Halloumi", "p": null}, {"ar": "جرانولا بول", "en": "Granola Bowl", "p": null}]}, {"id": "desserts", "ar": "حلى ليرز", "en": "Signature Desserts", "items": [{"ar": "تيراميسو سكوب", "en": "Tiramisu Scoop", "p": null}, {"ar": "بودينغ شوكولاتة وقرفة", "en": "Chocolate Cinnamon Pudding", "p": null}, {"ar": "كوكي سكوب", "en": "Cookie Scoop", "p": null}, {"ar": "فرنش توست كريمي مقرمش", "en": "Crunchy Creamy French Toast", "p": null}, {"ar": "كوكيز فوندان", "en": "Cookies Fondant", "p": null}, {"ar": "فرنش توست شوكولاتة", "en": "Chocolate French Toast", "p": null}, {"ar": "توست ياباني كريم بروليه", "en": "Japanese Toast Crème Brûlée", "p": null}, {"ar": "توست ياباني بالزعفران", "en": "Japanese Toast Saffron", "p": null}, {"ar": "كيكة ليرز سولتد كراميل", "en": "LYRS Salted Caramel Cake", "p": null}]}, {"id": "bakery", "ar": "المخبوزات المالحة", "en": "Bakery · Savory", "items": [{"ar": "موزاريلا وطماطم", "en": "Mozzarella Tomato", "p": null}, {"ar": "كرواسون سادة", "en": "Sada Croissant", "p": null}, {"ar": "مكعب لبنة", "en": "Labneh Cube", "p": null}, {"ar": "كرواسون جبنة فيتا", "en": "Feta Cheese Croissant", "p": null}]}]};
+const C = CONFIG || {name:"Menu",categories:[]};
+const T = {"ar": {"dir": "rtl", "lang": "English", "search": "وش تبي تطلب؟", "empty": "ما لقينا شي بهالاسم.", "all": "الكل", "demo": "", "note": "", "tg": "Coffee & Bakery", "nt": "الأصناف من منيو ليرز المنشور · الأسعار تنضاف بسهولة", "hl": "مفتوحين يوميًا", "hrs": "6AM – 12AM"}, "en": {"dir": "ltr", "lang": "العربية", "search": "What would you like?", "empty": "Nothing matches that.", "all": "All", "demo": "", "note": "", "tg": "Coffee & Bakery", "nt": "Items from LYRS's published menu · prices can be added anytime", "hl": "Open daily", "hrs": "6AM – 12AM"}};
+let lang="ar", active="all", query="";
+const KEY="lyrs-lang";
+try{const s=localStorage.getItem(KEY);if(s==="ar"||s==="en")lang=s;}catch(e){}
+try{const u=new URLSearchParams(location.search).get("lang");if(u==="ar"||u==="en")lang=u;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"",en:""})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+const P=i=> i.p2!=null ? `${fmt(i.p)}<span class="sl">/</span>${fmt(i.p2)}` : fmt(i.p);
+
+function hero(){ $("info").textContent=L(C.info||{},"ar","en"); $("tg").textContent=T[lang].tg; }
+function section(c,ci,body){ return `<section id="cat-${esc(c.id)}"><h2>${esc(c.en)}${lang==="ar"?`<small>${esc(c.ar)}</small>`:""}</h2><div class="grid">${body}</div></section>`; }
+function item(i){ return `<div class="it"><span class="en">${esc(i.en)}</span>${lang==="ar"?`<span class="ar">${esc(i.ar)}</span>`:""}</div>`; }
+function afterRender(){ if(query.trim()) return; $("menu").insertAdjacentHTML("beforeend",`<div class="hrs">${T[lang].hl}<b>${T[lang].hrs}</b></div><p class="nt">${T[lang].nt}</p>`); }
+
+function renderChips(){
+  const cats=[{id:"all",ar:T.ar.all,en:T.en.all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0,k=0;
+  C.categories.forEach((c,ci)=>{
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) return; n+=items.length;
+    html+=section(c,ci,items.map(i=>item(i,++k,c)).join(""));
+  });
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+  if(typeof afterRender==="function") afterRender();
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.demo;
+  $("note").textContent=t.note||"";
+  $("credit").innerHTML=(lang==="ar"?"منيو ديجيتال من تصميم ":"Digital menu designed by ")+`<strong>${lang==="en"?"Mohamed":"محمد"}</strong>`;
+  const V={ar:{wa:"اطلب على واتساب",map:"اللوكيشن",rev:"قيّمنا على جوجل",ig:"انستقرام"},en:{wa:"Order on WhatsApp",map:"Location",rev:"Rate us on Google",ig:"Instagram"}}[lang];
+  const links=[C.whatsapp&&`<a class="wa" href="https://wa.me/${esc(String(C.whatsapp).replace(/\D/g,""))}" target="_blank" rel="noopener">${V.wa}</a>`,
+    C.mapsUrl&&`<a href="${esc(C.mapsUrl)}" target="_blank" rel="noopener">${V.map}</a>`,
+    C.reviewUrl&&`<a href="${esc(C.reviewUrl)}" target="_blank" rel="noopener">${V.rev}</a>`,
+    C.instagram&&`<a href="${esc(C.instagram)}" target="_blank" rel="noopener">${V.ig}</a>`].filter(Boolean);
+  const vs=$("visit"); vs.hidden=!links.length; vs.innerHTML=links.join("");
+  if(typeof hero==="function") hero();
+  renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem(KEY,lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+apply();
+</script>
+</body>
+</html>

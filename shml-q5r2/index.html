@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو شمل</title>
+<meta name="description" content="لمة شمل!">
+<meta property="og:title" content="منيو شمل">
+<meta property="og:description" content="لمة شمل!">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/shml-q5r2/">
+<meta property="og:image" content="https://khashab12.github.io/menus/shml-q5r2/logo.png">
+<meta name="theme-color" content="#1c1a17">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Almarai:wght@300;400;700&family=Cormorant+Garamond:wght@500;600&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.empty{text-align:center;padding:3rem 1rem;opacity:.75}
+button{font:inherit}
+.visit{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;max-width:560px;margin:1rem auto 0;padding:0 1.2rem}
+.visit[hidden]{display:none}
+.visit a{flex:1 1 auto;text-align:center;text-decoration:none;font-size:.85rem;padding:.55rem .9rem;min-height:40px;border-radius:999px;border:1px solid currentColor;color:inherit}
+.visit a.wa{background:#1f8f4e;border-color:#1f8f4e;color:#fff}
+
+:root{--ink:#1c1a17;--linen:#efe9de;--paper:#f6f2ea;--card:#fbf8f2;--soft:#7c7468;--line:#e2d9ca;--wood:#9a7452;--leaf:#5d6b47}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#141310;--card:#1d1b17;--ink:#efe9de;--soft:#b4ab9c;--line:#2e2b25;--wood:#c69b74;--leaf:#9fb083}}
+:root[data-theme="dark"]{--paper:#141310;--card:#1d1b17;--ink:#efe9de;--soft:#b4ab9c;--line:#2e2b25;--wood:#c69b74;--leaf:#9fb083}
+body{background:var(--paper);color:var(--ink);font-family:"Almarai",system-ui,sans-serif}
+html[lang=en] body{font-family:"Almarai","Cormorant Garamond",sans-serif}
+.demo-note{background:#1c1a17;color:#efe9de}
+/* linen texture + floating harakat marks, from the شَمْل calligraphy */
+header{position:relative;text-align:center;color:#1c1a17;padding:calc(env(safe-area-inset-top,0px) + 3.4rem) 1.2rem 2rem;overflow:hidden;
+ background:#efe9de;border-bottom:6px double #1c1a17}
+.lang{position:absolute;top:calc(env(safe-area-inset-top,0px) + .8rem);inset-inline-end:1rem;background:#1c1a17;color:#efe9de;border:0;border-radius:999px;padding:.25rem .95rem;cursor:pointer;min-height:36px;font:400 .8rem "Almarai";z-index:2}
+.hk{position:absolute;font:700 2.4rem "Aref Ruqaa";color:#1c1a17;opacity:.08;pointer-events:none}
+#logo{display:inline-block;padding:.2rem 1.6rem .6rem;background:#efe9de}
+.wm{font:700 4.6rem/1.3 "Aref Ruqaa";color:#1c1a17}
+.we{font:600 .8rem "Cormorant Garamond";letter-spacing:.55em;margin-inline-start:.55em;color:#5a544b;direction:ltr}
+.tg{margin:.9rem 0 0;font:700 1.25rem "Aref Ruqaa";color:#1c1a17}
+.info{font-size:.75rem;color:#7c7468;margin:.25rem 0 0}
+.bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar-in{max-width:560px;margin:0 auto;padding:.6rem 1.2rem .4rem}
+.search input{width:100%;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:.55rem 1rem;font:inherit}
+.chips{display:flex;gap:.45rem;overflow-x:auto;padding:.55rem 0 .15rem;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--ink);background:none;color:var(--ink);border-radius:999px;padding:.3rem 1rem;cursor:pointer;min-height:36px;font:400 .85rem "Almarai"}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.chip:focus-visible,.lang:focus-visible,.search input:focus-visible{outline:2px solid var(--wood);outline-offset:2px}
+main{max-width:560px;margin:0 auto;padding:.5rem 1.2rem 1.5rem}
+section{margin-top:2.2rem;scroll-margin-top:120px}
+/* section title in Ruqaa with a harakah (fatha / sukun) sitting above it */
+h2{position:relative;text-align:center;margin:0 0 .9rem;font:700 1.8rem/1.6 "Aref Ruqaa"}
+h2 .mk{display:block;font-size:1.2rem;line-height:.6;color:var(--wood)}
+h2 small{display:block;font:600 .78rem "Cormorant Garamond";letter-spacing:.3em;color:var(--soft);text-transform:uppercase;direction:ltr}
+.row{display:grid;grid-template-columns:1fr auto;gap:.8rem;align-items:baseline;padding:.6rem 0}
+.row+.row{border-top:1px dashed var(--line)}
+.nm .a{display:block;font-weight:700}
+.nm .e{display:block;font:500 .9rem "Cormorant Garamond";color:var(--soft);direction:ltr;text-align:right}
+html[dir=ltr] .nm .e{text-align:left}
+.pr{font:700 1rem "Almarai";white-space:nowrap;direction:ltr}
+.pr small{font:300 .62rem "Almarai";color:var(--soft);margin-inline-start:.2rem}
+.lm{margin:2.4rem 0 0;text-align:center}
+.lm b{display:block;font:700 2.2rem "Aref Ruqaa"}
+.lm span{font-size:.8rem;color:var(--soft)}
+.visit a{border-radius:999px}
+.foot{text-align:center;color:var(--soft);font-size:.8rem;padding:.5rem 1rem 2.2rem}.foot strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+
+<header>
+  <span class="hk" style="top:18%;left:9%">َ</span><span class="hk" style="top:58%;left:16%">ْ</span><span class="hk" style="top:24%;right:12%">ّ</span><span class="hk" style="top:66%;right:8%">ُ</span>
+  <button class="lang" id="langBtn">English</button>
+  <div id="logo"><div class="wm">شَمْل</div><div class="we">SHML</div></div>
+  <p class="tg" id="tg"></p>
+  <p class="info" id="info"></p>
+</header>
+
+<div class="bar"><div class="bar-in">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div></div>
+<main id="menu"></main>
+<nav class="visit" id="visit" hidden></nav>
+<footer class="foot"><p id="note"></p><p id="credit"></p></footer>
+<script>
+const CONFIG = {"name": "Shml", "nameAr": "شمل", "tagline": {"ar": "لمة شمل!", "en": "Lammat Shml!"}, "info": {"ar": "القيروان، شارع الشيخ عبدالله بن جبرين، الرياض", "en": "Al Qairawan, Sheikh Abdullah bin Jibreen St, Riyadh"}, "logo": "data:image/png;base64,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", "colors": {"primary": "#1c1a17", "onPrimary": "#efe9de", "secondary": "#9a7452", "background": "#f6f2ea", "accent": "#5d6b47"}, "fonts": {"display": "Aref Ruqaa", "body": "Almarai"}, "pattern": "linen + harakat marks over Ruqaa section titles", "currency": {"ar": "ر.س", "en": "SAR"}, "demoBanner": true, "credit": "محمد", "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%D8%B4%D9%85%D9%84+%D8%A7%D9%84%D9%82%D9%8A%D8%B1%D9%88%D8%A7%D9%86+%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6", "instagram": "https://instagram.com/shml.ksa", "categories": [{"id": "coffee", "ar": "القهوة", "en": "Coffee", "items": [{"ar": "قهوة اليوم", "en": "Coffee of the Day", "p": 12}, {"ar": "إسبريسو", "en": "Espresso", "p": 12}, {"ar": "كورتادو", "en": "Cortado", "p": 15}, {"ar": "فلات وايت", "en": "Flat White", "p": 17}, {"ar": "سبانش لاتيه", "en": "Spanish Latte", "p": 19}, {"ar": "V60", "en": "V60", "p": 19}]}, {"id": "cold", "ar": "الباردة", "en": "Cold", "items": [{"ar": "كولد برو", "en": "Cold Brew", "p": 18}, {"ar": "آيس ماتشا", "en": "Iced Matcha", "p": 22}, {"ar": "كركديه", "en": "Hibiscus", "p": 16}, {"ar": "آيس سبانش لاتيه", "en": "Iced Spanish Latte", "p": 20}]}, {"id": "sweet", "ar": "الحلى", "en": "Sweets", "items": [{"ar": "وافل بايتس", "en": "Waffle Bites", "p": 22}, {"ar": "تشيز كيك", "en": "Cheesecake", "p": 24}, {"ar": "كوكيز", "en": "Cookie", "p": 10}]}]};
+const C = CONFIG || {name:"Menu",categories:[]};
+const T = {"ar": {"dir": "rtl", "lang": "English", "search": "وش تبي تطلب؟", "empty": "ما لقينا شي بهالاسم.", "all": "الكل", "demo": "تصور تجريبي — الأصناف والأسعار أمثلة وليست منيو شمل", "note": "", "tg": "لمة شمل!", "lm": "لمة شمل!", "lms": "القيروان · الرياض"}, "en": {"dir": "ltr", "lang": "العربية", "search": "What would you like?", "empty": "Nothing matches that.", "all": "All", "demo": "Demo — items and prices are examples, not Shml's menu", "note": "", "tg": "Lammat Shml!", "lm": "لمة شمل!", "lms": "Al Qairawan · Riyadh"}};
+let lang="ar", active="all", query="";
+const KEY="shml-lang";
+try{const s=localStorage.getItem(KEY);if(s==="ar"||s==="en")lang=s;}catch(e){}
+try{const u=new URLSearchParams(location.search).get("lang");if(u==="ar"||u==="en")lang=u;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"",en:""})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+const P=i=> i.p2!=null ? `${fmt(i.p)}<span class="sl">/</span>${fmt(i.p2)}` : fmt(i.p);
+
+const MK=["َ","ْ","ُ","ّ"];
+function hero(){ $("info").textContent=L(C.info||{},"ar","en"); $("tg").textContent=T[lang].tg; }
+function section(c,ci,body){ return `<section id="cat-${esc(c.id)}"><h2><span class="mk">${MK[ci%4]}</span>${esc(c.ar)}${`<small>${esc(c.en)}</small>`}</h2>${body}</section>`; }
+function item(i){ return `<div class="row"><span class="nm"><span class="a">${esc(lang==="ar"?i.ar:i.en)}</span>${lang==="ar"?`<span class="e">${esc(i.en)}</span>`:""}</span><span class="pr">${P(i)}<small>${cur()}</small></span></div>`; }
+function afterRender(){ if(query.trim()) return; $("menu").insertAdjacentHTML("beforeend",`<div class="lm"><b>${T[lang].lm}</b><span>${T[lang].lms}</span></div>`); }
+
+function renderChips(){
+  const cats=[{id:"all",ar:T.ar.all,en:T.en.all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0,k=0;
+  C.categories.forEach((c,ci)=>{
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) return; n+=items.length;
+    html+=section(c,ci,items.map(i=>item(i,++k,c)).join(""));
+  });
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+  if(typeof afterRender==="function") afterRender();
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.demo;
+  $("note").textContent=t.note||"";
+  $("credit").innerHTML=(lang==="ar"?"منيو ديجيتال من تصميم ":"Digital menu designed by ")+`<strong>${lang==="en"?"Mohamed":"محمد"}</strong>`;
+  const V={ar:{wa:"اطلب على واتساب",map:"اللوكيشن",rev:"قيّمنا على جوجل",ig:"انستقرام"},en:{wa:"Order on WhatsApp",map:"Location",rev:"Rate us on Google",ig:"Instagram"}}[lang];
+  const links=[C.whatsapp&&`<a class="wa" href="https://wa.me/${esc(String(C.whatsapp).replace(/\D/g,""))}" target="_blank" rel="noopener">${V.wa}</a>`,
+    C.mapsUrl&&`<a href="${esc(C.mapsUrl)}" target="_blank" rel="noopener">${V.map}</a>`,
+    C.reviewUrl&&`<a href="${esc(C.reviewUrl)}" target="_blank" rel="noopener">${V.rev}</a>`,
+    C.instagram&&`<a href="${esc(C.instagram)}" target="_blank" rel="noopener">${V.ig}</a>`].filter(Boolean);
+  const vs=$("visit"); vs.hidden=!links.length; vs.innerHTML=links.join("");
+  if(typeof hero==="function") hero();
+  renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem(KEY,lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+apply();
+</script>
+</body>
+</html>
