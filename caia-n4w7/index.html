@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو كايا قهوة مختصة</title>
+<meta name="description" content="كايا قهوة مختصة">
+<meta property="og:title" content="منيو كايا قهوة مختصة">
+<meta property="og:description" content="كايا قهوة مختصة">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/caia-n4w7/">
+<meta property="og:image" content="https://khashab12.github.io/menus/caia-n4w7/logo.png">
+<meta name="theme-color" content="#2f3a6b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Aref+Ruqaa:wght@700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.empty{text-align:center;padding:3rem 1rem;opacity:.75}
+button{font:inherit}
+.visit{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;max-width:560px;margin:1rem auto 0;padding:0 1.2rem}
+.visit[hidden]{display:none}
+.visit a{flex:1 1 auto;text-align:center;text-decoration:none;font-size:.85rem;padding:.55rem .9rem;min-height:40px;border-radius:999px;border:1px solid currentColor;color:inherit}
+.visit a.wa{background:#1f8f4e;border-color:#1f8f4e;color:#fff}
+
+:root{--navy:#2f3a6b;--navy2:#252e57;--sky:#8fb3e0;--paper:#f4f6fb;--card:#ffffff;--ink:#1f2748;--soft:#6c7596;--line:#e2e7f2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#121630;--card:#1b2142;--ink:#eef1fa;--soft:#a8b1cf;--line:#2a3256;--navy:#8fb3e0}}
+:root[data-theme="dark"]{--paper:#121630;--card:#1b2142;--ink:#eef1fa;--soft:#a8b1cf;--line:#2a3256;--navy:#8fb3e0}
+body{background:var(--paper);color:var(--ink);font-family:"Readex Pro",system-ui,sans-serif}
+.demo-note{background:#2f3a6b;color:#fff}
+header{position:relative;text-align:center;background:#2f3a6b;color:#fff;padding:calc(env(safe-area-inset-top,0px) + 3.2rem) 1.2rem 2rem}
+.lang{position:absolute;top:calc(env(safe-area-inset-top,0px) + .8rem);inset-inline-end:1rem;background:#8fb3e0;color:#1f2748;border:0;border-radius:999px;padding:.25rem .95rem;cursor:pointer;min-height:36px;font:500 .8rem "Readex Pro";z-index:2}
+#logo{display:inline-block;padding:.4rem 1.6rem;background:#2f3a6b}
+.wm{font:700 3.4rem/1.2 "Aref Ruqaa";color:#8fb3e0}
+.ws{font:400 .8rem "Readex Pro";letter-spacing:.3em;color:#cfdcf2;direction:ltr;margin-top:.5rem}
+.tg{margin:.9rem 0 0;font:500 1rem "Readex Pro"}
+.info{font-size:.76rem;color:#b8c5e6;margin:.2rem 0 0}
+.bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar-in{max-width:560px;margin:0 auto;padding:.6rem 1.2rem .4rem}
+.search input{width:100%;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:.55rem 1rem;font:inherit}
+.chips{display:flex;gap:.45rem;overflow-x:auto;padding:.55rem 0 .15rem;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:.3rem 1rem;cursor:pointer;min-height:36px;font:500 .84rem "Readex Pro"}
+.chip[aria-pressed="true"]{background:#2f3a6b;border-color:#2f3a6b;color:#fff}
+.chip:focus-visible,.lang:focus-visible,.search input:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+main{max-width:560px;margin:0 auto;padding:.5rem 1.2rem 1.5rem}
+section{margin-top:2rem;scroll-margin-top:120px}
+/* the light tab-label section titles from their board */
+h2{display:table;margin:0 auto -.9rem;position:relative;z-index:1;padding:.3rem 1.4rem;background:#dfe9f8;color:#2f3a6b;font:600 1.1rem "Readex Pro";border-radius:4px 4px 0 0}
+h2 small{font:400 .72rem "Readex Pro";color:#5a6a99;margin-inline-start:.4rem}
+.board{background:var(--card);border-radius:14px;padding:1.4rem .9rem .6rem;display:grid;grid-template-columns:1fr 1fr;gap:.2rem 1rem;box-shadow:0 1px 0 var(--line)}
+.it{display:flex;align-items:center;gap:.6rem;padding:.6rem 0;border-bottom:1px dashed var(--line)}
+.it .cup{flex:0 0 auto;width:30px;height:38px;border-radius:4px 4px 8px 8px;background:linear-gradient(#2f3a6b 0 22%,#8fb3e0 22% 100%);position:relative}
+.it .cup::after{content:"";position:absolute;left:8px;right:8px;top:12px;height:2px;background:#fff;opacity:.8;border-radius:2px}
+.it .tx{flex:1;min-width:0}
+.it .a{display:block;font-weight:600;color:var(--navy);line-height:1.3}
+.it .e{display:block;font-size:.7rem;color:var(--soft);direction:ltr;text-align:right}
+html[dir=ltr] .it .e{text-align:left}
+.it .pr{display:block;font:600 1rem "Readex Pro";direction:ltr;text-align:right;color:var(--ink)}
+html[dir=ltr] .it .pr{text-align:left}
+.it .pr small{font-size:.6rem;color:var(--soft);margin-inline-start:.2rem}
+.it .kc{font-size:.62rem;color:var(--soft)}
+.call{margin:1.8rem 0 0;display:flex;gap:.8rem;align-items:center;justify-content:space-between;background:#2f3a6b;color:#fff;border-radius:12px;padding:.9rem 1rem}
+.call b{display:block;font-weight:600}
+.call a{color:#2f3a6b;background:#dfe9f8;border-radius:8px;padding:.45rem .8rem;font:700 1rem "Readex Pro";text-decoration:none;direction:ltr}
+.nt{margin:1.2rem 0 0;text-align:center;font-size:.76rem;color:var(--soft)}
+.visit a{border-radius:999px}
+.foot{text-align:center;color:var(--soft);font-size:.8rem;padding:.5rem 1rem 2.2rem}.foot strong{color:var(--ink)}
+@media (max-width:380px){.board{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+
+<header>
+  <button class="lang" id="langBtn">English</button>
+  <div id="logo"><div class="wm">كايا</div><div class="ws">CAFÉ</div></div>
+  <p class="tg" id="tg"></p>
+  <p class="info" id="info"></p>
+</header>
+
+<div class="bar"><div class="bar-in">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div></div>
+<main id="menu"></main>
+<nav class="visit" id="visit" hidden></nav>
+<footer class="foot"><p id="note"></p><p id="credit"></p></footer>
+<script>
+const CONFIG = {"name": "Caia Specialty Coffee", "nameAr": "كايا قهوة مختصة", "tagline": {"ar": "كايا قهوة مختصة", "en": "Caia Specialty Coffee"}, "info": {"ar": "حي الخليج، شارع عبدالعزيز بن بشر، الرياض", "en": "Al Khaleej, Abdulaziz bin Bishr St, Riyadh"}, "logo": "data:image/png;base64,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", "colors": {"primary": "#2f3a6b", "onPrimary": "#ffffff", "secondary": "#8fb3e0", "background": "#f4f6fb", "accent": "#252e57"}, "fonts": {"display": "Aref Ruqaa", "body": "Readex Pro"}, "pattern": "navy board + light-blue tab labels + cup icons", "currency": {"ar": "ر.س", "en": "SAR"}, "demoBanner": false, "credit": "محمد", "mapsUrl": "https://maps.app.goo.gl/JBLsjjqpK2SWM5Dy5", "instagram": "https://instagram.com/caia_coffee", "categories": [{"id": "drip", "ar": "القهوة المقطرة", "en": "Drip Coffee", "items": [{"ar": "قهوة اليوم (حار / بارد)", "en": "Coffee of the Day (hot / iced)", "p": 6.9, "c": 5}, {"ar": "قهوة V60 (حار / بارد)", "en": "V60 (hot / iced)", "p": 9.9, "c": 5}, {"ar": "بوكس قهوة اليوم ١ لتر حار", "en": "Coffee of the Day Box 1 L (hot)", "p": 29.9}, {"ar": "بوكس قهوة اليوم ١ لتر بارد", "en": "Coffee of the Day Box 1 L (iced)", "p": 34.9}]}, {"id": "drinks", "ar": "المشروبات", "en": "Drinks", "items": [{"ar": "سموذي مانجو", "en": "Mango Smoothie", "p": 9.9, "c": 240}, {"ar": "كركدية", "en": "Karkade", "p": 9.9, "c": 6}, {"ar": "ايس تي توت", "en": "Berry Iced Tea", "p": 9.9, "c": 150}, {"ar": "ماء", "en": "Water", "p": 1}]}, {"id": "sweets", "ar": "الحلويات", "en": "Desserts", "items": [{"ar": "بودينق كيندر", "en": "Kinder Pudding", "p": 17.9, "c": 260}, {"ar": "فرنش توست", "en": "French Toast", "p": 13.9, "c": 240}, {"ar": "تراميسو", "en": "Tiramisu", "p": 13.9, "c": 260}, {"ar": "أصابع الوافل", "en": "Waffle Sticks", "p": 11.9, "c": 280}, {"ar": "بودينق", "en": "Pudding", "p": 9.9, "c": 219}, {"ar": "كوكيز", "en": "Cookies", "p": 6.9, "c": 321}]}]};
+const C = CONFIG || {name:"Menu",categories:[]};
+const T = {"ar": {"dir": "rtl", "lang": "English", "search": "وش تبي تطلب؟", "empty": "ما لقينا شي بهالاسم.", "all": "الكل", "demo": "", "note": "", "tg": "كايا قهوة مختصة", "kc": "سعرة", "cb": "اتصل لتجهيز طلبك", "nt": "الأصناف والأسعار والسعرات من منيو كايا المنشور"}, "en": {"dir": "ltr", "lang": "العربية", "search": "What would you like?", "empty": "Nothing matches that.", "all": "All", "demo": "", "note": "", "tg": "Caia Specialty Coffee", "kc": "kcal", "cb": "Call ahead and we'll have it ready", "nt": "Items, prices and calories from Caia's published menu"}};
+let lang="ar", active="all", query="";
+const KEY="caia-lang";
+try{const s=localStorage.getItem(KEY);if(s==="ar"||s==="en")lang=s;}catch(e){}
+try{const u=new URLSearchParams(location.search).get("lang");if(u==="ar"||u==="en")lang=u;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"",en:""})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+const P=i=> i.p2!=null ? `${fmt(i.p)}<span class="sl">/</span>${fmt(i.p2)}` : fmt(i.p);
+
+function hero(){ $("info").textContent=L(C.info||{},"ar","en"); $("tg").textContent=T[lang].tg; }
+function section(c,ci,body){ return `<section id="cat-${esc(c.id)}"><h2>${esc(L(c,"ar","en"))}</h2><div class="board">${body}</div></section>`; }
+function item(i){ return `<div class="it"><span class="cup"></span><span class="tx"><span class="a">${esc(lang==="ar"?i.ar:i.en)}</span>${lang==="ar"?`<span class="e">${esc(i.en)}</span>`:""}<span class="pr">${fmt(i.p)}<small>${cur()}</small>${i.c!=null?` <span class="kc">· ${esc(String(i.c))} ${T[lang].kc}</span>`:""}</span></span></div>`; }
+function afterRender(){ if(query.trim()) return; $("menu").insertAdjacentHTML("beforeend",`<div class="call"><b>${T[lang].cb}</b><a href="tel:+966556074478">055 607 4478</a></div><p class="nt">${T[lang].nt}</p>`); }
+
+function renderChips(){
+  const cats=[{id:"all",ar:T.ar.all,en:T.en.all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0,k=0;
+  C.categories.forEach((c,ci)=>{
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) return; n+=items.length;
+    html+=section(c,ci,items.map(i=>item(i,++k,c)).join(""));
+  });
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+  if(typeof afterRender==="function") afterRender();
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.demo;
+  $("note").textContent=t.note||"";
+  $("credit").innerHTML=(lang==="ar"?"منيو ديجيتال من تصميم ":"Digital menu designed by ")+`<strong>${lang==="en"?"Mohamed":"محمد"}</strong>`;
+  const V={ar:{wa:"اطلب على واتساب",map:"اللوكيشن",rev:"قيّمنا على جوجل",ig:"انستقرام"},en:{wa:"Order on WhatsApp",map:"Location",rev:"Rate us on Google",ig:"Instagram"}}[lang];
+  const links=[C.whatsapp&&`<a class="wa" href="https://wa.me/${esc(String(C.whatsapp).replace(/\D/g,""))}" target="_blank" rel="noopener">${V.wa}</a>`,
+    C.mapsUrl&&`<a href="${esc(C.mapsUrl)}" target="_blank" rel="noopener">${V.map}</a>`,
+    C.reviewUrl&&`<a href="${esc(C.reviewUrl)}" target="_blank" rel="noopener">${V.rev}</a>`,
+    C.instagram&&`<a href="${esc(C.instagram)}" target="_blank" rel="noopener">${V.ig}</a>`].filter(Boolean);
+  const vs=$("visit"); vs.hidden=!links.length; vs.innerHTML=links.join("");
+  if(typeof hero==="function") hero();
+  renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem(KEY,lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+apply();
+</script>
+</body>
+</html>

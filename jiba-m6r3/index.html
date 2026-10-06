@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو جيبا</title>
+<meta name="description" content="قهوة مختصة تصنع الفرق في يومك">
+<meta property="og:title" content="منيو جيبا">
+<meta property="og:description" content="قهوة مختصة تصنع الفرق في يومك">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://khashab12.github.io/menus/jiba-m6r3/">
+<meta property="og:image" content="https://khashab12.github.io/menus/jiba-m6r3/logo.png">
+<meta name="theme-color" content="#a8653f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Tajawal:wght@400;500;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+.demo-note{text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.empty{text-align:center;padding:3rem 1rem;opacity:.75}
+button{font:inherit}
+.visit{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;max-width:560px;margin:1rem auto 0;padding:0 1.2rem}
+.visit[hidden]{display:none}
+.visit a{flex:1 1 auto;text-align:center;text-decoration:none;font-size:.85rem;padding:.55rem .9rem;min-height:40px;border-radius:999px;border:1px solid currentColor;color:inherit}
+.visit a.wa{background:#1f8f4e;border-color:#1f8f4e;color:#fff}
+
+:root{--terra:#a8653f;--terra2:#8a4f2f;--sand:#efe7dc;--paper:#f7f3ee;--card:#fffdf9;--ink:#2a211b;--soft:#867466;--line:#e7ddd0;--grey:#8f8a84}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#15110e;--card:#1e1814;--ink:#f1e9df;--soft:#bba996;--line:#30271f;--terra:#d08a5f}}
+:root[data-theme="dark"]{--paper:#15110e;--card:#1e1814;--ink:#f1e9df;--soft:#bba996;--line:#30271f;--terra:#d08a5f}
+body{background:var(--paper);color:var(--ink);font-family:"Tajawal","Jost",system-ui,sans-serif}
+html[lang=en] body{font-family:"Jost","Tajawal",sans-serif}
+.demo-note{background:#2a211b;color:#efe7dc}
+/* beige wall + dark round table + the cinnamon cup */
+header{position:relative;text-align:center;background:#efe7dc;color:#2a211b;padding:calc(env(safe-area-inset-top,0px) + 3.2rem) 1.2rem 0;overflow:hidden}
+.lang{position:absolute;top:calc(env(safe-area-inset-top,0px) + .8rem);inset-inline-end:1rem;background:#2a211b;color:#efe7dc;border:0;border-radius:999px;padding:.25rem .95rem;cursor:pointer;min-height:36px;font:500 .8rem "Jost";z-index:2}
+#logo{display:inline-block;padding:.4rem 1.4rem;background:#efe7dc;direction:ltr}
+.wm{font:500 3.6rem/1 "Jost";color:#8f8a84;letter-spacing:-.01em}
+.wm i{font-style:normal;color:#a8653f}
+.tg{margin:.6rem 0 0;font:500 .98rem "Tajawal"}
+.info{font-size:.76rem;color:#867466;margin:.2rem 0 0}
+.scene{display:block;width:200px;height:120px;margin:.8rem auto 0}
+.bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar-in{max-width:560px;margin:0 auto;padding:.6rem 1.2rem .4rem}
+.search input{width:100%;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:.55rem 1rem;font:inherit}
+.chips{display:flex;gap:.45rem;overflow-x:auto;padding:.55rem 0 .15rem;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:.3rem 1rem;cursor:pointer;min-height:36px;font:500 .86rem "Tajawal","Jost"}
+.chip[aria-pressed="true"]{background:#a8653f;border-color:#a8653f;color:#fff}
+.chip:focus-visible,.lang:focus-visible,.search input:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
+main{max-width:560px;margin:0 auto;padding:.5rem 1.2rem 1.5rem}
+section{margin-top:2rem;scroll-margin-top:120px}
+h2{display:flex;align-items:center;gap:.6rem;margin:0 0 .6rem;font:700 1.2rem "Tajawal","Jost"}
+h2::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--terra);flex:0 0 auto}
+h2 small{margin-inline-start:auto;font:400 .78rem "Jost";letter-spacing:.14em;color:var(--soft);text-transform:uppercase;direction:ltr}
+.row{display:grid;grid-template-columns:1fr auto;gap:.8rem;align-items:baseline;padding:.55rem 0;border-bottom:1px solid var(--line)}
+.nm .a{font-weight:500}
+.nm .e{display:block;font:400 .8rem "Jost";color:var(--soft);direction:ltr;text-align:right}
+html[dir=ltr] .nm .e{text-align:left}
+.pr{font:500 1rem "Jost";white-space:nowrap;direction:ltr;color:var(--terra)}
+.pr small{font:400 .6rem "Tajawal";color:var(--soft);margin-inline-start:.2rem}
+/* their dessert cards: name on a small card held by a fork */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+.cd{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:.7rem .4rem .5rem;text-align:center;position:relative}
+.cd i{display:block;font:italic 500 .82rem "Jost";direction:ltr}
+.cd .ar{display:block;font-size:.72rem;color:var(--soft)}
+.cd svg{display:block;width:22px;height:34px;margin:.4rem auto 0}
+.cd .pr{display:block;margin-top:.2rem;font-size:.9rem}
+.h24{margin:2rem 0 0;text-align:center;font:500 .95rem "Tajawal";color:var(--soft)}
+.h24 b{display:block;font:600 1.6rem "Jost";color:var(--terra);direction:ltr}
+.visit a{border-radius:999px}
+.foot{text-align:center;color:var(--soft);font-size:.8rem;padding:.5rem 1rem 2.2rem}.foot strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="demo-note" id="demoNote" hidden></div>
+
+<header>
+  <button class="lang" id="langBtn">English</button>
+  <div id="logo"><div class="wm"><i>.</i>Jiba</div></div>
+  <p class="tg" id="tg"></p>
+  <p class="info" id="info"></p>
+  <svg class="scene" viewBox="0 0 200 120" aria-hidden="true"><ellipse cx="100" cy="112" rx="88" ry="10" fill="#2a211b"/><rect x="96" y="60" width="8" height="50" fill="#2a211b"/><ellipse cx="100" cy="60" rx="70" ry="9" fill="#3a2e26"/><path d="M84 14h32l-4 44H88z" fill="#a8653f"/><path d="M84 14h32v4H84z" fill="#8a4f2f"/><text x="100" y="40" text-anchor="middle" font-family="Jost" font-weight="500" font-size="9" fill="#efe7dc">Jiba</text></svg>
+</header>
+
+<div class="bar"><div class="bar-in">
+  <div class="search"><input id="q" type="search" aria-label="Search"></div>
+  <nav class="chips" id="chips" aria-label="Categories"></nav>
+</div></div>
+<main id="menu"></main>
+<nav class="visit" id="visit" hidden></nav>
+<footer class="foot"><p id="note"></p><p id="credit"></p></footer>
+<script>
+const CONFIG = {"name": "Jiba Coffee", "nameAr": "جيبا", "tagline": {"ar": "قهوة مختصة تصنع الفرق في يومك", "en": "Specialty coffee that makes a difference in your day"}, "info": {"ar": "حي طويق، طريق نجم الدين، الرياض", "en": "Tuwaiq, Najm Al Din Rd, Riyadh"}, "logo": "data:image/png;base64,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", "colors": {"primary": "#a8653f", "onPrimary": "#ffffff", "secondary": "#efe7dc", "background": "#f7f3ee", "accent": "#2a211b"}, "fonts": {"display": "Jost", "body": "Tajawal"}, "pattern": "beige wall + dark round table + cinnamon cup + fork dessert cards", "currency": {"ar": "ر.س", "en": "SAR"}, "demoBanner": true, "credit": "محمد", "instagram": "https://instagram.com/jiba.cof", "categories": [{"id": "coffee", "ar": "القهوة", "en": "Coffee", "items": [{"ar": "قهوة اليوم", "en": "Coffee of the Day", "p": 9}, {"ar": "إسبريسو", "en": "Espresso", "p": 11}, {"ar": "كورتادو", "en": "Cortado", "p": 14}, {"ar": "فلات وايت", "en": "Flat White", "p": 16}, {"ar": "سبانش لاتيه", "en": "Spanish Latte", "p": 18}, {"ar": "V60", "en": "V60", "p": 17}]}, {"id": "cold", "ar": "الباردة", "en": "Iced", "items": [{"ar": "آيس لاتيه", "en": "Iced Latte", "p": 17}, {"ar": "آيس سبانش لاتيه", "en": "Iced Spanish Latte", "p": 19}, {"ar": "آيس أمريكانو", "en": "Iced Americano", "p": 14}]}, {"id": "sweets", "ar": "الحلى", "en": "Desserts", "items": [{"ar": "هني كيك", "en": "Honey cake", "p": 19, "card": true}, {"ar": "تشيز كيك بيكان", "en": "Cheesecake pecan", "p": 22, "card": true}, {"ar": "لندن كيك", "en": "London Cake", "p": 21, "card": true}]}]};
+const C = CONFIG || {name:"Menu",categories:[]};
+const T = {"ar": {"dir": "rtl", "lang": "English", "search": "وش تبي تطلب؟", "empty": "ما لقينا شي بهالاسم.", "all": "الكل", "demo": "تصور تجريبي — الأسعار والمشروبات أمثلة، أسماء الحلى من حساب جيبا", "note": "", "tg": "قهوة مختصة تصنع الفرق في يومك", "sw": "الحلى", "hl": "مفتوحين", "hr": "24 ساعة"}, "en": {"dir": "ltr", "lang": "العربية", "search": "What would you like?", "empty": "Nothing matches that.", "all": "All", "demo": "Demo — prices and drinks are examples; dessert names are from Jiba's posts", "note": "", "tg": "Specialty coffee that makes a difference in your day", "sw": "Desserts", "hl": "Open", "hr": "24 hours"}};
+let lang="ar", active="all", query="";
+const KEY="jiba-lang";
+try{const s=localStorage.getItem(KEY);if(s==="ar"||s==="en")lang=s;}catch(e){}
+try{const u=new URLSearchParams(location.search).get("lang");if(u==="ar"||u==="en")lang=u;}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>lang==="ar"?Number(n).toLocaleString("ar-EG"):Number(n).toLocaleString("en-US");
+const cur=()=> (C.currency||{ar:"",en:""})[lang];
+const L=(o,ar,en)=> lang==="ar" ? (o[ar]||o[en]||"") : (o[en]||o[ar]||"");
+const P=i=> i.p2!=null ? `${fmt(i.p)}<span class="sl">/</span>${fmt(i.p2)}` : fmt(i.p);
+
+const FK='<svg viewBox="0 0 22 34" aria-hidden="true" fill="none" stroke="#8f8a84" stroke-width="1.6" stroke-linecap="round"><path d="M5 2v8a6 6 0 0 0 12 0V2M11 2v8M11 16v16"/></svg>';
+function hero(){ $("info").textContent=L(C.info||{},"ar","en"); $("tg").textContent=T[lang].tg; }
+function section(c,ci,body){ return c.id==="sweets" ? `<section id="cat-${esc(c.id)}"><h2>${esc(L(c,"ar","en"))}${lang==="ar"?`<small>${esc(c.en)}</small>`:""}</h2><div class="cards">${body}</div></section>` : `<section id="cat-${esc(c.id)}"><h2>${esc(L(c,"ar","en"))}${lang==="ar"?`<small>${esc(c.en)}</small>`:""}</h2>${body}</section>`; }
+function item(i){ return i.card ? `<div class="cd"><i>${esc(i.en)}</i>${lang==="ar"?`<span class="ar">${esc(i.ar)}</span>`:""}${FK}<span class="pr">${P(i)}<small>${cur()}</small></span></div>` : `<div class="row"><span class="nm"><span class="a">${esc(lang==="ar"?i.ar:i.en)}</span>${lang==="ar"?`<span class="e">${esc(i.en)}</span>`:""}</span><span class="pr">${P(i)}<small>${cur()}</small></span></div>`; }
+function afterRender(){ if(query.trim()) return; $("menu").insertAdjacentHTML("beforeend",`<div class="h24">${T[lang].hl}<b>${T[lang].hr}</b></div>`); }
+
+function renderChips(){
+  const cats=[{id:"all",ar:T.ar.all,en:T.en.all},...C.categories];
+  $("chips").innerHTML=cats.map(c=>`<button class="chip" data-id="${esc(c.id)}" aria-pressed="${c.id===active}">${esc(L(c,"ar","en"))}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    active=b.dataset.id;renderChips();
+    if(active==="all"){window.scrollTo({top:0});return;}
+    const el=$("cat-"+active); if(el) el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  });
+}
+function renderMenu(){
+  const q=query.trim().toLowerCase(); let html="",n=0,k=0;
+  C.categories.forEach((c,ci)=>{
+    const items=c.items.filter(i=>!q||[i.ar,i.en,i.dAr,i.dEn].join(" ").toLowerCase().includes(q));
+    if(!items.length) return; n+=items.length;
+    html+=section(c,ci,items.map(i=>item(i,++k,c)).join(""));
+  });
+  $("menu").innerHTML=n?html:`<p class="empty">${T[lang].empty}</p>`;
+  if(typeof afterRender==="function") afterRender();
+}
+function apply(){
+  const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  $("langBtn").textContent=t.lang; $("q").placeholder=t.search;
+  const note=$("demoNote"); note.hidden=!C.demoBanner; note.textContent=t.demo;
+  $("note").textContent=t.note||"";
+  $("credit").innerHTML=(lang==="ar"?"منيو ديجيتال من تصميم ":"Digital menu designed by ")+`<strong>${lang==="en"?"Mohamed":"محمد"}</strong>`;
+  const V={ar:{wa:"اطلب على واتساب",map:"اللوكيشن",rev:"قيّمنا على جوجل",ig:"انستقرام"},en:{wa:"Order on WhatsApp",map:"Location",rev:"Rate us on Google",ig:"Instagram"}}[lang];
+  const links=[C.whatsapp&&`<a class="wa" href="https://wa.me/${esc(String(C.whatsapp).replace(/\D/g,""))}" target="_blank" rel="noopener">${V.wa}</a>`,
+    C.mapsUrl&&`<a href="${esc(C.mapsUrl)}" target="_blank" rel="noopener">${V.map}</a>`,
+    C.reviewUrl&&`<a href="${esc(C.reviewUrl)}" target="_blank" rel="noopener">${V.rev}</a>`,
+    C.instagram&&`<a href="${esc(C.instagram)}" target="_blank" rel="noopener">${V.ig}</a>`].filter(Boolean);
+  const vs=$("visit"); vs.hidden=!links.length; vs.innerHTML=links.join("");
+  if(typeof hero==="function") hero();
+  renderChips(); renderMenu();
+}
+$("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem(KEY,lang)}catch(e){}apply();};
+$("q").addEventListener("input",e=>{query=e.target.value;renderMenu();});
+apply();
+</script>
+</body>
+</html>
