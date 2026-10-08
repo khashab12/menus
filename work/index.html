@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>محمد الخشاب — مطوّر مواقع</title>
+<meta name="description" content="مطوّر واجهات أمامية: لاندنج بيدج، مواقع مطاعم وكافيهات، متاجر Shopify. Front-end developer — landing pages, restaurant websites, Shopify stores.">
+<meta property="og:title" content="محمد الخشاب — مطوّر مواقع | Mohamed Elkhashab — Web Developer">
+<meta property="og:description" content="مواقع سريعة على الجوال بهوية البراند. React · Next.js · Tailwind · Shopify">
+<meta property="og:image" content="img/lyrs.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f6f2;--card:#ffffff;--ink:#16161a;--soft:#5d5d66;--line:#e6e3dc;--acc:#ff5a1f;--acc2:#1f3cff;--chip:#efece5}
+@media (prefers-color-scheme:dark){:root{--bg:#0f0f12;--card:#17171c;--ink:#f2f1ee;--soft:#a3a3ad;--line:#26262d;--chip:#1e1e24}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;line-height:1.7}
+html[lang=en] body{font-family:"Space Grotesk","IBM Plex Sans Arabic",sans-serif}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font:700 1.15rem "Space Grotesk";letter-spacing:-.01em;direction:ltr}.logo b{color:var(--acc)}
+.nl{display:flex;gap:18px;align-items:center;font-size:.92rem}.nl a{text-decoration:none;color:var(--soft)}
+.lang{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;font:600 .82rem inherit}
+@media (max-width:600px){.nl a{display:none}}
+header{padding:72px 0 40px}
+.tag{display:inline-flex;gap:8px;align-items:center;background:var(--chip);border-radius:999px;padding:6px 14px;font-size:.85rem;color:var(--soft)}
+.tag i{width:8px;height:8px;border-radius:50%;background:#1fbf5a;box-shadow:0 0 0 4px rgba(31,191,90,.18)}
+h1{font-size:clamp(2.1rem,6vw,3.6rem);line-height:1.15;margin:18px 0 14px;letter-spacing:-.01em}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.12rem;color:var(--soft);max-width:640px;margin:0}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-weight:600;text-decoration:none}
+.btn.p{background:var(--ink);color:var(--bg)}.btn.s{border:1px solid var(--line);background:var(--card)}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;direction:ltr;justify-content:flex-end}
+html[dir=ltr] .stack{justify-content:flex-start}
+.stack span{font:500 .8rem "Space Grotesk";border:1px solid var(--line);border-radius:8px;padding:4px 10px;color:var(--soft)}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);margin:0 0 6px}
+.sub{color:var(--soft);margin:0 0 28px}
+.grid{display:grid;gap:16px}
+.svc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--chip);font-size:1.3rem;margin-bottom:12px}
+.card h3{margin:0 0 6px;font-size:1.08rem}.card p{margin:0;color:var(--soft);font-size:.95rem}
+.card ul{margin:10px 0 0;padding-inline-start:18px;color:var(--soft);font-size:.9rem}
+.feat{display:grid;grid-template-columns:1.1fr 1fr;gap:0;overflow:hidden;padding:0}
+@media (max-width:760px){.feat{grid-template-columns:1fr}}
+.feat .vis{background:linear-gradient(135deg,#a60e16,#6b080d);color:#fff;display:grid;place-items:center;padding:34px;min-height:260px;position:relative}
+.book{width:180px;height:240px;border-radius:6px 14px 14px 6px;background:#fff8ec;box-shadow:12px 14px 0 rgba(0,0,0,.18),inset 10px 0 0 #d29c42;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#a60e16;font:700 2rem "IBM Plex Sans Arabic"}
+.book small{font:500 .8rem "IBM Plex Sans Arabic";color:#c88d2f;margin-top:4px}
+.book .pg{position:absolute;bottom:22px;font:600 .8rem "Space Grotesk";color:#f5d9a8;letter-spacing:.1em}
+.feat .tx{padding:26px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.chips span{background:var(--chip);border-radius:6px;padding:2px 9px;font:500 .78rem "Space Grotesk";direction:ltr}
+.lk{display:inline-flex;gap:6px;font-weight:600;color:var(--acc);text-decoration:none;margin-top:6px}
+.demos{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.demo{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .2s}
+.demo:hover{transform:translateY(-4px)}
+.demo img{display:block;width:100%;aspect-ratio:450/660;object-fit:cover;object-position:top}
+.demo div{padding:10px 14px;font-size:.88rem;display:flex;justify-content:space-between;color:var(--soft)}
+.demo b{color:var(--ink)}
+.steps{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));counter-reset:s}
+.steps .card{position:relative}
+.steps .card::before{counter-increment:s;content:counter(s);font:700 2.2rem "Space Grotesk";color:var(--acc);opacity:.9;display:block;line-height:1;margin-bottom:8px}
+.contact{text-align:center}
+.contact .btn{margin:6px}
+footer{padding:28px 0 40px;color:var(--soft);font-size:.85rem;text-align:center;border-top:1px solid var(--line)}
+:focus-visible{outline:2px solid var(--acc2);outline-offset:3px}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><span class="logo">Mohamed<b>.</b></span><div class="nl"><a href="#services" data-t="n1"></a><a href="#work" data-t="n2"></a><a href="#how" data-t="n3"></a><button class="lang" id="lang">English</button></div></div></nav>
+<header><div class="wrap">
+ <span class="tag"><i></i><span data-t="avail"></span></span>
+ <h1 data-th="h1"></h1>
+ <p class="lead" data-t="lead"></p>
+ <div class="cta"><a class="btn p" href="#work" data-t="c1"></a><a class="btn s" href="#contact" data-t="c2"></a></div>
+ <div class="stack"><span>React</span><span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span><span>Framer Motion · GSAP</span><span>Three.js</span><span>Shopify</span><span>HTML · CSS · JS</span></div>
+</div></header>
+
+<section id="services"><div class="wrap">
+ <h2 data-t="s_h"></h2><p class="sub" data-t="s_p"></p>
+ <div class="grid svc" id="svc"></div>
+</div></section>
+
+<section id="work"><div class="wrap">
+ <h2 data-t="w_h"></h2><p class="sub" data-t="w_p"></p>
+ <div class="card feat">
+  <div class="vis"><div class="book">دمس<small>قائمة الطعام</small></div><span class="pg">1 / 10</span></div>
+  <div class="tx">
+   <span class="tag" data-t="real"></span>
+   <h3 style="margin:12px 0 6px;font-size:1.3rem" data-t="d_h"></h3>
+   <p style="margin:0;color:var(--soft)" data-t="d_p"></p>
+   <div class="chips"><span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>react-pageflip</span><span>RTL</span></div>
+   <a class="lk" href="https://www.ksadamas.com/" target="_blank" rel="noopener" data-t="visit"></a>
+  </div>
+ </div>
+ <div class="card" style="margin-top:16px">
+  <span class="tag" data-t="real"></span>
+  <h3 style="margin:12px 0 6px;font-size:1.15rem" data-t="e_h"></h3>
+  <p style="margin:0;color:var(--soft)" data-t="e_p"></p>
+  <div class="chips"><span>Shopify</span><span>Horizon theme</span><span>Liquid</span></div>
+ </div>
+ <h3 style="margin:36px 0 6px" data-t="dm_h"></h3><p class="sub" data-t="dm_p"></p>
+ <div class="grid demos" id="demos"></div>
+</div></section>
+
+<section id="how"><div class="wrap">
+ <h2 data-t="h_h"></h2><p class="sub" data-t="h_p"></p>
+ <div class="grid steps" id="steps"></div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+ <h2 data-t="ct_h"></h2><p class="sub" data-t="ct_p"></p>
+ <div id="ct"></div>
+</div></section>
+<footer>© 2026 Mohamed Elkhashab · Cairo, Egypt</footer>
+
+<script>
+const CONTACT=[]; // filled once Mohamed confirms his links: {ar,en,href}
+const DEMOS=[["lyrs","LYRS","Riyadh"],["awatif","Awatif","Riyadh"],["yardek","Yardek","Riyadh"],["caia","Caia","Riyadh"],["brb","BRB","Riyadh"],["waad","Waad Tuwaiq","Riyadh"],["robusta","Robusta Peak","Riyadh"],["ochre","OCHRE","Riyadh"]];
+const SLUG={lyrs:"lyrs-b7k4",awatif:"awatif-d8q3",yardek:"yardek-c3m8",caia:"caia-n4w7",brb:"brb-k6v2",waad:"waad-x4h6",robusta:"robusta-k8d3",ochre:"ochre-r4k7"};
+const T={
+ar:{n1:"الخدمات",n2:"الأعمال",n3:"طريقة العمل",lang:"English",avail:"متاح لمشاريع جديدة",
+h1:"أبني مواقع <em>سريعة وجميلة</em> على الموبايل، بهوية البراند بتاعك",
+lead:"مطوّر واجهات أمامية من القاهرة. بعمل لاندنج بيدج، مواقع مطاعم وكافيهات، ومتاجر Shopify — بتصميم مخصّص، عربي وإنجليزي، وتسليم سريع.",
+c1:"شوف أعمالي",c2:"تواصل معي",
+s_h:"الخدمات",s_p:"خدمات محددة بنطاق واضح وتسليم في مواعيده.",
+w_h:"أعمال مختارة",w_p:"مشاريع حقيقية لعملاء، ونماذج صمّمتها لبراندات مختلفة.",real:"مشروع حقيقي",
+d_h:"مطعم دمس — منيو تفاعلي على شكل كتاب",d_p:"منيو رقمي بتقليب صفحات زي الكتاب الحقيقي لمطعم مصري في الرياض. عربي من اليمين للشمال، متجاوب مع الموبايل، وبهوية المطعم (الأحمر والذهبي).",visit:"افتح الموقع ↗",
+e_h:"Egypt Lion Auto Service — متجر Shopify لقطع غيار السيارات",e_p:"متجر منظّم حسب موديلات بيجو وسنين الصنع، مع تعديلات مخصّصة على الثيم (قوائم بعناوين على سطرين، صور الأقسام في المنيو).",
+dm_h:"نماذج منيو ومواقع لكافيهات",dm_p:"أكتر من 40 نموذج، كل واحد بهوية مختلفة. اضغط على أي نموذج تجرّبه.",try:"جرّب ↗",
+h_h:"طريقة العمل",h_p:"خطوات واضحة من أول رسالة لحد التسليم.",ct_h:"عندك مشروع؟",ct_p:"ابعتلي فكرتك وهرد عليك بخطة وسعر ومدة تنفيذ واضحين.",soon:"روابط التواصل هتتضاف قريب"},
+en:{n1:"Services",n2:"Work",n3:"Process",lang:"العربية",avail:"Available for new projects",
+h1:"I build <em>fast, beautiful</em> mobile-first websites in your brand",
+lead:"Front-end developer based in Cairo. Landing pages, restaurant & café websites and Shopify stores — custom-designed, Arabic & English, delivered fast.",
+c1:"See my work",c2:"Get in touch",
+s_h:"Services",s_p:"Clearly scoped services, delivered on time.",
+w_h:"Selected work",w_p:"Real client projects, plus concepts designed for different brands.",real:"Client project",
+d_h:"Damas Restaurant — flipbook digital menu",d_p:"A page-turning digital menu for an Egyptian restaurant in Riyadh. Right-to-left Arabic, fully responsive, in the restaurant's red & gold identity.",visit:"Visit site ↗",
+e_h:"Egypt Lion Auto Service — Shopify auto-parts store",e_p:"Store organised by Peugeot model and year range, with custom theme work (two-line menu titles, collection images in the drawer).",
+dm_h:"Café menu & website concepts",dm_p:"40+ concepts, each in a different brand identity. Tap any to try it.",try:"Try ↗",
+h_h:"How I work",h_p:"Clear steps from first message to launch.",ct_h:"Have a project?",ct_p:"Send me your idea and I'll reply with a clear plan, price and timeline.",soon:"Contact links coming soon"}};
+const SVC={ar:[["⚡","لاندنج بيدج","صفحة واحدة لمنتج أو خدمة أو حملة إعلانية، مصممة عشان تحوّل الزوار لعملاء.",["تصميم مخصص بهوية البراند","سريعة ومتجاوبة مع الموبايل","أنيميشن خفيف (Framer Motion / GSAP)","زرار واتساب أو فورم تواصل"]],
+["🍽️","موقع مطعم أو كافيه","منيو بالأسعار، موقع الفرع على الخريطة، وزرار طلب.",["عربي وإنجليزي ووضع ليلي","المنيو بالأسعار والسعرات","تقييم جوجل وموقع الفرع","سهل التعديل"]],
+["🛍️","متجر Shopify","إعداد متجر أو تعديل ثيم موجود بنفس هوية البراند.",["تنظيم الأقسام والمنتجات","تعديلات على الثيم (Liquid)","صفحات منتجات مقنعة","متجاوب مع الموبايل"]],
+["🛠️","تعديل وتحسين موقع","تصليح مشاكل، تحسين السرعة، أو تحويل تصميم Figma لكود.",["React / Next.js / HTML","تحسين السرعة و SEO الأساسي","إصلاح مشاكل الموبايل","تسليم سريع"]]],
+en:[["⚡","Landing page","A single page for a product, service or ad campaign, designed to convert visitors.",["Custom design in your brand","Fast and mobile-first","Subtle motion (Framer Motion / GSAP)","WhatsApp button or contact form"]],
+["🍽️","Restaurant / café website","Menu with prices, branch map and an order button.",["Arabic & English, dark mode","Prices and calories","Google reviews & location","Easy to update"]],
+["🛍️","Shopify store","Store setup or theme customisation in your brand.",["Collections & products","Theme edits (Liquid)","Persuasive product pages","Mobile-first"]],
+["🛠️","Fix & improve a website","Bug fixes, speed improvements, or Figma-to-code.",["React / Next.js / HTML","Speed & basic SEO","Mobile layout fixes","Quick turnaround"]]]};
+const STEPS={ar:[["تفهمني الفكرة","بتبعتلي اللي محتاجه، وأنا بسأل الأسئلة المهمة."],["خطة وسعر واضح","نطاق الشغل، المدة، والسعر قبل ما نبدأ."],["تصميم وتنفيذ","بتشوف التقدم أول بأول وتعليقاتك بتتنفذ."],["تسليم ودعم","التسليم في الميعاد، ودعم بعد التسليم."]],
+en:[["Brief","You tell me what you need; I ask the right questions."],["Plan & price","Scope, timeline and price agreed before we start."],["Design & build","You see progress along the way; feedback gets applied."],["Launch & support","Delivered on time, with support after launch."]]};
+let L=(new URLSearchParams(location.search).get("lang")==="en")?"en":"ar";
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function render(){document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";const t=T[L];
+document.querySelectorAll("[data-t]").forEach(e=>e.textContent=t[e.dataset.t]);document.querySelectorAll("[data-th]").forEach(e=>e.innerHTML=t[e.dataset.th]);
+document.getElementById("lang").textContent=t.lang;
+document.getElementById("svc").innerHTML=SVC[L].map(([i,h,p,ul])=>`<div class="card"><div class="ic">${i}</div><h3>${esc(h)}</h3><p>${esc(p)}</p><ul>${ul.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
+document.getElementById("demos").innerHTML=DEMOS.map(([k,n,c])=>`<a class="demo" href="../${SLUG[k]}/?lang=${L}" target="_blank" rel="noopener"><img src="img/${k}.webp" alt="${esc(n)}" loading="lazy" width="450" height="660"><div><b>${esc(n)}</b><span>${t.try}</span></div></a>`).join("");
+document.getElementById("steps").innerHTML=STEPS[L].map(([h,p])=>`<div class="card"><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
+document.getElementById("ct").innerHTML=CONTACT.length?CONTACT.map(c=>`<a class="btn ${c.p?'p':'s'}" href="${esc(c.href)}" target="_blank" rel="noopener">${esc(c[L])}</a>`).join(""):`<p class="sub">${t.soon}</p>`;}
+document.getElementById("lang").onclick=()=>{L=L==="ar"?"en":"ar";render();};render();
+</script>
+</body>
+</html>
