@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بوت واتساب للمتاجر — ديمو</title>
+<meta name="description" content="ديمو تفاعلي: بوت واتساب بيرد على العملاء ويسجّل الطلبات تلقائياً.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f1ec;--card:#fff;--ink:#14161a;--soft:#5f6670;--line:#e4e0d8;--wa:#075e54;--wa2:#25d366;--chat:#efe7dd;--in:#fff;--out:#d9fdd3;--acc:#0b8f6c}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1013;--card:#171a1f;--ink:#eef0f2;--soft:#9aa3ad;--line:#262a31;--chat:#0b141a;--in:#202c33;--out:#005c4b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;line-height:1.6}
+.demo{background:#14161a;color:#fff;text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.wrap{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem;display:grid;grid-template-columns:380px 1fr;gap:2rem;align-items:start}
+@media (max-width:860px){.wrap{grid-template-columns:1fr}}
+h1{font-size:1.9rem;line-height:1.3;margin:.2rem 0 .5rem}
+h1 b{color:var(--acc)}
+.lead{color:var(--soft);margin:0 0 1.2rem}
+.phone{background:#0b0b0b;border-radius:42px;padding:10px;box-shadow:0 30px 70px rgba(0,0,0,.25);position:sticky;top:1rem}
+@media (max-width:860px){.phone{position:relative;top:0;max-width:380px;margin:0 auto}}
+.scr{border-radius:33px;overflow:hidden;background:var(--chat);height:680px;display:flex;flex-direction:column}
+.top{background:var(--wa);color:#fff;display:flex;align-items:center;gap:.65rem;padding:.9rem .9rem .75rem}
+.av{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--wa);display:grid;place-items:center;font-weight:700}
+.top b{display:block;font-size:.95rem}.top small{opacity:.8;font-size:.72rem}
+.msgs{flex:1;overflow-y:auto;padding:.9rem .7rem;display:flex;flex-direction:column;gap:.35rem;scroll-behavior:smooth}
+.m{max-width:82%;padding:.45rem .7rem .3rem;border-radius:10px;font-size:.9rem;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .18s ease-out}
+.m time{display:block;font-size:.62rem;color:var(--soft);text-align:left;margin-top:.1rem}
+.bot{background:var(--in);align-self:flex-start;border-top-right-radius:2px}
+.me{background:var(--out);align-self:flex-end;border-top-left-radius:2px}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.typing{align-self:flex-start;background:var(--in);border-radius:10px;padding:.55rem .8rem;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--soft);animation:b 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.qr{display:flex;flex-wrap:wrap;gap:.35rem;padding:.4rem .6rem;background:var(--chat)}
+.qr button{border:1px solid var(--wa2);background:var(--in);color:var(--ink);border-radius:999px;padding:.3rem .8rem;font:500 .8rem "IBM Plex Sans Arabic";cursor:pointer;min-height:34px}
+.qr button:hover{background:var(--wa2);color:#fff}
+.bar{display:flex;gap:.4rem;padding:.5rem;background:var(--chat)}
+.bar input{flex:1;min-width:0;border:0;border-radius:999px;padding:.6rem .9rem;font:inherit;background:var(--in);color:var(--ink)}
+.bar button{transform:scaleX(-1);flex:0 0 44px;width:44px;height:44px;border-radius:50%;border:0;background:var(--wa2);color:#fff;font-size:1.1rem;cursor:pointer}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.1rem 1.2rem;margin-bottom:1rem}
+.card h2{font-size:1.05rem;margin:0 0 .6rem;display:flex;align-items:center;gap:.5rem}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--wa2);box-shadow:0 0 0 4px rgba(37,211,102,.2)}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th,td{text-align:right;padding:.45rem .4rem;border-bottom:1px solid var(--line)}
+th{color:var(--soft);font-weight:500}
+tr.new td{animation:hl 1.6s ease-out}
+@keyframes hl{from{background:rgba(37,211,102,.35)}to{background:transparent}}
+.empty{color:var(--soft);font-size:.85rem;padding:.6rem 0}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.step{background:var(--bg);border-radius:12px;padding:.7rem .8rem;font-size:.86rem}
+.step b{display:block;color:var(--acc)}
+.stats{display:flex;gap:.6rem;flex-wrap:wrap}
+.stat{flex:1;min-width:110px;background:var(--bg);border-radius:12px;padding:.6rem .8rem}
+.stat b{font-size:1.4rem;display:block}.stat span{font-size:.75rem;color:var(--soft)}
+.hint{font-size:.8rem;color:var(--soft)}
+</style>
+</head>
+<body>
+<div class="demo">ديمو تفاعلي — المتجر والمنتجات أمثلة للتجربة فقط</div>
+<div class="wrap">
+  <div class="phone" aria-label="محادثة واتساب تجريبية">
+    <div class="scr">
+      <div class="top"><div class="av">ن</div><div><b>متجر نسيم للعطور</b><small id="st">متصل الآن · رد تلقائي</small></div></div>
+      <div class="msgs" id="msgs" aria-live="polite"></div>
+      <div class="qr" id="qr"></div>
+      <form class="bar" id="f"><input id="in" placeholder="اكتب رسالة… (جرّب: بكام، التوصيل، حالة طلبي)" autocomplete="off" aria-label="رسالتك"><button aria-label="إرسال">➤</button></form>
+    </div>
+  </div>
+
+  <div>
+    <h1>بوت واتساب <b>بيرد على عملائك</b> ويسجّل الطلبات وإنت نايم</h1>
+    <p class="lead">جرّب المحادثة: اسأل عن الأسعار، اطلب منتج، أو اسأل عن حالة طلبك. كل طلب بيتسجل تلقائياً في جدول الطلبات اللي جنبك.</p>
+
+    <div class="card">
+      <h2><span class="dot"></span>جدول الطلبات (بيتحدث لحظياً)</h2>
+      <div id="orders"><div class="empty">لسه مفيش طلبات — اطلب منتج من المحادثة وشوفه بيظهر هنا.</div></div>
+    </div>
+
+    <div class="card">
+      <h2>النهارده</h2>
+      <div class="stats">
+        <div class="stat"><b id="sMsg">0</b><span>رسالة اترد عليها</span></div>
+        <div class="stat"><b id="sOrd">0</b><span>طلب اتسجل</span></div>
+        <div class="stat"><b>٣ ث</b><span>متوسط وقت الرد</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>إزاي بيشتغل</h2>
+      <div class="steps">
+        <div class="step"><b>١. رد فوري ٢٤ ساعة</b>بيجاوب على الأسعار والتوصيل والمواعيد من غير ما حد يمسك الموبايل.</div>
+        <div class="step"><b>٢. ياخد الطلب كامل</b>المنتج، الكمية، الاسم، المدينة — ويأكّد مع العميل.</div>
+        <div class="step"><b>٣. يسجّله في شيت</b>كل طلب بيتضاف تلقائياً في Google Sheets أو لوحة التحكم بتاعتك.</div>
+        <div class="step"><b>٤. يحوّل لموظف</b>لو العميل طلب يكلم حد، البوت بيبلّغك فوراً.</div>
+      </div>
+      <p class="hint">بيتربط برقم واتساب بزنس الرسمي (WhatsApp Business API)، وبيتظبط على منتجاتك وأسلوب كلامك.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const P=[{id:1,n:"عطر عود ملكي",p:350},{id:2,n:"عطر مسك أبيض",p:220},{id:3,n:"بخور فاخر",p:120},{id:4,n:"طقم هدية (عطر + بخور)",p:420}];
+const $=id=>document.getElementById(id);
+const msgs=$("msgs"),qr=$("qr");let state="menu",draft={},orders=[],nMsg=0,seq=1042;
+const now=()=>new Date().toLocaleTimeString("ar-EG",{hour:"numeric",minute:"2-digit"});
+function add(t,who){const d=document.createElement("div");d.className="m "+who;d.textContent=t;const tm=document.createElement("time");tm.textContent=now()+(who=="me"?" ✓✓":"");d.appendChild(tm);msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+function quick(list){qr.innerHTML="";list.forEach(t=>{const b=document.createElement("button");b.type="button";b.textContent=t;b.onclick=()=>user(t);qr.appendChild(b)})}
+function bot(t,q){qr.innerHTML="";const ty=document.createElement("div");ty.className="typing";ty.innerHTML="<i></i><i></i><i></i>";msgs.appendChild(ty);msgs.scrollTop=msgs.scrollHeight;$("st").textContent="يكتب…";
+ setTimeout(()=>{ty.remove();add(t,"bot");nMsg++;$("sMsg").textContent=nMsg;$("st").textContent="متصل الآن · رد تلقائي";if(q)quick(q)},700+Math.min(t.length*8,900))}
+const MENU=["🛍️ المنتجات والأسعار","🛒 اطلب الآن","📦 حالة طلبي","👤 كلّم موظف"];
+function menu(pre){bot((pre?pre+"\n\n":"")+"تحب أساعدك في إيه؟",MENU)}
+function prices(){bot("أسعارنا 👇\n"+P.map(x=>`${x.id}. ${x.n} — ${x.p} ج.م`).join("\n")+"\n\nالتوصيل لكل المحافظات خلال ٢–٤ أيام.",["🛒 اطلب الآن","🚚 التوصيل","↩️ القائمة"])}
+function user(t){add(t,"me");handle(t.trim())}
+function handle(t){const s=t.replace(/[\u064B-\u0652]/g,"").replace(/[^؀-ۿa-zA-Z0-9 ]/g,"").trim();
+ if(/القائمة|ابدأ|مرحب|السلام|هاي|اهلا|أهلا/.test(s)&&state!="name"&&state!="city"){state="menu";return menu("أهلاً بيك في متجر نسيم 🌿")}
+ if(state=="product"){const k=P.find(x=>s.includes(String(x.id))||s.includes(x.n.split(" ")[1]||"~")||t.includes(x.n));if(!k)return bot("اختار رقم المنتج من القائمة 🙏",P.map(x=>x.id+". "+x.n));draft.p=k;state="qty";return bot(`اختيار حلو 👌 ${k.n}\nعايز كام قطعة؟`,["1","2","3"])}
+ if(state=="qty"){const q=parseInt(s.replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)));if(!q||q<1||q>20)return bot("اكتب الكمية رقم من ١ لـ ٢٠",["1","2","3"]);draft.q=q;state="name";return bot("تمام! الاسم بالكامل؟")}
+ if(state=="name"){if(s.length<2)return bot("اكتب اسمك من فضلك");draft.name=t;state="city";return bot("والمدينة / المحافظة؟",["القاهرة","الجيزة","الإسكندرية"])}
+ if(state=="city"){draft.city=t;state="confirm";const tot=draft.p.p*draft.q+40;return bot(`راجع طلبك 📝\n${draft.p.n} × ${draft.q}\nالاسم: ${draft.name}\nالمدينة: ${draft.city}\nالإجمالي: ${tot} ج.م (شامل توصيل ٤٠)\n\nأأكّد الطلب؟`,["✅ أكّد","❌ إلغاء"])}
+ if(state=="confirm"){if(/أكد|اكد|تمام|اه|أيوه|ايوه|نعم/.test(s)){const o={no:++seq,...draft,tot:draft.p.p*draft.q+40,status:"قيد التجهيز"};orders.unshift(o);render(o.no);state="menu";draft={};return bot(`تم تسجيل طلبك ✅\nرقم الطلب: #${o.no}\nهنكلمك قبل التوصيل. شكراً لثقتك 🌿`,["📦 حالة طلبي","↩️ القائمة"])}state="menu";draft={};return menu("اتلغى الطلب، ولا يهمك.")}
+ if(state=="track"){const no=parseInt(s.replace(/\D/g,""));const o=orders.find(x=>x.no==no)||(no==1037?{no:1037,status:"خرج للتوصيل 🚚"}:null);state="menu";return bot(o?`طلب #${o.no}: ${o.status}`:"مش لاقي الرقم ده 🤔 اتأكد منه أو جرّب 1037",["↩️ القائمة"])}
+ if(/توصيل|شحن|يوصل/.test(s))return bot("🚚 التوصيل لكل المحافظات خلال ٢–٤ أيام بـ ٤٠ ج.م، والدفع عند الاستلام.",["🛒 اطلب الآن","↩️ القائمة"]);
+ if(/منتج|اسعار|أسعار|سعر|بكام|بكم|كام/.test(s))return prices();
+ if(/اطلب|طلب جديد|عايز|اشتري|أشتري/.test(s)&&!/حالة/.test(s)){state="product";return bot("اختار المنتج 👇",P.map(x=>x.id+". "+x.n))}
+ if(/حالة|فين طلبي|تتبع/.test(s)){state="track";const last=orders[0];return bot("ابعتلي رقم الطلب"+(last?` (آخر طلب ليك #${last.no})`:" (جرّب 1037)"),last?[String(last.no)]:["1037"])}
+ if(/موظف|حد|خدمة العملاء|اكلم/.test(s))return bot("تمام، بلّغت فريقنا وهيرد عليك خلال دقايق 👤\n(البوت بيبعت إشعار لصاحب المتجر فوراً)",["↩️ القائمة"]);
+ if(/مواعيد|ساعات|فاتحين/.test(s))return bot("الأونلاين ٢٤ ساعة ✨ والفرع من ١٢ الظهر لـ ١٢ بالليل.",["↩️ القائمة"]);
+ if(/شكرا|شكراً|تسلم/.test(s))return bot("العفو 🌿 تحت أمرك في أي وقت.",["↩️ القائمة"]);
+ menu("ممكن توضّح أكتر؟ 🙏")}
+function render(newNo){$("sOrd").textContent=orders.length;$("orders").innerHTML=`<table><thead><tr><th>#</th><th>المنتج</th><th>العميل</th><th>المدينة</th><th>الإجمالي</th><th>الحالة</th></tr></thead><tbody>${orders.map(o=>`<tr class="${o.no==newNo?"new":""}"><td>${o.no}</td><td>${esc(o.p.n)} × ${o.q}</td><td>${esc(o.name)}</td><td>${esc(o.city)}</td><td>${o.tot}</td><td>${o.status}</td></tr>`).join("")}</tbody></table>`}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+$("f").onsubmit=e=>{e.preventDefault();const v=$("in").value.trim();if(!v)return;$("in").value="";user(v)};
+qr.addEventListener("click",e=>{if(e.target.tagName=="BUTTON"&&/القائمة/.test(e.target.textContent)){state="menu"}});
+setTimeout(()=>menu("أهلاً بيك في متجر نسيم للعطور 🌿\nأنا المساعد الآلي، برد عليك فوراً ٢٤ ساعة."),400);
+</script>
+</body>
+</html>

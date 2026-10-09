@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مكتبة حكايات — نموذج أولي تفاعلي</title>
+<meta name="description" content="نموذج أولي تفاعلي لمكتبة رقمية للأطفال: تصنيفات، قصص مصورة، استماع، وأنشطة.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff8ec;--ink:#2b2340;--soft:#7a7090;--card:#fff;--line:#f0e4cf;--c1:#ff7a59;--c2:#3bb8ff;--c3:#8b5cf6;--c4:#22c55e;--c5:#ffbe0b}
+@media (prefers-color-scheme:dark){:root{--bg:#17132a;--ink:#f6f1ff;--soft:#b9b0d0;--card:#231d3d;--line:#2f2850}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Baloo Bhaijaan 2",system-ui,sans-serif;font-weight:500;-webkit-tap-highlight-color:transparent}
+.demo{background:var(--ink);color:var(--bg);text-align:center;font-size:.8rem;padding:.4rem 1rem}
+header{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:960px;margin:0 auto;padding:1rem 1rem .4rem}
+.logo{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.5rem;cursor:pointer}
+.logo i{width:46px;height:46px;border-radius:14px;background:var(--c5);display:grid;place-items:center;font-style:normal;font-size:1.6rem;transform:rotate(-6deg)}
+.stars{background:var(--card);border:2px solid var(--line);border-radius:999px;padding:.3rem .9rem;font-weight:700}
+main{max-width:960px;margin:0 auto;padding:.5rem 1rem 3rem}
+h1{font-size:1.9rem;margin:.6rem 0 .2rem}
+.sub{color:var(--soft);margin:0 0 1.2rem}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media (max-width:720px){.cats{grid-template-columns:repeat(2,1fr)}}
+.cat{border:0;border-radius:26px;padding:1.2rem .8rem 1rem;color:#fff;font:800 1.25rem "Baloo Bhaijaan 2";cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:.4rem;box-shadow:0 8px 0 rgba(0,0,0,.12);transition:transform .15s}
+.cat:hover{transform:translateY(-4px) rotate(-1deg)}.cat:active{transform:translateY(2px);box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.cat span{font-size:3rem;line-height:1}.cat small{font-weight:500;font-size:.8rem;opacity:.9}
+.row{display:flex;align-items:center;justify-content:space-between;margin:2rem 0 .8rem}
+.row h2{margin:0;font-size:1.4rem}
+.back{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:.35rem 1rem;font:700 .95rem "Baloo Bhaijaan 2";cursor:pointer;min-height:42px}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem}
+.book{background:var(--card);border:2px solid var(--line);border-radius:22px;overflow:hidden;cursor:pointer;text-align:right;padding:0;color:var(--ink);font:inherit;transition:transform .15s}
+.book:hover{transform:translateY(-3px)}
+.cover{height:130px;display:grid;place-items:center;font-size:4rem}
+.book b{display:block;padding:.6rem .8rem 0;font-size:1.05rem}
+.book small{display:block;padding:0 .8rem .7rem;color:var(--soft)}
+.done{float:left;margin:.6rem .8rem 0;color:var(--c4)}
+.reader{background:var(--card);border:2px solid var(--line);border-radius:28px;overflow:hidden}
+.page{min-height:330px;display:grid;grid-template-columns:1fr 1fr;align-items:center}
+@media (max-width:720px){.page{grid-template-columns:1fr}}
+.pic{height:100%;min-height:220px;display:grid;place-items:center;font-size:7rem}
+.txt{padding:1.6rem;font-size:1.45rem;line-height:1.9}
+.ctrls{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.8rem 1rem;border-top:2px solid var(--line)}
+.btn{border:0;border-radius:999px;padding:.55rem 1.2rem;font:800 1rem "Baloo Bhaijaan 2";cursor:pointer;min-height:46px;color:#fff;background:var(--c2)}
+.btn.play{background:var(--c1)}.btn:disabled{opacity:.35;cursor:default}
+.dots{display:flex;gap:.35rem}.dots i{width:10px;height:10px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--c3)}
+.quiz{padding:1.4rem}
+.quiz h3{margin:0 0 .8rem;font-size:1.3rem}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+.opt{border:3px solid var(--line);background:var(--bg);border-radius:20px;padding:1rem .5rem;font-size:2.6rem;cursor:pointer}
+.opt.ok{border-color:var(--c4);background:rgba(34,197,94,.15)}.opt.no{border-color:var(--c1);animation:sh .3s}
+@keyframes sh{25%{transform:translateX(6px)}75%{transform:translateX(-6px)}}
+.yay{font-size:1.2rem;margin-top:.8rem;min-height:1.6em}
+.note{margin-top:2rem;background:var(--card);border:2px dashed var(--line);border-radius:20px;padding:1rem 1.2rem;color:var(--soft);font-size:.92rem}
+.note b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="demo">نموذج أولي تفاعلي (Prototype) — القصص والرسومات أمثلة للتجربة</div>
+<header>
+  <div class="logo" id="home" role="button" tabindex="0"><i>📚</i>مكتبة حكايات</div>
+  <div class="stars" aria-label="النجوم">⭐ <span id="st">0</span></div>
+</header>
+<main id="app"></main>
+
+<script>
+const CATS=[
+ {id:"stories",n:"قصص",e:"📖",c:"var(--c1)",d:"حكايات مصورة"},
+ {id:"songs",n:"أناشيد",e:"🎵",c:"var(--c3)",d:"اسمع وغنّي"},
+ {id:"letters",n:"حروف",e:"🔤",c:"var(--c2)",d:"تعلّم الحروف"},
+ {id:"games",n:"أنشطة",e:"🧩",c:"var(--c4)",d:"العب وفكّر"}];
+const BOOKS={
+ stories:[
+  {t:"القطة لولو",e:"🐱",bg:"#ffe2d6",pages:[["🐱","لولو قطة صغيرة، تحب اللعب في الحديقة."],["🦋","في يوم، رأت لولو فراشة ملونة تطير."],["🌼","جرت لولو وراء الفراشة حتى وصلت إلى الزهور."],["😺","جلست لولو بين الزهور سعيدة، وقالت: ما أجمل الطبيعة!"]],q:{s:"ماذا رأت لولو في الحديقة؟",o:["🦋","🚗","🍎"],a:0}},
+  {t:"النحلة النشيطة",e:"🐝",bg:"#fff1c2",pages:[["🐝","نحلة صغيرة تستيقظ مبكراً كل يوم."],["🌸","تطير من زهرة إلى زهرة لتجمع الرحيق."],["🍯","ترجع إلى الخلية وتصنع عسلاً لذيذاً."]],q:{s:"ماذا تصنع النحلة؟",o:["🧀","🍯","🍞"],a:1}},
+  {t:"القمر والنجوم",e:"🌙",bg:"#dfe3ff",pages:[["🌙","في الليل، يطلع القمر الكبير في السماء."],["⭐","وتلمع حوله نجوم صغيرة كثيرة."],["😴","فينام الأطفال وهم يحلمون بأحلام جميلة."]],q:{s:"متى يطلع القمر؟",o:["☀️","🌙","🌧️"],a:1}}],
+ songs:[{t:"نشيد الألوان",e:"🌈",bg:"#e9ddff",pages:[["🔴","أحمر أحمر مثل التفاح"],["🟡","أصفر أصفر مثل الشمس"],["🔵","أزرق أزرق مثل البحر"]],q:{s:"ما لون الشمس؟",o:["🔵","🟡","🔴"],a:1}}],
+ letters:[{t:"حرف الألف",e:"أ",bg:"#d8f1ff",pages:[["🦁","أ … أسد"],["🐰","أ … أرنب"],["🍍","أ … أناناس"]],q:{s:"أي صورة تبدأ بحرف الألف؟",o:["🐟","🦁","🐄"],a:1}},{t:"حرف الباء",e:"ب",bg:"#d8f1ff",pages:[["🦆","ب … بطة"],["🍉","ب … بطيخ"],["🐄","ب … بقرة"]],q:{s:"أي صورة تبدأ بحرف الباء؟",o:["🦆","🌙","🦁"],a:0}}],
+ games:[{t:"لعبة الحيوانات",e:"🧩",bg:"#d6f7e1",pages:[["🐘","الفيل حيوان كبير له خرطوم طويل."],["🦒","الزرافة رقبتها طويلة جداً."]],q:{s:"من صاحب الخرطوم؟",o:["🦒","🐘","🐒"],a:1}}]};
+const app=document.getElementById("app");let stars=0;const read=new Set();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="ar-SA";u.rate=.85;const v=speechSynthesis.getVoices().find(v=>/^ar/.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+function home(){app.innerHTML=`<h1>أهلاً يا بطلة! 👋</h1><p class="sub">اختاري القسم اللي تحبيه</p><div class="cats">${CATS.map(c=>`<button class="cat" style="background:${c.c}" data-c="${c.id}"><span>${c.e}</span>${c.n}<small>${c.d}</small></button>`).join("")}</div>
+<div class="row"><h2>قصص مقترحة ✨</h2></div><div class="books">${BOOKS.stories.map((b,i)=>card("stories",i)).join("")}</div>
+<div class="note"><b>عن النموذج:</b> نموذج أولي يفتح من رابط مباشر بدون تسجيل دخول — تصنيفات ببطاقات كبيرة، قصص مصورة بصفحات، زر استماع للقراءة بصوت، وأسئلة بعد كل قصة بنجوم تشجيعية. يشتغل على الجوال والتابلت والكمبيوتر.</div>`}
+function card(cat,i){const b=BOOKS[cat][i];return `<button class="book" data-cat="${cat}" data-i="${i}"><div class="cover" style="background:${b.bg}">${esc(b.e)}</div>${read.has(cat+i)?'<span class="done">✔</span>':""}<b>${esc(b.t)}</b><small>${b.pages.length} صفحات</small></button>`}
+function list(cat){const c=CATS.find(x=>x.id==cat);app.innerHTML=`<div class="row"><h2>${c.e} ${c.n}</h2><button class="back" data-go="home">→ الرئيسية</button></div><div class="books">${BOOKS[cat].map((b,i)=>card(cat,i)).join("")}</div>`}
+function open(cat,i,p=0){const b=BOOKS[cat][i];const n=b.pages.length;
+ if(p>=n)return quiz(cat,i);
+ const [e,t]=b.pages[p];
+ app.innerHTML=`<div class="row"><h2>${esc(b.t)}</h2><button class="back" data-go="${cat}">→ رجوع</button></div>
+ <div class="reader"><div class="page"><div class="pic" style="background:${b.bg}">${esc(e)}</div><div class="txt">${esc(t)}</div></div>
+ <div class="ctrls"><button class="btn" id="prev" ${p==0?"disabled":""}>السابق</button><button class="btn play" id="play">🔊 اسمعي</button><div class="dots">${b.pages.map((_,k)=>`<i class="${k==p?"on":""}"></i>`).join("")}</div><button class="btn" id="next">${p==n-1?"سؤال ⭐":"التالي"}</button></div></div>`;
+ document.getElementById("prev").onclick=()=>open(cat,i,p-1);document.getElementById("next").onclick=()=>open(cat,i,p+1);document.getElementById("play").onclick=()=>say(t)}
+function quiz(cat,i){const b=BOOKS[cat][i];app.innerHTML=`<div class="row"><h2>${esc(b.t)}</h2><button class="back" data-go="${cat}">→ رجوع</button></div>
+ <div class="reader quiz"><h3>${esc(b.q.s)}</h3><div class="opts">${b.q.o.map((o,k)=>`<button class="opt" data-k="${k}">${esc(o)}</button>`).join("")}</div><div class="yay" id="yay"></div></div>`;
+ say(b.q.s);
+ app.querySelectorAll(".opt").forEach(el=>el.onclick=()=>{if(+el.dataset.k==b.q.a){el.classList.add("ok");if(!read.has(cat+i)){read.add(cat+i);stars+=3;document.getElementById("st").textContent=stars}document.getElementById("yay").innerHTML='أحسنتِ! 🎉 +٣ نجوم &nbsp; <button class="back" data-go="'+cat+'">قصة تانية</button>';say("أحسنتِ")}else{el.classList.remove("no");void el.offsetWidth;el.classList.add("no")}})}
+app.addEventListener("click",e=>{const c=e.target.closest("[data-c]");if(c)return list(c.dataset.c);const bk=e.target.closest(".book");if(bk)return open(bk.dataset.cat,+bk.dataset.i);const g=e.target.closest("[data-go]");if(g)return g.dataset.go=="home"?home():list(g.dataset.go)});
+document.getElementById("home").onclick=home;document.getElementById("home").onkeydown=e=>{if(e.key=="Enter")home()};
+home();
+</script>
+</body>
+</html>
