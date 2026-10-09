@@ -68,6 +68,7 @@ h2{font-size:clamp(1.5rem,3.4vw,2.1rem);margin:0 0 6px}
 .contact .btn{margin:6px}
 footer{padding:28px 0 40px;color:var(--soft);font-size:.85rem;text-align:center;border-top:1px solid var(--line)}
 :focus-visible{outline:2px solid var(--acc2);outline-offset:3px}
+.nd{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}.ndc{display:flex;gap:14px;align-items:center;text-decoration:none;color:inherit}.ndc img{width:96px;height:150px;object-fit:cover;object-position:top;border-radius:12px;flex:0 0 auto;border:1px solid var(--line)}.ndc h3{margin:8px 0 4px;font-size:1.05rem}.ndc p{margin:0 0 6px;color:var(--soft);font-size:.9rem}
 </style>
 </head>
 <body>
@@ -103,6 +104,10 @@ footer{padding:28px 0 40px;color:var(--soft);font-size:.85rem;text-align:center;
   <p style="margin:0;color:var(--soft)" data-t="e_p"></p>
   <div class="chips"><span>Shopify</span><span>Horizon theme</span><span>Liquid</span></div>
  </div>
+ <div class="grid nd" style="margin-top:16px">
+  <a class="card ndc" href="../demo-bot/" target="_blank" rel="noopener"><img src="pf/bot_screen.jpg" alt="WhatsApp bot demo" loading="lazy"><div><span class="tag" data-t="dnew"></span><h3 data-t="b_h"></h3><p data-t="b_p"></p><span class="lk" data-t="tryit"></span></div></a>
+  <a class="card ndc" href="../demo-library/" target="_blank" rel="noopener"><img src="pf/lib_screen1.jpg" alt="Interactive prototype demo" loading="lazy"><div><span class="tag" data-t="dnew"></span><h3 data-t="p_h"></h3><p data-t="p_p"></p><span class="lk" data-t="tryit"></span></div></a>
+ </div>
  <h3 style="margin:36px 0 6px" data-t="dm_h"></h3><p class="sub" data-t="dm_p"></p>
  <div class="grid demos" id="demos"></div>
 </div></section>
@@ -119,7 +124,7 @@ footer{padding:28px 0 40px;color:var(--soft);font-size:.85rem;text-align:center;
 <footer>© 2026 Mohamed Elkhashab · Cairo, Egypt</footer>
 
 <script>
-const CONTACT=[]; // filled once Mohamed confirms his links: {ar,en,href}
+const CONTACT=[{ar:"اطلب على نفذلي",en:"Hire me on Nafezly",href:"https://nafezly.com/u/khashab_1",p:1},{ar:"اطلب على كاف",en:"Hire me on Kafiil",href:"https://kafiil.com/u/mohamed_khashab"},{ar:"اطلب على خمسات",en:"Hire me on Khamsat",href:"https://khamsat.com/user/mohamed_khashab"}];
 const DEMOS=[["lyrs","LYRS","Riyadh"],["awatif","Awatif","Riyadh"],["yardek","Yardek","Riyadh"],["caia","Caia","Riyadh"],["brb","BRB","Riyadh"],["waad","Waad Tuwaiq","Riyadh"],["robusta","Robusta Peak","Riyadh"],["ochre","OCHRE","Riyadh"]];
 const SLUG={lyrs:"lyrs-b7k4",awatif:"awatif-d8q3",yardek:"yardek-c3m8",caia:"caia-n4w7",brb:"brb-k6v2",waad:"waad-x4h6",robusta:"robusta-k8d3",ochre:"ochre-r4k7"};
 const T={
@@ -131,8 +136,8 @@ s_h:"الخدمات",s_p:"خدمات محددة بنطاق واضح وتسليم
 w_h:"أعمال مختارة",w_p:"مشاريع حقيقية لعملاء، ونماذج صمّمتها لبراندات مختلفة.",real:"مشروع حقيقي",
 d_h:"مطعم دمس — منيو تفاعلي على شكل كتاب",d_p:"منيو رقمي بتقليب صفحات زي الكتاب الحقيقي لمطعم مصري في الرياض. عربي من اليمين للشمال، متجاوب مع الموبايل، وبهوية المطعم (الأحمر والذهبي).",visit:"افتح الموقع ↗",
 e_h:"Egypt Lion Auto Service — متجر Shopify لقطع غيار السيارات",e_p:"متجر منظّم حسب موديلات بيجو وسنين الصنع، مع تعديلات مخصّصة على الثيم (قوائم بعناوين على سطرين، صور الأقسام في المنيو).",
-dm_h:"نماذج منيو ومواقع لكافيهات",dm_p:"أكتر من 40 نموذج، كل واحد بهوية مختلفة. اضغط على أي نموذج تجرّبه.",try:"جرّب ↗",
-h_h:"طريقة العمل",h_p:"خطوات واضحة من أول رسالة لحد التسليم.",ct_h:"عندك مشروع؟",ct_p:"ابعتلي فكرتك وهرد عليك بخطة وسعر ومدة تنفيذ واضحين.",soon:"روابط التواصل هتتضاف قريب"},
+dnew:"ديمو تفاعلي",tryit:"جرّبه ↗",b_h:"بوت واتساب للمتاجر",b_p:"يرد على العملاء ٢٤ ساعة، ياخد الطلب كامل، ويسجّله تلقائياً في جدول.",p_h:"نموذج أولي تفاعلي — مكتبة حكايات",p_p:"Prototype لمكتبة رقمية للأطفال: تصنيفات، قصص مصورة، قراءة بصوت، وأسئلة بنجوم.",dm_h:"نماذج منيو ومواقع لكافيهات",dm_p:"أكتر من 40 نموذج، كل واحد بهوية مختلفة. اضغط على أي نموذج تجرّبه.",try:"جرّب ↗",
+h_h:"طريقة العمل",h_p:"خطوات واضحة من أول رسالة لحد التسليم.",ct_h:"عندك مشروع؟",ct_p:"ابعتلي فكرتك على أي منصة من دول، وهرد عليك بخطة وسعر ومدة تنفيذ واضحين — والدفع مضمون من خلال المنصة.",soon:"روابط التواصل هتتضاف قريب"},
 en:{n1:"Services",n2:"Work",n3:"Process",lang:"العربية",avail:"Available for new projects",
 h1:"I build <em>fast, beautiful</em> mobile-first websites in your brand",
 lead:"Front-end developer based in Cairo. Landing pages, restaurant & café websites and Shopify stores — custom-designed, Arabic & English, delivered fast.",
@@ -141,16 +146,20 @@ s_h:"Services",s_p:"Clearly scoped services, delivered on time.",
 w_h:"Selected work",w_p:"Real client projects, plus concepts designed for different brands.",real:"Client project",
 d_h:"Damas Restaurant — flipbook digital menu",d_p:"A page-turning digital menu for an Egyptian restaurant in Riyadh. Right-to-left Arabic, fully responsive, in the restaurant's red & gold identity.",visit:"Visit site ↗",
 e_h:"Egypt Lion Auto Service — Shopify auto-parts store",e_p:"Store organised by Peugeot model and year range, with custom theme work (two-line menu titles, collection images in the drawer).",
-dm_h:"Café menu & website concepts",dm_p:"40+ concepts, each in a different brand identity. Tap any to try it.",try:"Try ↗",
-h_h:"How I work",h_p:"Clear steps from first message to launch.",ct_h:"Have a project?",ct_p:"Send me your idea and I'll reply with a clear plan, price and timeline.",soon:"Contact links coming soon"}};
+dnew:"Interactive demo",tryit:"Try it ↗",b_h:"WhatsApp bot for stores",b_p:"Answers customers 24/7, takes the full order and logs it to a sheet automatically.",p_h:"Interactive prototype — kids' library",p_p:"A clickable prototype: categories, illustrated stories, read-aloud and quizzes with stars.",dm_h:"Café menu & website concepts",dm_p:"40+ concepts, each in a different brand identity. Tap any to try it.",try:"Try ↗",
+h_h:"How I work",h_p:"Clear steps from first message to launch.",ct_h:"Have a project?",ct_p:"Message me on any of these platforms and I'll reply with a clear plan, price and timeline — payment protected by the platform.",soon:"Contact links coming soon"}};
 const SVC={ar:[["⚡","لاندنج بيدج","صفحة واحدة لمنتج أو خدمة أو حملة إعلانية، مصممة عشان تحوّل الزوار لعملاء.",["تصميم مخصص بهوية البراند","سريعة ومتجاوبة مع الموبايل","أنيميشن خفيف (Framer Motion / GSAP)","زرار واتساب أو فورم تواصل"]],
 ["🍽️","موقع مطعم أو كافيه","منيو بالأسعار، موقع الفرع على الخريطة، وزرار طلب.",["عربي وإنجليزي ووضع ليلي","المنيو بالأسعار والسعرات","تقييم جوجل وموقع الفرع","سهل التعديل"]],
 ["🛍️","متجر Shopify","إعداد متجر أو تعديل ثيم موجود بنفس هوية البراند.",["تنظيم الأقسام والمنتجات","تعديلات على الثيم (Liquid)","صفحات منتجات مقنعة","متجاوب مع الموبايل"]],
-["🛠️","تعديل وتحسين موقع","تصليح مشاكل، تحسين السرعة، أو تحويل تصميم Figma لكود.",["React / Next.js / HTML","تحسين السرعة و SEO الأساسي","إصلاح مشاكل الموبايل","تسليم سريع"]]],
+["🛠️","تعديل وتحسين موقع","تصليح مشاكل، تحسين السرعة، أو تحويل تصميم Figma لكود.",["React / Next.js / HTML","تحسين السرعة و SEO الأساسي","إصلاح مشاكل الموبايل","تسليم سريع"]],
+["🤖","بوت واتساب للمتاجر","بوت يرد على العملاء ويستقبل الطلبات ويسجّلها لوحده.",["رد فوري ٢٤ ساعة","استقبال الطلب كامل وتأكيده","تسجيل الطلبات في Google Sheets","تحويل لموظف عند الحاجة"]],
+["🧪","نموذج أولي تفاعلي","شوف فكرة تطبيقك أو منصتك شغالة قبل ما تصرف على البرمجة الكاملة.",["شاشات بهوية مشروعك","تنقل وتفاعلات حقيقية","يفتح من رابط على أي جهاز","تسليم سريع"]]],
 en:[["⚡","Landing page","A single page for a product, service or ad campaign, designed to convert visitors.",["Custom design in your brand","Fast and mobile-first","Subtle motion (Framer Motion / GSAP)","WhatsApp button or contact form"]],
 ["🍽️","Restaurant / café website","Menu with prices, branch map and an order button.",["Arabic & English, dark mode","Prices and calories","Google reviews & location","Easy to update"]],
 ["🛍️","Shopify store","Store setup or theme customisation in your brand.",["Collections & products","Theme edits (Liquid)","Persuasive product pages","Mobile-first"]],
-["🛠️","Fix & improve a website","Bug fixes, speed improvements, or Figma-to-code.",["React / Next.js / HTML","Speed & basic SEO","Mobile layout fixes","Quick turnaround"]]]};
+["🛠️","Fix & improve a website","Bug fixes, speed improvements, or Figma-to-code.",["React / Next.js / HTML","Speed & basic SEO","Mobile layout fixes","Quick turnaround"]],
+["🤖","WhatsApp bot for stores","A bot that answers customers, takes orders and logs them on its own.",["Instant replies 24/7","Full order capture & confirmation","Orders logged to Google Sheets","Hand-off to a human"]],
+["🧪","Interactive prototype","See your app or platform working before paying for the full build.",["Screens in your brand","Real navigation & interactions","Opens from a link on any device","Fast turnaround"]]]};
 const STEPS={ar:[["تفهمني الفكرة","بتبعتلي اللي محتاجه، وأنا بسأل الأسئلة المهمة."],["خطة وسعر واضح","نطاق الشغل، المدة، والسعر قبل ما نبدأ."],["تصميم وتنفيذ","بتشوف التقدم أول بأول وتعليقاتك بتتنفذ."],["تسليم ودعم","التسليم في الميعاد، ودعم بعد التسليم."]],
 en:[["Brief","You tell me what you need; I ask the right questions."],["Plan & price","Scope, timeline and price agreed before we start."],["Design & build","You see progress along the way; feedback gets applied."],["Launch & support","Delivered on time, with support after launch."]]};
 let L=(new URLSearchParams(location.search).get("lang")==="en")?"en":"ar";
