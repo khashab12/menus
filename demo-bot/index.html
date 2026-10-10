@@ -3,138 +3,331 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>بوت واتساب للمتاجر — ديمو</title>
-<meta name="description" content="ديمو تفاعلي: بوت واتساب بيرد على العملاء ويسجّل الطلبات تلقائياً.">
+<title>صندوق رسائل موحّد + بوت واتساب — ديمو</title>
+<meta name="description" content="ديمو تفاعلي: بوت واتساب بيرد ويسجّل الطلبات، وصندوق رسائل موحّد لكل القنوات، وعملاء، وحملات بإرسال تدريجي، وتقارير.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f3f1ec;--card:#fff;--ink:#14161a;--soft:#5f6670;--line:#e4e0d8;--wa:#075e54;--wa2:#25d366;--chat:#efe7dd;--in:#fff;--out:#d9fdd3;--acc:#0b8f6c}
-@media (prefers-color-scheme:dark){:root{--bg:#0e1013;--card:#171a1f;--ink:#eef0f2;--soft:#9aa3ad;--line:#262a31;--chat:#0b141a;--in:#202c33;--out:#005c4b}}
+:root{--bg:#f3f1ec;--card:#fff;--ink:#14161a;--soft:#5f6670;--line:#e4e0d8;--wa:#075e54;--wa2:#25d366;--chat:#efe7dd;--in:#fff;--out:#d9fdd3;--acc:#0b8f6c;--hi:#e9f7f1}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1013;--card:#171a1f;--ink:#eef0f2;--soft:#9aa3ad;--line:#262a31;--chat:#0b141a;--in:#202c33;--out:#005c4b;--hi:#12302a}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;line-height:1.6}
+button,input,select,textarea{font:inherit;color:inherit}
 .demo{background:#14161a;color:#fff;text-align:center;font-size:.8rem;padding:.45rem 1rem}
-.wrap{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem;display:grid;grid-template-columns:380px 1fr;gap:2rem;align-items:start}
-@media (max-width:860px){.wrap{grid-template-columns:1fr}}
-h1{font-size:1.9rem;line-height:1.3;margin:.2rem 0 .5rem}
+.wrap{max-width:1180px;margin:0 auto;padding:1.5rem 1rem 3rem;display:grid;grid-template-columns:370px minmax(0,1fr);gap:1.6rem;align-items:start}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}}
+h1{font-size:1.8rem;line-height:1.3;margin:.2rem 0 .4rem}
 h1 b{color:var(--acc)}
-.lead{color:var(--soft);margin:0 0 1.2rem}
+.lead{color:var(--soft);margin:0 0 1rem}
+/* phone */
 .phone{background:#0b0b0b;border-radius:42px;padding:10px;box-shadow:0 30px 70px rgba(0,0,0,.25);position:sticky;top:1rem}
-@media (max-width:860px){.phone{position:relative;top:0;max-width:380px;margin:0 auto}}
-.scr{border-radius:33px;overflow:hidden;background:var(--chat);height:680px;display:flex;flex-direction:column}
+@media (max-width:900px){.phone{position:relative;top:0;max-width:370px;margin:0 auto;width:100%}}
+.scr{border-radius:33px;overflow:hidden;background:var(--chat);height:660px;display:flex;flex-direction:column}
 .top{background:var(--wa);color:#fff;display:flex;align-items:center;gap:.65rem;padding:.9rem .9rem .75rem}
-.av{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--wa);display:grid;place-items:center;font-weight:700}
+.av{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--wa);display:grid;place-items:center;font-weight:700;flex:0 0 auto}
 .top b{display:block;font-size:.95rem}.top small{opacity:.8;font-size:.72rem}
-.msgs{flex:1;overflow-y:auto;padding:.9rem .7rem;display:flex;flex-direction:column;gap:.35rem;scroll-behavior:smooth}
-.m{max-width:82%;padding:.45rem .7rem .3rem;border-radius:10px;font-size:.9rem;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .18s ease-out}
+.msgs{flex:1;overflow-y:auto;padding:.9rem .7rem;display:flex;flex-direction:column;gap:.35rem}
+.m{max-width:82%;padding:.45rem .7rem .3rem;border-radius:10px;font-size:.88rem;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .18s ease-out}
 .m time{display:block;font-size:.62rem;color:var(--soft);text-align:left;margin-top:.1rem}
 .bot{background:var(--in);align-self:flex-start;border-top-right-radius:2px}
 .me{background:var(--out);align-self:flex-end;border-top-left-radius:2px}
+.agent{background:#fff4d6;color:#3b2f00;align-self:flex-start;border-top-right-radius:2px}
 @keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
 .typing{align-self:flex-start;background:var(--in);border-radius:10px;padding:.55rem .8rem;display:flex;gap:4px}
 .typing i{width:6px;height:6px;border-radius:50%;background:var(--soft);animation:b 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
 @keyframes b{0%,60%,100%{opacity:.3}30%{opacity:1}}
 .qr{display:flex;flex-wrap:wrap;gap:.35rem;padding:.4rem .6rem;background:var(--chat)}
-.qr button{border:1px solid var(--wa2);background:var(--in);color:var(--ink);border-radius:999px;padding:.3rem .8rem;font:500 .8rem "IBM Plex Sans Arabic";cursor:pointer;min-height:34px}
+.qr button{border:1px solid var(--wa2);background:var(--in);border-radius:999px;padding:.3rem .8rem;font-size:.8rem;font-weight:500;cursor:pointer;min-height:34px}
 .qr button:hover{background:var(--wa2);color:#fff}
 .bar{display:flex;gap:.4rem;padding:.5rem;background:var(--chat)}
-.bar input{flex:1;min-width:0;border:0;border-radius:999px;padding:.6rem .9rem;font:inherit;background:var(--in);color:var(--ink)}
-.bar button{transform:scaleX(-1);flex:0 0 44px;width:44px;height:44px;border-radius:50%;border:0;background:var(--wa2);color:#fff;font-size:1.1rem;cursor:pointer}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.1rem 1.2rem;margin-bottom:1rem}
-.card h2{font-size:1.05rem;margin:0 0 .6rem;display:flex;align-items:center;gap:.5rem}
+.bar input{flex:1;min-width:0;border:0;border-radius:999px;padding:.6rem .9rem;background:var(--in)}
+.bar button{transform:scaleX(-1);flex:0 0 44px;height:44px;border-radius:50%;border:0;background:var(--wa2);color:#fff;font-size:1.1rem;cursor:pointer}
+/* panel */
+.tabs{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none;margin-bottom:1rem;padding-bottom:2px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.45rem 1rem;cursor:pointer;font-weight:500;font-size:.9rem;min-height:40px;display:flex;align-items:center;gap:.4rem}
+.tab[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:#fff}
+.tab .n{background:#e2552f;color:#fff;border-radius:999px;font-size:.7rem;padding:0 .45rem;line-height:1.5}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1rem 1.1rem;margin-bottom:1rem}
+.card h2{font-size:1.02rem;margin:0 0 .7rem;display:flex;align-items:center;gap:.5rem}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--wa2);box-shadow:0 0 0 4px rgba(37,211,102,.2)}
-table{width:100%;border-collapse:collapse;font-size:.85rem}
-th,td{text-align:right;padding:.45rem .4rem;border-bottom:1px solid var(--line)}
+.hint{font-size:.8rem;color:var(--soft);margin:.4rem 0 0}
+.pane[hidden]{display:none}
+/* channels */
+.ch{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;color:#fff;font-size:.72rem;font-weight:700;flex:0 0 auto}
+.ch.wa{background:#25d366}.ch.ig{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af)}.ch.tt{background:#111}.ch.fb{background:#1877f2}.ch.em{background:#5b6b7f}.ch.call{background:#0b8f6c}
+/* inbox */
+.inbox{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);min-height:470px}
+@media (max-width:640px){.inbox{grid-template-columns:1fr}.thread{border-top:1px solid var(--line)}}
+.list{border-inline-end:1px solid var(--line);max-height:520px;overflow-y:auto}
+.filters{display:flex;gap:.3rem;padding:.6rem;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.filters button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:.15rem .6rem;font-size:.75rem;cursor:pointer}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.conv{display:flex;gap:.6rem;padding:.65rem .7rem;border-bottom:1px solid var(--line);cursor:pointer;width:100%;text-align:right;background:none;border-inline:0;border-top:0}
+.conv:hover{background:var(--bg)}.conv.sel{background:var(--hi)}
+.conv .tx{flex:1;min-width:0}
+.conv b{display:flex;justify-content:space-between;gap:.4rem;font-size:.88rem}
+.conv b time{font-weight:400;font-size:.68rem;color:var(--soft)}
+.conv p{margin:0;font-size:.78rem;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conv .meta{display:flex;gap:.3rem;margin-top:.2rem;align-items:center}
+.pill{font-size:.66rem;border-radius:999px;padding:0 .45rem;background:var(--bg);color:var(--soft);border:1px solid var(--line)}
+.pill.bot{background:#e6f6ee;color:#0b6e4f;border-color:#bfe6d3}.pill.need{background:#fde9e2;color:#a33b1d;border-color:#f6c8b8}
+.unread{background:#e2552f;color:#fff;border-radius:999px;font-size:.66rem;padding:0 .4rem;margin-inline-start:auto}
+.newc{animation:hl 1.6s ease-out}
+@keyframes hl{from{background:rgba(37,211,102,.3)}to{background:transparent}}
+.thread{display:flex;flex-direction:column;min-height:470px}
+.th-h{display:flex;align-items:center;gap:.6rem;padding:.65rem .8rem;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.th-h b{font-size:.92rem}
+.th-h select{margin-inline-start:auto;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:.25rem .5rem;font-size:.8rem}
+.th-b{flex:1;padding:.8rem;display:flex;flex-direction:column;gap:.35rem;overflow-y:auto;max-height:360px;background:var(--bg)}
+.th-b .m{max-width:85%}
+.th-f{display:flex;gap:.4rem;padding:.55rem;border-top:1px solid var(--line)}
+.th-f input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:.45rem .7rem}
+.th-f button,.btn{border:0;background:var(--acc);color:#fff;border-radius:12px;padding:.45rem .9rem;cursor:pointer;font-weight:500}
+.btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+.saved{display:flex;gap:.3rem;flex-wrap:wrap;padding:0 .55rem .55rem}
+.saved button{border:1px dashed var(--line);background:none;border-radius:999px;font-size:.72rem;padding:.1rem .55rem;cursor:pointer}
+.empty{color:var(--soft);font-size:.85rem;padding:1rem;text-align:center;margin:auto}
+/* crm */
+.board{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:.6rem;overflow-x:auto}
+.col{background:var(--bg);border-radius:14px;padding:.5rem;min-height:200px}
+.col h3{font-size:.85rem;margin:.1rem .2rem .5rem;display:flex;justify-content:space-between}
+.col h3 span{color:var(--soft);font-weight:400}
+.lead-c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.5rem .55rem;margin-bottom:.45rem;font-size:.8rem}
+.lead-c b{display:flex;align-items:center;gap:.35rem;font-size:.84rem}
+.lead-c .ch{width:20px;height:20px;border-radius:6px;font-size:.55rem}
+.lead-c p{margin:.2rem 0 .35rem;color:var(--soft)}
+.lead-c button{border:1px solid var(--line);background:var(--bg);border-radius:8px;font-size:.72rem;padding:.05rem .45rem;cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:.83rem}
+th,td{text-align:right;padding:.42rem .4rem;border-bottom:1px solid var(--line)}
 th{color:var(--soft);font-weight:500}
 tr.new td{animation:hl 1.6s ease-out}
-@keyframes hl{from{background:rgba(37,211,102,.35)}to{background:transparent}}
-.empty{color:var(--soft);font-size:.85rem;padding:.6rem 0}
-.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
-@media (max-width:520px){.steps{grid-template-columns:1fr}}
-.step{background:var(--bg);border-radius:12px;padding:.7rem .8rem;font-size:.86rem}
-.step b{display:block;color:var(--acc)}
-.stats{display:flex;gap:.6rem;flex-wrap:wrap}
-.stat{flex:1;min-width:110px;background:var(--bg);border-radius:12px;padding:.6rem .8rem}
-.stat b{font-size:1.4rem;display:block}.stat span{font-size:.75rem;color:var(--soft)}
-.hint{font-size:.8rem;color:var(--soft)}
+/* campaigns */
+.form{display:grid;gap:.6rem}
+.form label{font-size:.82rem;color:var(--soft);display:grid;gap:.25rem}
+.form textarea,.form select{border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:.5rem .7rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+@media (max-width:520px){.row{grid-template-columns:1fr}}
+.prog{height:10px;background:var(--bg);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.prog i{display:block;height:100%;width:0;background:var(--wa2);transition:width .4s}
+.queue{max-height:260px;overflow-y:auto;margin-top:.6rem}
+.qrow{display:flex;justify-content:space-between;align-items:center;padding:.35rem .2rem;border-bottom:1px solid var(--line);font-size:.82rem}
+.st{font-size:.72rem;border-radius:999px;padding:0 .5rem}
+.st.wait{background:var(--bg);color:var(--soft)}.st.sent{background:#e6f0ff;color:#1f4fa8}.st.read{background:#e6f6ee;color:#0b6e4f}.st.reply{background:#fff4d6;color:#7a5a00}
+/* reports */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--bg);border-radius:14px;padding:.7rem .8rem}
+.kpi b{font-size:1.45rem;display:block}.kpi span{font-size:.75rem;color:var(--soft)}
+.bars{display:grid;gap:.5rem}
+.brow{display:grid;grid-template-columns:90px 1fr 34px;gap:.5rem;align-items:center;font-size:.8rem}
+.btrack{height:12px;background:var(--bg);border-radius:999px;overflow:hidden}
+.btrack i{display:block;height:100%;border-radius:999px;transition:width .5s}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:700px){.two{grid-template-columns:1fr}}
+.toast{position:fixed;bottom:16px;inset-inline-start:16px;background:#14161a;color:#fff;border-radius:12px;padding:.55rem .9rem;font-size:.85rem;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:9;display:flex;gap:.5rem;align-items:center}
+.toast.on{opacity:1;transform:none}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+@media (max-width:640px){.feat{grid-template-columns:1fr}}
+.feat div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.7rem .8rem;font-size:.84rem}
+.feat b{display:block;color:var(--acc)}
 </style>
 </head>
 <body>
-<div class="demo">ديمو تفاعلي — المتجر والمنتجات أمثلة للتجربة فقط</div>
+<div class="demo">ديمو تفاعلي — المتجر والعملاء والأرقام أمثلة للتجربة فقط</div>
 <div class="wrap">
   <div class="phone" aria-label="محادثة واتساب تجريبية">
     <div class="scr">
       <div class="top"><div class="av">ن</div><div><b>متجر نسيم للعطور</b><small id="st">متصل الآن · رد تلقائي</small></div></div>
       <div class="msgs" id="msgs" aria-live="polite"></div>
       <div class="qr" id="qr"></div>
-      <form class="bar" id="f"><input id="in" placeholder="اكتب رسالة… (جرّب: بكام، التوصيل، حالة طلبي)" autocomplete="off" aria-label="رسالتك"><button aria-label="إرسال">➤</button></form>
+      <form class="bar" id="f"><input id="in" placeholder="اكتب رسالة… (جرّب: بكام، التوصيل، كلّم موظف)" autocomplete="off" aria-label="رسالتك"><button aria-label="إرسال">➤</button></form>
     </div>
   </div>
 
   <div>
-    <h1>بوت واتساب <b>بيرد على عملائك</b> ويسجّل الطلبات وإنت نايم</h1>
-    <p class="lead">جرّب المحادثة: اسأل عن الأسعار، اطلب منتج، أو اسأل عن حالة طلبك. كل طلب بيتسجل تلقائياً في جدول الطلبات اللي جنبك.</p>
+    <h1>كل رسايل عملائك <b>في مكان واحد</b>، وبوت بيرد ويسجّل الطلبات</h1>
+    <p class="lead">جرّب تكلم البوت من الموبايل، وشوف المحادثة بتظهر في الصندوق الموحّد، والطلب بيدخل العملاء والتقارير لوحده. ورسايل من إنستجرام وتيك توك وفيسبوك والإيميل بتوصل في نفس المكان.</p>
 
-    <div class="card">
-      <h2><span class="dot"></span>جدول الطلبات (بيتحدث لحظياً)</h2>
-      <div id="orders"><div class="empty">لسه مفيش طلبات — اطلب منتج من المحادثة وشوفه بيظهر هنا.</div></div>
+    <div class="feat" style="margin-bottom:1rem">
+      <div><b>صندوق رسائل موحّد</b>واتساب وإنستجرام وتيك توك وفيسبوك والإيميل والمكالمات الفائتة</div>
+      <div><b>توزيع على الفريق</b>كل محادثة ليها مسؤول، والبوت بيحوّل للموظف لما العميل يطلب</div>
+      <div><b>حملات بإرسال تدريجي</b>رسايل للعملاء اللي وافقوا، على دفعات، مع متابعة القراءة والرد</div>
     </div>
 
-    <div class="card">
-      <h2>النهارده</h2>
-      <div class="stats">
-        <div class="stat"><b id="sMsg">0</b><span>رسالة اترد عليها</span></div>
-        <div class="stat"><b id="sOrd">0</b><span>طلب اتسجل</span></div>
-        <div class="stat"><b>٣ ث</b><span>متوسط وقت الرد</span></div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-p="inbox">📥 الصندوق الموحّد <span class="n" id="nUnread">0</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-p="crm">👥 العملاء والطلبات</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="camp">📣 حملات واتساب</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="rep">📊 التقارير</button>
+    </div>
+
+    <section class="pane" id="p-inbox">
+      <div class="inbox">
+        <div class="list">
+          <div class="filters" id="filters"></div>
+          <div id="convs"></div>
+        </div>
+        <div class="thread" id="thread"><div class="empty">اختار محادثة من القائمة</div></div>
       </div>
-    </div>
+      <p class="hint">الردود الجاهزة، وتحويل المحادثة لموظف، وحالة "محتاج رد" — كله بيتحدث لحظياً.</p>
+    </section>
 
-    <div class="card">
-      <h2>إزاي بيشتغل</h2>
-      <div class="steps">
-        <div class="step"><b>١. رد فوري ٢٤ ساعة</b>بيجاوب على الأسعار والتوصيل والمواعيد من غير ما حد يمسك الموبايل.</div>
-        <div class="step"><b>٢. ياخد الطلب كامل</b>المنتج، الكمية، الاسم، المدينة — ويأكّد مع العميل.</div>
-        <div class="step"><b>٣. يسجّله في شيت</b>كل طلب بيتضاف تلقائياً في Google Sheets أو لوحة التحكم بتاعتك.</div>
-        <div class="step"><b>٤. يحوّل لموظف</b>لو العميل طلب يكلم حد، البوت بيبلّغك فوراً.</div>
+    <section class="pane" id="p-crm" hidden>
+      <div class="card"><h2>مراحل العملاء</h2><div class="board" id="board"></div><p class="hint">العميل بيتنقل من "جديد" لـ "طلب" لوحده لما يأكد طلب من البوت.</p></div>
+      <div class="card"><h2><span class="dot"></span>جدول الطلبات (بيتسجل تلقائياً — ممكن يتربط بـ Google Sheets)</h2><div id="orders"><div class="empty">لسه مفيش طلبات — اطلب منتج من الموبايل وشوفه هنا.</div></div></div>
+    </section>
+
+    <section class="pane" id="p-camp" hidden>
+      <div class="card">
+        <h2>حملة جديدة</h2>
+        <div class="form">
+          <label>الرسالة<textarea id="cMsg" rows="3">أهلاً {الاسم} 🌿 عرض الويك إند: خصم ١٥٪ على كل العطور لحد الجمعة. رد بـ "عايز" ونحجزلك.</textarea></label>
+          <div class="row">
+            <label>الجمهور<select id="cAud"><option value="all">كل العملاء اللي وافقوا على الرسايل (٢٤)</option><option value="buy">عملاء اشتروا قبل كده (٩)</option><option value="int">مهتمين ولسه ما طلبوش (١١)</option></select></label>
+            <label>سرعة الإرسال<select id="cSpd"><option value="1200">تدريجي — رسالة كل شوية (موصى به)</option><option value="600">أسرع</option></select></label>
+          </div>
+          <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap"><button class="btn" id="cGo">ابدأ الإرسال التدريجي</button><button class="btn ghost" id="cStop" hidden>إيقاف مؤقت</button><span class="hint" id="cInfo" style="margin:0"></span></div>
+          <div class="prog"><i id="cBar"></i></div>
+        </div>
+        <div class="queue" id="cQueue"></div>
+        <p class="hint">الحملات بتتبعت من رقم واتساب بزنس الرسمي، للعملاء اللي وافقوا يستقبلوا رسايل بس. الإرسال على دفعات بيقلّل البلاغات وخطر تقييد الرقم، بس مفيش حاجة تضمن عدم الحظر لو الرسايل مزعجة.</p>
       </div>
-      <p class="hint">بيتربط برقم واتساب بزنس الرسمي (WhatsApp Business API)، وبيتظبط على منتجاتك وأسلوب كلامك.</p>
-    </div>
+    </section>
+
+    <section class="pane" id="p-rep" hidden>
+      <div class="card"><h2>النهارده</h2>
+        <div class="kpis">
+          <div class="kpi"><b id="kMsg">0</b><span>رسالة اترد عليها</span></div>
+          <div class="kpi"><b id="kTime">٣ ث</b><span>متوسط أول رد</span></div>
+          <div class="kpi"><b id="kOrd">0</b><span>طلب اتسجل</span></div>
+          <div class="kpi"><b id="kConv">0٪</b><span>تحويل المحادثات لطلبات</span></div>
+        </div>
+      </div>
+      <div class="two">
+        <div class="card"><h2>الرسايل حسب القناة</h2><div class="bars" id="bCh"></div></div>
+        <div class="card"><h2>المحادثات حسب المسؤول</h2><div class="bars" id="bAg"></div></div>
+      </div>
+    </section>
   </div>
 </div>
+<div class="toast" id="toast"></div>
 
 <script>
-const P=[{id:1,n:"عطر عود ملكي",p:350},{id:2,n:"عطر مسك أبيض",p:220},{id:3,n:"بخور فاخر",p:120},{id:4,n:"طقم هدية (عطر + بخور)",p:420}];
 const $=id=>document.getElementById(id);
-const msgs=$("msgs"),qr=$("qr");let state="menu",draft={},orders=[],nMsg=0,seq=1042;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const now=()=>new Date().toLocaleTimeString("ar-EG",{hour:"numeric",minute:"2-digit"});
-function add(t,who){const d=document.createElement("div");d.className="m "+who;d.textContent=t;const tm=document.createElement("time");tm.textContent=now()+(who=="me"?" ✓✓":"");d.appendChild(tm);msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+const CH={wa:["واتساب","WA"],ig:["إنستجرام","IG"],tt:["تيك توك","TT"],fb:["فيسبوك","FB"],em:["إيميل","@"],call:["مكالمة","☎"]};
+const AG=["البوت","سارة","أحمد"];
+const chIcon=c=>`<span class="ch ${c}" title="${CH[c][0]}">${CH[c][1]}</span>`;
+function toast(t){const el=$("toast");el.textContent=t;el.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("on"),2600)}
+
+/* ---------- data ---------- */
+let convs=[
+ {id:"c1",ch:"ig",name:"منة حسن",agent:"سارة",need:false,unread:1,stage:"int",msgs:[["in","مساء الخير، المسك الأبيض متاح بحجم صغير؟"]]},
+ {id:"c2",ch:"tt",name:"@yousef.m",agent:"البوت",need:false,unread:1,stage:"new",msgs:[["in","ممكن الأسعار؟"],["bot","أكيد 👌 بعتلك قائمة الأسعار، تحب أحجزلك حاجة؟"]]},
+ {id:"c3",ch:"em",name:"شركة الريادة",agent:"أحمد",need:true,unread:1,stage:"int",msgs:[["in","محتاجين عرض سعر لـ ٥٠ طقم هدية للموظفين."]]},
+ {id:"c4",ch:"call",name:"٠١٠٠٠٠٠٠٠٠٠",agent:"سارة",need:true,unread:1,stage:"new",msgs:[["in","مكالمة فائتة — اتبعتله رسالة واتساب تلقائي"],["bot","لاحظنا إنك اتصلت بينا 🌿 ابعتلنا هنا وهنرد عليك فوراً."]]}];
+let liveId=null,selId=null,filter="all";
+let stats={wa:0,ig:1,tt:2,fb:0,em:1,call:1},answered=0;
+const orders=[];let seq=1042;
+
+/* ---------- inbox ---------- */
+function renderFilters(){const f=[["all","الكل"],["wa","واتساب"],["ig","إنستجرام"],["tt","تيك توك"],["fb","فيسبوك"],["em","إيميل"],["need","محتاج رد"]];
+ $("filters").innerHTML=f.map(([k,t])=>`<button data-f="${k}" class="${filter==k?"on":""}">${t}</button>`).join("")}
+function renderConvs(flashId){const list=convs.filter(c=>filter=="all"||(filter=="need"?c.need:c.ch==filter));
+ $("convs").innerHTML=list.length?list.map(c=>{const last=c.msgs[c.msgs.length-1]||["",""];return `<button class="conv ${c.id==selId?"sel":""} ${c.id==flashId?"newc":""}" data-id="${c.id}">${chIcon(c.ch)}<span class="tx"><b><span>${esc(c.name)}</span><time>${c.time||now()}</time></b><p>${esc(last[1])}</p><span class="meta"><span class="pill ${c.agent=="البوت"?"bot":""}">${c.agent=="البوت"?"🤖 البوت":"👤 "+c.agent}</span>${c.need?'<span class="pill need">محتاج رد</span>':""}${c.unread?`<span class="unread">${c.unread}</span>`:""}</span></span></button>`}).join(""):`<div class="empty">مفيش محادثات هنا</div>`;
+ $("nUnread").textContent=convs.reduce((a,c)=>a+(c.unread?1:0),0)}
+function renderThread(){const c=convs.find(x=>x.id==selId);if(!c){$("thread").innerHTML='<div class="empty">اختار محادثة من القائمة</div>';return}
+ $("thread").innerHTML=`<div class="th-h">${chIcon(c.ch)}<b>${esc(c.name)}</b><span class="pill">${CH[c.ch][0]}</span><select id="agSel" aria-label="المسؤول">${AG.map(a=>`<option ${a==c.agent?"selected":""}>${a}</option>`).join("")}</select></div>
+ <div class="th-b" id="thB">${c.msgs.map(([w,t])=>`<div class="m ${w=="in"?"me":w=="agent"?"agent":"bot"}" style="${w=="in"?"align-self:flex-start;background:var(--card)":"align-self:flex-end"}">${esc(t)}</div>`).join("")}</div>
+ <div class="saved">${["الأسعار في الرسالة دي 👆","هنكلمك خلال ساعة","الطلب خرج للتوصيل 🚚"].map(s=>`<button data-s="${esc(s)}">${s}</button>`).join("")}</div>
+ <form class="th-f" id="thF"><input id="thIn" placeholder="رد كموظف…" aria-label="رد"><button>إرسال</button></form>`;
+ const b=$("thB");b.scrollTop=b.scrollHeight;
+ $("agSel").onchange=e=>{c.agent=e.target.value;c.need=false;renderConvs();renderReports();toast("المحادثة اتحوّلت لـ "+c.agent)};
+ $("thF").onsubmit=e=>{e.preventDefault();const v=$("thIn").value.trim();if(!v)return;agentReply(c,v)};
+ $("thread").querySelectorAll("[data-s]").forEach(x=>x.onclick=()=>agentReply(c,x.dataset.s))}
+function agentReply(c,v){const who=c.agent=="البوت"?"سارة":c.agent;c.msgs.push(["agent",v]);c.need=false;c.agent=who;answered++;
+ if(c.id==liveId){addPhone(v+"\n— "+who,"agent")}
+ renderConvs();renderThread();renderReports();renderBoard()}
+$("convs").onclick=e=>{const b=e.target.closest(".conv");if(!b)return;selId=b.dataset.id;const c=convs.find(x=>x.id==selId);c.unread=0;renderConvs();renderThread()};
+$("filters").onclick=e=>{const b=e.target.closest("button");if(!b)return;filter=b.dataset.f;renderFilters();renderConvs()};
+
+function liveConv(){let c=convs.find(x=>x.id==liveId);if(!c){liveId="live";c={id:"live",ch:"wa",name:"إنت (من الموبايل)",agent:"البوت",need:false,unread:0,stage:"new",msgs:[]};convs.unshift(c)}return c}
+function pushLive(w,t){const c=liveConv();c.msgs.push([w,t]);c.time=now();if(selId!="live")c.unread=(c.unread||0)+(w=="in"?1:0);
+ convs=[c,...convs.filter(x=>x!==c)];if(w=="in")stats.wa++;renderConvs("live");if(selId=="live")renderThread();renderBoard();renderReports()}
+
+/* simulated incoming from other channels */
+const INCOMING=[["fb","كريم سمير","عندكم توصيل لإسكندرية؟"],["ig","Nour.k","الطقم الهدية لسه متاح؟ 😍"],["wa","+20 11 •••• 4455","عايز أعرف ميعاد وصول طلبي"],["tt","@mariam.art","شفت الفيديو، العطر ده ريحته عاملة إزاي؟"],["em","هبة عادل","ممكن فاتورة للطلب ١٠٣٧؟"]];
+let inI=0;function incoming(){if(inI>=INCOMING.length)return;const [ch,name,t]=INCOMING[inI++];const c={id:"x"+inI,ch,name,agent:inI%2?"سارة":"البوت",need:inI%2==1,unread:1,stage:"new",msgs:[["in",t]],time:now()};
+ if(c.agent=="البوت")c.msgs.push(["bot","أهلاً 🌿 وصلتنا رسالتك، ثانية واحدة وهرد عليك بالتفاصيل."]),answered++;
+ convs.unshift(c);stats[ch]++;renderConvs(c.id);renderBoard();renderReports();toast("رسالة جديدة من "+CH[ch][0]+": "+name)}
+setInterval(incoming,14000);
+
+/* ---------- CRM ---------- */
+const STG=[["new","جديد"],["int","مهتم"],["ord","طلب"],["done","اتسلّم"]];
+function renderBoard(){$("board").innerHTML=STG.map(([k,t],i)=>{const items=convs.filter(c=>c.stage==k);return `<div class="col"><h3>${t}<span>${items.length}</span></h3>${items.map(c=>`<div class="lead-c"><b>${chIcon(c.ch)}${esc(c.name)}</b><p>${esc((c.msgs[c.msgs.length-1]||["",""])[1]).slice(0,48)}</p>${i<3?`<button data-mv="${c.id}">نقل لـ "${STG[i+1][1]}" ←</button>`:""}</div>`).join("")}</div>`}).join("")}
+$("board").onclick=e=>{const b=e.target.closest("[data-mv]");if(!b)return;const c=convs.find(x=>x.id==b.dataset.mv);const i=STG.findIndex(s=>s[0]==c.stage);c.stage=STG[Math.min(3,i+1)][0];renderBoard();renderReports()};
+function renderOrders(newNo){$("orders").innerHTML=`<table><thead><tr><th>#</th><th>المنتج</th><th>العميل</th><th>المدينة</th><th>الإجمالي</th><th>الحالة</th></tr></thead><tbody>${orders.map(o=>`<tr class="${o.no==newNo?"new":""}"><td>${o.no}</td><td>${esc(o.p.n)} × ${o.q}</td><td>${esc(o.name)}</td><td>${esc(o.city)}</td><td>${o.tot}</td><td>${o.status}</td></tr>`).join("")}</tbody></table>`}
+
+/* ---------- campaigns ---------- */
+const NAMES=["أحمد","منة","يوسف","سلمى","كريم","نور","مريم","عمر","هبة","زياد","ليلى","مازن","رنا","طارق","دينا","حسام","آية","شادي","جنى","وليد","سارة","تامر","فرح","باسل"];
+let camp=null;
+function campStart(){if(camp&&camp.run)return;const aud=$("cAud").value,n=aud=="all"?24:aud=="buy"?9:11;
+ if(!camp||camp.done){camp={list:NAMES.slice(0,n).map(x=>({n:x,s:"wait"})),i:0,run:true,done:false}}else camp.run=true;
+ $("cGo").hidden=true;$("cStop").hidden=false;tick()}
+function tick(){if(!camp.run)return;const L=camp.list;if(camp.i<L.length){L[camp.i].s="sent";const j=camp.i;setTimeout(()=>{L[j].s=Math.random()<.8?"read":"sent";if(Math.random()<.25)L[j].s="reply";renderCamp()},1500);camp.i++;renderCamp();setTimeout(tick,+$("cSpd").value)}
+ else{camp.run=false;camp.done=true;$("cGo").hidden=false;$("cGo").textContent="حملة جديدة";$("cStop").hidden=true;toast("الحملة خلصت ✅");renderCamp()}}
+function renderCamp(){if(!camp)return;const L=camp.list,s=L.filter(x=>x.s!="wait").length,r=L.filter(x=>x.s=="read"||x.s=="reply").length,rp=L.filter(x=>x.s=="reply").length;
+ $("cBar").style.width=(s/L.length*100)+"%";$("cInfo").textContent=`اتبعت ${s} من ${L.length} · اتقرت ${r} · ردود ${rp}`;
+ const lab={wait:"في الانتظار",sent:"اتبعتت",read:"اتقرت ✓✓",reply:"رد 💬"};
+ $("cQueue").innerHTML=L.map(x=>`<div class="qrow"><span>${esc($("cMsg").value.replace("{الاسم}",x.n)).slice(0,60)}…</span><span class="st ${x.s}">${lab[x.s]}</span></div>`).join("")}
+$("cGo").onclick=campStart;$("cStop").onclick=()=>{camp.run=false;$("cStop").hidden=true;$("cGo").hidden=false;$("cGo").textContent="كمّل الإرسال"};
+
+/* ---------- reports ---------- */
+function renderReports(){const total=Object.values(stats).reduce((a,b)=>a+b,0)||1,max=Math.max(...Object.values(stats),1);
+ const col={wa:"#25d366",ig:"#dd2a7b",tt:"#111",fb:"#1877f2",em:"#5b6b7f",call:"#0b8f6c"};
+ $("bCh").innerHTML=Object.entries(stats).map(([k,v])=>`<div class="brow"><span>${CH[k][0]}</span><span class="btrack"><i style="width:${v/max*100}%;background:${col[k]}"></i></span><b>${v}</b></div>`).join("");
+ const ag={};convs.forEach(c=>ag[c.agent]=(ag[c.agent]||0)+1);const am=Math.max(...Object.values(ag),1);
+ $("bAg").innerHTML=AG.map(a=>`<div class="brow"><span>${a=="البوت"?"🤖 ":"👤 "}${a}</span><span class="btrack"><i style="width:${(ag[a]||0)/am*100}%;background:var(--acc)"></i></span><b>${ag[a]||0}</b></div>`).join("");
+ $("kMsg").textContent=answered;$("kOrd").textContent=orders.length;$("kConv").textContent=Math.round(orders.length/Math.max(convs.length,1)*100)+"٪"}
+
+/* ---------- tabs ---------- */
+document.querySelector(".tabs").onclick=e=>{const t=e.target.closest(".tab");if(!t)return;document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x==t));document.querySelectorAll(".pane").forEach(p=>p.hidden=p.id!="p-"+t.dataset.p)};
+
+/* ---------- phone bot ---------- */
+const P=[{id:1,n:"عطر عود ملكي",p:350},{id:2,n:"عطر مسك أبيض",p:220},{id:3,n:"بخور فاخر",p:120},{id:4,n:"طقم هدية (عطر + بخور)",p:420}];
+const msgs=$("msgs"),qr=$("qr");let state="menu",draft={};
+function addPhone(t,who){const d=document.createElement("div");d.className="m "+who;d.textContent=t;const tm=document.createElement("time");tm.textContent=now()+(who=="me"?" ✓✓":"");d.appendChild(tm);msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
 function quick(list){qr.innerHTML="";list.forEach(t=>{const b=document.createElement("button");b.type="button";b.textContent=t;b.onclick=()=>user(t);qr.appendChild(b)})}
 function bot(t,q){qr.innerHTML="";const ty=document.createElement("div");ty.className="typing";ty.innerHTML="<i></i><i></i><i></i>";msgs.appendChild(ty);msgs.scrollTop=msgs.scrollHeight;$("st").textContent="يكتب…";
- setTimeout(()=>{ty.remove();add(t,"bot");nMsg++;$("sMsg").textContent=nMsg;$("st").textContent="متصل الآن · رد تلقائي";if(q)quick(q)},700+Math.min(t.length*8,900))}
+ setTimeout(()=>{ty.remove();addPhone(t,"bot");answered++;pushLive("bot",t);$("st").textContent="متصل الآن · رد تلقائي";if(q)quick(q)},700+Math.min(t.length*8,900))}
 const MENU=["🛍️ المنتجات والأسعار","🛒 اطلب الآن","📦 حالة طلبي","👤 كلّم موظف"];
 function menu(pre){bot((pre?pre+"\n\n":"")+"تحب أساعدك في إيه؟",MENU)}
-function prices(){bot("أسعارنا 👇\n"+P.map(x=>`${x.id}. ${x.n} — ${x.p} ج.م`).join("\n")+"\n\nالتوصيل لكل المحافظات خلال ٢–٤ أيام.",["🛒 اطلب الآن","🚚 التوصيل","↩️ القائمة"])}
-function user(t){add(t,"me");handle(t.trim())}
-function handle(t){const s=t.replace(/[\u064B-\u0652]/g,"").replace(/[^؀-ۿa-zA-Z0-9 ]/g,"").trim();
+function prices(){const c=liveConv();if(c.stage=="new")c.stage="int";bot("أسعارنا 👇\n"+P.map(x=>`${x.id}. ${x.n} — ${x.p} ج.م`).join("\n")+"\n\nالتوصيل لكل المحافظات خلال ٢–٤ أيام.",["🛒 اطلب الآن","🚚 التوصيل","↩️ القائمة"])}
+function user(t){addPhone(t,"me");pushLive("in",t);handle(t.trim())}
+function handle(t){const s=t.replace(/[ً-ْ]/g,"").replace(/[^؀-ۿa-zA-Z0-9 ]/g,"").trim();
  if(/القائمة|ابدأ|مرحب|السلام|هاي|اهلا|أهلا/.test(s)&&state!="name"&&state!="city"){state="menu";return menu("أهلاً بيك في متجر نسيم 🌿")}
- if(state=="product"){const k=P.find(x=>s.includes(String(x.id))||s.includes(x.n.split(" ")[1]||"~")||t.includes(x.n));if(!k)return bot("اختار رقم المنتج من القائمة 🙏",P.map(x=>x.id+". "+x.n));draft.p=k;state="qty";return bot(`اختيار حلو 👌 ${k.n}\nعايز كام قطعة؟`,["1","2","3"])}
+ if(state=="product"){const k=P.find(x=>s.includes(String(x.id))||t.includes(x.n));if(!k)return bot("اختار رقم المنتج من القائمة 🙏",P.map(x=>x.id+". "+x.n));draft.p=k;state="qty";return bot(`اختيار حلو 👌 ${k.n}\nعايز كام قطعة؟`,["1","2","3"])}
  if(state=="qty"){const q=parseInt(s.replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)));if(!q||q<1||q>20)return bot("اكتب الكمية رقم من ١ لـ ٢٠",["1","2","3"]);draft.q=q;state="name";return bot("تمام! الاسم بالكامل؟")}
  if(state=="name"){if(s.length<2)return bot("اكتب اسمك من فضلك");draft.name=t;state="city";return bot("والمدينة / المحافظة؟",["القاهرة","الجيزة","الإسكندرية"])}
  if(state=="city"){draft.city=t;state="confirm";const tot=draft.p.p*draft.q+40;return bot(`راجع طلبك 📝\n${draft.p.n} × ${draft.q}\nالاسم: ${draft.name}\nالمدينة: ${draft.city}\nالإجمالي: ${tot} ج.م (شامل توصيل ٤٠)\n\nأأكّد الطلب؟`,["✅ أكّد","❌ إلغاء"])}
- if(state=="confirm"){if(/أكد|اكد|تمام|اه|أيوه|ايوه|نعم/.test(s)){const o={no:++seq,...draft,tot:draft.p.p*draft.q+40,status:"قيد التجهيز"};orders.unshift(o);render(o.no);state="menu";draft={};return bot(`تم تسجيل طلبك ✅\nرقم الطلب: #${o.no}\nهنكلمك قبل التوصيل. شكراً لثقتك 🌿`,["📦 حالة طلبي","↩️ القائمة"])}state="menu";draft={};return menu("اتلغى الطلب، ولا يهمك.")}
+ if(state=="confirm"){if(/أكد|اكد|تمام|اه|أيوه|ايوه|نعم/.test(s)){const o={no:++seq,...draft,tot:draft.p.p*draft.q+40,status:"قيد التجهيز"};orders.unshift(o);const c=liveConv();c.name=draft.name;c.stage="ord";renderOrders(o.no);renderConvs();renderBoard();renderReports();toast("طلب جديد #"+o.no+" اتسجل في الجدول ✅");state="menu";draft={};return bot(`تم تسجيل طلبك ✅\nرقم الطلب: #${o.no}\nهنكلمك قبل التوصيل. شكراً لثقتك 🌿`,["📦 حالة طلبي","↩️ القائمة"])}state="menu";draft={};return menu("اتلغى الطلب، ولا يهمك.")}
  if(state=="track"){const no=parseInt(s.replace(/\D/g,""));const o=orders.find(x=>x.no==no)||(no==1037?{no:1037,status:"خرج للتوصيل 🚚"}:null);state="menu";return bot(o?`طلب #${o.no}: ${o.status}`:"مش لاقي الرقم ده 🤔 اتأكد منه أو جرّب 1037",["↩️ القائمة"])}
+ if(/موظف|خدمة العملاء|اكلم|كلم/.test(s)){const c=liveConv();c.agent="سارة";c.need=true;renderConvs();renderReports();toast("المحادثة اتحوّلت لسارة — افتح الصندوق الموحّد ورد كموظف");return bot("تمام، حوّلتك لزميلتي سارة وهترد عليك هنا خلال دقايق 👤",["↩️ القائمة"])}
  if(/توصيل|شحن|يوصل/.test(s))return bot("🚚 التوصيل لكل المحافظات خلال ٢–٤ أيام بـ ٤٠ ج.م، والدفع عند الاستلام.",["🛒 اطلب الآن","↩️ القائمة"]);
  if(/منتج|اسعار|أسعار|سعر|بكام|بكم|كام/.test(s))return prices();
  if(/اطلب|طلب جديد|عايز|اشتري|أشتري/.test(s)&&!/حالة/.test(s)){state="product";return bot("اختار المنتج 👇",P.map(x=>x.id+". "+x.n))}
  if(/حالة|فين طلبي|تتبع/.test(s)){state="track";const last=orders[0];return bot("ابعتلي رقم الطلب"+(last?` (آخر طلب ليك #${last.no})`:" (جرّب 1037)"),last?[String(last.no)]:["1037"])}
- if(/موظف|حد|خدمة العملاء|اكلم/.test(s))return bot("تمام، بلّغت فريقنا وهيرد عليك خلال دقايق 👤\n(البوت بيبعت إشعار لصاحب المتجر فوراً)",["↩️ القائمة"]);
  if(/مواعيد|ساعات|فاتحين/.test(s))return bot("الأونلاين ٢٤ ساعة ✨ والفرع من ١٢ الظهر لـ ١٢ بالليل.",["↩️ القائمة"]);
  if(/شكرا|شكراً|تسلم/.test(s))return bot("العفو 🌿 تحت أمرك في أي وقت.",["↩️ القائمة"]);
  menu("ممكن توضّح أكتر؟ 🙏")}
-function render(newNo){$("sOrd").textContent=orders.length;$("orders").innerHTML=`<table><thead><tr><th>#</th><th>المنتج</th><th>العميل</th><th>المدينة</th><th>الإجمالي</th><th>الحالة</th></tr></thead><tbody>${orders.map(o=>`<tr class="${o.no==newNo?"new":""}"><td>${o.no}</td><td>${esc(o.p.n)} × ${o.q}</td><td>${esc(o.name)}</td><td>${esc(o.city)}</td><td>${o.tot}</td><td>${o.status}</td></tr>`).join("")}</tbody></table>`}
-function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 $("f").onsubmit=e=>{e.preventDefault();const v=$("in").value.trim();if(!v)return;$("in").value="";user(v)};
-qr.addEventListener("click",e=>{if(e.target.tagName=="BUTTON"&&/القائمة/.test(e.target.textContent)){state="menu"}});
+qr.addEventListener("click",e=>{if(e.target.tagName=="BUTTON"&&/القائمة/.test(e.target.textContent))state="menu"});
+
+renderFilters();renderConvs();renderBoard();renderReports();
 setTimeout(()=>menu("أهلاً بيك في متجر نسيم للعطور 🌿\nأنا المساعد الآلي، برد عليك فوراً ٢٤ ساعة."),400);
+setTimeout(incoming,6000);
 </script>
 </body>
 </html>
