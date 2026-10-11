@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>صندوق رسائل موحّد + بوت واتساب — ديمو</title>
-<meta name="description" content="ديمو تفاعلي: بوت واتساب بيرد ويسجّل الطلبات، وصندوق رسائل موحّد لكل القنوات، وعملاء، وحملات بإرسال تدريجي، وتقارير.">
+<title>صندوق رسائل موحّد + AI Agent + CRM — ديمو</title>
+<meta name="description" content="ديمو تفاعلي: AI Agent بيرد على واتساب ويسجّل الطلبات، صندوق رسائل موحّد لكل القنوات، CRM للعملاء، أتمتة، حملات بإرسال تدريجي، وتقارير.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -55,7 +55,34 @@ h1 b{color:var(--acc)}
 .pane[hidden]{display:none}
 /* channels */
 .ch{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;color:#fff;font-size:.72rem;font-weight:700;flex:0 0 auto}
-.ch.wa{background:#25d366}.ch.ig{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af)}.ch.tt{background:#111}.ch.fb{background:#1877f2}.ch.em{background:#5b6b7f}.ch.call{background:#0b8f6c}
+.ch.wa{background:#25d366}.ch.ig{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af)}.ch.tt{background:#111}.ch.fb{background:#1877f2}.ch.em{background:#5b6b7f}.ch.call{background:#0b8f6c}.ch.tg{background:#2aabee}.ch.ms{background:linear-gradient(135deg,#00b2ff,#a033ff)}
+/* strip */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:.7rem}
+@media (max-width:640px){.strip{grid-template-columns:repeat(2,1fr)}}
+.strip div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.45rem .7rem;font-size:.75rem;color:var(--soft)}
+.strip b{display:block;font-size:1.1rem;color:var(--ink)}
+.strip .wq b{color:#0b8f6c}
+.ai{border:1px solid #c9b8ff;background:linear-gradient(135deg,#f3eeff,#e9f7f1);color:#4b2aa8;border-radius:999px;font-size:.74rem;padding:.15rem .65rem;cursor:pointer;font-weight:600}
+@media (prefers-color-scheme:dark){.ai{background:#231a3d;color:#cbb8ff;border-color:#4b3a80}}
+.tags{display:flex;gap:.3rem;flex-wrap:wrap;align-items:center;padding:.35rem .8rem;border-bottom:1px solid var(--line);font-size:.75rem}
+.tag{border-radius:999px;padding:0 .5rem;background:#fff4d6;color:#7a5a00;border:1px solid #f0dc9e;font-size:.7rem}
+.tag.vip{background:#f3eeff;color:#4b2aa8;border-color:#d9ccff}.tag.buy{background:#e6f6ee;color:#0b6e4f;border-color:#bfe6d3}
+.tags select{border:1px dashed var(--line);background:none;border-radius:999px;font-size:.7rem;padding:0 .3rem}
+/* automation */
+.rule{display:flex;gap:.8rem;align-items:flex-start;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.rule:last-child{border:0}
+.rule .tx{flex:1}.rule b{display:block;font-size:.9rem}.rule p{margin:.1rem 0 0;font-size:.78rem;color:var(--soft)}
+.sw{position:relative;width:46px;height:26px;flex:0 0 auto;border-radius:999px;border:0;background:var(--line);cursor:pointer;transition:.2s}
+.sw::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.sw[aria-checked=true]{background:var(--acc)}.sw[aria-checked=true]::after{right:23px}
+.log{max-height:220px;overflow-y:auto;font-size:.8rem}
+.log div{padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.log time{color:var(--soft);font-size:.7rem;margin-inline-start:.4rem}
+/* settings */
+.chgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.5rem}
+.chc{display:flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:14px;padding:.5rem .6rem;font-size:.82rem;background:var(--bg)}
+.chc small{display:block;color:#0b8f6c;font-size:.7rem}
+.search{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:.45rem .7rem;margin-bottom:.6rem}
 /* inbox */
 .inbox{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);min-height:470px}
 @media (max-width:640px){.inbox{grid-template-columns:1fr}.thread{border-top:1px solid var(--line)}}
@@ -147,22 +174,30 @@ tr.new td{animation:hl 1.6s ease-out}
 
   <div>
     <h1>كل رسايل عملائك <b>في مكان واحد</b>، وبوت بيرد ويسجّل الطلبات</h1>
-    <p class="lead">جرّب تكلم البوت من الموبايل، وشوف المحادثة بتظهر في الصندوق الموحّد، والطلب بيدخل العملاء والتقارير لوحده. ورسايل من إنستجرام وتيك توك وفيسبوك والإيميل بتوصل في نفس المكان.</p>
+    <p class="lead">جرّب تكلم البوت من الموبايل، وشوف المحادثة بتظهر في الصندوق الموحّد، والطلب بيدخل الـ CRM والتقارير لوحده. واتساب وإنستجرام وماسنجر وتيليجرام وتيك توك والإيميل والمكالمات — كله في سيستم واحد، وكل موظف عارف دوره.</p>
 
     <div class="feat" style="margin-bottom:1rem">
-      <div><b>صندوق رسائل موحّد</b>واتساب وإنستجرام وتيك توك وفيسبوك والإيميل والمكالمات الفائتة</div>
-      <div><b>توزيع على الفريق</b>كل محادثة ليها مسؤول، والبوت بيحوّل للموظف لما العميل يطلب</div>
-      <div><b>حملات بإرسال تدريجي</b>رسايل للعملاء اللي وافقوا، على دفعات، مع متابعة القراءة والرد</div>
+      <div><b>صندوق رسائل موحّد</b>واتساب وإنستجرام وماسنجر وتيليجرام وتيك توك والإيميل والمكالمات</div>
+      <div><b>AI Agent + فريقك</b>الـ AI بيرد ٢٤ ساعة ويقترح ردود، وبيحوّل للموظف المناسب لما يحتاج</div>
+      <div><b>CRM وأتمتة وتقارير</b>ملف لكل عميل، قواعد تشتغل لوحدها، حملات تدريجية، وتقارير لكل موظف</div>
     </div>
 
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-p="inbox">📥 الصندوق الموحّد <span class="n" id="nUnread">0</span></button>
-      <button class="tab" role="tab" aria-selected="false" data-p="crm">👥 العملاء والطلبات</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="crm">👥 CRM والطلبات</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="auto">⚡ الأتمتة</button>
       <button class="tab" role="tab" aria-selected="false" data-p="camp">📣 حملات واتساب</button>
       <button class="tab" role="tab" aria-selected="false" data-p="rep">📊 التقارير</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="set">⚙️ القنوات والفريق</button>
     </div>
 
     <section class="pane" id="p-inbox">
+      <div class="strip">
+        <div class="wq"><b id="sQ">0</b>قائمة انتظار واتساب</div>
+        <div><b id="sOpen">0</b>محادثة مفتوحة</div>
+        <div><b id="sNeed">0</b>محتاج رد من موظف</div>
+        <div><b id="sAi">0٪</b>اتحلّت بالـ AI لوحده</div>
+      </div>
       <div class="inbox">
         <div class="list">
           <div class="filters" id="filters"></div>
@@ -170,12 +205,18 @@ tr.new td{animation:hl 1.6s ease-out}
         </div>
         <div class="thread" id="thread"><div class="empty">اختار محادثة من القائمة</div></div>
       </div>
-      <p class="hint">الردود الجاهزة، وتحويل المحادثة لموظف، وحالة "محتاج رد" — كله بيتحدث لحظياً.</p>
+      <p class="hint">جرّب زرار "✨ اقتراح رد بالـ AI"، وحوّل المحادثة لموظف، وحط تاجز للعميل — كله بيتحدث لحظياً.</p>
     </section>
 
     <section class="pane" id="p-crm" hidden>
+      <div class="card"><h2>👤 العملاء — ملف واحد لكل عميل من كل القنوات</h2><input class="search" id="cSearch" placeholder="دوّر باسم العميل أو التاج…" aria-label="بحث في العملاء"><div id="contacts"></div></div>
       <div class="card"><h2>مراحل العملاء</h2><div class="board" id="board"></div><p class="hint">العميل بيتنقل من "جديد" لـ "طلب" لوحده لما يأكد طلب من البوت.</p></div>
       <div class="card"><h2><span class="dot"></span>جدول الطلبات (بيتسجل تلقائياً — ممكن يتربط بـ Google Sheets)</h2><div id="orders"><div class="empty">لسه مفيش طلبات — اطلب منتج من الموبايل وشوفه هنا.</div></div></div>
+    </section>
+
+    <section class="pane" id="p-auto" hidden>
+      <div class="card"><h2>⚡ قواعد بتشتغل لوحدها</h2><div id="rules"></div></div>
+      <div class="card"><h2><span class="dot"></span>سجل الأتمتة (لحظي)</h2><div class="log" id="alog"><div class="hint">لسه مفيش — استنى رسالة جديدة أو كلّم البوت.</div></div></div>
     </section>
 
     <section class="pane" id="p-camp" hidden>
@@ -208,6 +249,16 @@ tr.new td{animation:hl 1.6s ease-out}
         <div class="card"><h2>الرسايل حسب القناة</h2><div class="bars" id="bCh"></div></div>
         <div class="card"><h2>المحادثات حسب المسؤول</h2><div class="bars" id="bAg"></div></div>
       </div>
+      <div class="card"><h2>أداء الفريق</h2><div id="team"></div></div>
+    </section>
+
+    <section class="pane" id="p-set" hidden>
+      <div class="card"><h2>القنوات المربوطة</h2><div class="chgrid" id="chgrid"></div><p class="hint">واتساب بيتربط برقم واتساب بزنس الرسمي (Cloud API) — مش بأرقام شخصية أو برامج غير رسمية.</p></div>
+      <div class="card"><h2>الفريق والصلاحيات</h2><table><thead><tr><th>الاسم</th><th>الدور</th><th>القنوات</th><th>الحالة</th></tr></thead><tbody>
+        <tr><td>🤖 AI Agent</td><td>رد أولي + أسئلة متكررة + تسجيل طلبات</td><td>كل القنوات</td><td>شغال ٢٤/٧</td></tr>
+        <tr><td>👤 سارة</td><td>مبيعات</td><td>واتساب · إنستجرام · ماسنجر</td><td>أونلاين</td></tr>
+        <tr><td>👤 أحمد</td><td>مشرف + شركات</td><td>الكل + الإيميل</td><td>أونلاين</td></tr>
+      </tbody></table></div>
     </section>
   </div>
 </div>
@@ -217,34 +268,44 @@ tr.new td{animation:hl 1.6s ease-out}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const now=()=>new Date().toLocaleTimeString("ar-EG",{hour:"numeric",minute:"2-digit"});
-const CH={wa:["واتساب","WA"],ig:["إنستجرام","IG"],tt:["تيك توك","TT"],fb:["فيسبوك","FB"],em:["إيميل","@"],call:["مكالمة","☎"]};
+const CH={wa:["واتساب","WA"],ig:["إنستجرام","IG"],ms:["ماسنجر","MS"],tg:["تيليجرام","TG"],tt:["تيك توك","TT"],fb:["فيسبوك","FB"],em:["إيميل","@"],call:["مكالمة","☎"]};
+const agName=a=>a=="البوت"?"🤖 AI Agent":"👤 "+a;
 const AG=["البوت","سارة","أحمد"];
 const chIcon=c=>`<span class="ch ${c}" title="${CH[c][0]}">${CH[c][1]}</span>`;
 function toast(t){const el=$("toast");el.textContent=t;el.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("on"),2600)}
 
 /* ---------- data ---------- */
 let convs=[
- {id:"c1",ch:"ig",name:"منة حسن",agent:"سارة",need:false,unread:1,stage:"int",msgs:[["in","مساء الخير، المسك الأبيض متاح بحجم صغير؟"]]},
+ {id:"c1",ch:"ig",name:"منة حسن",tags:["عميلة دائمة"],chs:["ig","wa"],agent:"سارة",need:false,unread:1,stage:"int",msgs:[["in","مساء الخير، المسك الأبيض متاح بحجم صغير؟"]]},
  {id:"c2",ch:"tt",name:"@yousef.m",agent:"البوت",need:false,unread:1,stage:"new",msgs:[["in","ممكن الأسعار؟"],["bot","أكيد 👌 بعتلك قائمة الأسعار، تحب أحجزلك حاجة؟"]]},
- {id:"c3",ch:"em",name:"شركة الريادة",agent:"أحمد",need:true,unread:1,stage:"int",msgs:[["in","محتاجين عرض سعر لـ ٥٠ طقم هدية للموظفين."]]},
+ {id:"c3",ch:"em",name:"شركة الريادة",tags:["VIP","شركات"],agent:"أحمد",need:true,unread:1,stage:"int",msgs:[["in","محتاجين عرض سعر لـ ٥٠ طقم هدية للموظفين."]]},
  {id:"c4",ch:"call",name:"٠١٠٠٠٠٠٠٠٠٠",agent:"سارة",need:true,unread:1,stage:"new",msgs:[["in","مكالمة فائتة — اتبعتله رسالة واتساب تلقائي"],["bot","لاحظنا إنك اتصلت بينا 🌿 ابعتلنا هنا وهنرد عليك فوراً."]]}];
 let liveId=null,selId=null,filter="all";
-let stats={wa:0,ig:1,tt:2,fb:0,em:1,call:1},answered=0;
+let stats={wa:0,ig:1,ms:0,tg:0,tt:2,fb:0,em:1,call:1},answered=0,aiSolved=0;
+const TAGS=["VIP","عميلة دائمة","شركات","اشترى","مهتم بعرض","شكوى"];
+const auto={rr:true,away:true,missed:true,follow:true,kw:true,tagbuy:true};
+const rr=["سارة","أحمد"];let rri=0;
+function alog(t){const el=$("alog");if(el.querySelector(".hint"))el.innerHTML="";const d=document.createElement("div");d.innerHTML="⚡ "+esc(t)+`<time>${now()}</time>`;el.prepend(d)}
 const orders=[];let seq=1042;
 
 /* ---------- inbox ---------- */
-function renderFilters(){const f=[["all","الكل"],["wa","واتساب"],["ig","إنستجرام"],["tt","تيك توك"],["fb","فيسبوك"],["em","إيميل"],["need","محتاج رد"]];
+function renderFilters(){const f=[["all","الكل"],["need","محتاج رد"],["wa","واتساب"],["ig","إنستجرام"],["ms","ماسنجر"],["tg","تيليجرام"],["tt","تيك توك"],["fb","فيسبوك"],["em","إيميل"]];
  $("filters").innerHTML=f.map(([k,t])=>`<button data-f="${k}" class="${filter==k?"on":""}">${t}</button>`).join("")}
 function renderConvs(flashId){const list=convs.filter(c=>filter=="all"||(filter=="need"?c.need:c.ch==filter));
- $("convs").innerHTML=list.length?list.map(c=>{const last=c.msgs[c.msgs.length-1]||["",""];return `<button class="conv ${c.id==selId?"sel":""} ${c.id==flashId?"newc":""}" data-id="${c.id}">${chIcon(c.ch)}<span class="tx"><b><span>${esc(c.name)}</span><time>${c.time||now()}</time></b><p>${esc(last[1])}</p><span class="meta"><span class="pill ${c.agent=="البوت"?"bot":""}">${c.agent=="البوت"?"🤖 البوت":"👤 "+c.agent}</span>${c.need?'<span class="pill need">محتاج رد</span>':""}${c.unread?`<span class="unread">${c.unread}</span>`:""}</span></span></button>`}).join(""):`<div class="empty">مفيش محادثات هنا</div>`;
- $("nUnread").textContent=convs.reduce((a,c)=>a+(c.unread?1:0),0)}
+ $("convs").innerHTML=list.length?list.map(c=>{const last=c.msgs[c.msgs.length-1]||["",""];return `<button class="conv ${c.id==selId?"sel":""} ${c.id==flashId?"newc":""}" data-id="${c.id}">${chIcon(c.ch)}<span class="tx"><b><span>${esc(c.name)}</span><time>${c.time||now()}</time></b><p>${esc(last[1])}</p><span class="meta"><span class="pill ${c.agent=="البوت"?"bot":""}">${agName(c.agent)}</span>${c.need?'<span class="pill need">محتاج رد</span>':""}${c.unread?`<span class="unread">${c.unread}</span>`:""}</span></span></button>`}).join(""):`<div class="empty">مفيش محادثات هنا</div>`;
+ $("nUnread").textContent=convs.reduce((a,c)=>a+(c.unread?1:0),0);
+ $("sQ").textContent=convs.filter(c=>c.ch=="wa"&&(c.unread||c.need)).length;$("sOpen").textContent=convs.filter(c=>c.stage!="done").length;
+ $("sNeed").textContent=convs.filter(c=>c.need).length;$("sAi").textContent=Math.round(aiSolved/Math.max(convs.length,1)*100)+"٪"}
 function renderThread(){const c=convs.find(x=>x.id==selId);if(!c){$("thread").innerHTML='<div class="empty">اختار محادثة من القائمة</div>';return}
- $("thread").innerHTML=`<div class="th-h">${chIcon(c.ch)}<b>${esc(c.name)}</b><span class="pill">${CH[c.ch][0]}</span><select id="agSel" aria-label="المسؤول">${AG.map(a=>`<option ${a==c.agent?"selected":""}>${a}</option>`).join("")}</select></div>
+ $("thread").innerHTML=`<div class="th-h">${chIcon(c.ch)}<b>${esc(c.name)}</b><span class="pill">${CH[c.ch][0]}</span><select id="agSel" aria-label="المسؤول">${AG.map(a=>`<option value="${a}" ${a==c.agent?"selected":""}>${agName(a)}</option>`).join("")}</select></div>
+ <div class="tags">🏷️ ${(c.tags||[]).map(t=>`<span class="tag ${t=="VIP"?"vip":t=="اشترى"?"buy":""}">${esc(t)}</span>`).join("")}<select id="tagSel" aria-label="إضافة تاج"><option value="">+ تاج</option>${TAGS.filter(t=>!(c.tags||[]).includes(t)).map(t=>`<option>${t}</option>`).join("")}</select>${(c.chs||[c.ch]).length>1?`<span class="pill">نفس العميل على: ${(c.chs).map(x=>CH[x][0]).join(" + ")}</span>`:""}</div>
  <div class="th-b" id="thB">${c.msgs.map(([w,t])=>`<div class="m ${w=="in"?"me":w=="agent"?"agent":"bot"}" style="${w=="in"?"align-self:flex-start;background:var(--card)":"align-self:flex-end"}">${esc(t)}</div>`).join("")}</div>
- <div class="saved">${["الأسعار في الرسالة دي 👆","هنكلمك خلال ساعة","الطلب خرج للتوصيل 🚚"].map(s=>`<button data-s="${esc(s)}">${s}</button>`).join("")}</div>
+ <div class="saved"><button class="ai" id="aiBtn" type="button">✨ اقتراح رد بالـ AI</button>${["هنكلمك خلال ساعة","الطلب خرج للتوصيل 🚚","شكراً لتواصلك 🌿"].map(s=>`<button data-s="${esc(s)}">${s}</button>`).join("")}</div>
  <form class="th-f" id="thF"><input id="thIn" placeholder="رد كموظف…" aria-label="رد"><button>إرسال</button></form>`;
  const b=$("thB");b.scrollTop=b.scrollHeight;
- $("agSel").onchange=e=>{c.agent=e.target.value;c.need=false;renderConvs();renderReports();toast("المحادثة اتحوّلت لـ "+c.agent)};
+ $("agSel").onchange=e=>{c.agent=e.target.value;c.need=false;renderConvs();renderReports();toast("المحادثة اتحوّلت لـ "+agName(c.agent))};
+ $("tagSel").onchange=e=>{if(!e.target.value)return;(c.tags=c.tags||[]).push(e.target.value);renderThread();renderContacts();toast("اتضاف تاج: "+e.target.value)};
+ $("aiBtn").onclick=()=>{const last=[...c.msgs].reverse().find(m=>m[0]=="in");$("thIn").value=aiReply(last?last[1]:"");$("thIn").focus();toast("✨ الـ AI كتب رد مقترح — عدّله أو ابعته")};
  $("thF").onsubmit=e=>{e.preventDefault();const v=$("thIn").value.trim();if(!v)return;agentReply(c,v)};
  $("thread").querySelectorAll("[data-s]").forEach(x=>x.onclick=()=>agentReply(c,x.dataset.s))}
 function agentReply(c,v){const who=c.agent=="البوت"?"سارة":c.agent;c.msgs.push(["agent",v]);c.need=false;c.agent=who;answered++;
@@ -253,15 +314,31 @@ function agentReply(c,v){const who=c.agent=="البوت"?"سارة":c.agent;c.ms
 $("convs").onclick=e=>{const b=e.target.closest(".conv");if(!b)return;selId=b.dataset.id;const c=convs.find(x=>x.id==selId);c.unread=0;renderConvs();renderThread()};
 $("filters").onclick=e=>{const b=e.target.closest("button");if(!b)return;filter=b.dataset.f;renderFilters();renderConvs()};
 
-function liveConv(){let c=convs.find(x=>x.id==liveId);if(!c){liveId="live";c={id:"live",ch:"wa",name:"إنت (من الموبايل)",agent:"البوت",need:false,unread:0,stage:"new",msgs:[]};convs.unshift(c)}return c}
+function liveConv(){let c=convs.find(x=>x.id==liveId);if(!c){liveId="live";c={id:"live",ch:"wa",name:"إنت (من الموبايل)",agent:"البوت",need:false,unread:0,stage:"new",tags:[],msgs:[]};convs.unshift(c)}return c}
 function pushLive(w,t){const c=liveConv();c.msgs.push([w,t]);c.time=now();if(selId!="live")c.unread=(c.unread||0)+(w=="in"?1:0);
  convs=[c,...convs.filter(x=>x!==c)];if(w=="in")stats.wa++;renderConvs("live");if(selId=="live")renderThread();renderBoard();renderReports()}
 
+/* AI agent (simulated) */
+function aiReply(t){t=t||"";
+ if(/عرض سعر|موظفين|شركة|جملة/.test(t))return "أهلاً بحضرتك 🌿 عندنا أسعار خاصة للشركات والكميات. هبعتلك عرض سعر لـ ٥٠ طقم خلال ساعة، تحب يكون فيه تغليف باسم الشركة؟";
+ if(/فاتورة/.test(t))return "أكيد 🙏 الفاتورة هتوصلك على الإيميل خلال دقايق. محتاج تكون باسم شركة ولا باسمك الشخصي؟";
+ if(/توصيل|شحن|إسكندرية|اسكندرية/.test(t))return "أيوه بنوصّل لكل المحافظات 🚚 خلال ٢–٤ أيام بـ ٤٠ ج.م، والدفع عند الاستلام. تحب أسجّلك الطلب؟";
+ if(/متاح|موجود|لسه/.test(t))return "أيوه متاح 😍 ولو حابب أحجزهولك دلوقتي ابعتلي الاسم والمحافظة.";
+ if(/ريحت|ريحة|نوت|ثابت/.test(t))return "ريحته خشبية دافية بلمسة عود 🌿 وثباته من ٨ لـ ١٠ ساعات. تحب أبعتلك عينة مع الطلب؟";
+ if(/ميعاد|طلبي|وصل|فين/.test(t))return "ثانية أشيك 🔎 طلبك خرج مع المندوب ويوصلك النهارده قبل ٨ بالليل. محتاج حاجة تانية؟";
+ if(/بكام|سعر|أسعار|اسعار|كام/.test(t))return "أسعارنا: عود ملكي ٣٥٠ · مسك أبيض ٢٢٠ · بخور فاخر ١٢٠ · طقم هدية ٤٢٠ ج.م. تحب أحجزلك حاجة؟";
+ return "أهلاً بيك 🌿 أقدر أساعدك في الأسعار أو التوصيل أو تسجيل طلب — تحب نبدأ بإيه؟"}
+const needsHuman=t=>/عرض سعر|موظفين|شكوى|مشكلة|فاتورة/.test(t);
+
 /* simulated incoming from other channels */
-const INCOMING=[["fb","كريم سمير","عندكم توصيل لإسكندرية؟"],["ig","Nour.k","الطقم الهدية لسه متاح؟ 😍"],["wa","+20 11 •••• 4455","عايز أعرف ميعاد وصول طلبي"],["tt","@mariam.art","شفت الفيديو، العطر ده ريحته عاملة إزاي؟"],["em","هبة عادل","ممكن فاتورة للطلب ١٠٣٧؟"]];
-let inI=0;function incoming(){if(inI>=INCOMING.length)return;const [ch,name,t]=INCOMING[inI++];const c={id:"x"+inI,ch,name,agent:inI%2?"سارة":"البوت",need:inI%2==1,unread:1,stage:"new",msgs:[["in",t]],time:now()};
- if(c.agent=="البوت")c.msgs.push(["bot","أهلاً 🌿 وصلتنا رسالتك، ثانية واحدة وهرد عليك بالتفاصيل."]),answered++;
- convs.unshift(c);stats[ch]++;renderConvs(c.id);renderBoard();renderReports();toast("رسالة جديدة من "+CH[ch][0]+": "+name)}
+const INCOMING=[["ms","كريم سمير","عندكم توصيل لإسكندرية؟"],["ig","Nour.k","الطقم الهدية لسه متاح؟ 😍"],["wa","+20 11 •••• 4455","عايز أعرف ميعاد وصول طلبي"],["tg","Omar Adel","العود الملكي بكام؟"],["tt","@mariam.art","شفت الفيديو، العطر ده ريحته عاملة إزاي؟"],["em","هبة عادل","ممكن فاتورة للطلب ١٠٣٧؟"],["call","٠١١ •••• ٢٢٣٣","مكالمة فائتة"],["fb","دينا فؤاد","عندي مشكلة في الطلب، الإزازة وصلت مكسورة"]];
+let inI=0;function incoming(){if(inI>=INCOMING.length)return;const [ch,name,t]=INCOMING[inI++];const c={id:"x"+inI,ch,name,agent:"البوت",need:false,unread:1,stage:"new",tags:[],msgs:[["in",t]],time:now()};
+ if(ch=="call"){if(auto.missed){c.ch="wa";c.chs=["call","wa"];c.msgs=[["in","مكالمة فائتة"],["bot","لاحظنا إنك اتصلت بينا 🌿 ابعتلنا هنا وهنرد عليك فوراً."]];answered++;aiSolved++;alog("مكالمة فائتة من "+name+" ← اتبعتله رسالة واتساب تلقائي")}else{c.need=true}}
+ else if(needsHuman(t)){c.agent=auto.rr?rr[rri++%2]:"سارة";c.need=true;c.msgs.push(["bot","وصلتنا رسالتك 🙏 حوّلتك لزميل من فريقنا وهيرد عليك خلال دقايق."]);answered++;
+  if(/شكوى|مشكلة|مكسور/.test(t)){c.tags.push("شكوى");alog("كلمة \"مشكلة\" ← تاج شكوى + تحويل لـ "+c.agent)}else alog("طلب محتاج موظف ← اتوزّع على "+c.agent+(auto.rr?" (بالدور)":""))}
+ else{c.msgs.push(["bot",aiReply(t)]);answered++;aiSolved++;if(/متاح|بكام|سعر/.test(t)){c.stage="int";if(auto.kw){c.tags.push("مهتم بعرض");alog("سؤال عن السعر من "+name+" ← تاج \"مهتم بعرض\" + نقل لمرحلة مهتم")}}else alog("الـ AI رد على "+name+" ("+CH[ch][0]+")")}
+ convs.unshift(c);stats[ch]=(stats[ch]||0)+1;renderConvs(c.id);renderBoard();renderReports();renderContacts();toast("رسالة جديدة من "+CH[ch][0]+": "+name)
+ if(auto.follow&&c.need)setTimeout(()=>{if(c.need){c.msgs.push(["bot","لسه معاك 🌿 زميلنا هيرد عليك حالاً، شكراً لصبرك."]);alog("مفيش رد على "+name+" ← رسالة متابعة تلقائية + تنبيه للمشرف");renderConvs();if(selId==c.id)renderThread()}},25000)}
 setInterval(incoming,14000);
 
 /* ---------- CRM ---------- */
@@ -286,11 +363,27 @@ $("cGo").onclick=campStart;$("cStop").onclick=()=>{camp.run=false;$("cStop").hid
 
 /* ---------- reports ---------- */
 function renderReports(){const total=Object.values(stats).reduce((a,b)=>a+b,0)||1,max=Math.max(...Object.values(stats),1);
- const col={wa:"#25d366",ig:"#dd2a7b",tt:"#111",fb:"#1877f2",em:"#5b6b7f",call:"#0b8f6c"};
+ const col={wa:"#25d366",ig:"#dd2a7b",ms:"#7a5cff",tg:"#2aabee",tt:"#111",fb:"#1877f2",em:"#5b6b7f",call:"#0b8f6c"};
  $("bCh").innerHTML=Object.entries(stats).map(([k,v])=>`<div class="brow"><span>${CH[k][0]}</span><span class="btrack"><i style="width:${v/max*100}%;background:${col[k]}"></i></span><b>${v}</b></div>`).join("");
  const ag={};convs.forEach(c=>ag[c.agent]=(ag[c.agent]||0)+1);const am=Math.max(...Object.values(ag),1);
- $("bAg").innerHTML=AG.map(a=>`<div class="brow"><span>${a=="البوت"?"🤖 ":"👤 "}${a}</span><span class="btrack"><i style="width:${(ag[a]||0)/am*100}%;background:var(--acc)"></i></span><b>${ag[a]||0}</b></div>`).join("");
+ $("bAg").innerHTML=AG.map(a=>`<div class="brow"><span>${agName(a)}</span><span class="btrack"><i style="width:${(ag[a]||0)/am*100}%;background:var(--acc)"></i></span><b>${ag[a]||0}</b></div>`).join("");
+ const tm={"البوت":["٣ ث","٢٤/٧"],"سارة":["٤ د","٩ص–٥م"],"أحمد":["٧ د","١٢م–٨م"]};
+ $("team").innerHTML=`<table><thead><tr><th>المسؤول</th><th>محادثات</th><th>محتاج رد</th><th>متوسط الرد</th><th>الشيفت</th></tr></thead><tbody>${AG.map(a=>`<tr><td>${agName(a)}</td><td>${ag[a]||0}</td><td>${convs.filter(c=>c.agent==a&&c.need).length}</td><td>${tm[a][0]}</td><td>${tm[a][1]}</td></tr>`).join("")}</tbody></table>`;
  $("kMsg").textContent=answered;$("kOrd").textContent=orders.length;$("kConv").textContent=Math.round(orders.length/Math.max(convs.length,1)*100)+"٪"}
+
+/* ---------- contacts ---------- */
+function renderContacts(){const q=($("cSearch").value||"").trim();const list=convs.filter(c=>!q||c.name.includes(q)||(c.tags||[]).some(t=>t.includes(q)));
+ $("contacts").innerHTML=list.length?`<table><thead><tr><th>العميل</th><th>القنوات</th><th>التاجز</th><th>المرحلة</th><th>طلبات</th><th>المسؤول</th></tr></thead><tbody>${list.map(c=>`<tr><td>${esc(c.name)}</td><td>${(c.chs||[c.ch]).map(chIcon).join(" ")}</td><td>${(c.tags||[]).map(t=>`<span class="tag ${t=="VIP"?"vip":t=="اشترى"?"buy":""}">${esc(t)}</span>`).join(" ")||"—"}</td><td>${STG.find(x=>x[0]==c.stage)[1]}</td><td>${orders.filter(o=>o.name==c.name).length}</td><td>${agName(c.agent)}</td></tr>`).join("")}</tbody></table>`:'<div class="empty">مفيش نتايج</div>';
+ document.querySelectorAll("#contacts .ch").forEach(x=>{x.style.width="22px";x.style.height="22px";x.style.fontSize=".55rem"})}
+$("cSearch").oninput=renderContacts;
+
+/* ---------- automation ---------- */
+const RULES=[["rr","توزيع المحادثات على الفريق بالدور","أي محادثة محتاجة موظف بتروح للي عليه الدور — محدش بيتحمّل أكتر من التاني."],["missed","مكالمة فائتة ← رسالة واتساب","لو حد اتصل ومحدش رد، بيوصله واتساب تلقائي عشان العميل ما يضيعش."],["kw","كلمات مفتاحية ← تاج ومرحلة","\"بكام / متاح\" ← تاج مهتم + نقل لمرحلة مهتم. \"مشكلة\" ← تاج شكوى وتحويل لموظف."],["follow","متابعة لو محدش رد","لو العميل مستني موظف وماحدش رد، بيوصله رسالة طمأنة والمشرف بيتنبّه."],["tagbuy","العميل اللي يطلب ← تاج \"اشترى\"","بيتسجل تلقائي عشان تستهدفه في الحملات الجاية."],["away","رسالة خارج مواعيد العمل","بعد مواعيد الفريق الـ AI بيرد ويسجل الطلب، والموظف يكمل الصبح."]];
+function renderRules(){$("rules").innerHTML=RULES.map(([k,t,d])=>`<div class="rule"><div class="tx"><b>${t}</b><p>${d}</p></div><button class="sw" role="switch" aria-checked="${auto[k]}" aria-label="${t}" data-k="${k}"></button></div>`).join("")}
+$("rules").onclick=e=>{const b=e.target.closest(".sw");if(!b)return;auto[b.dataset.k]=!auto[b.dataset.k];renderRules();toast((auto[b.dataset.k]?"اتفعّلت: ":"اتقفلت: ")+RULES.find(r=>r[0]==b.dataset.k)[1])};
+
+/* ---------- settings ---------- */
+function renderChannels(){$("chgrid").innerHTML=Object.keys(CH).map(k=>`<div class="chc">${chIcon(k)}<span>${CH[k][0]}<small>● متصل</small></span></div>`).join("")}
 
 /* ---------- tabs ---------- */
 document.querySelector(".tabs").onclick=e=>{const t=e.target.closest(".tab");if(!t)return;document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x==t));document.querySelectorAll(".pane").forEach(p=>p.hidden=p.id!="p-"+t.dataset.p)};
@@ -312,9 +405,9 @@ function handle(t){const s=t.replace(/[ً-ْ]/g,"").replace(/[^؀-ۿa-zA-Z0-9 ]/
  if(state=="qty"){const q=parseInt(s.replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)));if(!q||q<1||q>20)return bot("اكتب الكمية رقم من ١ لـ ٢٠",["1","2","3"]);draft.q=q;state="name";return bot("تمام! الاسم بالكامل؟")}
  if(state=="name"){if(s.length<2)return bot("اكتب اسمك من فضلك");draft.name=t;state="city";return bot("والمدينة / المحافظة؟",["القاهرة","الجيزة","الإسكندرية"])}
  if(state=="city"){draft.city=t;state="confirm";const tot=draft.p.p*draft.q+40;return bot(`راجع طلبك 📝\n${draft.p.n} × ${draft.q}\nالاسم: ${draft.name}\nالمدينة: ${draft.city}\nالإجمالي: ${tot} ج.م (شامل توصيل ٤٠)\n\nأأكّد الطلب؟`,["✅ أكّد","❌ إلغاء"])}
- if(state=="confirm"){if(/أكد|اكد|تمام|اه|أيوه|ايوه|نعم/.test(s)){const o={no:++seq,...draft,tot:draft.p.p*draft.q+40,status:"قيد التجهيز"};orders.unshift(o);const c=liveConv();c.name=draft.name;c.stage="ord";renderOrders(o.no);renderConvs();renderBoard();renderReports();toast("طلب جديد #"+o.no+" اتسجل في الجدول ✅");state="menu";draft={};return bot(`تم تسجيل طلبك ✅\nرقم الطلب: #${o.no}\nهنكلمك قبل التوصيل. شكراً لثقتك 🌿`,["📦 حالة طلبي","↩️ القائمة"])}state="menu";draft={};return menu("اتلغى الطلب، ولا يهمك.")}
+ if(state=="confirm"){if(/أكد|اكد|تمام|اه|أيوه|ايوه|نعم/.test(s)){const o={no:++seq,...draft,tot:draft.p.p*draft.q+40,status:"قيد التجهيز"};orders.unshift(o);const c=liveConv();c.name=draft.name;c.stage="ord";aiSolved++;if(auto.tagbuy){c.tags=c.tags||[];if(!c.tags.includes("اشترى"))c.tags.push("اشترى");alog("طلب #"+o.no+" ← تاج \"اشترى\" + نقل لمرحلة طلب + سطر في جدول الطلبات")}renderContacts();renderOrders(o.no);renderConvs();renderBoard();renderReports();toast("طلب جديد #"+o.no+" اتسجل في الجدول ✅");state="menu";draft={};return bot(`تم تسجيل طلبك ✅\nرقم الطلب: #${o.no}\nهنكلمك قبل التوصيل. شكراً لثقتك 🌿`,["📦 حالة طلبي","↩️ القائمة"])}state="menu";draft={};return menu("اتلغى الطلب، ولا يهمك.")}
  if(state=="track"){const no=parseInt(s.replace(/\D/g,""));const o=orders.find(x=>x.no==no)||(no==1037?{no:1037,status:"خرج للتوصيل 🚚"}:null);state="menu";return bot(o?`طلب #${o.no}: ${o.status}`:"مش لاقي الرقم ده 🤔 اتأكد منه أو جرّب 1037",["↩️ القائمة"])}
- if(/موظف|خدمة العملاء|اكلم|كلم/.test(s)){const c=liveConv();c.agent="سارة";c.need=true;renderConvs();renderReports();toast("المحادثة اتحوّلت لسارة — افتح الصندوق الموحّد ورد كموظف");return bot("تمام، حوّلتك لزميلتي سارة وهترد عليك هنا خلال دقايق 👤",["↩️ القائمة"])}
+ if(/موظف|خدمة العملاء|اكلم|كلم/.test(s)){const c=liveConv();c.agent="سارة";c.need=true;renderConvs();renderReports();alog("العميل طلب موظف ← تحويل لسارة");toast("المحادثة اتحوّلت لسارة — افتح الصندوق الموحّد ورد كموظف");return bot("تمام، حوّلتك لزميلتي سارة وهترد عليك هنا خلال دقايق 👤",["↩️ القائمة"])}
  if(/توصيل|شحن|يوصل/.test(s))return bot("🚚 التوصيل لكل المحافظات خلال ٢–٤ أيام بـ ٤٠ ج.م، والدفع عند الاستلام.",["🛒 اطلب الآن","↩️ القائمة"]);
  if(/منتج|اسعار|أسعار|سعر|بكام|بكم|كام/.test(s))return prices();
  if(/اطلب|طلب جديد|عايز|اشتري|أشتري/.test(s)&&!/حالة/.test(s)){state="product";return bot("اختار المنتج 👇",P.map(x=>x.id+". "+x.n))}
@@ -325,7 +418,7 @@ function handle(t){const s=t.replace(/[ً-ْ]/g,"").replace(/[^؀-ۿa-zA-Z0-9 ]/
 $("f").onsubmit=e=>{e.preventDefault();const v=$("in").value.trim();if(!v)return;$("in").value="";user(v)};
 qr.addEventListener("click",e=>{if(e.target.tagName=="BUTTON"&&/القائمة/.test(e.target.textContent))state="menu"});
 
-renderFilters();renderConvs();renderBoard();renderReports();
+renderFilters();renderConvs();renderBoard();renderReports();renderContacts();renderRules();renderChannels();
 setTimeout(()=>menu("أهلاً بيك في متجر نسيم للعطور 🌿\nأنا المساعد الآلي، برد عليك فوراً ٢٤ ساعة."),400);
 setTimeout(incoming,6000);
 </script>
