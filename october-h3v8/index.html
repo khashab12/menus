@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>We Fell in Love in October</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Marcellus&family=Pinyon+Script&display=swap">
+<style>
+/* Layout: one pinned stage; a wax-sealed envelope that everything is pulled out of, driven by scroll. */
+:root{
+  --wine:#2a0002;      /* page ground, sampled from the original story */
+  --wine-2:#3d040a;
+  --env:#7a1424;       /* envelope paper */
+  --env-dark:#560b17;
+  --paper:#f2ece2;
+  --ink:#231414;
+  --gold:#e3c27a;
+  --gold-deep:#a8823b;
+  --collage:#2e1616;   /* collage card ground, sampled */
+  --mist:rgba(255,235,225,.72);
+  --f-script:"Pinyon Script","Brush Script MT",cursive;
+  --f-letter:"Marcellus","Cormorant Garamond",Georgia,serif;
+  --f-display:"Abril Fatface","Bodoni 72",Didot,Georgia,serif;
+  color-scheme:dark;
+}
+html,body{background:var(--wine);color:var(--mist)}
+body{overflow-x:hidden;font-family:var(--f-letter)}
+#scene{position:relative;height:100vh;height:100svh;width:100%;overflow:hidden;
+  background:radial-gradient(120% 70% at 50% 45%,var(--wine-2) 0%,var(--wine) 62%)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.18;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* intro */
+.open-it{position:absolute;left:0;right:0;top:calc(50% - var(--eh)/2 - clamp(70px,13vh,120px));text-align:center;
+  font-family:var(--f-script);font-size:clamp(44px,12vw,68px);color:var(--gold);
+  text-shadow:0 1px 0 #6b4a17,0 0 24px rgba(227,194,122,.25);line-height:1}
+.hint{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 26px);display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:rgba(227,194,122,.75)}
+.hint svg{width:18px;height:18px;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+.progress{position:absolute;right:max(10px,env(safe-area-inset-right,0px));top:50%;height:120px;width:2px;margin-top:-60px;background:rgba(227,194,122,.15);border-radius:2px}
+.progress i{position:absolute;inset:0;background:var(--gold);transform-origin:top;transform:scaleY(0);border-radius:2px}
+
+/* envelope */
+.env{--ew:min(78vw,360px);--eh:calc(var(--ew)*.64);position:absolute;left:50%;top:50%;width:var(--ew);height:var(--eh);
+  perspective:1000px}
+#scene{--eh:calc(min(78vw,360px)*.64)}
+.env .back,.env .pocket,.env .flap{position:absolute;left:0;width:100%}
+.back{top:0;height:100%;border-radius:6px;z-index:1;
+  background:linear-gradient(180deg,var(--env-dark),#3f0710);box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 10px 20px rgba(0,0,0,.35)}
+.pocket{top:0;height:100%;z-index:3;border-radius:0 0 6px 6px;
+  clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%);
+  background:
+    linear-gradient(152deg,transparent 49.6%,rgba(0,0,0,.18) 50%,transparent 58%),
+    linear-gradient(208deg,transparent 49.6%,rgba(0,0,0,.18) 50%,transparent 58%),
+    linear-gradient(180deg,#86192b,var(--env) 55%,#6a0f1e)}
+.flap{top:0;height:57%;z-index:4;transform-origin:50% 0;
+  clip-path:polygon(0 0,100% 0,52% 98%,50% 100%,48% 98%);
+  background:linear-gradient(180deg,#8e1d30,#741222 80%,#5e0d1a);
+  filter:drop-shadow(0 3px 3px rgba(0,0,0,.4))}
+.seal{position:absolute;left:50%;top:57%;width:clamp(56px,17vw,78px);aspect-ratio:1;z-index:5;transform:translate(-50%,-55%);
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,.45))}
+
+/* items pulled out of the envelope */
+.item{position:absolute;left:50%;top:50%;visibility:hidden;will-change:transform}
+
+/* letter */
+.letter{width:min(88vw,400px)}
+.paper{position:relative;padding:58px 26px 34px;color:var(--ink);
+  background:
+    radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.55),transparent 60%),
+    radial-gradient(90% 70% at 80% 90%,rgba(120,90,60,.12),transparent 70%),
+    var(--paper);
+  box-shadow:inset 0 0 40px rgba(110,80,50,.18)}
+.paper::after{content:"";position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .48 0 0 0 0 .4 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E")}
+.letter-shadow{filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
+.wax{position:absolute;left:50%;top:-34px;width:84px;transform:translateX(-50%);z-index:2;filter:drop-shadow(0 5px 6px rgba(40,0,0,.45))}
+.paper h1{margin:0 0 18px;text-align:center;font-weight:400;font-size:clamp(20px,5.6vw,25px);letter-spacing:.04em;
+  text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:6px}
+.paper p{margin:0;text-align:center;font-size:clamp(14.5px,4vw,17px);line-height:1.62;text-wrap:pretty}
+.paper .w{display:inline}
+
+/* collage */
+.collage{--cw:min(88vw,400px,calc(78svh*.5625));width:var(--cw);aspect-ratio:9/16;max-width:100%;background:var(--collage);
+  border-radius:4px;overflow:hidden;box-shadow:0 30px 60px -18px rgba(0,0,0,.75)}
+.collage img,.collage .ttl{position:absolute;display:block}
+.collage .lace{right:0;top:0;height:100%;width:31%;object-fit:cover;object-position:left center}
+.collage .pol{left:4%;top:3%;width:62%}
+.collage .lab{left:6.5%;top:36.5%;width:52%}
+.collage .hea{left:32%;top:50.5%;width:30%}
+.collage .ted{left:38%;top:74.5%;width:28.5%}
+.collage .ttl{left:4%;bottom:1.4%;margin:0;font-family:var(--f-display);font-weight:400;color:#f3ede6;
+  font-size:calc(var(--cw)*.104);line-height:.98;letter-spacing:.005em}
+.ttl span{display:block;overflow:hidden}
+.ttl span b{display:block;font-weight:400}
+
+/* player */
+.player{width:min(82vw,330px)}
+.glow{position:absolute;inset:-18%;z-index:-1;background:center/cover;filter:blur(40px) saturate(1.3);opacity:.55;border-radius:50%}
+.card{padding:16px 16px 18px;border-radius:30px;background:rgba(24,8,10,.62);border:1px solid rgba(255,255,255,.09);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 30px 60px -20px rgba(0,0,0,.8);color:#f5ecea;font-family:-apple-system,"SF Pro Text","Segoe UI",system-ui,sans-serif}
+.cover{width:100%;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#1a0a0a}
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.meta{margin-top:14px;display:flex;flex-direction:column;gap:2px}
+.meta small{font-size:11px;color:rgba(255,255,255,.45)}
+.meta strong{font-size:16px;font-weight:600}
+.meta span{font-size:15px;color:rgba(255,255,255,.55)}
+.bar{margin-top:14px;height:5px;border-radius:5px;background:rgba(255,255,255,.18);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:rgba(255,255,255,.85);border-radius:5px}
+.times{display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(255,255,255,.5);font-variant-numeric:tabular-nums}
+.ctrls{margin-top:8px;display:flex;align-items:center;justify-content:center;gap:34px}
+.ctrls button{appearance:none;border:0;background:none;color:#fff;padding:6px;cursor:pointer;border-radius:50%;display:grid;place-items:center}
+.ctrls button:focus-visible,.replay:focus-visible,.listen:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.ctrls svg{display:block}
+.listen{display:block;margin:14px auto 0;width:max-content;font-size:12px;letter-spacing:.08em;color:var(--gold);text-decoration:none;
+  border:1px solid rgba(227,194,122,.35);padding:7px 14px;border-radius:99px}
+.eq{display:inline-flex;gap:2px;align-items:flex-end;height:12px;margin-left:6px;vertical-align:-1px}
+.eq i{width:2px;height:30%;background:currentColor;border-radius:1px}
+.playing .eq i{animation:eq .9s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:-.3s}.eq i:nth-child(3){animation-delay:-.6s}
+@keyframes eq{0%,100%{height:25%}50%{height:100%}}
+
+/* final */
+.road{--cw:min(84vw,380px,calc(76svh*.5625));width:var(--cw);aspect-ratio:9/16;max-width:100%;border-radius:18px;overflow:hidden;
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.85)}
+.road img{width:100%;height:100%;object-fit:cover;display:block}
+.hearts{position:absolute;inset:0;pointer-events:none;opacity:0}
+.hearts i{position:absolute;bottom:-30px;width:14px;height:14px;color:#b3243a;animation:rise linear infinite}
+.hearts svg{width:100%;height:100%;display:block}
+@keyframes rise{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+.replay{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);opacity:0;visibility:hidden;
+  font-family:var(--f-script);font-size:26px;color:var(--gold);background:none;border:0;cursor:pointer;padding:4px 12px}
+
+@media (prefers-reduced-motion:reduce){.hint svg,.hearts i,.playing .eq i{animation:none}}
+</style>
+
+</head>
+<body style="margin:0">
+<main id="scene" aria-label="A letter in an envelope">
+  <div class="grain"></div>
+  <div class="hearts" aria-hidden="true"></div>
+
+  <div class="open-it">Open it</div>
+
+  <div class="env">
+    <div class="back"></div>
+
+    <!-- 1. letter -->
+    <article class="item letter letter-shadow">
+      <svg class="wax" viewBox="0 0 100 90" aria-hidden="true">
+        <defs>
+          <radialGradient id="wx" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#c2364d"/><stop offset=".55" stop-color="#8d1426"/><stop offset="1" stop-color="#5a0714"/></radialGradient>
+          <linearGradient id="wx2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6c0b1b"/><stop offset="1" stop-color="#9e1c31"/></linearGradient>
+        </defs>
+        <path d="M50 86C44 80 6 58 6 30 6 14 18 4 31 4c9 0 15 5 19 11 4-6 10-11 19-11 13 0 25 10 25 26 0 28-38 50-44 56z" fill="url(#wx)"/>
+        <path d="M50 68C45 63 22 49 22 32c0-9 7-15 14-15 6 0 11 4 14 9 3-5 8-9 14-9 7 0 14 6 14 15 0 17-23 31-28 36z" fill="url(#wx2)" stroke="#d24a60" stroke-opacity=".5" stroke-width="2"/>
+        <ellipse cx="34" cy="20" rx="8" ry="4" fill="#fff" opacity=".25" transform="rotate(-25 34 20)"/>
+      </svg>
+      <div class="paper">
+        <h1>TO MY FAV PERSON</h1>
+        <p id="letterText">October feels a little more special because I get to spend it loving you. I hope this month brings us more beautiful moments, more memories, and more reasons to smile together. No matter how many months and years pass, I'll always choose you, and I'll always be grateful that you're the person I get to share my life with. Here's to another month of us, and to all the beautiful months waiting for us.</p>
+      </div>
+    </article>
+
+    <!-- 2. collage -->
+    <section class="item collage" aria-label="Our photos">
+      <img class="lace" src="lace.jpg" alt="">
+      <img class="pc pol" src="polaroid.webp" alt="Our photo">
+      <img class="pc lab" src="label.webp" alt="I love you, forever and always">
+      <img class="pc hea" src="hearts.webp" alt="">
+      <img class="pc ted" src="teddy.webp" alt="">
+      <h2 class="ttl"><span><b>WE</b></span><span><b>FELL</b></span><span><b>IN</b></span><span><b>LOVE</b></span><span><b>IN</b></span><span><b>OCTOBER</b></span></h2>
+    </section>
+
+    <!-- 3. song -->
+    <section class="item player" aria-label="Our song">
+      <div class="glow" style="background-image:url(cover.jpg)"></div>
+      <div class="card">
+        <div class="cover"><img src="cover.jpg" alt="Song cover"></div>
+        <div class="meta">
+          <small>iPhone</small>
+          <strong>we fell in love in october <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></strong>
+          <span>girl in red</span>
+        </div>
+        <div class="bar"><i id="barFill"></i></div>
+        <div class="times"><span id="tNow">0:00</span><span id="tLeft">-3:04</span></div>
+        <div class="ctrls">
+          <button type="button" aria-label="Previous"><svg width="30" height="20" viewBox="0 0 30 20" fill="currentColor"><path d="M14 2v16L2 10zM28 2v16L16 10z"/></svg></button>
+          <button type="button" id="playBtn" aria-label="Play"><svg width="30" height="30" viewBox="0 0 30 30" fill="currentColor" id="playIcon"><path d="M8 4l18 11L8 26z"/></svg></button>
+          <button type="button" aria-label="Next"><svg width="30" height="20" viewBox="0 0 30 20" fill="currentColor"><path d="M2 2v16l12-8zM16 2v16l12-8z"/></svg></button>
+        </div>
+      </div>
+      <a class="listen" href="https://open.spotify.com/search/we%20fell%20in%20love%20in%20october%20girl%20in%20red" target="_blank" rel="noopener">Listen on Spotify ↗</a>
+    </section>
+
+    <!-- 4. last picture -->
+    <figure class="item road" style="margin:0">
+      <img src="road.jpg" alt="Do you have a map? Because I keep getting lost in your eyes.">
+    </figure>
+
+    <div class="pocket"></div>
+    <div class="flap"></div>
+    <svg class="seal" viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <radialGradient id="gd" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#fbe9bf"/><stop offset=".45" stop-color="#e0bd78"/><stop offset="1" stop-color="#9d7434"/></radialGradient>
+        <radialGradient id="gd2" cx="60%" cy="65%" r="60%"><stop offset="0" stop-color="#f6dfa8"/><stop offset="1" stop-color="#c79c55"/></radialGradient>
+      </defs>
+      <path d="M50 3c7 0 9 4 15 5s10-1 14 4 1 9 4 14 7 7 7 14-4 9-4 15 3 10-1 15-9 3-14 6-6 9-14 9-9-5-15-6-11 2-15-3-1-10-4-15-7-8-7-15 4-9 4-15-3-10 2-14 9-2 14-4S43 3 50 3z" fill="url(#gd)"/>
+      <circle cx="50" cy="50" r="31" fill="url(#gd2)" stroke="#a37a3a" stroke-width="2"/>
+      <path d="M50 67c-4-4-17-12-17-23 0-6 4-10 9-10 4 0 6 2 8 5 2-3 4-5 8-5 5 0 9 4 9 10 0 11-13 19-17 23z" fill="none" stroke="#7a5420" stroke-width="2.6" stroke-linejoin="round"/>
+      <path d="M45 46c2-4 6-3 7 0" fill="none" stroke="#7a5420" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <div class="hint" aria-hidden="true">scroll
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="progress" aria-hidden="true"><i></i></div>
+  <button type="button" class="replay" id="replay">read it again ↑</button>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ignoreMobileResize:true});
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+
+  // torn paper edge
+  (function tear(){
+    const pts=[],j=()=>Math.random()*1.4, step=2.5;
+    for(let x=0;x<=100;x+=step) pts.push(`${x}% ${j()}%`);
+    for(let y=0;y<=100;y+=step*.6) pts.push(`${100-j()*1.6}% ${y}%`);
+    for(let x=100;x>=0;x-=step) pts.push(`${x}% ${100-j()}%`);
+    for(let y=100;y>=0;y-=step*.6) pts.push(`${j()*1.6}% ${y}%`);
+    $('.paper').style.clipPath=`polygon(${pts.join(',')})`;
+  })();
+
+  // split letter into words
+  const p=$('#letterText');
+  p.innerHTML=p.textContent.trim().split(/\s+/).map(w=>`<span class="w">${w}</span>`).join(' ');
+
+  // floating hearts for the ending
+  const H=$('.hearts');
+  for(let i=0;i<16;i++){
+    const el=document.createElement('i');
+    const s=8+Math.random()*14;
+    el.style.cssText=`left:${Math.random()*100}%;width:${s}px;height:${s}px;animation-duration:${7+Math.random()*7}s;animation-delay:${-Math.random()*12}s;opacity:${.35+Math.random()*.5}`;
+    el.innerHTML='<svg viewBox="0 0 24 22" fill="currentColor"><path d="M12 21C10 19 0 13 0 6.5 0 3 2.7 0 6 0c2.6 0 4.6 1.6 6 3.5C13.4 1.6 15.4 0 18 0c3.3 0 6 3 6 6.5C24 13 14 19 12 21z"/></svg>';
+    H.appendChild(el);
+  }
+
+  // geometry
+  const env=$('.env');
+  const EW=()=>env.offsetWidth, EH=()=>env.offsetHeight;
+  const envY=()=>Math.max(0, innerHeight/2 - EH()/2 - Math.max(14, innerHeight*.03));
+  const s0=it=>Math.min(EW()*.84/it.offsetWidth, EH()*.8/it.offsetHeight);
+  const yIn=()=>EH()*.08;
+  const yOut=it=>-EH()/2 - it.offsetHeight*s0(it)/2 + EH()*.38;
+
+  const letter=$('.letter'), collage=$('.collage'), player=$('.player'), road=$('.road');
+  const items=[letter,collage,player,road];
+  gsap.set(env,{xPercent:-50,yPercent:-50});
+  gsap.set(items,{xPercent:-50,yPercent:-50,autoAlpha:0});
+
+  const tl=gsap.timeline({
+    defaults:{ease:'power2.inOut'},
+    scrollTrigger:{trigger:'#scene',start:'top top',end:'+=1200%',scrub:1,pin:true,anticipatePin:1,invalidateOnRefresh:true,
+      onUpdate:self=>{ $('.progress i').style.transform=`scaleY(${self.progress})`; }}
+  });
+
+  function emerge(it,at){
+    tl.set(it,{autoAlpha:1,zIndex:2},at);
+    tl.fromTo(it,{y:yIn,scale:()=>s0(it),rotation:0},{y:()=>yOut(it),duration:.9,ease:'power2.out'},at);
+    tl.set(it,{zIndex:6});
+    tl.to(it,{y:()=>-envY(),scale:1,duration:1.1,ease:'power3.inOut'});
+  }
+  function away(it,rot){
+    tl.to(it,{y:()=>-envY()-innerHeight*.9,rotation:rot,autoAlpha:0,duration:.9,ease:'power2.in'});
+  }
+  const hold=d=>tl.to({},{duration:d});
+
+  // 1. break the seal, open the flap
+  tl.to('.hint',{autoAlpha:0,duration:.3},0)
+    .to('.open-it',{y:-40,autoAlpha:0,duration:.6},0)
+    .to('.seal',{scale:1.25,duration:.25,ease:'power1.out'},.05)
+    .to('.seal',{scale:0,rotation:-40,autoAlpha:0,duration:.35,ease:'back.in(2)'},.3)
+    .to('.flap',{rotationX:180,duration:.9,ease:'power2.inOut'},.5)
+    .set('.flap',{zIndex:0},.95)
+    .to(env,{y:envY,duration:.9},1.2);
+
+  // 2. letter
+  emerge(letter,1.3);
+  tl.fromTo('.paper .w',{opacity:.14},{opacity:1,duration:.25,stagger:.022,ease:'none'});
+  hold(.6);
+  away(letter,-7);
+
+  // 3. photos
+  const pcs=$$('.collage .pc');
+  emerge(collage,'-=.5');
+  tl.fromTo(pcs,{
+      x:i=>collage.offsetWidth/2-(pcs[i].offsetLeft+pcs[i].offsetWidth/2),
+      y:i=>collage.offsetHeight/2-(pcs[i].offsetTop+pcs[i].offsetHeight/2),
+      scale:.45,rotation:i=>[-14,10,-8,12][i]},
+    {x:0,y:0,scale:1,rotation:0,duration:.9,stagger:.18,ease:'back.out(1.4)'},'-=.5')
+    .fromTo('.lace',{xPercent:105},{xPercent:0,duration:.8,ease:'power3.out'},'<')
+    .fromTo('.ttl b',{yPercent:110},{yPercent:0,duration:.5,stagger:.08,ease:'power3.out'},'-=.6');
+  hold(.7);
+  away(collage,6);
+
+  // 4. song
+  emerge(player,'-=.5');
+  const prog={t:0}, total=184;
+  const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
+  tl.to(prog,{t:81,duration:1.4,ease:'none',onUpdate:()=>{
+    $('#barFill').style.width=(prog.t/total*100)+'%';
+    $('#tNow').textContent=fmt(prog.t); $('#tLeft').textContent='-'+fmt(total-prog.t);
+  }});
+  hold(.5);
+  away(player,-6);
+
+  // 5. last picture, envelope leaves
+  emerge(road,'-=.5');
+  tl.to(['.back','.pocket','.flap'],{y:()=>EH()*1.4,autoAlpha:0,duration:.9,ease:'power2.in'},'-=.6')
+    .to('.hearts',{opacity:1,duration:.8},'<')
+    .to('#replay',{autoAlpha:1,duration:.5});
+  hold(.4);
+
+  // play button (visual; links to Spotify for the real song)
+  const playBtn=$('#playBtn'), icon=$('#playIcon');
+  playBtn.addEventListener('click',()=>{
+    const on=player.classList.toggle('playing');
+    playBtn.setAttribute('aria-label',on?'Pause':'Play');
+    icon.innerHTML=on?'<path d="M7 4h6v22H7zM17 4h6v22h-6z"/>':'<path d="M8 4l18 11L8 26z"/>';
+  });
+  $('#replay').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  addEventListener('load',()=>ScrollTrigger.refresh());
+})();
+</script>
+
+</body>
+</html>
