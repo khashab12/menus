@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>تيفاني كلينك | Tiffany Clinic — الخدمات والأسعار</title>
+<meta name="description" content="تيفاني كلينك — جلدية وتجميل، ليزر، أسنان. الخدمات والأسعار والفروع والتواصل.">
+<meta name="theme-color" content="#0f6f6a">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--tif:#81d8d0;--tif2:#0f6f6a;--tif3:#e8f7f5;--ink:#22262a;--soft:#6b7278;--line:#e7ebea;--bg:#fbfcfc;--card:#fff;--gold:#b89b67}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+.demo{background:var(--ink);color:#fff;text-align:center;font-size:.75rem;padding:.4rem 1rem}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(251,252,252,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{display:flex;flex-direction:column;line-height:1.05}
+.logo b{font-family:"Noto Kufi Arabic";font-weight:400;font-size:1.05rem;letter-spacing:.02em}
+.logo small{font-family:"Cormorant Garamond";letter-spacing:.32em;font-size:.68rem;color:var(--soft)}
+.nav a.cta{background:var(--tif2);color:#fff;border-radius:999px;padding:.45rem 1rem;font-size:.85rem;font-weight:500}
+.links{display:flex;gap:1.3rem;font-size:.9rem;color:var(--soft)}
+@media(max-width:720px){.links{display:none}}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:3.4rem 0 2.6rem;text-align:center}
+.hero:before{content:"";position:absolute;inset:-40% -20% auto;height:520px;background:radial-gradient(closest-side,rgba(129,216,208,.35),transparent);z-index:-1}
+.mark{display:inline-flex;flex-direction:column;align-items:center;border:1px solid var(--line);background:#fff;border-radius:50%;width:132px;height:132px;justify-content:center;box-shadow:0 18px 50px rgba(15,111,106,.12);margin-bottom:1.3rem}
+.mark b{font-family:"Noto Kufi Arabic";font-weight:300;font-size:1.25rem;color:#5c6266}
+.mark small{font-family:"Cormorant Garamond";letter-spacing:.3em;font-size:.62rem;color:var(--gold)}
+.hero h1{font-family:"Noto Kufi Arabic";font-weight:400;font-size:clamp(1.6rem,4.6vw,2.5rem);line-height:1.45;margin:.2rem 0 .6rem}
+.hero h1 em{font-style:normal;color:var(--tif2)}
+.hero p{color:var(--soft);max-width:560px;margin:0 auto 1.4rem}
+.pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.6rem}
+.pills span{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.25rem .8rem;font-size:.82rem}
+.btns{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.45rem;border-radius:999px;padding:.7rem 1.3rem;font-weight:500;border:1px solid var(--tif2);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(15,111,106,.18)}
+.btn.p{background:var(--tif2);color:#fff}
+.btn.g{background:#fff;color:var(--tif2)}
+/* branch picker */
+.branchbar{background:#fff;border:1px solid var(--line);border-radius:18px;padding:.9rem 1rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin:0 auto 2.2rem;max-width:720px}
+.branchbar label{font-size:.85rem;color:var(--soft)}
+.seg{display:flex;gap:.35rem;flex-wrap:wrap}
+.seg button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:.35rem .9rem;font-size:.85rem}
+.seg button[aria-pressed=true]{background:var(--tif3);border-color:var(--tif);color:var(--tif2);font-weight:600}
+/* sections */
+section{padding:2.4rem 0}
+h2{font-family:"Noto Kufi Arabic";font-weight:400;font-size:1.5rem;margin:0 0 .3rem}
+.sub{color:var(--soft);margin:0 0 1.3rem;font-size:.95rem}
+.cats{display:flex;gap:.45rem;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;margin-bottom:1.1rem;position:sticky;top:62px;background:var(--bg);z-index:5;padding-top:.5rem}
+.cats::-webkit-scrollbar{display:none}
+.cats button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:.42rem 1rem;font-size:.88rem}
+.cats button[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.8rem}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1rem 1.05rem;display:flex;flex-direction:column;gap:.35rem;transition:border-color .2s,transform .2s}
+.svc:hover{border-color:var(--tif);transform:translateY(-2px)}
+.svc .top{display:flex;justify-content:space-between;align-items:flex-start;gap:.6rem}
+.svc h3{margin:0;font-size:1.02rem;font-weight:600}
+.price{white-space:nowrap;color:var(--tif2);font-weight:600;font-size:.95rem}
+.price small{color:var(--soft);font-weight:400;font-size:.72rem;margin-right:.2rem}
+.svc p{margin:0;color:var(--soft);font-size:.86rem}
+.svc .meta{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.25rem}
+.tag{font-size:.72rem;border-radius:999px;padding:.05rem .55rem;background:var(--tif3);color:var(--tif2)}
+.tag.no{background:#f4f1ec;color:#8a7350}
+.svc.off{opacity:.45}
+.ask{margin-top:auto;padding-top:.45rem;font-size:.84rem;color:var(--tif2);font-weight:500;display:inline-flex;gap:.3rem;align-items:center}
+/* offer */
+.offer{background:linear-gradient(120deg,var(--tif2),#1b8d86);color:#fff;border-radius:22px;padding:1.5rem 1.4rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center}
+@media(max-width:620px){.offer{grid-template-columns:1fr}}
+.offer h3{font-family:"Noto Kufi Arabic";font-weight:400;font-size:1.3rem;margin:.1rem 0 .3rem}
+.offer p{margin:0;opacity:.9;font-size:.9rem}
+.offer .big{font-size:2rem;font-weight:600;line-height:1}
+.offer .big small{font-size:.9rem;font-weight:400}
+.offer .btn{background:#fff;color:var(--tif2);border-color:#fff;margin-top:.7rem}
+/* faq */
+details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem;margin-bottom:.5rem}
+summary{cursor:pointer;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--tif2);font-size:1.2rem;line-height:1}
+details[open] summary:after{content:"–"}
+details p{margin:.5rem 0 0;color:var(--soft);font-size:.9rem}
+.askbox{background:var(--tif3);border-radius:18px;padding:1.1rem;margin-top:1rem}
+.askbox b{display:block;margin-bottom:.5rem}
+.askbox form{display:flex;gap:.5rem;flex-wrap:wrap}
+.askbox input,.askbox select{flex:1 1 200px;border:1px solid var(--line);border-radius:12px;padding:.6rem .8rem;background:#fff;font:inherit}
+.askbox button{border:0;background:var(--tif2);color:#fff;border-radius:12px;padding:.6rem 1.2rem;font-weight:500}
+/* branches */
+.br{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem}
+.bcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.1rem}
+.bcard h3{margin:0 0 .2rem;font-size:1.05rem}
+.bcard p{margin:0 0 .8rem;color:var(--soft);font-size:.86rem}
+.bcard .row{display:flex;gap:.45rem;flex-wrap:wrap}
+.bcard a{border:1px solid var(--line);border-radius:999px;padding:.38rem .85rem;font-size:.85rem;display:inline-flex;gap:.35rem;align-items:center}
+.bcard a.wa{background:#25d366;color:#fff;border-color:#25d366}
+footer{border-top:1px solid var(--line);padding:1.6rem 0 5.5rem;text-align:center;color:var(--soft);font-size:.82rem}
+/* floating */
+.fab{position:fixed;bottom:16px;left:16px;right:16px;max-width:420px;margin:0 auto;z-index:30;display:flex;gap:.5rem}
+.fab a{flex:1;text-align:center;border-radius:999px;padding:.8rem;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.fab .wa{background:#25d366;color:#fff}
+.fab .call{background:#fff;color:var(--ink);flex:0 0 auto;padding:.8rem 1.1rem}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+.toast{position:fixed;top:76px;left:50%;transform:translateX(-50%) translateY(-10px);background:var(--ink);color:#fff;border-radius:12px;padding:.55rem 1rem;font-size:.85rem;opacity:0;transition:.25s;z-index:40;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}
+svg{width:1em;height:1em;flex:none}
+</style>
+</head>
+<body>
+<div class="demo">نموذج تجريبي — الأسعار وأسماء الفروع أمثلة وتتعدل حسب معلومات العيادة</div>
+
+<header class="nav"><div class="wrap">
+  <a href="#" class="logo"><b>تيفاني كلينك</b><small>TIFFANY CLINIC</small></a>
+  <nav class="links"><a href="#services">الخدمات والأسعار</a><a href="#offers">العروض</a><a href="#faq">الأسئلة الشائعة</a><a href="#branches">الفروع</a></nav>
+  <a class="cta" href="#branches">احجز موعدك</a>
+</div></header>
+
+<main>
+<div class="hero"><div class="wrap">
+  <div class="mark rv"><b>تيفاني كلينك</b><small>TIFFANY CLINIC</small></div>
+  <h1 class="rv">وجهة الجمال <em>الراقية</em> ✨</h1>
+  <p class="rv">كل خدماتنا وأسعارها في مكان واحد. اختر الفرع الأقرب لك، وتواصل معنا على الواتساب مباشرة لحجز موعدك.</p>
+  <div class="pills rv"><span>جلدية وتجميل</span><span>ليزر</span><span>أسنان</span><span>بشرة</span><span>شعر</span></div>
+  <div class="btns rv"><a class="btn p" href="#services">الخدمات والأسعار</a><a class="btn g" href="#branches">الفروع والتواصل</a></div>
+</div></div>
+
+<div class="wrap">
+  <div class="branchbar rv" id="bb">
+    <label>اعرض الخدمات المتوفرة في:</label>
+    <div class="seg" id="seg"></div>
+  </div>
+</div>
+
+<section id="services"><div class="wrap">
+  <h2 class="rv">الخدمات والأسعار</h2>
+  <p class="sub rv">الأسعار تبدأ من المبلغ الموضح، والسعر النهائي يحدده الطبيب بعد الاستشارة حسب الحالة.</p>
+  <div class="cats" id="cats" role="tablist"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="offers"><div class="wrap">
+  <h2 class="rv">العروض الحالية</h2>
+  <p class="sub rv">العروض تتحدث باستمرار، تابعونا على إنستقرام.</p>
+  <div class="offer rv">
+    <div>
+      <span class="tag" style="background:rgba(255,255,255,.18);color:#fff">عرض</span>
+      <h3>البشرة الماسية 💎</h3>
+      <p>جلسة هيدرافيشل + إبرة سبع نجوم</p>
+      <a class="btn" href="#" data-wa="أبي أستفسر عن عرض البشرة الماسية">اسأل عن العرض</a>
+    </div>
+    <div class="big">1699 <small>ر.س</small></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <h2 class="rv">الأسئلة الشائعة</h2>
+  <p class="sub rv">جمعنا لك أكثر الأسئلة اللي تجينا.</p>
+  <div id="faqs"></div>
+  <div class="askbox rv">
+    <b>ما لقيت سؤالك؟ اكتبه وتوصل لموظفة الفرع على الواتساب مباشرة</b>
+    <form id="askf">
+      <select id="askb" aria-label="الفرع"></select>
+      <input id="askq" placeholder="اكتب سؤالك هنا…" aria-label="سؤالك" required>
+      <button>أرسل على الواتساب</button>
+    </form>
+  </div>
+</div></section>
+
+<section id="branches"><div class="wrap">
+  <h2 class="rv">فروعنا</h2>
+  <p class="sub rv">اختر الفرع، وتواصل معهم مباشرة للحجز والاستفسار.</p>
+  <div class="br" id="br"></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">تيفاني كلينك · TIFFANY CLINIC · الرياض<br>الرقم الموحد 920020338</div></footer>
+
+<div class="fab"><a class="wa" href="#" id="fabwa">💬 احجز على الواتساب</a><a class="call" href="tel:920020338" aria-label="اتصال">📞</a></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== بيانات العيادة (تتعدل من هنا) ===== */
+const BR=[
+ {id:"yas",name:"فرع الياسمين",addr:"حي الياسمين، شارع أنس بن مالك، الرياض",wa:"",maps:"https://maps.google.com/?q=Tiffany+Clinic+Riyadh",hours:"يومياً ١٠ ص – ١٠ م"},
+ {id:"b2",name:"الفرع الثاني",addr:"(الحي والعنوان)",wa:"",maps:"#",hours:"يومياً ١٠ ص – ١٠ م"},
+ {id:"b3",name:"الفرع الثالث",addr:"(الحي والعنوان)",wa:"",maps:"#",hours:"يومياً ١٠ ص – ١٠ م"}
+];
+const CATS=[["all","الكل"],["skin","البشرة"],["inj","الحقن والفيلر"],["laser","الليزر"],["dent","الأسنان"],["hair","الشعر"]];
+/* p = يبدأ من (أمثلة) ، b = الفروع المتوفرة (فاضي = كل الفروع) */
+const SV=[
+ {c:"skin",n:"تنظيف البشرة العميق",d:"تنظيف وتقشير وترطيب حسب نوع البشرة.",p:299},
+ {c:"skin",n:"هيدرافيشل",d:"تنظيف ونضارة فورية بتقنية الهيدرافيشل.",p:450},
+ {c:"skin",n:"إبر النضارة",d:"إبر تجديد ونضارة للبشرة الباهتة والمتعبة.",p:799},
+ {c:"skin",n:"فينوس ليقاسي",d:"شد وتحسين ملمس البشرة بدون ألم.",p:600,b:["yas"]},
+ {c:"inj",n:"فيلر الشفايف",d:"تحديد وتكبير طبيعي للشفايف.",p:1200},
+ {c:"inj",n:"فيلر الوجه",d:"إبراز الخدود والفك وتعبئة الهالات.",p:1400},
+ {c:"inj",n:"إبرة الكونتور",d:"نحت الوجه وتحديد الملامح.",p:1500,b:["yas","b2"]},
+ {c:"inj",n:"حقن البوتكس",d:"للتجاعيد وخطوط التعبير والتعرق.",p:900},
+ {c:"laser",n:"ليزر إزالة الشعر",d:"جلسات لكامل الجسم أو مناطق محددة.",p:350},
+ {c:"dent",n:"ابتسامة هوليود",d:"عدسات وقشور لابتسامة متناسقة.",p:"استشارة",b:["yas","b3"]},
+ {c:"dent",n:"تبييض الأسنان",d:"تبييض بالعيادة بنتيجة من أول جلسة.",p:799},
+ {c:"dent",n:"تنظيف الأسنان",d:"تنظيف وإزالة الجير وتلميع.",p:250},
+ {c:"hair",n:"علاج تساقط الشعر",d:"بلازما وميزوثيرابي حسب الحالة.",p:499}
+];
+const FAQ=[
+ ["هل الحجز مسبق ولا أقدر أجي مباشرة؟","يفضّل الحجز المسبق عشان نضمن لك الوقت المناسب، تواصل مع واتساب الفرع وتأكد لك الموعد."],
+ ["هل فيه استشارة قبل الجلسة؟","أكيد، الطبيب يقيّم الحالة ويحدد الأنسب لك قبل أي إجراء."],
+ ["الأسعار نفسها في كل الفروع؟","أغلب الخدمات نفس السعر، وإذا فيه اختلاف أو خدمة متوفرة بفرع معيّن موضحة جنب الخدمة."],
+ ["كم تحتاج جلسة ليزر إزالة الشعر؟","يختلف حسب المنطقة ونوع الشعر، وعادةً من ٦ إلى ٨ جلسات."],
+ ["هل فيه تقسيط؟","(حسب سياسة العيادة — تامارا / تابي مثلاً)"],
+ ["وش طرق الدفع؟","كاش، مدى، وبطاقات ائتمانية في العيادة."]
+];
+/* ======================================= */
+const $=id=>document.getElementById(id);
+let branch="all",cat="all";
+const waLink=(txt,b)=>{const br=BR.find(x=>x.id==b)||BR[0];const num=(br.wa||"").replace(/\D/g,"");return "https://wa.me/"+num+"?text="+encodeURIComponent("السلام عليكم، "+txt+" — "+br.name)};
+function toast(t){const e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),2200)}
+function brName(id){return (BR.find(b=>b.id==id)||{}).name}
+function renderSeg(){$("seg").innerHTML=[["all","كل الفروع"],...BR.map(b=>[b.id,b.name])].map(([k,t])=>`<button aria-pressed="${branch==k}" data-b="${k}">${t}</button>`).join("")}
+function renderCats(){$("cats").innerHTML=CATS.map(([k,t])=>`<button role="tab" aria-selected="${cat==k}" data-c="${k}">${t}</button>`).join("")}
+function renderGrid(){const list=SV.filter(s=>cat=="all"||s.c==cat);
+ $("grid").innerHTML=list.map(s=>{const avail=!s.b||branch=="all"||s.b.includes(branch);
+  const tag=!s.b?'<span class="tag">متوفر في كل الفروع</span>':`<span class="tag no">${s.b.map(brName).join(" · ")}</span>`;
+  const pr=typeof s.p=="number"?`يبدأ من ${s.p}<small>ر.س</small>`:`${s.p}`;
+  return `<article class="svc ${avail?"":"off"}"><div class="top"><h3>${s.n}</h3><div class="price">${pr}</div></div><p>${s.d}</p><div class="meta">${tag}</div><a class="ask" href="#" data-wa="أبي أستفسر عن ${s.n}">اسأل واحجز على الواتساب ←</a></article>`}).join("")}
+function renderBr(){$("br").innerHTML=BR.map(b=>`<div class="bcard rv"><h3>${b.name}</h3><p>${b.addr}<br>${b.hours}</p><div class="row"><a class="wa" href="#" data-wa="أبي أحجز موعد" data-br="${b.id}">💬 واتساب الفرع</a><a href="${b.maps}" target="_blank" rel="noopener">📍 اللوكيشن</a></div></div>`).join("");
+ $("askb").innerHTML=BR.map(b=>`<option value="${b.id}">${b.name}</option>`).join("")}
+function renderFaq(){$("faqs").innerHTML=FAQ.map(([q,a])=>`<details class="rv"><summary>${q}</summary><p>${a}</p></details>`).join("")}
+document.addEventListener("click",e=>{
+ const b=e.target.closest("[data-b]");if(b){branch=b.dataset.b;renderSeg();renderGrid();if(branch!="all")toast("اللي باهت غير متوفر في "+brName(branch));return}
+ const c=e.target.closest("[data-c]");if(c){cat=c.dataset.c;renderCats();renderGrid();return}
+ const w=e.target.closest("[data-wa]");if(w){e.preventDefault();const bid=w.dataset.br||(branch!="all"?branch:BR[0].id);open(waLink(w.dataset.wa,bid),"_blank")}
+});
+$("fabwa").onclick=e=>{e.preventDefault();open(waLink("أبي أحجز موعد",branch!="all"?branch:BR[0].id),"_blank")};
+$("askf").onsubmit=e=>{e.preventDefault();open(waLink("عندي سؤال: "+$("askq").value.trim(),$("askb").value),"_blank")};
+renderSeg();renderCats();renderGrid();renderBr();renderFaq();
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
