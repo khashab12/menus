@@ -5,197 +5,438 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>نظام الرد والحجز للعيادات — نسخة تجريبية</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="نسخة تجريبية: رد تلقائي على واتساب وإنستقرام، حجز مواعيد، صندوق رسائل موحّد، ملف لكل مراجع، تذكيرات وتقارير.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#0b8f6c;--acc2:#e6f5ef;--bg:#f4f2ee;--card:#fff;--ink:#15171b;--soft:#646b75;--line:#e5e1da;--wa:#075e54;--chat:#efe7dd;--in:#fff;--out:#d9fdd3;--warn:#c2410c;--warnbg:#fff1e8}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1114;--card:#181b20;--ink:#eef0f2;--soft:#9aa3ad;--line:#272b32;--chat:#0b141a;--in:#202c33;--out:#005c4b;--acc2:#12302a;--warnbg:#3a2114;--warn:#fb923c}}
+:root{--bg:#f3f1ec;--card:#fff;--ink:#14161a;--soft:#5f6670;--line:#e4e0d8;--wa:#075e54;--wa2:#25d366;--chat:#efe7dd;--in:#fff;--out:#d9fdd3;--acc:#0b8f6c;--hi:#e9f7f1}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1013;--card:#171a1f;--ink:#eef0f2;--soft:#9aa3ad;--line:#262a31;--chat:#0b141a;--in:#202c33;--out:#005c4b;--hi:#12302a}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;line-height:1.6}
-button,input{font:inherit;color:inherit}
-.demo{background:#15171b;color:#fff;text-align:center;font-size:.8rem;padding:.45rem 1rem}
-.wrap{max-width:1160px;margin:0 auto;padding:1.5rem 1rem 3rem;display:grid;grid-template-columns:370px minmax(0,1fr);gap:1.6rem;align-items:start}
+button,input,select,textarea{font:inherit;color:inherit}
+.demo{background:#14161a;color:#fff;text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.wrap{max-width:1180px;margin:0 auto;padding:1.5rem 1rem 3rem;display:grid;grid-template-columns:370px minmax(0,1fr);gap:1.6rem;align-items:start}
 @media (max-width:900px){.wrap{grid-template-columns:1fr}}
+h1{font-size:1.8rem;line-height:1.3;margin:.2rem 0 .4rem}
+h1 b{color:var(--acc)}
+.lead{color:var(--soft);margin:0 0 1rem}
 /* phone */
 .phone{background:#0b0b0b;border-radius:42px;padding:10px;box-shadow:0 30px 70px rgba(0,0,0,.25);position:sticky;top:1rem}
 @media (max-width:900px){.phone{position:relative;top:0;max-width:370px;margin:0 auto;width:100%}}
-.scr{border-radius:33px;overflow:hidden;background:var(--chat);height:640px;display:flex;flex-direction:column}
+.scr{border-radius:33px;overflow:hidden;background:var(--chat);height:660px;display:flex;flex-direction:column}
 .top{background:var(--wa);color:#fff;display:flex;align-items:center;gap:.65rem;padding:.9rem .9rem .75rem}
-.av{width:38px;height:38px;border-radius:50%;background:var(--acc);display:grid;place-items:center;font-weight:700;color:#fff;flex:none}
-.top b{display:block;font-size:.95rem;line-height:1.3}
-.top small{opacity:.8;font-size:.72rem}
-.msgs{flex:1;overflow-y:auto;padding:.9rem .7rem;display:flex;flex-direction:column;gap:.4rem}
-.m{max-width:84%;padding:.45rem .7rem;border-radius:10px;font-size:.88rem;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .18s ease}
-.m.bot{background:var(--in);align-self:flex-start;border-top-right-radius:2px}
-.m.me{background:var(--out);align-self:flex-end;border-top-left-radius:2px}
-.m.sys{align-self:center;background:var(--acc2);color:var(--ink);font-size:.75rem;box-shadow:none}
-@keyframes pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-.typing{align-self:flex-start;background:var(--in);border-radius:10px;padding:.5rem .8rem;font-size:.8rem;color:var(--soft)}
-.qr{display:flex;flex-wrap:wrap;gap:.35rem;padding:.2rem .7rem .5rem}
-.qr button{border:1px solid var(--acc);background:var(--card);color:var(--acc);border-radius:999px;padding:.3rem .75rem;font-size:.8rem;cursor:pointer}
-.qr button:hover{background:var(--acc);color:#fff}
-.inp{display:flex;gap:.4rem;padding:.55rem;background:var(--card)}
-.inp input{flex:1;border:1px solid var(--line);border-radius:999px;padding:.5rem .9rem;background:var(--bg);min-width:0}
-.inp button{border:0;background:var(--wa);color:#fff;border-radius:50%;width:42px;height:42px;cursor:pointer;flex:none}
-/* side */
-h1{font-size:1.75rem;line-height:1.35;margin:.2rem 0 .4rem}
-h1 b{color:var(--acc)}
-.lead{color:var(--soft);margin:0 0 1.1rem}
-.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:1.2rem}
-@media (max-width:620px){.feats{grid-template-columns:1fr}}
-.f{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.8rem .9rem}
-.f b{display:block;margin-bottom:.15rem}
-.f span{color:var(--soft);font-size:.85rem}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.ph{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;border-bottom:1px solid var(--line)}
-.ph b{font-size:1.02rem}
-.live{font-size:.75rem;color:var(--acc);display:flex;align-items:center;gap:.35rem}
-.live:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc);animation:bl 1.4s infinite}
-@keyframes bl{50%{opacity:.3}}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
-@media (max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
-.st{padding:.8rem 1rem;border-left:1px solid var(--line)}
-.st:last-child{border-left:0}
-.st b{font-size:1.45rem;display:block;line-height:1.2}
-.st span{font-size:.78rem;color:var(--soft)}
-.sec{padding:.9rem 1rem;border-bottom:1px solid var(--line)}
-.sec:last-child{border-bottom:0}
-.sec h3{margin:0 0 .6rem;font-size:.92rem}
-table{width:100%;border-collapse:collapse;font-size:.85rem}
-th{text-align:right;color:var(--soft);font-weight:500;padding:.35rem .4rem;border-bottom:1px solid var(--line)}
-td{padding:.5rem .4rem;border-bottom:1px solid var(--line)}
-tr:last-child td{border-bottom:0}
-tr.new td{background:var(--acc2);transition:background 2s}
-.tag{display:inline-block;font-size:.72rem;border-radius:999px;padding:.08rem .55rem;background:var(--acc2);color:var(--acc);white-space:nowrap}
-.tag.w{background:var(--warnbg);color:var(--warn)}
-.empty{color:var(--soft);font-size:.85rem}
-.log{list-style:none;margin:0;padding:0;font-size:.83rem;max-height:210px;overflow-y:auto}
-.log li{display:flex;gap:.5rem;padding:.3rem 0;border-bottom:1px dashed var(--line)}
-.log li:last-child{border-bottom:0}
-.log time{color:var(--soft);flex:none;font-variant-numeric:tabular-nums}
-.ch{font-size:.72rem;color:var(--soft)}
-.note{font-size:.78rem;color:var(--soft);margin-top:1rem}
-.tbl{overflow-x:auto}
+.av{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--wa);display:grid;place-items:center;font-weight:700;flex:0 0 auto}
+.top b{display:block;font-size:.95rem}.top small{opacity:.8;font-size:.72rem}
+.msgs{flex:1;overflow-y:auto;padding:.9rem .7rem;display:flex;flex-direction:column;gap:.35rem}
+.m{max-width:82%;padding:.45rem .7rem .3rem;border-radius:10px;font-size:.88rem;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .18s ease-out}
+.m time{display:block;font-size:.62rem;color:var(--soft);text-align:left;margin-top:.1rem}
+.bot{background:var(--in);align-self:flex-start;border-top-right-radius:2px}
+.me{background:var(--out);align-self:flex-end;border-top-left-radius:2px}
+.agent{background:#fff4d6;color:#3b2f00;align-self:flex-start;border-top-right-radius:2px}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.typing{align-self:flex-start;background:var(--in);border-radius:10px;padding:.55rem .8rem;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--soft);animation:b 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.qr{display:flex;flex-wrap:wrap;gap:.35rem;padding:.4rem .6rem;background:var(--chat)}
+.qr button{border:1px solid var(--wa2);background:var(--in);border-radius:999px;padding:.3rem .8rem;font-size:.8rem;font-weight:500;cursor:pointer;min-height:34px}
+.qr button:hover{background:var(--wa2);color:#fff}
+.bar{display:flex;gap:.4rem;padding:.5rem;background:var(--chat)}
+.bar input{flex:1;min-width:0;border:0;border-radius:999px;padding:.6rem .9rem;background:var(--in)}
+.bar button{transform:scaleX(-1);flex:0 0 44px;height:44px;border-radius:50%;border:0;background:var(--wa2);color:#fff;font-size:1.1rem;cursor:pointer}
+/* panel */
+.tabs{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none;margin-bottom:1rem;padding-bottom:2px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.45rem 1rem;cursor:pointer;font-weight:500;font-size:.9rem;min-height:40px;display:flex;align-items:center;gap:.4rem}
+.tab[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:#fff}
+.tab .n{background:#e2552f;color:#fff;border-radius:999px;font-size:.7rem;padding:0 .45rem;line-height:1.5}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1rem 1.1rem;margin-bottom:1rem}
+.card h2{font-size:1.02rem;margin:0 0 .7rem;display:flex;align-items:center;gap:.5rem}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--wa2);box-shadow:0 0 0 4px rgba(37,211,102,.2)}
+.hint{font-size:.8rem;color:var(--soft);margin:.4rem 0 0}
+.pane[hidden]{display:none}
+/* channels */
+.ch{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;color:#fff;font-size:.72rem;font-weight:700;flex:0 0 auto}
+.ch.wa{background:#25d366}.ch.ig{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af)}.ch.tt{background:#111}.ch.fb{background:#1877f2}.ch.em{background:#5b6b7f}.ch.call{background:#0b8f6c}.ch.tg{background:#2aabee}.ch.ms{background:linear-gradient(135deg,#00b2ff,#a033ff)}
+/* strip */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:.7rem}
+@media (max-width:640px){.strip{grid-template-columns:repeat(2,1fr)}}
+.strip div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.45rem .7rem;font-size:.75rem;color:var(--soft)}
+.strip b{display:block;font-size:1.1rem;color:var(--ink)}
+.strip .wq b{color:#0b8f6c}
+.ai{border:1px solid #c9b8ff;background:linear-gradient(135deg,#f3eeff,#e9f7f1);color:#4b2aa8;border-radius:999px;font-size:.74rem;padding:.15rem .65rem;cursor:pointer;font-weight:600}
+@media (prefers-color-scheme:dark){.ai{background:#231a3d;color:#cbb8ff;border-color:#4b3a80}}
+.tags{display:flex;gap:.3rem;flex-wrap:wrap;align-items:center;padding:.35rem .8rem;border-bottom:1px solid var(--line);font-size:.75rem}
+.tag{border-radius:999px;padding:0 .5rem;background:#fff4d6;color:#7a5a00;border:1px solid #f0dc9e;font-size:.7rem}
+.tag.vip{background:#f3eeff;color:#4b2aa8;border-color:#d9ccff}.tag.buy{background:#e6f6ee;color:#0b6e4f;border-color:#bfe6d3}
+.tags select{border:1px dashed var(--line);background:none;border-radius:999px;font-size:.7rem;padding:0 .3rem}
+/* automation */
+.rule{display:flex;gap:.8rem;align-items:flex-start;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.rule:last-child{border:0}
+.rule .tx{flex:1}.rule b{display:block;font-size:.9rem}.rule p{margin:.1rem 0 0;font-size:.78rem;color:var(--soft)}
+.sw{position:relative;width:46px;height:26px;flex:0 0 auto;border-radius:999px;border:0;background:var(--line);cursor:pointer;transition:.2s}
+.sw::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.sw[aria-checked=true]{background:var(--acc)}.sw[aria-checked=true]::after{right:23px}
+.log{max-height:220px;overflow-y:auto;font-size:.8rem}
+.log div{padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.log time{color:var(--soft);font-size:.7rem;margin-inline-start:.4rem}
+/* settings */
+.chgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.5rem}
+.chc{display:flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:14px;padding:.5rem .6rem;font-size:.82rem;background:var(--bg)}
+.chc small{display:block;color:#0b8f6c;font-size:.7rem}
+.search{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:.45rem .7rem;margin-bottom:.6rem}
+/* inbox */
+.inbox{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);min-height:470px}
+@media (max-width:640px){.inbox{grid-template-columns:1fr}.thread{border-top:1px solid var(--line)}}
+.list{border-inline-end:1px solid var(--line);max-height:520px;overflow-y:auto}
+.filters{display:flex;gap:.3rem;padding:.6rem;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.filters button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:.15rem .6rem;font-size:.75rem;cursor:pointer}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.conv{display:flex;gap:.6rem;padding:.65rem .7rem;border-bottom:1px solid var(--line);cursor:pointer;width:100%;text-align:right;background:none;border-inline:0;border-top:0}
+.conv:hover{background:var(--bg)}.conv.sel{background:var(--hi)}
+.conv .tx{flex:1;min-width:0}
+.conv b{display:flex;justify-content:space-between;gap:.4rem;font-size:.88rem}
+.conv b time{font-weight:400;font-size:.68rem;color:var(--soft)}
+.conv p{margin:0;font-size:.78rem;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conv .meta{display:flex;gap:.3rem;margin-top:.2rem;align-items:center}
+.pill{font-size:.66rem;border-radius:999px;padding:0 .45rem;background:var(--bg);color:var(--soft);border:1px solid var(--line)}
+.pill.bot{background:#e6f6ee;color:#0b6e4f;border-color:#bfe6d3}.pill.need{background:#fde9e2;color:#a33b1d;border-color:#f6c8b8}
+.unread{background:#e2552f;color:#fff;border-radius:999px;font-size:.66rem;padding:0 .4rem;margin-inline-start:auto}
+.newc{animation:hl 1.6s ease-out}
+@keyframes hl{from{background:rgba(37,211,102,.3)}to{background:transparent}}
+.thread{display:flex;flex-direction:column;min-height:470px}
+.th-h{display:flex;align-items:center;gap:.6rem;padding:.65rem .8rem;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.th-h b{font-size:.92rem}
+.th-h select{margin-inline-start:auto;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:.25rem .5rem;font-size:.8rem}
+.th-b{flex:1;padding:.8rem;display:flex;flex-direction:column;gap:.35rem;overflow-y:auto;max-height:360px;background:var(--bg)}
+.th-b .m{max-width:85%}
+.th-f{display:flex;gap:.4rem;padding:.55rem;border-top:1px solid var(--line)}
+.th-f input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:.45rem .7rem}
+.th-f button,.btn{border:0;background:var(--acc);color:#fff;border-radius:12px;padding:.45rem .9rem;cursor:pointer;font-weight:500}
+.btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+.saved{display:flex;gap:.3rem;flex-wrap:wrap;padding:0 .55rem .55rem}
+.saved button{border:1px dashed var(--line);background:none;border-radius:999px;font-size:.72rem;padding:.1rem .55rem;cursor:pointer}
+.empty{color:var(--soft);font-size:.85rem;padding:1rem;text-align:center;margin:auto}
+/* crm */
+.board{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:.6rem;overflow-x:auto}
+.col{background:var(--bg);border-radius:14px;padding:.5rem;min-height:200px}
+.col h3{font-size:.85rem;margin:.1rem .2rem .5rem;display:flex;justify-content:space-between}
+.col h3 span{color:var(--soft);font-weight:400}
+.lead-c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.5rem .55rem;margin-bottom:.45rem;font-size:.8rem}
+.lead-c b{display:flex;align-items:center;gap:.35rem;font-size:.84rem}
+.lead-c .ch{width:20px;height:20px;border-radius:6px;font-size:.55rem}
+.lead-c p{margin:.2rem 0 .35rem;color:var(--soft)}
+.lead-c button{border:1px solid var(--line);background:var(--bg);border-radius:8px;font-size:.72rem;padding:.05rem .45rem;cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:.83rem}
+th,td{text-align:right;padding:.42rem .4rem;border-bottom:1px solid var(--line)}
+th{color:var(--soft);font-weight:500}
+tr.new td{animation:hl 1.6s ease-out}
+/* campaigns */
+.form{display:grid;gap:.6rem}
+.form label{font-size:.82rem;color:var(--soft);display:grid;gap:.25rem}
+.form textarea,.form select{border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:.5rem .7rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+@media (max-width:520px){.row{grid-template-columns:1fr}}
+.prog{height:10px;background:var(--bg);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.prog i{display:block;height:100%;width:0;background:var(--wa2);transition:width .4s}
+.queue{max-height:260px;overflow-y:auto;margin-top:.6rem}
+.qrow{display:flex;justify-content:space-between;align-items:center;padding:.35rem .2rem;border-bottom:1px solid var(--line);font-size:.82rem}
+.st{font-size:.72rem;border-radius:999px;padding:0 .5rem}
+.st.wait{background:var(--bg);color:var(--soft)}.st.sent{background:#e6f0ff;color:#1f4fa8}.st.read{background:#e6f6ee;color:#0b6e4f}.st.reply{background:#fff4d6;color:#7a5a00}
+/* reports */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--bg);border-radius:14px;padding:.7rem .8rem}
+.kpi b{font-size:1.45rem;display:block}.kpi span{font-size:.75rem;color:var(--soft)}
+.bars{display:grid;gap:.5rem}
+.brow{display:grid;grid-template-columns:90px 1fr 34px;gap:.5rem;align-items:center;font-size:.8rem}
+.btrack{height:12px;background:var(--bg);border-radius:999px;overflow:hidden}
+.btrack i{display:block;height:100%;border-radius:999px;transition:width .5s}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:700px){.two{grid-template-columns:1fr}}
+.toast{position:fixed;bottom:16px;inset-inline-start:16px;background:#14161a;color:#fff;border-radius:12px;padding:.55rem .9rem;font-size:.85rem;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:9;display:flex;gap:.5rem;align-items:center}
+.toast.on{opacity:1;transform:none}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+@media (max-width:640px){.feat{grid-template-columns:1fr}}
+.feat div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.7rem .8rem;font-size:.84rem}
+.feat b{display:block;color:var(--acc)}
+.ch.sc{background:#fffc00;color:#111}.ch.gm{background:#4285f4}
+.wrap>div{min-width:0}.card{overflow-x:auto}
 </style>
 </head>
 <body>
 <div class="demo">نسخة تجريبية — الخدمات والمواعيد والأسماء أمثلة للتجربة فقط وتتعدل حسب عيادتكم</div>
 <div class="wrap">
-  <div class="phone">
+  <div class="phone" aria-label="محادثة واتساب تجريبية">
     <div class="scr">
-      <div class="top"><div class="av" id="av">ع</div><div><b id="cname">عيادتكم</b><small>يرد عليك مباشرة · متصل الآن</small></div></div>
-      <div class="msgs" id="msgs"></div>
+      <div class="top"><div class="av" id="av">ع</div><div><b id="cname">عيادتكم</b><small id="st">متصل الآن · رد تلقائي</small></div></div>
+      <div class="msgs" id="msgs" aria-live="polite"></div>
       <div class="qr" id="qr"></div>
-      <form class="inp" id="f"><input id="t" placeholder="اكتب رسالتك كأنك مراجع..." autocomplete="off"><button aria-label="إرسال">➤</button></form>
+      <form class="bar" id="f"><input id="in" placeholder="اكتب رسالة… (جرّب: أبي موعد، كم السعر، كلّم موظف)" autocomplete="off" aria-label="رسالتك"><button aria-label="إرسال">➤</button></form>
     </div>
   </div>
 
   <div>
-    <h1>كل رسايل المراجعين ينرد عليها <b>بأي وقت</b>، والحجز يوصل للاستقبال جاهز</h1>
-    <p class="lead">جرّب من الجوال اللي جنبك كأنك مراجع يراسل العيادة: اسأل عن خدمة، أو اطلب موعد. وشوف الحجز كيف ينضاف هنا في لوحة الاستقبال لحاله.</p>
-    <div class="feats">
-      <div class="f"><b>رد فوري ٢٤ ساعة</b><span>واتساب وإنستقرام، حتى بالليل ووقت الزحمة</span></div>
-      <div class="f"><b>حجز مواعيد</b><span>يختار الخدمة واليوم والوقت، ويتسجل باسمه ورقمه</span></div>
-      <div class="f"><b>تحويل للموظف</b><span>أي سؤال طبي أو حالة خاصة تروح للاستقبال مباشرة</span></div>
+    <h1>كل رسايل مراجعينكم <b>في مكان واحد</b>، ونظام يرد ويحجز المواعيد بأي وقت</h1>
+    <p class="lead">جرّب تراسل العيادة من الجوال كأنك مراجع: اسأل عن خدمة أو احجز موعد، وشوف المحادثة تظهر في الصندوق الموحّد، والحجز ينضاف لجدول المواعيد والتقارير لحاله. واتساب وإنستقرام وسناب وتيك توك والإيميل والمكالمات — كلها في نظام واحد، وكل موظف عارف دوره.</p>
+
+    <div class="feat" style="margin-bottom:1rem">
+      <div><b>رد فوري ٢٤ ساعة</b>يجاوب على الأسئلة المتكررة حتى بالليل ووقت الزحمة، وما يضيع عليكم أي مراجع</div>
+      <div><b>حجز مواعيد</b>المراجع يختار الخدمة واليوم والوقت، والحجز يوصل للاستقبال جاهز باسمه</div>
+      <div><b>الاستقبال + تقارير</b>الأسئلة الطبية تتحوّل للموظف، وملف لكل مراجع، وتذكيرات وتقارير يومية</div>
     </div>
 
-    <div class="panel">
-      <div class="ph"><b>لوحة الاستقبال</b><span class="live">مباشر</span></div>
-      <div class="stats">
-        <div class="st"><b id="s1">0</b><span>محادثة اليوم</span></div>
-        <div class="st"><b id="s2">0</b><span>حجز جديد</span></div>
-        <div class="st"><b id="s3">0</b><span>تحتاج موظف</span></div>
-        <div class="st"><b>٣ ث</b><span>متوسط أول رد</span></div>
-      </div>
-      <div class="sec">
-        <h3>الحجوزات</h3>
-        <div class="tbl"><table><thead><tr><th>المراجع</th><th>الخدمة</th><th>الموعد</th><th>القناة</th><th>الحالة</th></tr></thead><tbody id="bk"></tbody></table></div>
-      </div>
-      <div class="sec">
-        <h3>آخر النشاط</h3>
-        <ul class="log" id="log"></ul>
-      </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-p="inbox">📥 الصندوق الموحّد <span class="n" id="nUnread">0</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-p="crm">📅 المراجعين والمواعيد</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="auto">⚡ الأتمتة</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="camp">📣 رسائل واتساب</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="rep">📊 التقارير</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="set">⚙️ القنوات والفريق</button>
     </div>
-    <p class="note">في النسخة الفعلية: الخدمات والدوام والردود تنكتب حسب عيادتكم، والحجوزات ممكن تنربط بجدول أو بنظام المواعيد اللي عندكم.</p>
+
+    <section class="pane" id="p-inbox">
+      <div class="strip">
+        <div class="wq"><b id="sQ">0</b>بانتظار الرد على واتساب</div>
+        <div><b id="sOpen">0</b>محادثة مفتوحة</div>
+        <div><b id="sNeed">0</b>تحتاج رد موظف</div>
+        <div><b id="sAi">0٪</b>انحلّت تلقائياً</div>
+      </div>
+      <div class="inbox">
+        <div class="list">
+          <div class="filters" id="filters"></div>
+          <div id="convs"></div>
+        </div>
+        <div class="thread" id="thread"><div class="empty">اختر محادثة من القائمة</div></div>
+      </div>
+      <p class="hint">جرّب زر "✨ اقتراح رد"، وحوّل المحادثة لموظف، وأضف تاق للمراجع — كل شي يتحدث مباشرة.</p>
+    </section>
+
+    <section class="pane" id="p-crm" hidden>
+      <div class="card"><h2><span class="dot"></span>جدول المواعيد (ينسجل تلقائياً — ممكن يترابط مع نظام العيادة أو Google Sheets)</h2><div id="orders"><div class="empty">ما فيه حجوزات جديدة للحين — احجز موعد من الجوال وشوفه هنا.</div></div></div>
+      <div class="card"><h2>👤 المراجعين — ملف واحد لكل مراجع من كل القنوات</h2><input class="search" id="cSearch" placeholder="ابحث باسم المراجع أو التاق…" aria-label="بحث في المراجعين"><div id="contacts"></div></div>
+      <div class="card"><h2>مراحل المراجعين</h2><div class="board" id="board"></div><p class="hint">المراجع ينتقل من "جديد" إلى "حجز" لحاله أول ما يأكد موعده.</p></div>
+    </section>
+
+    <section class="pane" id="p-auto" hidden>
+      <div class="card"><h2>⚡ قواعد تشتغل لحالها</h2><div id="rules"></div></div>
+      <div class="card"><h2><span class="dot"></span>سجل الأتمتة (مباشر)</h2><div class="log" id="alog"><div class="hint">ما فيه شي للحين — انتظر رسالة جديدة أو راسل من الجوال.</div></div></div>
+    </section>
+
+    <section class="pane" id="p-camp" hidden>
+      <div class="card">
+        <h2>رسالة جديدة للمراجعين</h2>
+        <div class="form">
+          <label>الرسالة<textarea id="cMsg" rows="3">هلا {الاسم} 🌿 عندنا هالأسبوع مواعيد متاحة لجلسات تنظيف البشرة، إذا حاب نحجز لك رد بـ "أبي".</textarea></label>
+          <div class="row">
+            <label>الجمهور<select id="cAud"><option value="all">كل المراجعين اللي وافقوا على الرسايل (٢٤)</option><option value="buy">مراجعين زاروا العيادة قبل (٩)</option><option value="int">سألوا وما حجزوا (١١)</option></select></label>
+            <label>سرعة الإرسال<select id="cSpd"><option value="1200">تدريجي — رسالة كل شوي (موصى به)</option><option value="600">أسرع</option></select></label>
+          </div>
+          <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap"><button class="btn" id="cGo">ابدأ الإرسال التدريجي</button><button class="btn ghost" id="cStop" hidden>إيقاف مؤقت</button><span class="hint" id="cInfo" style="margin:0"></span></div>
+          <div class="prog"><i id="cBar"></i></div>
+        </div>
+        <div class="queue" id="cQueue"></div>
+        <p class="hint">الرسايل تنرسل من رقم واتساب بزنس الرسمي، وبس للمراجعين اللي وافقوا يستقبلون رسايل. الإرسال على دفعات يقلل البلاغات وخطر تقييد الرقم.</p>
+      </div>
+    </section>
+
+    <section class="pane" id="p-rep" hidden>
+      <div class="card"><h2>اليوم</h2>
+        <div class="kpis">
+          <div class="kpi"><b id="kMsg">0</b><span>رسالة انرد عليها</span></div>
+          <div class="kpi"><b id="kTime">٣ ث</b><span>متوسط أول رد</span></div>
+          <div class="kpi"><b id="kOrd">0</b><span>موعد انحجز</span></div>
+          <div class="kpi"><b id="kConv">0٪</b><span>محادثات صارت حجوزات</span></div>
+        </div>
+      </div>
+      <div class="two">
+        <div class="card"><h2>الرسايل حسب القناة</h2><div class="bars" id="bCh"></div></div>
+        <div class="card"><h2>المحادثات حسب المسؤول</h2><div class="bars" id="bAg"></div></div>
+      </div>
+      <div class="card"><h2>أداء الفريق</h2><div id="team"></div></div>
+    </section>
+
+    <section class="pane" id="p-set" hidden>
+      <div class="card"><h2>القنوات المربوطة</h2><div class="chgrid" id="chgrid"></div><p class="hint">واتساب يترابط برقم واتساب بزنس الرسمي (Cloud API) — مو بأرقام شخصية أو برامج غير رسمية.</p></div>
+      <div class="card"><h2>الفريق والصلاحيات</h2><table><thead><tr><th>الاسم</th><th>الدور</th><th>القنوات</th><th>الحالة</th></tr></thead><tbody>
+        <tr><td>🤖 المساعد الآلي</td><td>رد أولي + أسئلة متكررة + حجز مواعيد</td><td>كل القنوات</td><td>شغال ٢٤/٧</td></tr>
+        <tr><td>👤 ريم</td><td>الاستقبال</td><td>واتساب · إنستقرام · سناب</td><td>متصلة</td></tr>
+        <tr><td>👤 فهد</td><td>مشرف</td><td>الكل + الإيميل</td><td>متصل</td></tr>
+      </tbody></table></div>
+    </section>
   </div>
 </div>
-
+<div class="toast" id="toast"></div>
 <script>
-(function(){
-const P=new URLSearchParams(location.search);
-const K={
-  tiffany:{n:"تيفاني كلينك",a:"T",c:"#2a9d94"},
-  fsmc:{n:"عيادات الإختصاصي الطبي الأول",a:"FS",c:"#1d5fa8"},
-  nabd:{n:"نبض الياسمين",a:"ن",c:"#b0306a"}
-};
-const key=(P.get("c")||"").toLowerCase();
-const cfg=K[key]||{n:P.get("c")||"عيادتكم",a:(P.get("c")||"ع").trim().charAt(0),c:P.get("color")?"#"+P.get("color").replace("#",""):null};
-document.getElementById("cname").textContent=cfg.n;
-document.getElementById("av").textContent=cfg.a;
-if(cfg.c)document.documentElement.style.setProperty("--acc",cfg.c);
-document.title=cfg.n+" — نظام الرد والحجز (تجريبي)";
-
 const $=id=>document.getElementById(id);
-const msgs=$("msgs"),qr=$("qr");
-const SERV=["تنظيف بشرة","ليزر إزالة شعر","فيلر وبوتوكس","تبييض أسنان","استشارة جلدية"];
-const D=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
-const days=[];{let d=new Date();while(days.length<3){d.setDate(d.getDate()+1);if(d.getDay()!==5)days.push(D[d.getDay()]+" "+d.getDate()+"/"+(d.getMonth()+1));}}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const now=()=>new Date().toLocaleTimeString("ar-SA",{hour:"numeric",minute:"2-digit"});
+
+/* clinic name from link: ?c=tiffany | ?c=اسم العيادة */
+const QP=new URLSearchParams(location.search);
+const KNOWN={tiffany:{n:"تيفاني كلينك",a:"T",c:"#2a9d94"},fsmc:{n:"عيادات الإختصاصي الطبي الأول",a:"FS",c:"#1d5fa8"},nabd:{n:"نبض الياسمين",a:"ن",c:"#b0306a"}};
+const ck=(QP.get("c")||"").toLowerCase().trim();
+const CL=KNOWN[ck]||{n:QP.get("c")||"عيادتكم",a:(QP.get("c")||"ع").trim().charAt(0).toUpperCase(),c:QP.get("color")?"#"+QP.get("color").replace("#",""):null};
+$("cname").textContent=CL.n;$("av").textContent=CL.a;
+if(CL.c){document.documentElement.style.setProperty("--acc",CL.c);$("av").style.color=CL.c}
+document.title=CL.n+" — نظام الرد والحجز (تجريبي)";
+
+const CH={wa:["واتساب","WA"],ig:["إنستقرام","IG"],sc:["سناب","SC"],tt:["تيك توك","TT"],gm:["قوقل ماب","G"],em:["إيميل","@"],call:["مكالمة","☎"]};
+const agName=a=>a=="البوت"?"🤖 المساعد الآلي":"👤 "+a;
+const AG=["البوت","ريم","فهد"];
+const chIcon=c=>`<span class="ch ${c}" title="${CH[c][0]}">${CH[c][1]}</span>`;
+function toast(t){const el=$("toast");el.textContent=t;el.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("on"),2600)}
+
+/* days */
+const DN=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+const DAYS=[];{const d=new Date();while(DAYS.length<3){d.setDate(d.getDate()+1);if(d.getDay()!==5)DAYS.push(DN[d.getDay()]+" "+d.getDate()+"/"+(d.getMonth()+1))}}
 const TIMES=["11 ص","1 م","5 م","8 م"];
-let st={step:null,b:{}},cnt={c:0,b:0,h:0},talked=false;
 
-function now(){const d=new Date();return d.toLocaleTimeString("ar-SA",{hour:"2-digit",minute:"2-digit"});}
-function add(t,who){const e=document.createElement("div");e.className="m "+who;e.textContent=t;msgs.appendChild(e);msgs.scrollTop=1e6;}
-function quick(arr){qr.innerHTML="";arr.forEach(x=>{const b=document.createElement("button");b.type="button";b.textContent=x;b.onclick=()=>user(x);qr.appendChild(b);});}
-function bot(lines,q,cb){qr.innerHTML="";const ty=document.createElement("div");ty.className="typing";ty.textContent="يكتب…";msgs.appendChild(ty);msgs.scrollTop=1e6;
-  let i=0;(function n(){setTimeout(()=>{if(i===0)ty.remove();add(lines[i],"bot");i++;if(i<lines.length)n();else{if(q)quick(q);if(cb)cb();}},i===0?700:450);})();}
-function log(t,ch){const li=document.createElement("li");li.innerHTML="<time>"+now()+"</time><span>"+t+(ch?' <span class="ch">· '+ch+'</span>':"")+"</span>";$("log").prepend(li);}
-function stats(){$("s1").textContent=cnt.c;$("s2").textContent=cnt.b;$("s3").textContent=cnt.h;}
-function row(name,srv,when,ch,status,warn,isNew){const tb=$("bk");const tr=document.createElement("tr");if(isNew)tr.className="new";
-  tr.innerHTML="<td>"+name+"</td><td>"+srv+"</td><td>"+when+"</td><td>"+ch+'</td><td><span class="tag'+(warn?" w":"")+'">'+status+"</span></td>";tb.prepend(tr);if(isNew)setTimeout(()=>tr.className="",2500);}
+/* ---------- data ---------- */
+let convs=[
+ {id:"c1",ch:"ig",name:"نورة العتيبي",tags:["مراجعة دائمة"],chs:["ig","wa"],agent:"ريم",need:false,unread:1,stage:"int",msgs:[["in","مساء الخير، فيه موعد لليزر هالأسبوع؟"]]},
+ {id:"c2",ch:"sc",name:"@sara.q",agent:"البوت",need:false,unread:1,stage:"new",msgs:[["in","كم سعر جلسة التنظيف؟"],["bot","السعر يختلف حسب نوع البشرة والجلسة، تبين أحجز لك استشارة وتعرفين كل التفاصيل؟"]]},
+ {id:"c3",ch:"wa",name:"أم فيصل",tags:["أسئلة طبية"],agent:"فهد",need:true,unread:1,stage:"int",msgs:[["in","بنتي عندها حساسية بالجلد، ينفع لها الجلسة؟"]]},
+ {id:"c4",ch:"call",name:"٠٥٠ •••• ٨٨١٢",agent:"ريم",need:true,unread:1,stage:"new",msgs:[["in","مكالمة فائتة — انرسل له واتساب تلقائي"],["bot","لاحظنا إنك اتصلت علينا 🌿 راسلنا هنا ونرد عليك مباشرة."]]}];
+let liveId=null,selId=null,filter="all";
+let stats={wa:1,ig:1,sc:1,tt:0,gm:0,em:0,call:1},answered=0,aiSolved=0;
+const TAGS=["VIP","مراجعة دائمة","أسئلة طبية","حجز مؤكد","مهتم بعرض","شكوى"];
+const auto={rr:true,away:true,missed:true,follow:true,kw:true,tagbuy:true,remind:true};
+const rr=["ريم","فهد"];let rri=0;
+function alog(t){const el=$("alog");if(el.querySelector(".hint"))el.innerHTML="";const d=document.createElement("div");d.innerHTML="⚡ "+esc(t)+`<time>${now()}</time>`;el.prepend(d)}
+const orders=[{no:2041,s:"ليزر إزالة شعر",name:"نورة العتيبي",when:DAYS[0]+" · 5 م",ch:"ig",status:"مؤكد"},{no:2042,s:"تنظيف بشرة",name:"سارا",when:DAYS[1]+" · 1 م",ch:"wa",status:"مؤكد"}];let seq=2042;
 
-const MENU=["حجز موعد","الخدمات","الأسعار","الموقع والدوام","كلّم موظف"];
-function welcome(){bot(["هلا وغلا، حياك الله في "+cfg.n+" 🌿","كيف أقدر أخدمك؟"],MENU);}
+/* ---------- inbox ---------- */
+function renderFilters(){const f=[["all","الكل"],["need","تحتاج رد"],["wa","واتساب"],["ig","إنستقرام"],["sc","سناب"],["tt","تيك توك"],["gm","قوقل ماب"],["em","إيميل"]];
+ $("filters").innerHTML=f.map(([k,t])=>`<button data-f="${k}" class="${filter==k?"on":""}">${t}</button>`).join("")}
+function renderConvs(flashId){const list=convs.filter(c=>filter=="all"||(filter=="need"?c.need:c.ch==filter));
+ $("convs").innerHTML=list.length?list.map(c=>{const last=c.msgs[c.msgs.length-1]||["",""];return `<button class="conv ${c.id==selId?"sel":""} ${c.id==flashId?"newc":""}" data-id="${c.id}">${chIcon(c.ch)}<span class="tx"><b><span>${esc(c.name)}</span><time>${c.time||now()}</time></b><p>${esc(last[1])}</p><span class="meta"><span class="pill ${c.agent=="البوت"?"bot":""}">${agName(c.agent)}</span>${c.need?'<span class="pill need">تحتاج رد</span>':""}${c.unread?`<span class="unread">${c.unread}</span>`:""}</span></span></button>`}).join(""):`<div class="empty">ما فيه محادثات هنا</div>`;
+ $("nUnread").textContent=convs.reduce((a,c)=>a+(c.unread?1:0),0);
+ $("sQ").textContent=convs.filter(c=>c.ch=="wa"&&(c.unread||c.need)).length;$("sOpen").textContent=convs.filter(c=>c.stage!="done").length;
+ $("sNeed").textContent=convs.filter(c=>c.need).length;$("sAi").textContent=Math.round(aiSolved/Math.max(convs.length,1)*100)+"٪"}
+function renderThread(){const c=convs.find(x=>x.id==selId);if(!c){$("thread").innerHTML='<div class="empty">اختر محادثة من القائمة</div>';return}
+ $("thread").innerHTML=`<div class="th-h">${chIcon(c.ch)}<b>${esc(c.name)}</b><span class="pill">${CH[c.ch][0]}</span><select id="agSel" aria-label="المسؤول">${AG.map(a=>`<option value="${a}" ${a==c.agent?"selected":""}>${agName(a)}</option>`).join("")}</select></div>
+ <div class="tags">🏷️ ${(c.tags||[]).map(t=>`<span class="tag ${t=="VIP"?"vip":t=="حجز مؤكد"?"buy":""}">${esc(t)}</span>`).join("")}<select id="tagSel" aria-label="إضافة تاق"><option value="">+ تاق</option>${TAGS.filter(t=>!(c.tags||[]).includes(t)).map(t=>`<option>${t}</option>`).join("")}</select>${(c.chs||[c.ch]).length>1?`<span class="pill">نفس المراجع على: ${(c.chs).map(x=>CH[x][0]).join(" + ")}</span>`:""}</div>
+ <div class="th-b" id="thB">${c.msgs.map(([w,t])=>`<div class="m ${w=="in"?"me":w=="agent"?"agent":"bot"}" style="${w=="in"?"align-self:flex-start;background:var(--card)":"align-self:flex-end"}">${esc(t)}</div>`).join("")}</div>
+ <div class="saved"><button class="ai" id="aiBtn" type="button">✨ اقتراح رد</button>${["نتواصل معك خلال ساعة","تم تأكيد موعدك ✅","حياك الله بأي وقت 🌿"].map(s=>`<button data-s="${esc(s)}">${s}</button>`).join("")}</div>
+ <form class="th-f" id="thF"><input id="thIn" placeholder="رد كموظف…" aria-label="رد"><button>إرسال</button></form>`;
+ const b=$("thB");b.scrollTop=b.scrollHeight;
+ $("agSel").onchange=e=>{c.agent=e.target.value;c.need=false;renderConvs();renderReports();toast("المحادثة تحوّلت لـ "+agName(c.agent))};
+ $("tagSel").onchange=e=>{if(!e.target.value)return;(c.tags=c.tags||[]).push(e.target.value);renderThread();renderContacts();toast("انضاف تاق: "+e.target.value)};
+ $("aiBtn").onclick=()=>{const last=[...c.msgs].reverse().find(m=>m[0]=="in");$("thIn").value=aiReply(last?last[1]:"");$("thIn").focus();toast("✨ انكتب رد مقترح — عدّله أو أرسله")};
+ $("thF").onsubmit=e=>{e.preventDefault();const v=$("thIn").value.trim();if(!v)return;agentReply(c,v)};
+ $("thread").querySelectorAll("[data-s]").forEach(x=>x.onclick=()=>agentReply(c,x.dataset.s))}
+function agentReply(c,v){const who=c.agent=="البوت"?"ريم":c.agent;c.msgs.push(["agent",v]);c.need=false;c.agent=who;answered++;
+ if(c.id==liveId){addPhone(v+"\n— "+who+" (الاستقبال)","agent")}
+ renderConvs();renderThread();renderReports();renderBoard()}
+$("convs").onclick=e=>{const b=e.target.closest(".conv");if(!b)return;selId=b.dataset.id;const c=convs.find(x=>x.id==selId);c.unread=0;renderConvs();renderThread()};
+$("filters").onclick=e=>{const b=e.target.closest("button");if(!b)return;filter=b.dataset.f;renderFilters();renderConvs()};
 
-function user(t){t=t.trim();if(!t)return;add(t,"me");
-  if(!talked){talked=true;cnt.c++;stats();log("محادثة جديدة من مراجع (أنت)","واتساب");}
-  handle(t);}
+function liveConv(){let c=convs.find(x=>x.id==liveId);if(!c){liveId="live";c={id:"live",ch:"wa",name:"أنت (من الجوال)",agent:"البوت",need:false,unread:0,stage:"new",tags:[],msgs:[]};convs.unshift(c)}return c}
+function pushLive(w,t){const c=liveConv();c.msgs.push([w,t]);c.time=now();if(selId!="live")c.unread=(c.unread||0)+(w=="in"?1:0);
+ convs=[c,...convs.filter(x=>x!==c)];if(w=="in")stats.wa++;renderConvs("live");if(selId=="live")renderThread();renderBoard();renderReports()}
 
-function handle(t){
-  const s=st.step;
-  if(s==="srv"){st.b.srv=SERV.includes(t)?t:t;st.step="day";return bot(["تمام، "+st.b.srv+" 👌","أي يوم يناسبك؟"],days);}
-  if(s==="day"){st.b.day=t;st.step="time";return bot(["وأي وقت تفضّل؟"],TIMES);}
-  if(s==="time"){st.b.time=t;st.step="name";return bot(["ممتاز، عطني اسمك الكريم لو سمحت"]);}
-  if(s==="name"){st.b.name=t;st.step="phone";return bot(["تشرفنا "+t+" 🙏","ورقم جوالك عشان نأكد معك الموعد؟"]);}
-  if(s==="phone"){st.b.phone=t;st.step=null;const b=st.b;
-    return bot(["تم ✅ حجزنا لك "+b.srv+"\n📅 "+b.day+" الساعة "+b.time,"وبيوصلك تذكير قبل الموعد بيوم. لو حاب تغيّر الموعد أو تلغيه راسلنا هنا بأي وقت 🌿"],["الموقع والدوام","سؤال ثاني"],()=>{
-      cnt.b++;stats();row(b.name,b.srv,b.day+" · "+b.time,"واتساب","جديد",false,true);
-      log("حجز جديد: "+b.name+" — "+b.srv,"واتساب");setTimeout(()=>log("تذكير مجدول قبل موعد "+b.name+" بيوم"),900);});}
-  const x=t.replace(/[أإآ]/g,"ا").replace(/ة/g,"ه");
-  if(/حجز|موعد|احجز|ابي اجي|متاح/.test(x)){st.step="srv";st.b={};return bot(["أبشر 🌟 وش الخدمة اللي تبيها؟"],SERV);}
-  if(/خدم|وش عندكم|ايش عندكم/.test(x)){return bot(["عندنا (أمثلة):\n• جلسات البشرة والتنظيف\n• ليزر إزالة الشعر\n• فيلر وبوتوكس\n• تبييض وتجميل الأسنان\n• استشارات جلدية","تبي أحجز لك موعد؟"],["حجز موعد","الأسعار"]);}
-  if(/سعر|اسعار|كم|بكم|عرض|عروض|خصم/.test(x)){return bot(["السعر يختلف حسب الجلسة ونوع البشرة، والطبيب يحدد الأنسب لك بالتقييم.","وإذا فيه عروض حالية أرسلها لك أول بأول. تبي أحجز لك استشارة؟"],["حجز موعد","كلّم موظف"]);}
-  if(/موقع|وين|مكان|دوام|ساعات|تفتح|متى/.test(x)){return bot(["📍 الموقع: (رابط قوقل ماب العيادة)","🕙 الدوام: من 10 الصبح إلى 10 الليل، والجمعة إجازة (مثال)"],["حجز موعد","سؤال ثاني"]);}
-  if(/سؤال ثاني|شي ثاني|غير/.test(x)){return bot(["تفضّل، وش تحب تعرف؟"],MENU);}
-  if(/موظف|استقبال|اكلم|اتصال|شخص|دكتور|طبيب|الم|حساسيه|التهاب|حامل/.test(x)){cnt.h++;stats();row(st.b.name||"مراجع (أنت)","—","—","واتساب","يحتاج موظف",true,true);log("تحويل للاستقبال: سؤال يحتاج موظف","واتساب");
-    return bot(["أكيد، حوّلت محادثتك للاستقبال وبيرد عليك موظف خلال دقائق 🙏"],MENU);}
-  if(/السلام|هلا|مرحبا|اهلا|مساء|صباح/.test(x)){return bot(["وعليكم السلام ورحمة الله، هلا فيك 🌿","كيف أقدر أخدمك؟"],MENU);}
-  if(/شكرا|مشكور|يعطيك/.test(x)){return bot(["العفو، بالخدمة دايماً 🌿"],MENU);}
-  cnt.h++;stats();log("سؤال ما له رد جاهز ← تحوّل للاستقبال","واتساب");
-  bot(["وصلت رسالتك 🙏 بحوّلها للاستقبال يردون عليك بالتفصيل.","وإذا تبي تحجز مباشرة اختار من تحت:"],MENU);
-}
+/* suggested replies (simulated) */
+function aiReply(t){t=t||"";
+ if(/حساسي|حامل|التهاب|دواء|ألم|الم|حبوب|اكزيما|مرض/.test(t))return "هلا فيك 🌿 سؤالك مهم ويحتاج تقييم من الطبيب، أقدر أحجز لك استشارة قريبة ويشوف الحالة ويعطيك الأنسب. يناسبك أي يوم؟";
+ if(/الغي|إلغاء|الغاء|اغير|أغير|تأجيل|اأجل/.test(t))return "أبشر، أقدر أغيّر موعدك. وش اليوم اللي يناسبك بدال الموعد الحالي؟";
+ if(/وين|موقع|مكان|لوكيشن/.test(t))return "📍 موقعنا (رابط قوقل ماب العيادة) — وفيه مواقف قدام العيادة.";
+ if(/دوام|متى|تفتح|ساعات/.test(t))return "دوامنا من 10 الصبح إلى 10 الليل، والجمعة إجازة. تحب أحجز لك؟";
+ if(/موعد|حجز|احجز|فاضي|متاح/.test(t))return "أكيد 🌟 عندنا مواعيد متاحة "+DAYS[0]+" و"+DAYS[1]+"، أي وقت يناسبك؟";
+ if(/كم|سعر|اسعار|أسعار|بكم|عرض|خصم/.test(t))return "السعر يختلف حسب الجلسة ونوع البشرة، والطبيب يحدد الأنسب بالتقييم. وإذا فيه عرض حالي أرسله لك. تحب أحجز لك استشارة؟";
+ return "هلا والله 🌿 أقدر أساعدك بالحجز أو معلومات الخدمات أو الموقع والدوام — وش تحب؟"}
+const needsHuman=t=>/حساسي|حامل|التهاب|دواء|ألم|حبوب|شكوى|مشكلة|تأمين/.test(t);
 
-$("f").onsubmit=e=>{e.preventDefault();const v=$("t").value;$("t").value="";if(st.step===null&&!v.trim())return;user(v);};
+/* simulated incoming from other channels */
+const INCOMING=[["ig","Lama.s","فيه موعد بكرة لتنظيف البشرة؟"],["sc","ريما","كم سعر الفيلر؟"],["wa","+966 55 •••• 4410","أبي أغير موعدي من الثلاثاء للخميس"],["tt","@hind.beauty","شفت الفيديو، الجلسة هذي كم تاخذ وقت؟"],["gm","عبدالله","وين موقعكم بالضبط؟"],["call","٠٥٥ •••• ٢٣٣٠","مكالمة فائتة"],["em","شركة النخبة","عندكم عقود لموظفين الشركة مع التأمين؟"],["wa","منيرة","أنا حامل، ينفع أسوي جلسة ليزر؟"]];
+let inI=0;function incoming(){if(inI>=INCOMING.length)return;const [ch,name,t]=INCOMING[inI++];const c={id:"x"+inI,ch,name,agent:"البوت",need:false,unread:1,stage:"new",tags:[],msgs:[["in",t]],time:now()};
+ if(ch=="call"){if(auto.missed){c.ch="wa";c.chs=["call","wa"];c.msgs=[["in","مكالمة فائتة"],["bot","لاحظنا إنك اتصلت علينا 🌿 راسلنا هنا ونرد عليك مباشرة."]];answered++;aiSolved++;alog("مكالمة فائتة من "+name+" ← انرسل له واتساب تلقائي")}else{c.need=true}}
+ else if(needsHuman(t)){c.agent=auto.rr?rr[rri++%2]:"ريم";c.need=true;c.msgs.push(["bot","وصلتنا رسالتك 🙏 حوّلتها للاستقبال ويردون عليك خلال دقايق."]);answered++;
+  if(/حامل|حساسي|دواء|ألم/.test(t)){c.tags.push("أسئلة طبية");alog("سؤال طبي من "+name+" ← تاق \"أسئلة طبية\" + تحويل لـ "+c.agent)}else alog("طلب يحتاج موظف ← انوزّع على "+c.agent+(auto.rr?" (بالدور)":""))}
+ else{c.msgs.push(["bot",aiReply(t)]);answered++;aiSolved++;if(/كم|سعر|موعد|حجز/.test(t)){c.stage="int";if(auto.kw){c.tags.push("مهتم بعرض");alog("سؤال عن الحجز/السعر من "+name+" ← تاق \"مهتم\" + نقل لمرحلة مهتم")}}else alog("المساعد الآلي رد على "+name+" ("+CH[ch][0]+")")}
+ convs.unshift(c);stats[ch]=(stats[ch]||0)+1;renderConvs(c.id);renderBoard();renderReports();renderContacts();toast("رسالة جديدة من "+CH[ch][0]+": "+name)
+ if(auto.follow&&c.need)setTimeout(()=>{if(c.need){c.msgs.push(["bot","معك للحين 🌿 الاستقبال بيرد عليك حالاً، شكراً على صبرك."]);alog("ما انرد على "+name+" ← رسالة متابعة تلقائية + تنبيه للمشرف");renderConvs();if(selId==c.id)renderThread()}},25000)}
+setInterval(incoming,14000);
 
-// seed: conversations handled before you opened the page
-const seed=[["نورة","ليزر إزالة شعر",days[0]+" · 5 م","إنستقرام","مؤكد"],["سارا","تنظيف بشرة",days[1]+" · 1 م","واتساب","مؤكد"]];
-seed.forEach(r=>row(...r,false,false));
-cnt.c=2;cnt.b=0;stats();
-log("حجز: سارا — تنظيف بشرة","واتساب");log("رد تلقائي على سؤال عن الدوام الساعة 1:40 الفجر","إنستقرام");
-// simulated incoming from another channel
-setTimeout(()=>{cnt.c++;stats();log("مراجعة سألت عن الأسعار ← رد تلقائي + عرض حجز استشارة","إنستقرام");},9000);
-setTimeout(()=>{cnt.c++;cnt.h++;stats();row("مراجع","—","—","إنستقرام","يحتاج موظف",true,true);log("سؤال طبي عن حساسية ← تحوّل للاستقبال","إنستقرام");},20000);
-welcome();
-})();
+/* ---------- CRM ---------- */
+const STG=[["new","جديد"],["int","مهتم"],["ord","حجز"],["done","حضر"]];
+function renderBoard(){$("board").innerHTML=STG.map(([k,t],i)=>{const items=convs.filter(c=>c.stage==k);return `<div class="col"><h3>${t}<span>${items.length}</span></h3>${items.map(c=>`<div class="lead-c"><b>${chIcon(c.ch)}${esc(c.name)}</b><p>${esc((c.msgs[c.msgs.length-1]||["",""])[1]).slice(0,48)}</p>${i<3?`<button data-mv="${c.id}">نقل لـ "${STG[i+1][1]}" ←</button>`:""}</div>`).join("")}</div>`}).join("")}
+$("board").onclick=e=>{const b=e.target.closest("[data-mv]");if(!b)return;const c=convs.find(x=>x.id==b.dataset.mv);const i=STG.findIndex(s=>s[0]==c.stage);c.stage=STG[Math.min(3,i+1)][0];renderBoard();renderReports()};
+function renderOrders(newNo){$("orders").innerHTML=`<table><thead><tr><th>#</th><th>الخدمة</th><th>المراجع</th><th>الموعد</th><th>القناة</th><th>الحالة</th></tr></thead><tbody>${orders.map(o=>`<tr class="${o.no==newNo?"new":""}"><td>${o.no}</td><td>${esc(o.s)}</td><td>${esc(o.name)}</td><td>${esc(o.when)}</td><td>${chIcon(o.ch)}</td><td>${o.status}</td></tr>`).join("")}</tbody></table>`;
+ document.querySelectorAll("#orders .ch").forEach(x=>{x.style.width="22px";x.style.height="22px";x.style.fontSize=".55rem"})}
+
+/* ---------- campaigns ---------- */
+const NAMES=["نورة","سارا","ريما","لمى","هند","منيرة","عبدالله","فيصل","خالد","العنود","جود","شهد","ريم","مها","تركي","سلطان","أمل","دانة","لطيفة","ماجد","غادة","بندر","رهف","وعد"];
+let camp=null;
+function campStart(){if(camp&&camp.run)return;const aud=$("cAud").value,n=aud=="all"?24:aud=="buy"?9:11;
+ if(!camp||camp.done){camp={list:NAMES.slice(0,n).map(x=>({n:x,s:"wait"})),i:0,run:true,done:false}}else camp.run=true;
+ $("cGo").hidden=true;$("cStop").hidden=false;tick()}
+function tick(){if(!camp.run)return;const L=camp.list;if(camp.i<L.length){L[camp.i].s="sent";const j=camp.i;setTimeout(()=>{L[j].s=Math.random()<.8?"read":"sent";if(Math.random()<.25)L[j].s="reply";renderCamp()},1500);camp.i++;renderCamp();setTimeout(tick,+$("cSpd").value)}
+ else{camp.run=false;camp.done=true;$("cGo").hidden=false;$("cGo").textContent="رسالة جديدة";$("cStop").hidden=true;toast("خلص الإرسال ✅");renderCamp()}}
+function renderCamp(){if(!camp)return;const L=camp.list,s=L.filter(x=>x.s!="wait").length,r=L.filter(x=>x.s=="read"||x.s=="reply").length,rp=L.filter(x=>x.s=="reply").length;
+ $("cBar").style.width=(s/L.length*100)+"%";$("cInfo").textContent=`انرسل ${s} من ${L.length} · انقرى ${r} · ردود ${rp}`;
+ const lab={wait:"بالانتظار",sent:"انرسلت",read:"انقرت ✓✓",reply:"رد 💬"};
+ $("cQueue").innerHTML=L.map(x=>`<div class="qrow"><span>${esc($("cMsg").value.replace("{الاسم}",x.n)).slice(0,60)}…</span><span class="st ${x.s}">${lab[x.s]}</span></div>`).join("")}
+$("cGo").onclick=campStart;$("cStop").onclick=()=>{camp.run=false;$("cStop").hidden=true;$("cGo").hidden=false;$("cGo").textContent="كمّل الإرسال"};
+
+/* ---------- reports ---------- */
+function renderReports(){const max=Math.max(...Object.values(stats),1);
+ const col={wa:"#25d366",ig:"#dd2a7b",sc:"#e6c800",tt:"#111",gm:"#4285f4",em:"#5b6b7f",call:"#0b8f6c"};
+ $("bCh").innerHTML=Object.entries(stats).map(([k,v])=>`<div class="brow"><span>${CH[k][0]}</span><span class="btrack"><i style="width:${v/max*100}%;background:${col[k]}"></i></span><b>${v}</b></div>`).join("");
+ const ag={};convs.forEach(c=>ag[c.agent]=(ag[c.agent]||0)+1);const am=Math.max(...Object.values(ag),1);
+ $("bAg").innerHTML=AG.map(a=>`<div class="brow"><span>${agName(a)}</span><span class="btrack"><i style="width:${(ag[a]||0)/am*100}%;background:var(--acc)"></i></span><b>${ag[a]||0}</b></div>`).join("");
+ const tm={"البوت":["٣ ث","٢٤/٧"],"ريم":["٤ د","١٠ص–٦م"],"فهد":["٧ د","٢م–١٠م"]};
+ $("team").innerHTML=`<table><thead><tr><th>المسؤول</th><th>محادثات</th><th>تحتاج رد</th><th>متوسط الرد</th><th>الشفت</th></tr></thead><tbody>${AG.map(a=>`<tr><td>${agName(a)}</td><td>${ag[a]||0}</td><td>${convs.filter(c=>c.agent==a&&c.need).length}</td><td>${tm[a][0]}</td><td>${tm[a][1]}</td></tr>`).join("")}</tbody></table>`;
+ const newB=orders.length-2;$("kMsg").textContent=answered;$("kOrd").textContent=newB;$("kConv").textContent=Math.round(newB/Math.max(convs.length,1)*100)+"٪"}
+
+/* ---------- contacts ---------- */
+function renderContacts(){const q=($("cSearch").value||"").trim();const list=convs.filter(c=>!q||c.name.includes(q)||(c.tags||[]).some(t=>t.includes(q)));
+ $("contacts").innerHTML=list.length?`<table><thead><tr><th>المراجع</th><th>القنوات</th><th>التاقات</th><th>المرحلة</th><th>مواعيد</th><th>المسؤول</th></tr></thead><tbody>${list.map(c=>`<tr><td>${esc(c.name)}</td><td>${(c.chs||[c.ch]).map(chIcon).join(" ")}</td><td>${(c.tags||[]).map(t=>`<span class="tag ${t=="VIP"?"vip":t=="حجز مؤكد"?"buy":""}">${esc(t)}</span>`).join(" ")||"—"}</td><td>${STG.find(x=>x[0]==c.stage)[1]}</td><td>${orders.filter(o=>o.name==c.name).length}</td><td>${agName(c.agent)}</td></tr>`).join("")}</tbody></table>`:'<div class="empty">ما فيه نتائج</div>';
+ document.querySelectorAll("#contacts .ch").forEach(x=>{x.style.width="22px";x.style.height="22px";x.style.fontSize=".55rem"})}
+$("cSearch").oninput=renderContacts;
+
+/* ---------- automation ---------- */
+const RULES=[["remind","تذكير قبل الموعد بيوم","كل مراجع يوصله تذكير واتساب قبل موعده بيوم، ويقدر يأكد أو يغيّر الموعد برسالة — يقلل الغياب."],["rr","توزيع المحادثات على الاستقبال بالدور","أي محادثة تحتاج موظف تروح للي عليه الدور — ما أحد يتحمّل أكثر من الثاني."],["missed","مكالمة فائتة ← رسالة واتساب","إذا أحد اتصل وما انرد عليه، يوصله واتساب تلقائي عشان ما يضيع المراجع."],["kw","كلمات مفتاحية ← تاق ومرحلة","\"موعد / كم السعر\" ← تاق مهتم. \"حامل / حساسية / دواء\" ← تاق أسئلة طبية وتحويل للموظف مباشرة."],["follow","متابعة إذا ما أحد رد","إذا المراجع ينتظر موظف وما انرد عليه، توصله رسالة طمأنة والمشرف يتنبّه."],["away","الرد بعد الدوام","بعد الدوام المساعد الآلي يرد ويحجز، والاستقبال يكمّل الصبح."]];
+function renderRules(){$("rules").innerHTML=RULES.map(([k,t,d])=>`<div class="rule"><div class="tx"><b>${t}</b><p>${d}</p></div><button class="sw" role="switch" aria-checked="${auto[k]}" aria-label="${t}" data-k="${k}"></button></div>`).join("")}
+$("rules").onclick=e=>{const b=e.target.closest(".sw");if(!b)return;auto[b.dataset.k]=!auto[b.dataset.k];renderRules();toast((auto[b.dataset.k]?"تفعّلت: ":"انقفلت: ")+RULES.find(r=>r[0]==b.dataset.k)[1])};
+
+/* ---------- settings ---------- */
+function renderChannels(){$("chgrid").innerHTML=Object.keys(CH).map(k=>`<div class="chc">${chIcon(k)}<span>${CH[k][0]}<small>● متصل</small></span></div>`).join("")}
+
+/* ---------- tabs ---------- */
+document.querySelector(".tabs").onclick=e=>{const t=e.target.closest(".tab");if(!t)return;document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x==t));document.querySelectorAll(".pane").forEach(p=>p.hidden=p.id!="p-"+t.dataset.p)};
+
+/* ---------- phone bot ---------- */
+const SV=["تنظيف بشرة","ليزر إزالة شعر","فيلر وبوتوكس","تبييض أسنان","استشارة جلدية"];
+const msgs=$("msgs"),qr=$("qr");let state="menu",draft={};
+function addPhone(t,who){const d=document.createElement("div");d.className="m "+who;d.textContent=t;const tm=document.createElement("time");tm.textContent=now()+(who=="me"?" ✓✓":"");d.appendChild(tm);msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+function quick(list){qr.innerHTML="";list.forEach(t=>{const b=document.createElement("button");b.type="button";b.textContent=t;b.onclick=()=>user(t);qr.appendChild(b)})}
+function bot(t,q){qr.innerHTML="";const ty=document.createElement("div");ty.className="typing";ty.innerHTML="<i></i><i></i><i></i>";msgs.appendChild(ty);msgs.scrollTop=msgs.scrollHeight;$("st").textContent="يكتب…";
+ setTimeout(()=>{ty.remove();addPhone(t,"bot");answered++;pushLive("bot",t);$("st").textContent="متصل الآن · رد تلقائي";if(q)quick(q)},700+Math.min(t.length*8,900))}
+const MENU=["📅 احجز موعد","💆 الخدمات","💰 الأسعار","📍 الموقع والدوام","👤 كلّم موظف"];
+function menu(pre){bot((pre?pre+"\n\n":"")+"كيف أقدر أخدمك؟",MENU)}
+function services(){const c=liveConv();if(c.stage=="new")c.stage="int";bot("خدماتنا (أمثلة) 👇\n"+SV.map((x,i)=>`${i+1}. ${x}`).join("\n")+"\n\nتبي أحجز لك موعد؟",["📅 احجز موعد","💰 الأسعار","↩️ القائمة"])}
+function user(t){addPhone(t,"me");pushLive("in",t);handle(t.trim())}
+function handle(t){const s=t.replace(/[ً-ْ]/g,"").replace(/[^؀-ۿa-zA-Z0-9 ]/g,"").trim().replace(/[أإآ]/g,"ا");
+ if(/القائمه|القائمة|السلام|مرحبا|هلا|اهلا|مساء|صباح/.test(s)&&!["name","phone"].includes(state)){state="menu";return menu("وعليكم السلام، حياك الله في "+CL.n+" 🌿")}
+ if(state=="srv"){const k=SV.find((x,i)=>s.includes(String(i+1))||t.includes(x))||t;draft.s=k;state="day";return bot(`تمام 👌 ${k}\nأي يوم يناسبك؟`,DAYS)}
+ if(state=="day"){draft.day=t;state="time";return bot("وأي وقت تفضّل؟",TIMES)}
+ if(state=="time"){draft.time=t;state="name";return bot("ممتاز، عطني اسمك الكريم لو سمحت")}
+ if(state=="name"){if(s.length<2)return bot("اكتب اسمك لو سمحت");draft.name=t;state="phone";return bot(`تشرفنا ${t} 🙏\nورقم جوالك عشان نأكد معك الموعد؟`)}
+ if(state=="phone"){draft.phone=t;state="confirm";return bot(`راجع حجزك 📝\nالخدمة: ${draft.s}\nالموعد: ${draft.day} الساعة ${draft.time}\nالاسم: ${draft.name}\n\nأأكد الحجز؟`,["✅ أكّد","❌ إلغاء"])}
+ if(state=="confirm"){if(/اكد|تمام|اي|ايه|نعم|اوكي|ok/i.test(s)&&!/الغاء/.test(s)){const o={no:++seq,s:draft.s,name:draft.name,when:draft.day+" · "+draft.time,ch:"wa",status:"جديد"};orders.unshift(o);const c=liveConv();c.name=draft.name;c.stage="ord";aiSolved++;if(auto.tagbuy){c.tags=c.tags||[];if(!c.tags.includes("حجز مؤكد"))c.tags.push("حجز مؤكد");alog("حجز #"+o.no+" ← تاق \"حجز مؤكد\" + سطر في جدول المواعيد")}if(auto.remind)setTimeout(()=>alog("تذكير مجدول لـ "+o.name+" قبل موعده بيوم"),900);renderContacts();renderOrders(o.no);renderConvs();renderBoard();renderReports();toast("حجز جديد #"+o.no+" وصل للاستقبال ✅");state="menu";const d=draft;draft={};return bot(`تم ✅ حجزنا لك ${d.s}\n📅 ${d.day} الساعة ${d.time}\nرقم الحجز: #${o.no}\n\nبيوصلك تذكير قبل الموعد بيوم. حياك الله 🌿`,["📍 الموقع والدوام","↩️ القائمة"])}state="menu";draft={};return menu("ألغيت الحجز، ولا يهمك.")}
+ if(/موظف|استقبال|اكلم|كلم|دكتور|طبيب/.test(s)||needsHuman(t)){const c=liveConv();c.agent="ريم";c.need=true;if(needsHuman(t)){c.tags=c.tags||[];if(!c.tags.includes("أسئلة طبية"))c.tags.push("أسئلة طبية")}renderConvs();renderReports();renderContacts();alog("المراجع يحتاج موظف ← تحويل لريم (الاستقبال)");toast("المحادثة تحوّلت للاستقبال — افتح الصندوق الموحّد ورد كموظف");return bot("أكيد، حوّلتك للاستقبال وبيرد عليك موظف هنا خلال دقايق 🙏",["↩️ القائمة"])}
+ if(/موقع|وين|مكان|دوام|ساعات|تفتح|متى/.test(s))return bot("📍 الموقع: (رابط قوقل ماب العيادة)\n🕙 الدوام: من 10 الصبح إلى 10 الليل، والجمعة إجازة (مثال)",["📅 احجز موعد","↩️ القائمة"]);
+ if(/سعر|اسعار|كم|بكم|عرض|عروض|خصم/.test(s)){const c=liveConv();if(c.stage=="new")c.stage="int";return bot("السعر يختلف حسب الجلسة ونوع البشرة، والطبيب يحدد الأنسب لك بالتقييم.\nوإذا فيه عروض حالية أرسلها لك أول بأول. تبي أحجز لك استشارة؟",["📅 احجز موعد","👤 كلّم موظف"])}
+ if(/خدم|وش عندكم|ايش عندكم/.test(s))return services();
+ if(/احجز|حجز|موعد|ابي|ابغى|متاح|فاضي/.test(s)){state="srv";draft={};return bot("أبشر 🌟 وش الخدمة اللي تبيها؟",SV)}
+ if(/شكرا|مشكور|يعطيك|تسلم/.test(s))return bot("العفو، بالخدمة دايماً 🌿",["↩️ القائمة"]);
+ menu("ممكن توضح أكثر؟ 🙏")}
+$("f").onsubmit=e=>{e.preventDefault();const v=$("in").value.trim();if(!v)return;$("in").value="";user(v)};
+qr.addEventListener("click",e=>{if(e.target.tagName=="BUTTON"&&/القائمة/.test(e.target.textContent))state="menu"});
+
+renderFilters();renderConvs();renderOrders();renderBoard();renderReports();renderContacts();renderRules();renderChannels();
+setTimeout(()=>menu("هلا وغلا، حياك الله في "+CL.n+" 🌿\nأنا المساعد الآلي، أرد عليك مباشرة ٢٤ ساعة."),400);
+setTimeout(incoming,6000);
 </script>
 </body>
 </html>
