@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>نظام الرد والحجز للعيادات — نسخة تجريبية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#0b8f6c;--acc2:#e6f5ef;--bg:#f4f2ee;--card:#fff;--ink:#15171b;--soft:#646b75;--line:#e5e1da;--wa:#075e54;--chat:#efe7dd;--in:#fff;--out:#d9fdd3;--warn:#c2410c;--warnbg:#fff1e8}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1114;--card:#181b20;--ink:#eef0f2;--soft:#9aa3ad;--line:#272b32;--chat:#0b141a;--in:#202c33;--out:#005c4b;--acc2:#12302a;--warnbg:#3a2114;--warn:#fb923c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;line-height:1.6}
+button,input{font:inherit;color:inherit}
+.demo{background:#15171b;color:#fff;text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.wrap{max-width:1160px;margin:0 auto;padding:1.5rem 1rem 3rem;display:grid;grid-template-columns:370px minmax(0,1fr);gap:1.6rem;align-items:start}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}}
+/* phone */
+.phone{background:#0b0b0b;border-radius:42px;padding:10px;box-shadow:0 30px 70px rgba(0,0,0,.25);position:sticky;top:1rem}
+@media (max-width:900px){.phone{position:relative;top:0;max-width:370px;margin:0 auto;width:100%}}
+.scr{border-radius:33px;overflow:hidden;background:var(--chat);height:640px;display:flex;flex-direction:column}
+.top{background:var(--wa);color:#fff;display:flex;align-items:center;gap:.65rem;padding:.9rem .9rem .75rem}
+.av{width:38px;height:38px;border-radius:50%;background:var(--acc);display:grid;place-items:center;font-weight:700;color:#fff;flex:none}
+.top b{display:block;font-size:.95rem;line-height:1.3}
+.top small{opacity:.8;font-size:.72rem}
+.msgs{flex:1;overflow-y:auto;padding:.9rem .7rem;display:flex;flex-direction:column;gap:.4rem}
+.m{max-width:84%;padding:.45rem .7rem;border-radius:10px;font-size:.88rem;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .18s ease}
+.m.bot{background:var(--in);align-self:flex-start;border-top-right-radius:2px}
+.m.me{background:var(--out);align-self:flex-end;border-top-left-radius:2px}
+.m.sys{align-self:center;background:var(--acc2);color:var(--ink);font-size:.75rem;box-shadow:none}
+@keyframes pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.typing{align-self:flex-start;background:var(--in);border-radius:10px;padding:.5rem .8rem;font-size:.8rem;color:var(--soft)}
+.qr{display:flex;flex-wrap:wrap;gap:.35rem;padding:.2rem .7rem .5rem}
+.qr button{border:1px solid var(--acc);background:var(--card);color:var(--acc);border-radius:999px;padding:.3rem .75rem;font-size:.8rem;cursor:pointer}
+.qr button:hover{background:var(--acc);color:#fff}
+.inp{display:flex;gap:.4rem;padding:.55rem;background:var(--card)}
+.inp input{flex:1;border:1px solid var(--line);border-radius:999px;padding:.5rem .9rem;background:var(--bg);min-width:0}
+.inp button{border:0;background:var(--wa);color:#fff;border-radius:50%;width:42px;height:42px;cursor:pointer;flex:none}
+/* side */
+h1{font-size:1.75rem;line-height:1.35;margin:.2rem 0 .4rem}
+h1 b{color:var(--acc)}
+.lead{color:var(--soft);margin:0 0 1.1rem}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:1.2rem}
+@media (max-width:620px){.feats{grid-template-columns:1fr}}
+.f{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.8rem .9rem}
+.f b{display:block;margin-bottom:.15rem}
+.f span{color:var(--soft);font-size:.85rem}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;border-bottom:1px solid var(--line)}
+.ph b{font-size:1.02rem}
+.live{font-size:.75rem;color:var(--acc);display:flex;align-items:center;gap:.35rem}
+.live:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc);animation:bl 1.4s infinite}
+@keyframes bl{50%{opacity:.3}}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+@media (max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
+.st{padding:.8rem 1rem;border-left:1px solid var(--line)}
+.st:last-child{border-left:0}
+.st b{font-size:1.45rem;display:block;line-height:1.2}
+.st span{font-size:.78rem;color:var(--soft)}
+.sec{padding:.9rem 1rem;border-bottom:1px solid var(--line)}
+.sec:last-child{border-bottom:0}
+.sec h3{margin:0 0 .6rem;font-size:.92rem}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{text-align:right;color:var(--soft);font-weight:500;padding:.35rem .4rem;border-bottom:1px solid var(--line)}
+td{padding:.5rem .4rem;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+tr.new td{background:var(--acc2);transition:background 2s}
+.tag{display:inline-block;font-size:.72rem;border-radius:999px;padding:.08rem .55rem;background:var(--acc2);color:var(--acc);white-space:nowrap}
+.tag.w{background:var(--warnbg);color:var(--warn)}
+.empty{color:var(--soft);font-size:.85rem}
+.log{list-style:none;margin:0;padding:0;font-size:.83rem;max-height:210px;overflow-y:auto}
+.log li{display:flex;gap:.5rem;padding:.3rem 0;border-bottom:1px dashed var(--line)}
+.log li:last-child{border-bottom:0}
+.log time{color:var(--soft);flex:none;font-variant-numeric:tabular-nums}
+.ch{font-size:.72rem;color:var(--soft)}
+.note{font-size:.78rem;color:var(--soft);margin-top:1rem}
+.tbl{overflow-x:auto}
+</style>
+</head>
+<body>
+<div class="demo">نسخة تجريبية — الخدمات والمواعيد والأسماء أمثلة للتجربة فقط وتتعدل حسب عيادتكم</div>
+<div class="wrap">
+  <div class="phone">
+    <div class="scr">
+      <div class="top"><div class="av" id="av">ع</div><div><b id="cname">عيادتكم</b><small>يرد عليك مباشرة · متصل الآن</small></div></div>
+      <div class="msgs" id="msgs"></div>
+      <div class="qr" id="qr"></div>
+      <form class="inp" id="f"><input id="t" placeholder="اكتب رسالتك كأنك مراجع..." autocomplete="off"><button aria-label="إرسال">➤</button></form>
+    </div>
+  </div>
+
+  <div>
+    <h1>كل رسايل المراجعين ينرد عليها <b>بأي وقت</b>، والحجز يوصل للاستقبال جاهز</h1>
+    <p class="lead">جرّب من الجوال اللي جنبك كأنك مراجع يراسل العيادة: اسأل عن خدمة، أو اطلب موعد. وشوف الحجز كيف ينضاف هنا في لوحة الاستقبال لحاله.</p>
+    <div class="feats">
+      <div class="f"><b>رد فوري ٢٤ ساعة</b><span>واتساب وإنستقرام، حتى بالليل ووقت الزحمة</span></div>
+      <div class="f"><b>حجز مواعيد</b><span>يختار الخدمة واليوم والوقت، ويتسجل باسمه ورقمه</span></div>
+      <div class="f"><b>تحويل للموظف</b><span>أي سؤال طبي أو حالة خاصة تروح للاستقبال مباشرة</span></div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><b>لوحة الاستقبال</b><span class="live">مباشر</span></div>
+      <div class="stats">
+        <div class="st"><b id="s1">0</b><span>محادثة اليوم</span></div>
+        <div class="st"><b id="s2">0</b><span>حجز جديد</span></div>
+        <div class="st"><b id="s3">0</b><span>تحتاج موظف</span></div>
+        <div class="st"><b>٣ ث</b><span>متوسط أول رد</span></div>
+      </div>
+      <div class="sec">
+        <h3>الحجوزات</h3>
+        <div class="tbl"><table><thead><tr><th>المراجع</th><th>الخدمة</th><th>الموعد</th><th>القناة</th><th>الحالة</th></tr></thead><tbody id="bk"></tbody></table></div>
+      </div>
+      <div class="sec">
+        <h3>آخر النشاط</h3>
+        <ul class="log" id="log"></ul>
+      </div>
+    </div>
+    <p class="note">في النسخة الفعلية: الخدمات والدوام والردود تنكتب حسب عيادتكم، والحجوزات ممكن تنربط بجدول أو بنظام المواعيد اللي عندكم.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+const P=new URLSearchParams(location.search);
+const K={
+  tiffany:{n:"تيفاني كلينك",a:"T",c:"#2a9d94"},
+  fsmc:{n:"عيادات الإختصاصي الطبي الأول",a:"FS",c:"#1d5fa8"},
+  nabd:{n:"نبض الياسمين",a:"ن",c:"#b0306a"}
+};
+const key=(P.get("c")||"").toLowerCase();
+const cfg=K[key]||{n:P.get("c")||"عيادتكم",a:(P.get("c")||"ع").trim().charAt(0),c:P.get("color")?"#"+P.get("color").replace("#",""):null};
+document.getElementById("cname").textContent=cfg.n;
+document.getElementById("av").textContent=cfg.a;
+if(cfg.c)document.documentElement.style.setProperty("--acc",cfg.c);
+document.title=cfg.n+" — نظام الرد والحجز (تجريبي)";
+
+const $=id=>document.getElementById(id);
+const msgs=$("msgs"),qr=$("qr");
+const SERV=["تنظيف بشرة","ليزر إزالة شعر","فيلر وبوتوكس","تبييض أسنان","استشارة جلدية"];
+const D=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+const days=[];{let d=new Date();while(days.length<3){d.setDate(d.getDate()+1);if(d.getDay()!==5)days.push(D[d.getDay()]+" "+d.getDate()+"/"+(d.getMonth()+1));}}
+const TIMES=["11 ص","1 م","5 م","8 م"];
+let st={step:null,b:{}},cnt={c:0,b:0,h:0},talked=false;
+
+function now(){const d=new Date();return d.toLocaleTimeString("ar-SA",{hour:"2-digit",minute:"2-digit"});}
+function add(t,who){const e=document.createElement("div");e.className="m "+who;e.textContent=t;msgs.appendChild(e);msgs.scrollTop=1e6;}
+function quick(arr){qr.innerHTML="";arr.forEach(x=>{const b=document.createElement("button");b.type="button";b.textContent=x;b.onclick=()=>user(x);qr.appendChild(b);});}
+function bot(lines,q,cb){qr.innerHTML="";const ty=document.createElement("div");ty.className="typing";ty.textContent="يكتب…";msgs.appendChild(ty);msgs.scrollTop=1e6;
+  let i=0;(function n(){setTimeout(()=>{if(i===0)ty.remove();add(lines[i],"bot");i++;if(i<lines.length)n();else{if(q)quick(q);if(cb)cb();}},i===0?700:450);})();}
+function log(t,ch){const li=document.createElement("li");li.innerHTML="<time>"+now()+"</time><span>"+t+(ch?' <span class="ch">· '+ch+'</span>':"")+"</span>";$("log").prepend(li);}
+function stats(){$("s1").textContent=cnt.c;$("s2").textContent=cnt.b;$("s3").textContent=cnt.h;}
+function row(name,srv,when,ch,status,warn,isNew){const tb=$("bk");const tr=document.createElement("tr");if(isNew)tr.className="new";
+  tr.innerHTML="<td>"+name+"</td><td>"+srv+"</td><td>"+when+"</td><td>"+ch+'</td><td><span class="tag'+(warn?" w":"")+'">'+status+"</span></td>";tb.prepend(tr);if(isNew)setTimeout(()=>tr.className="",2500);}
+
+const MENU=["حجز موعد","الخدمات","الأسعار","الموقع والدوام","كلّم موظف"];
+function welcome(){bot(["هلا وغلا، حياك الله في "+cfg.n+" 🌿","كيف أقدر أخدمك؟"],MENU);}
+
+function user(t){t=t.trim();if(!t)return;add(t,"me");
+  if(!talked){talked=true;cnt.c++;stats();log("محادثة جديدة من مراجع (أنت)","واتساب");}
+  handle(t);}
+
+function handle(t){
+  const s=st.step;
+  if(s==="srv"){st.b.srv=SERV.includes(t)?t:t;st.step="day";return bot(["تمام، "+st.b.srv+" 👌","أي يوم يناسبك؟"],days);}
+  if(s==="day"){st.b.day=t;st.step="time";return bot(["وأي وقت تفضّل؟"],TIMES);}
+  if(s==="time"){st.b.time=t;st.step="name";return bot(["ممتاز، عطني اسمك الكريم لو سمحت"]);}
+  if(s==="name"){st.b.name=t;st.step="phone";return bot(["تشرفنا "+t+" 🙏","ورقم جوالك عشان نأكد معك الموعد؟"]);}
+  if(s==="phone"){st.b.phone=t;st.step=null;const b=st.b;
+    return bot(["تم ✅ حجزنا لك "+b.srv+"\n📅 "+b.day+" الساعة "+b.time,"وبيوصلك تذكير قبل الموعد بيوم. لو حاب تغيّر الموعد أو تلغيه راسلنا هنا بأي وقت 🌿"],["الموقع والدوام","سؤال ثاني"],()=>{
+      cnt.b++;stats();row(b.name,b.srv,b.day+" · "+b.time,"واتساب","جديد",false,true);
+      log("حجز جديد: "+b.name+" — "+b.srv,"واتساب");setTimeout(()=>log("تذكير مجدول قبل موعد "+b.name+" بيوم"),900);});}
+  const x=t.replace(/[أإآ]/g,"ا").replace(/ة/g,"ه");
+  if(/حجز|موعد|احجز|ابي اجي|متاح/.test(x)){st.step="srv";st.b={};return bot(["أبشر 🌟 وش الخدمة اللي تبيها؟"],SERV);}
+  if(/خدم|وش عندكم|ايش عندكم/.test(x)){return bot(["عندنا (أمثلة):\n• جلسات البشرة والتنظيف\n• ليزر إزالة الشعر\n• فيلر وبوتوكس\n• تبييض وتجميل الأسنان\n• استشارات جلدية","تبي أحجز لك موعد؟"],["حجز موعد","الأسعار"]);}
+  if(/سعر|اسعار|كم|بكم|عرض|عروض|خصم/.test(x)){return bot(["السعر يختلف حسب الجلسة ونوع البشرة، والطبيب يحدد الأنسب لك بالتقييم.","وإذا فيه عروض حالية أرسلها لك أول بأول. تبي أحجز لك استشارة؟"],["حجز موعد","كلّم موظف"]);}
+  if(/موقع|وين|مكان|دوام|ساعات|تفتح|متى/.test(x)){return bot(["📍 الموقع: (رابط قوقل ماب العيادة)","🕙 الدوام: من 10 الصبح إلى 10 الليل، والجمعة إجازة (مثال)"],["حجز موعد","سؤال ثاني"]);}
+  if(/سؤال ثاني|شي ثاني|غير/.test(x)){return bot(["تفضّل، وش تحب تعرف؟"],MENU);}
+  if(/موظف|استقبال|اكلم|اتصال|شخص|دكتور|طبيب|الم|حساسيه|التهاب|حامل/.test(x)){cnt.h++;stats();row(st.b.name||"مراجع (أنت)","—","—","واتساب","يحتاج موظف",true,true);log("تحويل للاستقبال: سؤال يحتاج موظف","واتساب");
+    return bot(["أكيد، حوّلت محادثتك للاستقبال وبيرد عليك موظف خلال دقائق 🙏"],MENU);}
+  if(/السلام|هلا|مرحبا|اهلا|مساء|صباح/.test(x)){return bot(["وعليكم السلام ورحمة الله، هلا فيك 🌿","كيف أقدر أخدمك؟"],MENU);}
+  if(/شكرا|مشكور|يعطيك/.test(x)){return bot(["العفو، بالخدمة دايماً 🌿"],MENU);}
+  cnt.h++;stats();log("سؤال ما له رد جاهز ← تحوّل للاستقبال","واتساب");
+  bot(["وصلت رسالتك 🙏 بحوّلها للاستقبال يردون عليك بالتفصيل.","وإذا تبي تحجز مباشرة اختار من تحت:"],MENU);
+}
+
+$("f").onsubmit=e=>{e.preventDefault();const v=$("t").value;$("t").value="";if(st.step===null&&!v.trim())return;user(v);};
+
+// seed: conversations handled before you opened the page
+const seed=[["نورة","ليزر إزالة شعر",days[0]+" · 5 م","إنستقرام","مؤكد"],["سارا","تنظيف بشرة",days[1]+" · 1 م","واتساب","مؤكد"]];
+seed.forEach(r=>row(...r,false,false));
+cnt.c=2;cnt.b=0;stats();
+log("حجز: سارا — تنظيف بشرة","واتساب");log("رد تلقائي على سؤال عن الدوام الساعة 1:40 الفجر","إنستقرام");
+// simulated incoming from another channel
+setTimeout(()=>{cnt.c++;stats();log("مراجعة سألت عن الأسعار ← رد تلقائي + عرض حجز استشارة","إنستقرام");},9000);
+setTimeout(()=>{cnt.c++;cnt.h++;stats();row("مراجع","—","—","إنستقرام","يحتاج موظف",true,true);log("سؤال طبي عن حساسية ← تحوّل للاستقبال","إنستقرام");},20000);
+welcome();
+})();
+</script>
+</body>
+</html>
