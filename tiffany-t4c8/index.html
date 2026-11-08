@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="تيفاني كلينك – ليزر، بشرة، جلدية وتجميل، وطب وتقويم أسنان في فروع الياسمين والواحة وقرطبة بالرياض.">
+<meta name="description" content="تيفاني كلينك – كل ما تحتاجينه لجمالكِ، في مكان واحد. ليزر، بشرة، جلدية وتجميل، وطب أسنان في ثلاثة فروع بالرياض.">
 <style>[hidden]{display:none!important}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
 <title>Tiffany Clinic | تيفاني كلينك</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -37,7 +37,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
 h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.15;text-wrap:balance;margin:0}
 html[lang="en"] :is(h1,h2,h3,h4){font-weight:600}
-.num{font-variant-numeric:tabular-nums}
+.num{font-variant-numeric:lining-nums tabular-nums}
 
 /* Bands: full-width colored strips, inner wrap carries the gutter */
 .band{position:relative;overflow:hidden}
@@ -97,14 +97,17 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:70;backgroun
 .curtain .mark{grid-area:1/1;place-self:center;font-family:var(--display-en);color:var(--gold-hi);font-size:clamp(2rem,6vw,3.4rem);letter-spacing:.3em;opacity:0;padding-inline-start:.3em}
 
 /* HOME — hero */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-block:72px 88px}
+.hero{position:relative;display:block;padding-block:84px 96px}
+.hero > div{position:relative;z-index:1;max-width:760px}
+.hero-ring{position:absolute;z-index:0;width:min(560px,80vw);aspect-ratio:1;inset-inline-end:-8%;top:50%;margin-top:calc(min(560px,80vw) / -2);animation:spin 80s linear infinite;opacity:.9;pointer-events:none}
+@media (max-width:860px){.hero-ring{inset-inline-end:-38%;top:auto;bottom:-18%;margin-top:0;opacity:.6}}
 .hero h1{font-size:clamp(2.7rem,6.4vw,5rem);margin-top:18px}
 .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.1em}
 .hero h1 .w>span{display:inline-block}
 .hero .lead{max-width:50ch;font-size:1.08rem;margin:22px 0 32px}
 .ctas{display:flex;gap:12px;flex-wrap:wrap}
 .stats{display:flex;gap:40px;margin-top:44px;flex-wrap:wrap}
-.stats b{display:block;font-family:var(--display-en);font-size:2.6rem;line-height:1;color:var(--gold-deep);font-weight:600}
+.stats b{display:block;font-variant-numeric:lining-nums tabular-nums;font-family:var(--display-en);font-size:2.6rem;line-height:1;color:var(--gold-deep);font-weight:600}
 .stats span{font-size:.86rem;color:var(--muted)}
 .arch{position:relative;width:100%;max-width:440px;aspect-ratio:4/5;justify-self:center}
 .arch .frame{position:absolute;inset:0;border-radius:999px 999px 26px 26px;overflow:hidden;
@@ -117,7 +120,7 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:70;backgroun
 .arch .card b{display:block;font-family:var(--display);font-size:1.2rem;color:var(--gold-deep)}
 .arch .card2{top:auto;bottom:16%;inset-inline-end:auto;inset-inline-start:-8%;background:var(--espresso);color:var(--on-dark)}
 .arch .card2 b{color:var(--gold-hi)}
-@media (max-width:860px){.hero{grid-template-columns:1fr;gap:44px;padding-top:40px}.arch{max-width:330px}.arch .card2{inset-inline-start:-2%}.arch .card{inset-inline-end:-2%}}
+@media (max-width:860px){.hero{padding-block:44px 72px}.arch{max-width:330px}.arch .card2{inset-inline-start:-2%}.arch .card{inset-inline-end:-2%}}
 
 .marquee{overflow:hidden;padding-block:20px;background:var(--espresso);color:var(--gold-hi);border-block:1px solid var(--line-dark)}
 .marquee .track{will-change:transform;display:flex;width:max-content;animation:mq 50s linear infinite;font-family:var(--display);font-size:1.4rem}
@@ -134,7 +137,7 @@ html[dir="rtl"] .marquee .track{animation-name:mqr}
 .bcard::before{content:"";position:absolute;inset:auto -30% -60% -30%;height:80%;background:radial-gradient(closest-side,rgba(220,192,138,.28),transparent);z-index:-1;transition:transform .6s}
 .bcard:hover{border-color:var(--gold)}
 .bcard:hover::before{transform:translateY(-25%)}
-.bcard .no{font-family:var(--display-en);font-size:3.6rem;line-height:1;color:transparent;-webkit-text-stroke:1px var(--gold-hi)}
+.bcard .no{font-variant-numeric:lining-nums;font-family:var(--display-en);font-size:3.6rem;line-height:1;color:transparent;-webkit-text-stroke:1px var(--gold-hi)}
 .bcard h3{font-size:2rem;color:var(--on-dark)}
 .bcard p{margin:0;color:var(--on-dark-muted);font-size:.92rem}
 .bcard .tags{display:flex;gap:6px;flex-wrap:wrap}
@@ -169,7 +172,7 @@ html[dir="rtl"] .marquee .track{animation-name:mqr}
 .ov p{font-size:.84rem;margin:0;opacity:.78;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .ov .bt{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;padding-top:14px;border-top:1px solid currentColor;border-color:color-mix(in srgb,currentColor 25%,transparent)}
 .ov .bt small{display:block;font-size:.72rem;opacity:.7}
-.ov .bt b{font-family:var(--display-en);font-size:1.7rem;font-weight:600;line-height:1}
+.ov .bt b{font-variant-numeric:lining-nums;font-family:var(--display-en);font-size:1.7rem;font-weight:600;line-height:1}
 .ov .bt .go{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;flex:none}
 .ov.v1{background:var(--espresso);color:var(--on-dark)} .ov.v1 .no,.ov.v1 .ic,.ov.v1 b{color:var(--gold-hi)} .ov.v1::after{background:radial-gradient(closest-side,rgba(220,192,138,.45),transparent)} .ov.v1 .go{background:var(--gold-hi);color:var(--espresso)}
 .ov.v2{background:linear-gradient(150deg,var(--gold-hi),var(--gold) 70%,var(--gold-deep));color:var(--espresso)} .ov.v2::after{background:radial-gradient(closest-side,rgba(255,252,247,.7),transparent)} .ov.v2 .go{background:var(--espresso);color:var(--gold-hi)}
@@ -221,7 +224,7 @@ html.js .pin-in{position:sticky;top:var(--stick,132px);height:calc(100vh - var(-
   transform:scale(calc(1 - var(--x) * .12));opacity:calc(1 - var(--x) * .55);will-change:transform}
 html:not(.js) .pin-card{height:auto}
 .pin-card::before{content:"";position:absolute;width:80%;aspect-ratio:1;border-radius:50%;top:-25%;left:calc(-30% + var(--p) * 70%);background:radial-gradient(closest-side,var(--glow),transparent);z-index:-1}
-.pin-no{position:absolute;inset-inline-end:-2%;top:20%;font-family:var(--display-en);font-weight:600;line-height:.8;font-size:clamp(9rem,34vw,22rem);color:transparent;-webkit-text-stroke:1.5px var(--acc);
+.pin-no{font-variant-numeric:lining-nums;position:absolute;inset-inline-end:-2%;top:20%;font-family:var(--display-en);font-weight:600;line-height:.8;font-size:clamp(9rem,34vw,22rem);color:transparent;-webkit-text-stroke:1.5px var(--acc);
   opacity:calc(.12 + var(--e) * .5);transform:translate3d(0,calc((1 - var(--e)) * 30%),0) scale(calc(1.25 - var(--e) * .25));z-index:-1;pointer-events:none}
 .pin-top{display:flex;align-items:center;gap:14px;margin-bottom:auto}
 .pin-ic{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--acc);color:var(--acc);
@@ -235,7 +238,7 @@ html[lang="ar"] .pin-kicker{letter-spacing:.02em;font-size:.95rem}
 .pin-desc{max-width:52ch;margin:0;font-size:1.02rem;opacity:clamp(0,calc(var(--e) * 2.6 - 1.4),.85);transform:translate3d(0,calc((1 - clamp(0,calc(var(--e) * 2.6 - 1.4),1)) * 20px),0)}
 .pin-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border-top:1px solid var(--rule-c);padding-top:18px}
 .pin-stats>div{--k:clamp(0,calc(var(--m) * 3 - var(--j) * .7),1);opacity:var(--k);transform:translate3d(0,calc((1 - var(--k)) * 26px),0)}
-.pin-stats b{display:block;font-family:var(--display-en);font-weight:600;font-size:clamp(2rem,7vw,3.4rem);line-height:1;color:var(--acc);font-variant-numeric:tabular-nums}
+.pin-stats b{display:block;font-family:var(--display-en);font-weight:600;font-size:clamp(2rem,7vw,3.4rem);line-height:1;color:var(--acc);font-variant-numeric:lining-nums tabular-nums}
 .pin-stats small{font-size:.8rem;opacity:.75}
 .pin-bar{height:2px;background:var(--rule-c);border-radius:2px;overflow:hidden}
 .pin-bar i{display:block;height:100%;width:100%;background:var(--acc);transform:scaleX(var(--p));transform-origin:left}
@@ -270,14 +273,21 @@ details p{margin:0 0 22px;color:var(--muted);max-width:66ch}
 .bhero{padding-block:56px 72px}
 .crumbs{display:flex;gap:8px;align-items:center;font-size:.86rem;color:var(--on-dark-muted);flex-wrap:wrap}
 .crumbs button{background:none;border:0;padding:0;cursor:pointer;color:var(--gold-hi);text-decoration:underline;text-underline-offset:4px}
-.bhero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end;margin-top:34px}
+.bhero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;margin-top:34px}
+.bphoto{max-width:380px}
+.bphoto .frame{background:radial-gradient(90% 60% at 50% 8%,rgba(220,192,138,.55),transparent 70%),linear-gradient(175deg,#3A2A1E,#5A4232 60%,var(--rose) 160%);box-shadow:0 40px 80px -40px rgba(0,0,0,.8)}
+.bphoto .frame img{width:100%;height:100%;object-fit:cover;display:block}
+.bphoto .frame::after{border-color:rgba(220,192,138,.35)}
+.bphoto .ph{color:rgba(243,232,216,.55)}
+.bphoto .card{top:auto;bottom:12%;inset-inline-end:-6%;background:var(--paper);color:var(--ink)}
+.bfacts{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px!important;margin-top:44px}
 .bhero h1{font-size:clamp(3rem,8vw,6rem);color:var(--on-dark)}
 .bhero .lead{max-width:52ch;margin:18px 0 0;font-size:1.05rem}
 .bhero .facts{display:grid;gap:14px}
 .bhero .facts div{border-top:1px solid var(--line-dark);padding-top:12px}
 .bhero .facts small{display:block;color:var(--on-dark-muted);font-size:.78rem}
 .bhero .facts b{font-weight:500;color:var(--on-dark)}
-@media (max-width:860px){.bhero-grid{grid-template-columns:1fr}}
+@media (max-width:860px){.bhero-grid{grid-template-columns:1fr;gap:36px}.bphoto{max-width:300px;justify-self:center}.bphoto .card{inset-inline-end:-4%}.bfacts{grid-template-columns:1fr}}
 
 .dchips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
 .dchips button{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-dark);background:rgba(255,252,247,.04);color:var(--on-dark);border-radius:999px;padding:7px 14px 7px 12px;cursor:pointer;font-size:.88rem;transition:border-color .3s,background .3s}
@@ -329,7 +339,7 @@ html[lang="ar"] .pg-h{letter-spacing:0;font-size:.88rem}
 .row:last-child{border-bottom:0}
 .row .n{font-weight:500;line-height:1.5;min-width:0}
 .row .p{white-space:nowrap;text-align:end}
-.row .p b{font-family:var(--display-en);font-size:1.5rem;font-weight:600;color:var(--gold-deep);font-variant-numeric:tabular-nums}
+.row .p b{font-family:var(--display-en);font-size:1.5rem;font-weight:600;color:var(--gold-deep);font-variant-numeric:lining-nums tabular-nums}
 .row .p b.tbd{font-family:var(--body);font-size:.9rem;font-weight:500}
 .row .p small{color:var(--muted);font-size:.74rem;margin-inline-start:4px}
 .row .p i{font-style:normal;font-size:.72rem;color:var(--muted);margin-inline-end:4px}
@@ -437,6 +447,7 @@ const BRANCHES = {
     hoursAr:"تضاف لاحقاً", hoursEn:"Coming soon",
     phones:[{n:"920020338",ar:"الرقم الموحد",en:"Unified number"},{n:"0557213330",ar:"جوال",en:"Mobile"},{n:"0532734237",ar:"جوال",en:"Mobile"}],
     wa:"966557213330",
+    photo:null, /* رابط صورة الفرع من جوه */
     map:"https://www.google.com/maps/search/?api=1&query=Tiffany+Clinic+Al+Yasmin+Riyadh", laser:"yasmin" },
   waha:{ ar:"الواحة", en:"Al Waha",
     leadAr:"فرع متخصص في الليزر والبشرة والتجميل في حي الواحة: ليزر النساء والرجال، جلسات تنظيف وعناية بالبشرة، والجلدية والحقن التجميلية.",
@@ -447,6 +458,7 @@ const BRANCHES = {
     hoursAr:"تضاف لاحقاً", hoursEn:"Coming soon",
     phones:[{n:"0532777805",ar:"جوال",en:"Mobile"},{n:"0537097778",ar:"جوال",en:"Mobile"}],
     wa:"966532777805",
+    photo:null, /* رابط صورة الفرع من جوه */
     map:"https://www.google.com/maps/search/?api=1&query=Tiffany+Clinic+Al+Waha+Riyadh", laser:"std" },
   qurtuba:{ ar:"قرطبة", en:"Qurtuba",
     leadAr:"فرع حي قرطبة يجمع خمسة أقسام: ليزر النساء والرجال، العناية بالبشرة، الجلدية والتجميل، وعيادة طب وجراحة الأسنان.",
@@ -457,6 +469,7 @@ const BRANCHES = {
     hoursAr:"تضاف لاحقاً", hoursEn:"Coming soon",
     phones:[{n:"0556550371",ar:"جوال",en:"Mobile"}],
     wa:"966556550371",
+    photo:null, /* رابط صورة الفرع من جوه */
     map:"https://www.google.com/maps/search/?api=1&query=Tiffany+Clinic+Qurtuba+Riyadh", laser:"std" }
 };
 Object.values(BRANCHES).forEach(b=>b.phone=b.phones[0].n);
@@ -639,8 +652,8 @@ const priceTxt = r => r[3]==null ? t("byCase") : `${r[4]?t("from")+" ":""}${fmt(
 /* ================= UI TEXT ================= */
 const T = {
   ar:{navBranches:"الفروع",navDepts:"الأقسام",navFaq:"الأسئلة الشائعة",book:"احجزي موعدك",chooseBranch:"اختاري فرعك",
-    heroEyebrow:"تيفاني كلينك · الرياض",heroWords:["جمالكِ","يستحق",'<span class="gold-text">عناية</span>',"تليق","بكِ"],
-    heroLead:"ليزر، بشرة، جلدية وتجميل، وطب وتقويم أسنان في ثلاثة فروع بالرياض. ادخلي فرعك، شوفي الأقسام والأسعار والأطباء، واحجزي مباشرة.",
+    heroEyebrow:"تيفاني كلينك · الرياض",heroWords:["كل","ما","تحتاجينه",'<span class="gold-text">لجمالكِ،</span>',"في","مكان","واحد."],
+    heroLead:"ليزر، بشرة، جلدية وتجميل، وطب أسنان في ثلاثة فروع. تصفّحي خدماتنا وأسعارنا، تعرّفي على أطبائنا، واختاري فرعكِ واحجزي موعدكِ بكل سهولة.",
     photo:"صورة العيادة",c1t:"أسعار 2026",c1:"معلنة ومعتمدة لكل فرع",c2t:"تقويم أسنان",c2:"متوفر في فرع الياسمين",
     sBranches:"فروع",sDepts:"أقسام طبية",sServices:"خدمة بأسعار معلنة",
     brEyebrow:"فروعنا",brTitle:"ثلاثة فروع، وكل فرع بعالمه",brLead:"لكل فرع أقسامه وأسعاره وأطباؤه وأرقام حجزه. اختاري الأقرب لكِ.",
@@ -662,8 +675,8 @@ const T = {
     locEyebrow:"الموقع",locTitle:"زورينا في فرع",openMap:"افتحي في خرائط جوجل",copyNum:"نسخ الرقم",whats:"واتساب",follow:"تابعينا",
     others:"فروعنا الأخرى",ovEyebrow:"داخل الفرع",ovTitle:"ماذا ينتظركِ في فرع",ovLead:"اختاري القسم وانتقلي مباشرة لأسعاره وطبيبه.",swipe:"اسحبي لتشوفي كل الأقسام ←",cats:"تصنيفات",byCase:"حسب الحالة",footTxt:"© 2026 تيفاني كلينك · جميع الحقوق محفوظة"},
   en:{navBranches:"Branches",navDepts:"Departments",navFaq:"FAQ",book:"Book an appointment",chooseBranch:"Choose your branch",
-    heroEyebrow:"Tiffany Clinic · Riyadh",heroWords:["Beauty","that","deserves",'<span class="gold-text">real</span>',"care"],
-    heroLead:"Laser, skin care, dermatology, dentistry and orthodontics across three Riyadh branches. Enter your branch to see its departments, prices and doctors, and book directly.",
+    heroEyebrow:"Tiffany Clinic · Riyadh",heroWords:["Everything","your",'<span class="gold-text">beauty</span>',"needs,","in","one","place."],
+    heroLead:"Laser, skin care, dermatology and aesthetics, and dentistry across three branches. Browse our services and prices, meet our doctors, then choose your branch and book in a few taps.",
     photo:"Clinic photo",c1t:"2026 prices",c1:"Published and approved per branch",c2t:"Orthodontics",c2:"now at Al Yasmin",
     sBranches:"Branches",sDepts:"Departments",sServices:"Services, priced openly",
     brEyebrow:"Our branches",brTitle:"Three branches, each its own world",brLead:"Every branch has its own departments, prices, doctors and booking line. Choose the one nearest you.",
@@ -735,12 +748,7 @@ function homeView(){
         <div><b class="num" data-count="${totals}" data-plus="1">+${totals}</b><span>${t("sServices")}</span></div>
       </div>
     </div>
-    <div class="arch rv-arch" id="arch">
-      <div class="frame"><div class="ph"><div><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 90V45a30 30 0 0 1 60 0v45"/><path d="M35 90V55a15 15 0 0 1 30 0v35"/></svg>${t("photo")}</div></div></div>
-      <svg class="ring" viewBox="0 0 200 200" aria-hidden="true"><circle class="ringC" cx="100" cy="100" r="92" fill="none" stroke="#B08A4F" stroke-width="1.2"/><circle cx="100" cy="100" r="78" fill="none" stroke="#B08A4F" stroke-width=".7" stroke-dasharray="2 7"/></svg>
-      <div class="card"><b>${t("c1t")}</b>${t("c1")}</div>
-      <div class="card card2"><b>${t("c2t")}</b>${t("c2")}</div>
-    </div>
+    <svg class="hero-ring rv-arch" viewBox="0 0 200 200" aria-hidden="true"><circle class="ringC" cx="100" cy="100" r="92" fill="none" stroke="#B08A4F" stroke-width=".8"/><circle cx="100" cy="100" r="78" fill="none" stroke="#B08A4F" stroke-width=".5" stroke-dasharray="2 7"/><circle cx="100" cy="100" r="60" fill="none" stroke="#B08A4F" stroke-width=".4" opacity=".6"/></svg>
   </div></section>
 
   <div class="marquee" aria-hidden="true"><div class="track">${(()=>{const w=lang==="ar"?["هيدرافيشل","ليزر إيفولاين","فيلر","بوتكس","بلازما ذهبية","تبييض الأسنان","فينير","بيكو ليزر","سكلبترا","ميزوثيرابي"]:["HydraFacial","Evoline laser","Fillers","Botox","Gold plasma","Teeth whitening","Veneers","Pico laser","Sculptra","Mesotherapy"];const r=w.map(x=>`<span>${x}</span>`).join("");return r+r})()}</div></div>
@@ -795,11 +803,16 @@ function branchView(bk){
     <div class="bhero-grid">
       <div><span class="eyebrow rv">${L(b,"tag")}</span><h1 class="bh-title" style="margin-top:14px">${t("branch")} <span class="gold-text">${nm(b)}</span></h1><p class="lead muted rv">${L(b,"lead")}</p>
         <div class="dchips rv">${DS.map(d=>`<button type="button" data-jump="#p-${d.k}"><span>${ICONS[d.k]}</span>${nm(d)}</button>`).join("")}</div></div>
-      <div class="facts rv">
+      <div class="arch bphoto rv-arch">
+        <div class="frame">${b.photo?`<img src="${b.photo}" alt="${t("branch")} ${nm(b)}">`:`<div class="ph"><div><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 90V45a30 30 0 0 1 60 0v45"/><path d="M35 90V55a15 15 0 0 1 30 0v35"/></svg>${t("photo")} · ${nm(b)}</div></div>`}</div>
+        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true"><circle class="ringC" cx="100" cy="100" r="92" fill="none" stroke="#DCC08A" stroke-width="1.2"/><circle cx="100" cy="100" r="78" fill="none" stroke="#DCC08A" stroke-width=".7" stroke-dasharray="2 7"/></svg>
+        <div class="card"><b>${N} ${lang==="ar"?"أقسام":"departments"}</b>${L(b,"tag")}</div>
+      </div>
+    </div>
+    <div class="facts bfacts rv">
         <div><small>${t("address")}</small><b>${L(b,"addr")}</b></div>
         <div><small>${t("hours")}</small><b>${L(b,"hours")}</b></div>
         <div><small>${t("phone")}</small>${b.phones.map(ph=>`<b class="ph-line"><span>${ph[lang]}</span><span class="num" dir="ltr">${ph.n}</span></b>`).join("")}</div>
-      </div>
     </div>
   </div></section>
 
@@ -991,7 +1004,7 @@ function check(){
   const docH=document.documentElement.scrollHeight-h; const pg=$("#prog"); if(pg) pg.style.transform=`scaleX(${docH>0?clamp01(window.scrollY/docH):0})`;
   if(!calm){ const y=window.scrollY;
     const fr=$(".arch .frame"); if(fr && y<1400) fr.style.transform=`translate3d(0,${(-y*0.08).toFixed(1)}px,0)`;
-    const bg=$(".bhero-grid"); if(bg && y<1000){ bg.style.transform=`translate3d(0,${(y*0.2).toFixed(1)}px,0)`; bg.style.opacity=Math.max(0,1-y/700).toFixed(3); } }
+    const bg=$(".bhero-grid"); if(bg && y<1000){ bg.style.transform=`translate3d(0,${(y*0.12).toFixed(1)}px,0)`; } }
 }
 function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(check) } }
 window.addEventListener("scroll",onScroll,{passive:true});
