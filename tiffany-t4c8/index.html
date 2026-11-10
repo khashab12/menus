@@ -443,7 +443,7 @@ footer .social a{border-color:var(--line-dark);color:var(--gold-hi)}
 /* ================================================================
    CONFIG — كل البيانات المؤقتة هنا. لما توصل الداتا الحقيقية بدّلها بس
    ================================================================ */
-const SOCIAL = { instagram:"https://instagram.com/tiffanymedical", snapchat:"#", tiktok:"#", x:"#" };
+const SOCIAL = { instagram:"https://www.instagram.com/tiffanymedical", tiktok:"https://www.tiktok.com/@tiffanymedical" };
 
 const BRANCHES = {
   yasmin:{ ar:"الياسمين", en:"Al Yasmin",
@@ -931,7 +931,7 @@ function branchView(bk){
         <div class="kv"><small>${t("hours")}</small><span>${L(b,"hours")}</span></div>
         <div class="kv"><small>${t("phone")}</small>${b.phones.map((ph,i)=>`<div class="ph-row"><span class="ph-l">${ph[lang]}</span><span class="num" dir="ltr" id="ph${i}">${ph.n}</span><button type="button" class="ph-copy" data-copy="${ph.n}" data-el="ph${i}">${t("copyNum")}</button></div>`).join("")}</div>
         <div class="kv"><small>${t("whats")}</small><span class="num" dir="ltr">${b.phones.find(p=>"+966"+p.n.slice(1)==="+"+b.wa)?.n||"+"+b.wa}</span></div>
-        <div class="kv"><small>${t("follow")}</small><div class="social" style="margin-top:8px">${socialHTML()}</div></div>
+        <div class="kv"><small>${t("follow")} · <span dir="ltr">@tiffanymedical</span></small><div class="social" style="margin-top:8px">${socialHTML()}</div></div>
       </div>
     </div>
   </div></section>
