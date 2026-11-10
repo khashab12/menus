@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NAJ Dental | مثال تجريبي</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6fafd;--ink:#1b2a4c;--pri:#1f2f55;--acc:#6fb8de;--soft:#e3f1f9;--line:color-mix(in srgb,var(--ink) 12%,transparent);--mut:color-mix(in srgb,var(--ink) 62%,var(--bg))}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.demo{background:var(--ink);color:var(--bg);font-size:12.5px;text-align:center;padding:8px 16px;line-height:1.6}
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.brand b{display:block;font-size:17px;font-weight:600;line-height:1.2}
+.brand small{font-family:'Cormorant Garamond',serif;letter-spacing:.22em;font-size:11px;color:var(--acc);text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;font-weight:600;font-size:14.5px;border:1px solid var(--pri);transition:transform .2s}
+.btn:active{transform:scale(.97)}
+.btn.fill{background:var(--pri);color:var(--bg)}
+.btn.ghost{color:var(--pri);background:transparent}
+.hero{position:relative;min-height:calc(100svh - 110px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 22px 60px;overflow:hidden}
+.hero:before{content:'';position:absolute;inset:-20%;background:radial-gradient(circle at 75% 20%,color-mix(in srgb,var(--acc) 30%,transparent),transparent 45%),radial-gradient(circle at 15% 85%,var(--soft),transparent 50%);z-index:-1}
+.logo{position:relative;width:190px;height:190px;display:grid;place-items:center;margin-bottom:30px}
+.logo .disc{width:160px;height:160px;border-radius:50%;background:var(--pri);color:var(--bg);display:grid;place-items:center;text-align:center;box-shadow:0 24px 60px -20px color-mix(in srgb,var(--pri) 60%,transparent)}
+.logo .disc b{font-size:50px;font-weight:600;line-height:1;color:var(--acc);font-family:'Cormorant Garamond',serif;letter-spacing:.06em}
+.logo .disc small{display:block;margin-top:8px;font-family:'Cormorant Garamond',serif;letter-spacing:.3em;font-size:11px;opacity:.8}
+.logo svg{position:absolute;inset:0;width:100%;height:100%}
+.logo circle{fill:none;stroke:var(--acc);stroke-width:1.5}
+.spark{position:absolute;color:var(--acc);font-size:18px;opacity:.8}
+.kicker{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.12em;color:var(--mut);margin-bottom:10px}
+.hero h1{font-size:clamp(32px,9vw,52px);font-weight:600;line-height:1.25;margin-bottom:14px}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero p{max-width:30em;color:var(--mut);font-size:16px;margin-bottom:28px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.w{overflow:hidden;display:inline-block;vertical-align:top}
+.w>span{display:inline-block}
+.mq{border-block:1px solid var(--line);background:var(--soft);overflow:hidden;white-space:nowrap;padding:14px 0}
+.mq-in{display:inline-flex;gap:26px;align-items:center;font-size:17px;padding-inline-end:26px}
+.mq i{color:var(--acc);font-style:normal}
+section{padding:64px 18px;max-width:760px;margin:0 auto}
+.sh{margin-bottom:26px}
+.sh small{font-family:'Cormorant Garamond',serif;color:var(--acc);letter-spacing:.2em;font-size:14px}
+.sh h2{font-size:30px;font-weight:600;line-height:1.3}
+.sh p{color:var(--mut);margin-top:6px}
+.offer{position:relative;border-radius:24px;padding:26px 22px;background:var(--pri);color:var(--bg);overflow:hidden;margin-bottom:14px}
+.offer:after{content:'';position:absolute;width:220px;height:220px;border-radius:50%;border:1px solid color-mix(in srgb,var(--acc) 70%,transparent);top:-90px;left:-70px}
+.offer-badge{display:inline-block;background:var(--acc);color:var(--ink);font-size:12.5px;font-weight:600;border-radius:999px;padding:3px 12px;margin-bottom:12px}
+.offer h3{font-size:23px;line-height:1.35;margin-bottom:6px}
+.offer p{opacity:.85}
+.offer-price{margin-top:14px;font-size:26px;font-weight:700;color:var(--acc)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:18px;scrollbar-width:none}
+.chip{flex:none;min-height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 60%,white);font:inherit;font-size:14.5px;color:var(--ink);cursor:pointer}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;gap:12px}
+@media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
+.svc{background:color-mix(in srgb,var(--bg) 50%,white);border:1px solid var(--line);border-radius:22px;padding:20px}
+.svc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.ico{width:44px;height:44px;border-radius:14px;background:var(--soft);display:grid;place-items:center;font-size:20px}
+.tag{font-size:12px;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+.svc h3{font-size:19px;font-weight:600}
+.svc p{color:var(--mut);font-size:14.5px;margin-top:4px}
+.svc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+.price{font-weight:600;color:var(--pri);font-size:14.5px}
+.mini{font-size:13.5px;font-weight:600;background:var(--soft);color:var(--pri);border-radius:999px;padding:6px 16px}
+.doc{display:flex;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:20px;background:color-mix(in srgb,var(--bg) 50%,white);margin-bottom:10px}
+.doc-av{width:52px;height:52px;flex:none;border-radius:50%;background:var(--soft);color:var(--pri);display:grid;place-items:center;font-weight:700;font-size:20px;border:1px solid var(--acc)}
+.doc b{display:block}
+.doc small{color:var(--mut)}
+.book{background:var(--soft);border-radius:28px;padding:26px 20px}
+.book label{display:block;font-size:13.5px;color:var(--mut);margin:14px 0 6px}
+.book select,.book input{width:100%;min-height:50px;border-radius:14px;border:1px solid var(--line);background:var(--bg);padding:0 14px;font:inherit;font-size:16px;color:var(--ink)}
+.days{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.day{flex:none;min-width:64px;min-height:62px;border-radius:14px;border:1px solid var(--line);background:var(--bg);font:inherit;color:var(--ink);display:grid;place-items:center;line-height:1.3;cursor:pointer}
+.day small{display:block;font-size:11px;color:var(--mut)}
+.day.on{background:var(--pri);color:var(--bg);border-color:var(--pri)}
+.day.on small{color:inherit;opacity:.8}
+.book .btn{width:100%;margin-top:20px}
+.note{font-size:12.5px;color:var(--mut);text-align:center;margin-top:10px}
+.info{display:grid;gap:10px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:color-mix(in srgb,var(--bg) 50%,white)}
+.row span{color:var(--mut)}
+footer{text-align:center;padding:40px 18px 120px;color:var(--mut);font-size:13px}
+.fab{position:fixed;bottom:16px;inset-inline:16px;z-index:30;display:flex;gap:10px}
+.fab a{flex:1;min-height:54px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;box-shadow:0 14px 30px -12px rgba(0,0,0,.35)}
+.fab .wa{background:#25d366;color:#fff}
+.fab .call{flex:0 0 54px;background:var(--bg);color:var(--pri);border:1px solid var(--line)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="demo">نموذج تجريبي باسم NAJ Dental، الخدمات والأسماء من حسابكم والأسعار والأوقات أمثلة تتعدل</div>
+<header>
+  <div class="brand"><b>عيادات ناج لطب الأسنان</b><small>NAJ Dental Clinics</small></div>
+  <a class="btn fill" href="#book">احجز موعدك</a>
+</header>
+
+<div class="hero">
+  <div class="logo">
+    <svg viewBox="0 0 190 190" aria-hidden="true"><circle id="ring" cx="95" cy="95" r="92"/></svg>
+    <div class="disc"><div><b>NAJ</b><small>DENTAL CLINICS</small></div></div>
+    <span class="spark" style="top:8%;right:4%">✦</span><span class="spark" style="bottom:14%;left:0">✦</span><span class="spark" style="top:44%;left:-8%;font-size:12px">✦</span>
+  </div>
+  <div class="kicker" dir="ltr">Cosmetic · General · Preventive</div>
+  <h1>ابتسامة أجمل تبدأ <em>بالعناية الصحيحة</em></h1>
+  <p>تجربة أسنان شخصية في المربع بالرياض. اختر الخدمة واحجز موعدك على الواتساب مباشرة.</p>
+  <div class="cta"><a class="btn fill" href="#services">الخدمات</a><a class="btn ghost" href="#book">احجز بدقيقة</a></div>
+</div>
+
+<div class="mq"><div class="mq-in"><span>تبييض الأسنان</span><i>✦</i><span>التلبيسة الجزئية</span><i>✦</i><span>علاج اللثة والتنظيف</span><i>✦</i><span>الفحص الدوري</span><i>✦</i><span>تبييض الأسنان</span><i>✦</i><span>التلبيسة الجزئية</span><i>✦</i><span>علاج اللثة والتنظيف</span><i>✦</i><span>الفحص الدوري</span><i>✦</i></div></div>
+
+
+
+<section id="services">
+  <div class="sh rv"><small>SERVICES</small><h2>الخدمات</h2><p>اختر القسم وشوف الخدمات، واحجز مباشرة.</p></div>
+  <div class="chips"><button class="chip on" data-cat="all">الكل</button><button class="chip" data-cat="تجميل الأسنان">تجميل الأسنان</button><button class="chip" data-cat="علاج عام">علاج عام</button><button class="chip" data-cat="وقائي">وقائي</button></div>
+  <div class="grid"><article class="svc rv" data-cat="تجميل الأسنان">
+  <div class="svc-top"><span class="ico">✨</span><span class="tag">تجميل الأسنان</span></div>
+  <h3>تبييض الأسنان</h3>
+  <p>تبييض آمن لإشراقة تدوم</p>
+  <div class="svc-foot"><span class="price">السعر بعد الاستشارة</span>
+  <a class="mini" href="#book" data-svc="تبييض الأسنان">احجز</a></div>
+</article>
+<article class="svc rv" data-cat="تجميل الأسنان">
+  <div class="svc-top"><span class="ico">🦷</span><span class="tag">تجميل الأسنان</span></div>
+  <h3>التلبيسة الجزئية</h3>
+  <p>تعوّض الجزء المفقود فقط وتحافظ على سنّك الطبيعي، بلون يطابق أسنانك</p>
+  <div class="svc-foot"><span class="price">السعر بعد الاستشارة</span>
+  <a class="mini" href="#book" data-svc="التلبيسة الجزئية">احجز</a></div>
+</article>
+<article class="svc rv" data-cat="علاج عام">
+  <div class="svc-top"><span class="ico">🩵</span><span class="tag">علاج عام</span></div>
+  <h3>علاج اللثة والتنظيف</h3>
+  <p>لثة صحية، فم نظيف وابتسامة أجمل</p>
+  <div class="svc-foot"><span class="price">السعر بعد الاستشارة</span>
+  <a class="mini" href="#book" data-svc="علاج اللثة والتنظيف">احجز</a></div>
+</article>
+<article class="svc rv" data-cat="وقائي">
+  <div class="svc-top"><span class="ico">🔍</span><span class="tag">وقائي</span></div>
+  <h3>الفحص الدوري</h3>
+  <p>كشف مبكر يوفر عليك علاج أطول</p>
+  <div class="svc-foot"><span class="price">السعر بعد الاستشارة</span>
+  <a class="mini" href="#book" data-svc="الفحص الدوري">احجز</a></div>
+</article></div>
+</section>
+
+<section id="team"><div class="sh rv"><small>OUR TEAM</small><h2>الأطباء</h2></div><div class="doc rv"><span class="doc-av">س</span><div><b>د. سارة السناني</b><small>إصلاح وتجميل الأسنان</small></div></div></section>
+
+<section id="book">
+  <div class="book rv">
+    <div class="sh"><small>BOOKING</small><h2>احجز موعدك بدقيقة</h2><p>اختر القسم واليوم، ويوصلنا طلبك على الواتساب جاهز.</p></div>
+    <label for="dept">القسم</label>
+    <select id="dept"><option>تجميل الأسنان</option><option>علاج عام</option><option>وقائي</option></select>
+    <label>اليوم</label>
+    <div class="days" id="days"></div>
+    <label for="nm">الاسم</label>
+    <input id="nm" placeholder="اسمك" autocomplete="name">
+    <a class="btn fill" id="send" href="#">إرسال طلب الحجز على الواتساب</a>
+    <p class="note">الاستقبال يؤكد الموعد معك على نفس المحادثة</p>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="sh rv"><small>VISIT US</small><h2>موقعنا</h2></div>
+  <div class="info">
+    <div class="row rv"><span>العنوان</span><b>الرياض، حي المربع</b></div>
+    <div class="row rv"><span>للحجز</span><b dir="ltr">011 200 4235</b></div>
+    <div class="row rv"><span>أوقات العمل</span><b>مثال: ٩ص – ١٠م</b></div>
+  </div>
+</section>
+
+<footer>عيادات ناج لطب الأسنان · الرياض<br>نموذج تجريبي للعرض فقط</footer>
+
+<div class="fab"><a class="call" href="tel:0112004235" aria-label="اتصال">📞</a><a class="wa" href="https://wa.me/9660112004235">💬 احجز على الواتساب</a></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+const WA='9660112004235';
+// day picker (next 7 days)
+const dn=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+const days=document.getElementById('days');let pick=0;
+for(let i=0;i<7;i++){const d=new Date();d.setDate(d.getDate()+i);const b=document.createElement('button');b.type='button';b.className='day'+(i===0?' on':'');b.innerHTML=(i===0?'اليوم':i===1?'بكرة':dn[d.getDay()])+'<small>'+d.getDate()+'/'+(d.getMonth()+1)+'</small>';b.onclick=()=>{days.querySelectorAll('.day').forEach(x=>x.classList.remove('on'));b.classList.add('on');pick=i};days.appendChild(b)}
+document.getElementById('send').onclick=e=>{e.preventDefault();const b=days.querySelectorAll('.day')[pick];const t='السلام عليكم، أبي أحجز موعد\nالقسم: '+document.getElementById('dept').value+'\nاليوم: '+b.firstChild.textContent+' '+b.querySelector('small').textContent+'\nالاسم: '+(document.getElementById('nm').value||'-');location.href='https://wa.me/'+WA+'?text='+encodeURIComponent(t)};
+document.querySelectorAll('.mini').forEach(a=>a.addEventListener('click',()=>{const cat=a.closest('.svc').dataset.cat;const s=document.getElementById('dept');[...s.options].forEach((o,i)=>{if(o.text===cat)s.selectedIndex=i})}));
+// filter
+document.querySelectorAll('.chip').forEach(ch=>ch.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));ch.classList.add('on');const c=ch.dataset.cat;document.querySelectorAll('.svc').forEach(s=>{const show=c==='all'||s.dataset.cat===c;s.style.display=show?'':'none';if(show&&window.gsap)gsap.fromTo(s,{y:16,opacity:0},{y:0,opacity:1,duration:.4})})});
+if(window.gsap&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  gsap.registerPlugin(ScrollTrigger);
+  // split hero title into words
+  const h=document.querySelector('.hero h1');h.innerHTML=h.innerHTML.split(/(\s+|<br>)/).map(w=>w.trim()&&w!=='<br>'?'<span class="w"><span>'+w+'</span></span>':w).join('');
+  const r=document.getElementById('ring');const L=2*Math.PI*92;r.style.strokeDasharray=L;r.style.strokeDashoffset=L;
+  const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+  tl.from('.disc',{scale:.6,opacity:0,duration:.9,ease:'back.out(1.6)'})
+    .to(r,{strokeDashoffset:0,duration:1.4,ease:'power2.inOut'},'-=.5')
+    .from('.spark',{scale:0,opacity:0,stagger:.12,duration:.5},'-=1')
+    .from('.kicker',{y:14,opacity:0,duration:.6},'-=1')
+    .from('.hero h1 .w>span',{yPercent:110,duration:.8,stagger:.06},'-=.8')
+    .from('.hero p,.cta',{y:18,opacity:0,stagger:.1,duration:.7},'-=.5');
+  gsap.to('.spark',{y:-8,repeat:-1,yoyo:true,duration:2.2,stagger:.4,ease:'sine.inOut'});
+  gsap.to('.logo svg',{rotate:360,duration:40,repeat:-1,ease:'none'});
+  const mq=document.querySelector('.mq-in');gsap.to(mq,{xPercent:50,duration:28,repeat:-1,ease:'none'});
+  gsap.utils.toArray('.rv').forEach(el=>gsap.from(el,{y:30,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}}));
+}
+</script>
+</body>
+</html>
