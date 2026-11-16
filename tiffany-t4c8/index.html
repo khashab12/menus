@@ -658,7 +658,20 @@ const ORTHO = [
 const MEN_YASMIN = [
   ["ليزر رجال: تحديد الذقن أو الإبط، بدون رتوش","Men's laser: beard line or underarm, no touch-ups","mbeard",250],
   ["ليزر رجال: تحديد الذقن أو الإبط، مع رتوش","Men's laser: beard line or underarm, with touch-ups","mbeard",350]];
-const items = (b,d)=> d==="lw" ? (b==="yasmin" ? LASER_W.yasmin.concat(MEN_YASMIN) : LASER_W[BRANCHES[b].laser]) : {skin:SKIN,derm:DERM,dental:DENTAL,ortho:ORTHO}[d];
+/* أسعار أسنان فرع الياسمين (تعديل الطبيبة) */
+const DENTAL_Y = DENTAL.flatMap(r=>{
+  switch(r[0]){
+    case "تنظيف الأسنان": return [[r[0],r[1],r[2],250,1]];
+    case "حشوات الأسنان": return [[r[0],r[1],r[2],250,1]];
+    case "علاج العصب": return [["علاج عصب سن أمامي","Root canal, front tooth","root",1300],["علاج عصب سن خلفي","Root canal, back tooth","root",1500]];
+    case "إعادة لصق تركيبة": return [r,["إلصاق فينير","Veneer bonding","crown",200]];
+    case "خلع أسنان عادي": return [["خلع سن أمامي","Front tooth extraction","ext",250],["خلع سن خلفي","Back tooth extraction","ext",300]];
+    case "خلع جراحي بسيط": return [["خلع جراحي","Surgical extraction","ext",1000,1]];
+    case "خلع ضرس العقل": return [["خلع ضرس العقل","Wisdom tooth extraction","ext",500]];
+    default: return [r];
+  }
+});
+const items = (b,d)=> d==="lw" ? (b==="yasmin" ? LASER_W.yasmin.concat(MEN_YASMIN) : LASER_W[BRANCHES[b].laser]) : {skin:SKIN,derm:DERM,dental:(b==="yasmin"?DENTAL_Y:DENTAL),ortho:ORTHO}[d];
 const deptDesc = (bk,d) => { const o=BRANCHES[bk].dtext&&BRANCHES[bk].dtext[d.k]; return o ? o[lang] : L(d,"d"); };
 const bDepts = b => DEPTS.filter(d=>BRANCHES[b].depts.includes(d.k));
 const minPrice = it => { const v=it.filter(r=>r[3]!=null).map(r=>r[3]); return v.length?Math.min(...v):null; };
